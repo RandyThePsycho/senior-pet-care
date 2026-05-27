@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'kern';
+}
+
+/* 让 range 滑块在各浏览器更友好、可触达 */
+input[type='range'] {
+  height: 1.5rem;
+  cursor: pointer;
+}

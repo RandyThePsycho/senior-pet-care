@@ -1,0 +1,207 @@
+// src/components/calculator/EmailCaptureForm.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import CTAButton from '@/components/common/CTAButton';
+import { track } from '@/lib/analytics';
+import { saveAssessmentSnapshot } from '@/lib/assessmentStorage';
+import type {
+  AssessmentInput,
+  AssessmentResult,
+  AssessmentSnapshot,
+  ReassessmentContext,
+} from '@/types/assessment';
+
+interface EmailCaptureFormProps {
+  input: AssessmentInput;
+  result: AssessmentResult;
+  vetQuestions: string[];
+  reassessmentContext?: ReassessmentContext;
+}
+
+interface SubscribeResponse {
+  ok: boolean;
+  subscriberId?: string;
+  petId?: string;
+  assessmentId?: string;
+  reportUrl?: string;
+  journalUrl?: string;
+  reassessmentUrl?: string;
+  nextReassessmentDate?: string;
+  error?: string;
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export default function EmailCaptureForm({
+  input,
+  result,
+  vetQuestions,
+  reassessmentContext,
+}: EmailCaptureFormProps) {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState<SubscribeResponse | null>(null);
+
+  const petName = input.profile.petName;
+  const safeName = petName.trim() || 'your pet';
+
+  // 成功展示 Report / Journal CTA 时埋点
+  useEffect(() => {
+    if (success?.ok) {
+      track('report_cta_shown', { assessmentId: success.assessmentId });
+      track('journal_cta_shown', { petId: success.petId });
+    }
+  }, [success]);
+
+  async function handleSubmit() {
+    if (!EMAIL_RE.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    setError('');
+    setSubmitting(true);
+    track('email_subscribe_started', {});
+
+    try {
+      const res = await fetch('/api/email/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          source: 'calculator_result',
+          tags: result.tags,
+          petProfile: {
+            petName: input.profile.petName,
+            petType: input.profile.petType,
+            age: input.profile.age,
+            weight: input.profile.weight,
+            weightUnit: input.profile.weightUnit,
+            size: input.profile.size,
+            conditions: input.profile.conditions,
+          },
+          resultSummary: {
+            totalScore: result.totalScore,
+            riskLevel: result.riskLevel,
+            lowDimensions: result.lowDimensions,
+          },
+          // 复评上下文：让 API 复用同一 petId，并把 reassessmentOf 串进链接
+          existingPetId: reassessmentContext?.existingPetId,
+          reassessmentMode: reassessmentContext?.reassessmentMode,
+          reassessmentSource: reassessmentContext?.reassessmentSource,
+          reassessmentOf: reassessmentContext?.reassessmentOf,
+        }),
+      });
+
+      const data = (await res.json()) as SubscribeResponse;
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'Subscribe failed');
+      }
+
+      // 保存快照到 localStorage，供 Report / Journal 读取
+      if (data.assessmentId && data.petId) {
+        const snapshot: AssessmentSnapshot = {
+          assessmentId: data.assessmentId,
+          petId: data.petId,
+          email,
+          input,
+          result,
+          vetQuestions,
+          createdAt: new Date().toISOString(),
+          nextReassessmentDate:
+            data.nextReassessmentDate ?? new Date().toISOString(),
+          reportUrl: data.reportUrl ?? `/reports/${data.assessmentId}`,
+          journalUrl: data.journalUrl ?? `/journal/${data.petId}`,
+          reassessmentUrl:
+            data.reassessmentUrl ??
+            `/tools/senior-pet-quality-of-life-calculator?petId=${data.petId}&reassessment=7d&source=email`,
+          reassessmentOf: reassessmentContext?.reassessmentOf,
+        };
+        saveAssessmentSnapshot(snapshot);
+        track('reassessment_link_created', {
+          reassessmentUrl: snapshot.reassessmentUrl,
+        });
+      }
+
+      track('email_submitted', { tags: result.tags });
+      track('email_subscribe_succeeded', { assessmentId: data.assessmentId });
+      setSuccess(data);
+    } catch {
+      track('email_subscribe_failed', {});
+      setError(
+        "Something went wrong on our end. Please try again in a moment.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  // 成功态：显示报告 + Journal 链接 + 复评提醒文案
+  if (success?.ok) {
+    return (
+      <div className="rounded-3xl border border-sage-200 bg-sage-50 p-6">
+        <p className="text-lg font-semibold text-navy-800">
+          Your report is on its way.
+        </p>
+        <p className="mt-1 text-navy-600">
+          We&apos;ll also remind you to reassess {safeName} in 7 days.
+        </p>
+
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href={success.reportUrl ?? '#'}
+            onClick={() =>
+              track('report_download_clicked', {
+                assessmentId: success.assessmentId,
+              })
+            }
+            className="inline-flex items-center justify-center rounded-2xl bg-sage-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-sage-700"
+          >
+            Download printable report
+          </Link>
+          <Link
+            href={success.journalUrl ?? '#'}
+            onClick={() => track('journal_opened', { petId: success.petId })}
+            className="inline-flex items-center justify-center rounded-2xl border border-navy-200 bg-white px-6 py-3 text-base font-semibold text-navy-700 transition-colors hover:bg-cream-100"
+          >
+            Open my care journal
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // 默认态：邮箱输入
+  return (
+    <div className="rounded-3xl border border-navy-100 bg-white p-6">
+      <h3 className="text-xl font-bold text-navy-800">
+        Email me my full report (PDF)
+      </h3>
+      <p className="mt-1 text-sm text-navy-500">
+        Includes a 7-day tracker and questions to ask your vet.
+      </p>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          aria-label="Email address"
+          disabled={submitting}
+          className="flex-1 rounded-2xl border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300 disabled:opacity-60"
+        />
+        <CTAButton onClick={handleSubmit} disabled={submitting}>
+          {submitting ? 'Sending…' : 'Send my report'}
+        </CTAButton>
+      </div>
+      {error && <p className="mt-2 text-sm text-clay-600">{error}</p>}
+      <p className="mt-3 text-xs text-navy-400">
+        We&apos;ll only email you about {safeName}&apos;s care. Unsubscribe
+        anytime.
+      </p>
+    </div>
+  );
+}
