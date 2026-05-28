@@ -11,6 +11,13 @@ import {
   type UserRow,
 } from '@/lib/supabase/mappers';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+const NO_STORE = {
+  'Cache-Control': 'no-store, max-age=0',
+};
+
 export async function GET(
   _request: Request,
   { params }: { params: { petId: string } },
@@ -18,7 +25,10 @@ export async function GET(
   const { petId } = params;
 
   if (!isSupabaseConfigured()) {
-    return NextResponse.json({ ok: true, history: [], latest: null });
+    return NextResponse.json(
+      { ok: true, history: [], latest: null },
+      { headers: NO_STORE },
+    );
   }
 
   try {
@@ -32,7 +42,10 @@ export async function GET(
 
     if (!pet) {
       // 温和处理：pet 不存在时返回空 history，前端显示 empty state
-      return NextResponse.json({ ok: true, history: [], latest: null });
+      return NextResponse.json(
+        { ok: true, history: [], latest: null },
+        { headers: NO_STORE },
+      );
     }
 
     let user: UserRow | null = null;
@@ -63,10 +76,16 @@ export async function GET(
 
     const latest = history.length > 0 ? history[history.length - 1] : null;
 
-    return NextResponse.json({ ok: true, history, latest });
+    return NextResponse.json(
+      { ok: true, history, latest },
+      { headers: NO_STORE },
+    );
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/journal] error', err);
-    return NextResponse.json({ ok: true, history: [], latest: null });
+    return NextResponse.json(
+      { ok: true, history: [], latest: null },
+      { headers: NO_STORE },
+    );
   }
 }

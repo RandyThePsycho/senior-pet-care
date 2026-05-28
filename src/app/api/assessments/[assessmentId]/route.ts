@@ -11,6 +11,13 @@ import {
   type UserRow,
 } from '@/lib/supabase/mappers';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+const NO_STORE = {
+  'Cache-Control': 'no-store, max-age=0',
+};
+
 export async function GET(
   _request: Request,
   { params }: { params: { assessmentId: string } },
@@ -20,7 +27,7 @@ export async function GET(
   if (!isSupabaseConfigured()) {
     return NextResponse.json(
       { ok: false, error: 'not_found' },
-      { status: 404 },
+      { status: 404, headers: NO_STORE },
     );
   }
 
@@ -36,7 +43,10 @@ export async function GET(
       .maybeSingle();
 
     if (!a) {
-      return NextResponse.json({ ok: false, error: 'not_found' }, { status: 404 });
+      return NextResponse.json(
+        { ok: false, error: 'not_found' },
+        { status: 404, headers: NO_STORE },
+      );
     }
 
     const { data: pet } = await supabase
@@ -46,7 +56,10 @@ export async function GET(
       .maybeSingle();
 
     if (!pet) {
-      return NextResponse.json({ ok: false, error: 'not_found' }, { status: 404 });
+      return NextResponse.json(
+        { ok: false, error: 'not_found' },
+        { status: 404, headers: NO_STORE },
+      );
     }
 
     let user: UserRow | null = null;
@@ -65,10 +78,13 @@ export async function GET(
       user,
     });
 
-    return NextResponse.json({ ok: true, snapshot });
+    return NextResponse.json({ ok: true, snapshot }, { headers: NO_STORE });
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/assessments] error', err);
-    return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 });
+    return NextResponse.json(
+      { ok: false, error: 'server_error' },
+      { status: 500, headers: NO_STORE },
+    );
   }
 }
