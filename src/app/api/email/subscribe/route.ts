@@ -8,6 +8,7 @@ import { NextResponse } from 'next/server';
 import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase/server';
 import { scoreAssessment } from '@/lib/scoring';
 import { generateVetQuestions } from '@/lib/vetQuestions';
+import { upsertMailerLiteSubscriber } from '@/lib/email/mailerLite';
 import { DIMENSIONS, type Dimension, type Symptom } from '@/types/assessment';
 import type { Condition, PetType, WeightUnit, PetSize } from '@/types/pet';
 
@@ -150,6 +151,10 @@ export async function POST(request: Request) {
       ...links,
       nextReassessmentDate,
       persisted: false,
+      emailProvider: {
+        provider: 'mailerlite',
+        status: 'skipped',
+      },
     });
   }
 
@@ -262,6 +267,53 @@ export async function POST(request: Request) {
     if (evtErr) throw evtErr;
 
     const links = buildLinks(petId, assessmentId);
+    const mailerLiteResult = await upsertMailerLiteSubscriber({
+      email,
+      petName: serverInput.profile.petName,
+      petType: serverInput.profile.petType,
+      riskLevel: serverResult.riskLevel,
+      totalScore: serverResult.totalScore,
+      petId,
+      assessmentId,
+      reportUrl: links.reportUrl,
+      journalUrl: links.journalUrl,
+      reassessmentUrl: links.reassessmentUrl,
+      nextReassessmentDate,
+      lowDimensions: serverResult.lowDimensions,
+      tags: serverResult.tags,
+    });
+
+    const mailerLiteEventType =
+      mailerLiteResult.status === 'succeeded'
+        ? 'mailerlite_subscribe_succeeded'
+        : mailerLiteResult.status === 'failed'
+          ? 'mailerlite_subscribe_failed'
+          : 'mailerlite_skipped';
+
+    const { error: mailerLiteEvtErr } = await supabase.from('email_events').insert({
+      user_id: userId,
+      pet_id: petId,
+      assessment_id: assessmentId,
+      event_type: mailerLiteEventType,
+      provider: 'mailerlite',
+      payload: {
+        status: mailerLiteResult.status,
+        group_id: mailerLiteResult.groupId ?? null,
+        subscriber_id: mailerLiteResult.subscriberId ?? null,
+        error: mailerLiteResult.error ?? null,
+        report_url: links.reportUrl,
+        journal_url: links.journalUrl,
+        reassessment_url: links.reassessmentUrl,
+        risk_level: serverResult.riskLevel,
+        tags: serverResult.tags,
+      },
+    });
+
+    if (mailerLiteEvtErr) {
+      // eslint-disable-next-line no-console
+      console.error('[email/subscribe] mailerlite event error', mailerLiteEvtErr);
+    }
+
     return NextResponse.json({
       ok: true,
       subscriberId: userId,
@@ -270,6 +322,10 @@ export async function POST(request: Request) {
       ...links,
       nextReassessmentDate,
       persisted: true,
+      emailProvider: {
+        provider: mailerLiteResult.provider,
+        status: mailerLiteResult.status,
+      },
     });
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -281,7 +337,7 @@ export async function POST(request: Request) {
   }
 
   // ---------------------------------------------------------------------------
-  // TODO（下一阶段）：接入 ConvertKit / MailerLite（本阶段不做）。
-  //   在 users/email_events 写入成功后，再调 ESP API 完成订阅与自动化序列。
+  // TODO（后续）：在 MailerLite 后台配置 group-triggered automation：
+  //   立即发送 report/journal links，并在 7 天后发送 reassessment reminder。
   // ---------------------------------------------------------------------------
 }
