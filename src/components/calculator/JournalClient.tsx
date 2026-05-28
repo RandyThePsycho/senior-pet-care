@@ -35,8 +35,37 @@ export default function JournalClient({ petId }: JournalClientProps) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setHistory(getPetJournal(petId));
-    setLoaded(true);
+    let cancelled = false;
+
+    async function load() {
+      // 1) 先尝试 Supabase（经 API）
+      try {
+        const res = await fetch(`/api/journal/${petId}`);
+        if (res.ok) {
+          const data = (await res.json()) as {
+            ok: boolean;
+            history?: AssessmentSnapshot[];
+          };
+          if (!cancelled && data.ok && data.history && data.history.length > 0) {
+            setHistory(data.history);
+            setLoaded(true);
+            return;
+          }
+        }
+      } catch {
+        // 忽略，走 fallback
+      }
+      // 2) fallback：localStorage
+      if (!cancelled) {
+        setHistory(getPetJournal(petId));
+        setLoaded(true);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [petId]);
 
   const latest = history.length > 0 ? history[history.length - 1] : null;

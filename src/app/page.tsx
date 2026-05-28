@@ -16,8 +16,7 @@ const ENTRIES = [
     href: '/tools/senior-pet-quality-of-life-calculator',
     primary: true,
   },
-  // QA: temporarily hide Product Matcher while the page is not implemented.
-  // Restore this entry when Feature B ships.
+  // QA: 暂时隐藏 Product Matcher 入口（页面未实现）。Feature B 上线后取消注释即可恢复。
   // {
   //   title: 'Find Senior-Safe Products',
   //   body: 'Tell us your pet’s needs and get the right product categories — not a cluttered shelf.',
@@ -66,7 +65,7 @@ export default function HomePage() {
 
         {/* Three entry cards */}
         <section className="mt-12 grid gap-4 sm:grid-cols-2">
-          {/* QA: Product Matcher entry is hidden, so keep the remaining cards balanced. */}
+          {/* QA: Product Matcher 入口暂时隐藏，故由 3 列改为 2 列；恢复时改回 sm:grid-cols-3 */}
           {ENTRIES.map((e) => (
             <div
               key={e.href}

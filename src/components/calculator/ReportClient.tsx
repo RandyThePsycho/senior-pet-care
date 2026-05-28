@@ -32,8 +32,37 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setSnapshot(getAssessmentSnapshot(assessmentId));
-    setLoaded(true);
+    let cancelled = false;
+
+    async function load() {
+      // 1) 先尝试 Supabase（经 API）
+      try {
+        const res = await fetch(`/api/assessments/${assessmentId}`);
+        if (res.ok) {
+          const data = (await res.json()) as {
+            ok: boolean;
+            snapshot?: AssessmentSnapshot;
+          };
+          if (!cancelled && data.ok && data.snapshot) {
+            setSnapshot(data.snapshot);
+            setLoaded(true);
+            return;
+          }
+        }
+      } catch {
+        // 忽略，走 fallback
+      }
+      // 2) fallback：localStorage
+      if (!cancelled) {
+        setSnapshot(getAssessmentSnapshot(assessmentId));
+        setLoaded(true);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [assessmentId]);
 
   // 加载中（避免 SSR / 首帧闪烁）

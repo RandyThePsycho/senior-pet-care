@@ -51,7 +51,9 @@ create table if not exists assessments (
   low_dimensions  jsonb not null default '[]'::jsonb,
   urgent_flag     boolean not null default false,
   tags            jsonb not null default '[]'::jsonb,
+  vet_questions   jsonb not null default '[]'::jsonb,
   reassessment_of uuid references assessments(id) on delete set null,
+  next_reassessment_at timestamptz,
   created_at      timestamptz not null default now()
 );
 

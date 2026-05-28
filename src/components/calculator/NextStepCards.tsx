@@ -37,8 +37,8 @@ export default function NextStepCards({ result }: NextStepCardsProps) {
       tone: 'gentle',
     });
   } else {
-    // QA: hide Product Matcher CTAs until Feature B exists, avoiding 404 links.
-    // Restore by setting this to true when the matcher route ships.
+    // QA: Product Matcher 页面未实现，暂时隐藏所有产品 CTA，避免跳转到 404。
+    //     Feature B 上线后把下面的 SHOW_PRODUCT_CTAS 改为 true 即可恢复。
     const SHOW_PRODUCT_CTAS = false;
     if (SHOW_PRODUCT_CTAS && routes.matcher) {
       cards.push({

@@ -1,14 +1,19 @@
 // src/app/api/email/subscribe/route.ts
-// Email 留资接口（MVP mock）。
-// 不接真实 ESP / Supabase，仅校验 email 并返回带各类链接的 mock 成功响应。
-// 真实接入点见底部 TODO。
+// Email 留资接口（Phase 2：Supabase 真实持久化）。
+// 流程：校验 email -> upsert users -> 复用/创建 pets -> insert assessments
+//       -> insert email_events(event_type='subscribe', provider='supabase')。
+// 若 Supabase 未配置（缺 env），降级为本地 mock id（保证开发/CI 不阻塞）。
 
 import { NextResponse } from 'next/server';
+import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase/server';
+import { scoreAssessment } from '@/lib/scoring';
+import { generateVetQuestions } from '@/lib/vetQuestions';
+import { DIMENSIONS, type Dimension, type Symptom } from '@/types/assessment';
+import type { Condition, PetType, WeightUnit, PetSize } from '@/types/pet';
 
-// 入参契约（与前端 EmailCaptureForm 对齐）
 interface SubscribeBody {
   email: string;
-  source?: string; // e.g. 'calculator_result'
+  source?: string;
   tags?: string[];
   petProfile?: {
     petName?: string;
@@ -23,20 +28,78 @@ interface SubscribeBody {
     totalScore?: number;
     riskLevel?: string;
     lowDimensions?: string[];
+    urgentFlag?: boolean;
   };
-  // 复评上下文（来自复评链接）
-  existingPetId?: string; // 存在则复用为同一 petId，不生成新的
-  reassessmentMode?: string; // 'manual' | '7d' | ...
-  reassessmentSource?: string; // 'journal' | 'email' | ...
-  reassessmentOf?: string; // 上一次的 assessmentId
+  scores?: Record<string, number>;
+  symptoms?: string[];
+  vetQuestions?: string[];
+  existingPetId?: string;
+  reassessmentMode?: string;
+  reassessmentSource?: string;
+  reassessmentOf?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// MVP：用时间戳 + 随机串生成 mock id（真实环境由 Supabase 返回 UUID）
 function mockId(prefix: string): string {
   const rand = Math.random().toString(36).slice(2, 10);
   return `${prefix}_${Date.now().toString(36)}${rand}`;
+}
+
+function buildLinks(petId: string, assessmentId: string) {
+  return {
+    reportUrl: `/reports/${assessmentId}`,
+    journalUrl: `/journal/${petId}`,
+    reassessmentUrl: `/tools/senior-pet-quality-of-life-calculator?petId=${petId}&reassessment=7d&source=email&reassessmentOf=${assessmentId}`,
+  };
+}
+
+// UUID v1–v5 校验。只有合法 UUID 才被当作真实的 existingPetId 使用。
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+function isValidUuid(v: unknown): v is string {
+  return typeof v === 'string' && UUID_RE.test(v);
+}
+
+// 从客户端 body 安全构造 AssessmentInput；缺失/非法字段用安全默认值兜底。
+// 注意：服务端不信任客户端传来的 totalScore/riskLevel/tags 等派生值，
+//       一律基于此 input 重新计算（见下方 scoreAssessment 调用）。
+function buildServerAssessmentInput(body: SubscribeBody) {
+  const profileIn = body.petProfile ?? {};
+  const petType: PetType = profileIn.petType === 'cat' ? 'cat' : 'dog';
+  const weightUnit: WeightUnit = profileIn.weightUnit === 'kg' ? 'kg' : 'lb';
+
+  // conditions: 只保留字符串元素（jsonb 安全）
+  const conditions = (profileIn.conditions ?? []).filter(
+    (c): c is Condition => typeof c === 'string',
+  ) as Condition[];
+
+  // scores: 把每个维度限制到 0–10 整数；缺失/非法 → 0（与评分函数的 `?? 0` 一致）
+  const rawScores = body.scores ?? {};
+  const scores = {} as Record<Dimension, number>;
+  for (const d of DIMENSIONS) {
+    const n = Number((rawScores as Record<string, unknown>)[d]);
+    scores[d] = Number.isFinite(n) ? Math.min(10, Math.max(0, Math.round(n))) : 0;
+  }
+
+  const symptoms = (body.symptoms ?? []).filter(
+    (s): s is Symptom => typeof s === 'string',
+  ) as Symptom[];
+
+  return {
+    profile: {
+      petName: profileIn.petName ?? '',
+      petType,
+      age: profileIn.age ?? null,
+      weight: profileIn.weight ?? null,
+      weightUnit,
+      size: (profileIn.size ?? null) as PetSize | null,
+      conditions,
+    },
+    scores,
+    symptoms,
+    conditions,
+  };
 }
 
 export async function POST(request: Request) {
@@ -44,93 +107,181 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as SubscribeBody;
   } catch {
-    return NextResponse.json(
-      { ok: false, error: 'Invalid JSON body.' },
-      { status: 400 },
-    );
+    return NextResponse.json({ ok: false, error: 'Invalid JSON body.' }, { status: 400 });
   }
 
   const {
     email,
     source,
-    tags,
     petProfile,
-    resultSummary,
+    vetQuestions,
     existingPetId,
     reassessmentMode,
     reassessmentSource,
     reassessmentOf,
   } = body;
+  // 注意：客户端可能仍传 tags / resultSummary / scores / symptoms，
+  //       但服务端不信任这些派生值，统一在下文用 buildServerAssessmentInput(body)
+  //       + scoreAssessment() 重算。tags / resultSummary 字段保留在 SubscribeBody
+  //       类型中是为了与前端兼容，但此处不读取。
 
   if (!email || !EMAIL_RE.test(email)) {
-    return NextResponse.json(
-      { ok: false, error: 'A valid email is required.' },
-      { status: 422 },
-    );
+    return NextResponse.json({ ok: false, error: 'A valid email is required.' }, { status: 422 });
   }
 
-  // 生成 mock id 与链接。复评时复用传入的 existingPetId，保证写回同一宠物 Journal。
-  const subscriberId = mockId('sub');
-  const petId =
-    existingPetId && existingPetId.trim() ? existingPetId : mockId('pet');
-  const assessmentId = mockId('asmt');
-
-  // 7 天后复评日期（ISO）
+  // 7 天后复评日期
   const next = new Date();
   next.setDate(next.getDate() + 7);
   const nextReassessmentDate = next.toISOString();
 
-  const reportUrl = `/reports/${assessmentId}`;
-  const journalUrl = `/journal/${petId}`;
-  // 下一次复评链接：带上本次 assessmentId 作为 reassessmentOf，形成链条
-  const reassessmentUrl = `/tools/senior-pet-quality-of-life-calculator?petId=${petId}&reassessment=7d&source=email&reassessmentOf=${assessmentId}`;
+  // ---- 降级路径：Supabase 未配置时用 mock（开发/CI）----
+  if (!isSupabaseConfigured()) {
+    const subscriberId = mockId('sub');
+    const petId = existingPetId && existingPetId.trim() ? existingPetId : mockId('pet');
+    const assessmentId = mockId('asmt');
+    const links = buildLinks(petId, assessmentId);
+    // eslint-disable-next-line no-console
+    console.log('[email/subscribe] Supabase not configured -> mock', { email, petId, assessmentId });
+    return NextResponse.json({
+      ok: true,
+      subscriberId,
+      petId,
+      assessmentId,
+      ...links,
+      nextReassessmentDate,
+      persisted: false,
+    });
+  }
 
-  // MVP: 仅记录
-  // eslint-disable-next-line no-console
-  console.log('[email/subscribe] mock subscribe', {
-    email,
-    source,
-    tags,
-    petProfile,
-    resultSummary,
-    subscriberId,
-    petId,
-    assessmentId,
-    reusedPetId: Boolean(existingPetId && existingPetId.trim()),
-    reassessmentMode,
-    reassessmentSource,
-    reassessmentOf,
-  });
+  // ---- 真实持久化路径 ----
+  try {
+    const supabase = getServerSupabase();
+
+    // a/b. upsert users(email, source) -> userId
+    const { data: userRow, error: userErr } = await supabase
+      .from('users')
+      .upsert({ email, source: source ?? null }, { onConflict: 'email' })
+      .select('id, email')
+      .single();
+    if (userErr || !userRow) throw userErr ?? new Error('user upsert failed');
+    const userId = userRow.id as string;
+
+    // c/d. 复用或创建 pet
+    let petId: string;
+    let petExists = false;
+    // 仅当 existingPetId 是合法 UUID 时才尝试复用（防止伪造的 mock id / 注入字符串）
+    if (isValidUuid(existingPetId)) {
+      const { data: foundPet } = await supabase
+        .from('pets')
+        .select('id')
+        .eq('id', existingPetId)
+        .maybeSingle();
+      if (foundPet?.id) {
+        petId = foundPet.id as string;
+        petExists = true;
+      } else {
+        petId = ''; // 合法 UUID 但不存在 → 下面创建（沿用该 UUID）
+      }
+    } else {
+      petId = '';
+    }
+
+    if (!petExists) {
+      const insertPet: Record<string, unknown> = {
+        user_id: userId,
+        name: petProfile?.petName ?? null,
+        pet_type: petProfile?.petType ?? null,
+        age: petProfile?.age ?? null,
+        weight: petProfile?.weight ?? null,
+        weight_unit: petProfile?.weightUnit ?? 'lb',
+        size: petProfile?.size ?? null,
+        conditions: petProfile?.conditions ?? [],
+      };
+      // 仅当 existingPetId 是合法 UUID 时才沿用它；非法/缺失则让 DB 生成新 UUID。
+      if (isValidUuid(existingPetId)) insertPet.id = existingPetId;
+      const { data: petRow, error: petErr } = await supabase
+        .from('pets')
+        .insert(insertPet)
+        .select('id')
+        .single();
+      if (petErr || !petRow) throw petErr ?? new Error('pet insert failed');
+      petId = petRow.id as string;
+    }
+
+    // --- 服务端权威评分：忽略客户端传入的 totalScore/riskLevel/lowDimensions/urgentFlag/tags ---
+    const serverInput = buildServerAssessmentInput(body);
+    const serverResult = scoreAssessment(serverInput);
+    // vetQuestions：默认服务端生成；仅当客户端传入与服务端生成内容完全一致时复用客户端版本
+    const serverVetQuestions = generateVetQuestions(serverInput);
+    const clientVetQuestions = Array.isArray(vetQuestions)
+      ? vetQuestions.filter((q): q is string => typeof q === 'string')
+      : null;
+    const vetQuestionsToStore =
+      clientVetQuestions &&
+      clientVetQuestions.length === serverVetQuestions.length &&
+      clientVetQuestions.every((q, i) => q === serverVetQuestions[i])
+        ? clientVetQuestions
+        : serverVetQuestions;
+
+    // e. insert assessments（全部派生字段用服务端计算结果写入）
+    const { data: asmtRow, error: asmtErr } = await supabase
+      .from('assessments')
+      .insert({
+        pet_id: petId,
+        user_id: userId,
+        total_score: serverResult.totalScore,
+        risk_level: serverResult.riskLevel,
+        scores: serverInput.scores,
+        symptoms: serverInput.symptoms,
+        low_dimensions: serverResult.lowDimensions,
+        urgent_flag: serverResult.urgentFlag,
+        tags: serverResult.tags,
+        vet_questions: vetQuestionsToStore,
+        reassessment_of: reassessmentOf ?? null,
+        next_reassessment_at: nextReassessmentDate,
+      })
+      .select('id, created_at')
+      .single();
+    if (asmtErr || !asmtRow) throw asmtErr ?? new Error('assessment insert failed');
+    const assessmentId = asmtRow.id as string;
+
+    // f. insert email_events
+    const { error: evtErr } = await supabase.from('email_events').insert({
+      user_id: userId,
+      pet_id: petId,
+      assessment_id: assessmentId,
+      event_type: 'subscribe',
+      provider: 'supabase',
+      payload: {
+        source: source ?? null,
+        reassessment_mode: reassessmentMode ?? null,
+        reassessment_source: reassessmentSource ?? null,
+        tags: serverResult.tags,
+      },
+    });
+    if (evtErr) throw evtErr;
+
+    const links = buildLinks(petId, assessmentId);
+    return NextResponse.json({
+      ok: true,
+      subscriberId: userId,
+      petId,
+      assessmentId,
+      ...links,
+      nextReassessmentDate,
+      persisted: true,
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[email/subscribe] supabase error', err);
+    return NextResponse.json(
+      { ok: false, error: 'Could not save your information right now. Please try again.' },
+      { status: 500 },
+    );
+  }
 
   // ---------------------------------------------------------------------------
-  // TODO: 接入真实 ESP（ConvertKit / MailerLite）。
-  //   ConvertKit:  POST https://api.convertkit.com/v3/forms/{formId}/subscribe
-  //                body: { api_key, email, first_name: petProfile.petName,
-  //                        tags, fields: { pet_type, risk_level, low_dimensions } }
-  //   MailerLite:  POST https://connect.mailerlite.com/api/subscribers
-  //                headers: { Authorization: `Bearer ${MAILERLITE_API_KEY}` }
-  //                body: { email, fields: { name, pet_type, risk_level, ... } }
-  //   ESP 端配置自动化：Welcome+PDF -> +7d Weekly Reassessment ->
-  //     按 tags(risk_* / low_* / condition_* / end_of_life_sensitive) 进入序列。
-  //
-  // TODO: 接入 Supabase（见 supabase/schema.sql）：
-  //   1) upsert users(email, source) -> userId
-  //   2) insert pets(user_id, name, pet_type, ...) -> 用真实 petId 替换 mock
-  //   3) insert assessments(pet_id, user_id, total_score, risk_level, scores,
-  //      symptoms, low_dimensions, urgent_flag, tags) -> 用真实 assessmentId 替换
-  //   4) insert email_events(user_id, pet_id, assessment_id,
-  //      event_type='subscribe', provider='mock'|'convertkit'|'mailerlite')
-  //   之后 reportUrl/journalUrl/reassessmentUrl 用真实 id 拼接。
+  // TODO（下一阶段）：接入 ConvertKit / MailerLite（本阶段不做）。
+  //   在 users/email_events 写入成功后，再调 ESP API 完成订阅与自动化序列。
   // ---------------------------------------------------------------------------
-
-  return NextResponse.json({
-    ok: true,
-    subscriberId,
-    petId,
-    assessmentId,
-    reportUrl,
-    journalUrl,
-    reassessmentUrl,
-    nextReassessmentDate,
-  });
 }

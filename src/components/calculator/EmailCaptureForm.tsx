@@ -86,7 +86,12 @@ export default function EmailCaptureForm({
             totalScore: result.totalScore,
             riskLevel: result.riskLevel,
             lowDimensions: result.lowDimensions,
+            urgentFlag: result.urgentFlag,
           },
+          // 完整评估数据（供 Supabase 持久化；不影响 UI）
+          scores: input.scores,
+          symptoms: input.symptoms,
+          vetQuestions,
           // 复评上下文：让 API 复用同一 petId，并把 reassessmentOf 串进链接
           existingPetId: reassessmentContext?.existingPetId,
           reassessmentMode: reassessmentContext?.reassessmentMode,
