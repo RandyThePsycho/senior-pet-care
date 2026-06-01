@@ -78,7 +78,6 @@ export async function upsertMailerLiteSubscriber(
       body: JSON.stringify({
         email: input.email,
         fields: {
-          name: input.petName,
           pet_name: input.petName,
           pet_type: input.petType,
           risk_level: input.riskLevel,
