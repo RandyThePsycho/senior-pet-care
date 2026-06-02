@@ -68,14 +68,16 @@ export default function NextStepCards({ result }: NextStepCardsProps) {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-bold text-navy-800">Recommended next steps</h3>
+      <h3 className="font-display text-2xl leading-tight text-navy-800">
+        Recommended next steps
+      </h3>
       {cards.map((c) => (
         <div
           key={c.key}
-          className={`rounded-3xl border p-6 ${
+          className={`rounded-lg border p-6 shadow-sm ${
             c.tone === 'gentle'
-              ? 'border-navy-200 bg-navy-50'
-              : 'border-sage-200 bg-sage-50'
+              ? 'border-navy-200 bg-navy-50 shadow-navy-800/5'
+              : 'border-sage-200 bg-sage-50 shadow-sage-700/10'
           }`}
         >
           <h4 className="text-lg font-semibold text-navy-800">{c.title}</h4>

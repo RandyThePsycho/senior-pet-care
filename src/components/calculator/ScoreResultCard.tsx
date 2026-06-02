@@ -8,11 +8,11 @@ interface ScoreResultCardProps {
 export default function ScoreResultCard({ total }: ScoreResultCardProps) {
   const pct = Math.round((total / 70) * 100);
   return (
-    <div className="rounded-3xl border border-navy-100 bg-white p-6 text-center">
+    <div className="rounded-lg border border-navy-100 bg-white p-6 text-center shadow-soft">
       <p className="text-sm font-medium uppercase tracking-wide text-navy-400">
         Quality of life score
       </p>
-      <p className="mt-2 text-5xl font-bold text-navy-800">
+      <p className="mt-2 text-6xl font-bold tabular-nums text-navy-800">
         {total}
         <span className="text-2xl font-medium text-navy-400"> / 70</span>
       </p>

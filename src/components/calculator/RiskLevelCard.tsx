@@ -33,19 +33,19 @@ export default function RiskLevelCard({
   const copy = getRiskCopy(level, petName);
 
   return (
-    <div className={`rounded-3xl border p-6 ${LEVEL_STYLES[level]}`}>
+    <div className={`rounded-lg border p-6 shadow-sm ${LEVEL_STYLES[level]}`}>
       <span
-        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${LEVEL_BADGE[level]}`}
+        className={`inline-block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wide ${LEVEL_BADGE[level]}`}
       >
         {copy.label}
       </span>
-      <h2 className="mt-3 text-2xl font-bold text-navy-800">
+      <h2 className="mt-4 font-display text-3xl leading-tight text-navy-800">
         {copy.headline}
       </h2>
-      <p className="mt-2 leading-relaxed text-navy-600">{copy.body}</p>
+      <p className="mt-3 max-w-2xl leading-8 text-navy-600">{copy.body}</p>
 
       {urgentFlag && (
-        <p className="mt-4 rounded-2xl bg-white/70 px-4 py-3 text-sm font-medium text-navy-700">
+        <p className="mt-5 rounded-lg bg-white/70 px-4 py-3 text-sm font-medium leading-6 text-navy-700">
           Some of what you&apos;ve described may need prompt attention from your
           vet. If you&apos;re worried, it&apos;s always okay to reach out to
           them sooner.

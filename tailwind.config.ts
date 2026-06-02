@@ -49,7 +49,15 @@ const config: Config = {
         },
       },
       fontFamily: {
+        display: [
+          'Iowan Old Style',
+          'Charter',
+          'Georgia',
+          'Times New Roman',
+          'serif',
+        ],
         sans: [
+          'Avenir Next',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
@@ -59,6 +67,10 @@ const config: Config = {
           'Arial',
           'sans-serif',
         ],
+      },
+      boxShadow: {
+        soft: '0 18px 48px rgba(42, 55, 73, 0.10)',
+        inset: 'inset 0 1px 0 rgba(255, 255, 255, 0.72)',
       },
     },
   },

@@ -26,10 +26,10 @@ export default function SymptomsStep({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-navy-800">
+        <h2 className="font-display text-3xl leading-tight text-navy-800">
           Have you noticed any of these recently?
         </h2>
-        <p className="mt-1 text-navy-500">
+        <p className="mt-2 max-w-2xl leading-7 text-navy-500">
           Select any that apply. It is completely fine to select none.
         </p>
       </div>
@@ -42,10 +42,10 @@ export default function SymptomsStep({
               key={opt.value}
               type="button"
               onClick={() => toggle(opt.value)}
-              className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-colors ${
+              className={`flex items-center gap-3 rounded-lg border px-4 py-3 text-left text-sm font-medium transition-all duration-200 active:scale-[0.99] ${
                 active
                   ? 'border-sage-500 bg-sage-50 text-sage-700'
-                  : 'border-navy-200 bg-white text-navy-600 hover:bg-cream-100'
+                  : 'border-navy-200 bg-white text-navy-600 hover:-translate-y-0.5 hover:bg-cream-100'
               }`}
             >
               <span

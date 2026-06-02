@@ -62,13 +62,15 @@ export default function ResultView({
       )}
 
       {/* 七维分数一览（便于用户回看） */}
-      <div className="rounded-3xl border border-navy-100 bg-white p-6">
-        <h3 className="text-xl font-bold text-navy-800">Your ratings</h3>
+      <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
+        <h3 className="font-display text-2xl leading-tight text-navy-800">
+          Your ratings
+        </h3>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {DIMENSION_META.map((meta) => (
             <li
               key={meta.key}
-              className="flex items-center justify-between rounded-2xl bg-cream-100 px-4 py-2"
+              className="flex items-center justify-between rounded-lg bg-cream-100 px-4 py-2"
             >
               <span className="text-sm text-navy-600">{meta.label}</span>
               <span className="text-sm font-semibold text-navy-800">

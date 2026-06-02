@@ -8,6 +8,26 @@ html {
 
 body {
   font-feature-settings: 'kern';
+  background:
+    linear-gradient(90deg, rgba(42, 55, 73, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(42, 55, 73, 0.022) 1px, transparent 1px),
+    #fbf8f3;
+  background-size:
+    34px 34px,
+    34px 34px,
+    auto;
+  text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 /* 让 range 滑块在各浏览器更友好、可触达 */

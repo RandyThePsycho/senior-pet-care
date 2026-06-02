@@ -147,11 +147,11 @@ export default function EmailCaptureForm({
   // 成功态：显示报告 + Journal 链接 + 复评提醒文案
   if (success?.ok) {
     return (
-      <div className="rounded-3xl border border-sage-200 bg-sage-50 p-6">
-        <p className="text-lg font-semibold text-navy-800">
+      <div className="rounded-lg border border-sage-200 bg-sage-50 p-6 shadow-sm shadow-sage-700/10">
+        <p className="font-display text-2xl leading-tight text-navy-800">
           Your report is on its way.
         </p>
-        <p className="mt-1 text-navy-600">
+        <p className="mt-2 leading-7 text-navy-600">
           We&apos;ll also remind you to reassess {safeName} in 7 days.
         </p>
 
@@ -163,14 +163,14 @@ export default function EmailCaptureForm({
                 assessmentId: success.assessmentId,
               })
             }
-            className="inline-flex items-center justify-center rounded-2xl bg-sage-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-sage-700"
+            className="inline-flex items-center justify-center rounded-lg bg-sage-600 px-6 py-3 text-base font-semibold text-white shadow-soft shadow-sage-700/10 transition-all duration-200 hover:-translate-y-0.5 hover:bg-sage-700 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
             Download printable report
           </Link>
           <Link
             href={success.journalUrl ?? '#'}
             onClick={() => track('journal_opened', { petId: success.petId })}
-            className="inline-flex items-center justify-center rounded-2xl border border-navy-200 bg-white px-6 py-3 text-base font-semibold text-navy-700 transition-colors hover:bg-cream-100"
+            className="inline-flex items-center justify-center rounded-lg border border-navy-200 bg-white px-6 py-3 text-base font-semibold text-navy-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-cream-100 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-300"
           >
             Open my care journal
           </Link>
@@ -181,11 +181,11 @@ export default function EmailCaptureForm({
 
   // 默认态：邮箱输入
   return (
-    <div className="rounded-3xl border border-navy-100 bg-white p-6">
-      <h3 className="text-xl font-bold text-navy-800">
+    <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
+      <h3 className="font-display text-2xl leading-tight text-navy-800">
         Email me my full report (PDF)
       </h3>
-      <p className="mt-1 text-sm text-navy-500">
+      <p className="mt-2 text-sm leading-6 text-navy-500">
         Includes a 7-day tracker and questions to ask your vet.
       </p>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -196,7 +196,7 @@ export default function EmailCaptureForm({
           placeholder="you@example.com"
           aria-label="Email address"
           disabled={submitting}
-          className="flex-1 rounded-2xl border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300 disabled:opacity-60"
+          className="flex-1 rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 transition-colors focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300 disabled:opacity-60"
         />
         <CTAButton onClick={handleSubmit} disabled={submitting}>
           {submitting ? 'Sending…' : 'Send my report'}

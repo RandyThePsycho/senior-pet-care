@@ -11,26 +11,54 @@ export const metadata: Metadata = {
 
 export default function CalculatorPage() {
   return (
-    <main className="min-h-screen bg-cream-50">
-      <div className="mx-auto max-w-2xl px-4 py-10 sm:py-16">
-        <Link
-          href="/"
-          className="text-sm font-medium text-navy-400 hover:text-navy-600"
-        >
-          ← Home
-        </Link>
+    <main className="min-h-screen overflow-x-hidden bg-cream-50">
+      <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
+        <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
+          <Link
+            href="/"
+            className="text-sm font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+          >
+            ← Senior Pet Care
+          </Link>
+          <span className="hidden text-sm text-navy-400 sm:block">
+            HHHHHMM assessment
+          </span>
+        </nav>
 
-        <header className="mt-4 mb-8">
-          <h1 className="text-3xl font-bold text-navy-800 sm:text-4xl">
+        <header className="mb-8 mt-10 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
+          <div>
+            <p className="mb-3 text-sm font-semibold tracking-[0.14em] text-sage-700">
+              Quality-of-life calculator
+            </p>
+            <h1 className="max-w-3xl font-display text-[clamp(2.6rem,6vw,4.75rem)] leading-[0.98] text-navy-800">
             Pet Quality of Life Calculator
-          </h1>
-          <p className="mt-2 text-lg text-navy-500">
-            Based on the HHHHHMM scale, used by veterinarians to help reflect on
-            a senior pet&apos;s comfort and wellbeing.
-          </p>
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-navy-600">
+              Based on the HHHHHMM scale, used by veterinarians to help reflect
+              on a senior pet&apos;s comfort and wellbeing.
+            </p>
+          </div>
+          <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 text-sm leading-6 text-navy-500 shadow-sm">
+            <p>
+              This is not a diagnosis. It helps you organize observations
+              before talking with a licensed veterinarian.
+            </p>
+            <div className="mt-5 border-t border-navy-100 pt-4">
+              <p className="text-xs font-semibold tracking-[0.14em] text-navy-400">
+                AFTER SUBMIT
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-navy-600">
+                <li>Printable report</li>
+                <li>Vet questions</li>
+                <li>7-day journal link</li>
+              </ul>
+            </div>
+          </aside>
         </header>
 
-        <CalculatorClient />
+        <section className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-soft sm:p-8">
+          <CalculatorClient />
+        </section>
       </div>
     </main>
   );

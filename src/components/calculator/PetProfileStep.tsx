@@ -60,16 +60,16 @@ export default function PetProfileStep({
 
   const labelClass = 'block text-sm font-semibold text-navy-700 mb-2';
   const inputClass =
-    'w-full rounded-2xl border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300';
+    'w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 transition-colors focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300';
   const errClass = 'mt-1 text-sm text-clay-600';
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-navy-800">
+        <h2 className="font-display text-3xl leading-tight text-navy-800">
           Tell us about your pet
         </h2>
-        <p className="mt-1 text-navy-500">
+        <p className="mt-2 max-w-2xl leading-7 text-navy-500">
           A few details help us make your results more relevant.
         </p>
       </div>
@@ -99,10 +99,10 @@ export default function PetProfileStep({
               key={t}
               type="button"
               onClick={() => update('petType', t)}
-              className={`rounded-2xl border px-4 py-4 text-base font-semibold capitalize transition-colors ${
+              className={`rounded-lg border px-4 py-4 text-base font-semibold capitalize transition-all duration-200 active:scale-[0.99] ${
                 value.petType === t
                   ? 'border-sage-500 bg-sage-50 text-sage-700'
-                  : 'border-navy-200 bg-white text-navy-600 hover:bg-cream-100'
+                  : 'border-navy-200 bg-white text-navy-600 hover:-translate-y-0.5 hover:bg-cream-100'
               }`}
             >
               {t}
@@ -154,7 +154,7 @@ export default function PetProfileStep({
             placeholder="e.g. 65"
             className={`${inputClass} flex-1`}
           />
-          <div className="flex overflow-hidden rounded-2xl border border-navy-200">
+          <div className="flex overflow-hidden rounded-lg border border-navy-200">
             {(['lb', 'kg'] as WeightUnit[]).map((u) => (
               <button
                 key={u}
@@ -184,7 +184,7 @@ export default function PetProfileStep({
                 key={opt.value}
                 type="button"
                 onClick={() => update('size', opt.value as PetSize)}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
                   value.size === opt.value
                     ? 'border-sage-500 bg-sage-50 text-sage-700'
                     : 'border-navy-200 bg-white text-navy-600 hover:bg-cream-100'
@@ -212,7 +212,7 @@ export default function PetProfileStep({
                 key={opt.value}
                 type="button"
                 onClick={() => toggleCondition(opt.value)}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
                   active
                     ? 'border-sage-500 bg-sage-50 text-sage-700'
                     : 'border-navy-200 bg-white text-navy-600 hover:bg-cream-100'

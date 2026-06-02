@@ -18,9 +18,9 @@ interface CTAButtonProps {
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary:
-    'bg-sage-600 text-white hover:bg-sage-700 focus-visible:ring-sage-400',
+    'bg-sage-600 text-white shadow-soft shadow-sage-700/10 hover:-translate-y-0.5 hover:bg-sage-700 focus-visible:ring-sage-400',
   secondary:
-    'bg-white text-navy-700 border border-navy-200 hover:bg-cream-100 focus-visible:ring-navy-300',
+    'bg-white text-navy-700 border border-navy-200 shadow-sm hover:-translate-y-0.5 hover:border-navy-300 hover:bg-cream-100 focus-visible:ring-navy-300',
   ghost:
     'bg-transparent text-navy-700 hover:bg-cream-100 focus-visible:ring-navy-300',
 };
@@ -35,7 +35,7 @@ export default function CTAButton({
   fullWidth = false,
 }: CTAButtonProps) {
   const base =
-    'inline-flex items-center justify-center rounded-2xl px-6 py-3 text-base font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50';
+    'inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold transition-all duration-200 ease-out active:translate-y-0 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0';
   const classes = `${base} ${VARIANT_CLASSES[variant]} ${
     fullWidth ? 'w-full' : ''
   }`;

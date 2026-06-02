@@ -40,10 +40,10 @@ export default function HHHHHMMScoreStep({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-navy-800">
+        <h2 className="font-display text-3xl leading-tight text-navy-800">
           How is your pet doing?
         </h2>
-        <p className="mt-1 text-navy-500">
+        <p className="mt-2 max-w-2xl leading-7 text-navy-500">
           Slide each rating from 0 (struggling) to 10 (doing well). There are no
           wrong answers — go with your honest sense of things.
         </p>
@@ -56,7 +56,7 @@ export default function HHHHHMMScoreStep({
           return (
             <div
               key={meta.key}
-              className="rounded-2xl border border-navy-100 bg-white p-4"
+              className="rounded-lg border border-navy-100 bg-white p-4 shadow-sm shadow-navy-800/5"
             >
               <div className="mb-1 flex items-baseline justify-between">
                 <span className="font-semibold text-navy-700">
@@ -89,7 +89,7 @@ export default function HHHHHMMScoreStep({
       </div>
 
       {showError && !allRated && (
-        <p className="text-sm text-clay-600">
+        <p className="rounded-lg bg-orange-50 px-4 py-3 text-sm font-medium text-clay-600">
           Please slide each rating so we can give you the most helpful results.
         </p>
       )}
