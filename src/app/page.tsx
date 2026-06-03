@@ -48,7 +48,7 @@ export default function HomePage() {
               A decision-support tool for senior pet parents
             </p>
             <h1 className="max-w-6xl font-display text-[2.25rem] leading-[1.08] text-navy-800 sm:text-[3.4rem] sm:leading-[1.04] lg:text-[4.25rem] xl:text-[4.55rem]">
-              Notice changes in your senior pet before the vet visit.
+              Track senior pet changes before the vet visit.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-navy-600">
               A gentle, non-diagnostic way to assess your senior dog or cat,
