@@ -8,14 +8,14 @@ import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
   description:
-    'A free, gentle quality-of-life calculator for senior dogs and cats. Get a clearer, non-diagnostic picture of how your pet is doing and what to track next.',
+    'A free, gentle quality-of-life calculator for aging or senior dogs and cats. Organize what you are noticing and prepare better questions for your vet.',
   alternates: {
     canonical: '/tools/senior-pet-quality-of-life-calculator',
   },
   openGraph: {
     title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
     description:
-      'Use a gentle HHHHHMM-based calculator to organize observations, prepare vet questions, and create a 7-day follow-up journal.',
+      'Use a gentle HHHHHMM-based calculator to organize changes, prepare vet questions, and create a 7-day follow-up journal.',
     url: '/tools/senior-pet-quality-of-life-calculator',
     siteName: SITE_NAME,
     images: [

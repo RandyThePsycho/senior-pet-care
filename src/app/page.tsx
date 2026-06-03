@@ -10,16 +10,16 @@ import TrustNote from '@/components/common/TrustNote';
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
+  title: 'Senior Pet Care — Track Subtle Changes in Your Aging Pet',
   description:
-    'A gentle way to understand, track, and prepare questions about senior dog and cat quality of life. Not a substitute for veterinary care.',
+    'A gentle way to track subtle changes in an aging dog or cat, prepare better vet questions, and return for a 7-day check-in.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
+    title: 'Senior Pet Care — Track Subtle Changes in Your Aging Pet',
     description:
-      'Assess senior dog or cat quality of life, prepare vet questions, and return for a 7-day follow-up.',
+      'Track subtle changes in an aging dog or cat, prepare vet questions, and return for a 7-day follow-up.',
     url: '/',
     siteName: SITE_NAME,
     images: [
@@ -54,7 +54,7 @@ const HOME_JSON_LD = [
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      'A decision-support platform for senior pet parents to assess quality of life, prepare vet questions, and track changes over time.',
+      'A gentle tool for families caring for aging pets to track quality-of-life changes, prepare vet questions, and follow up over time.',
     inLanguage: 'en-US',
   },
   {
@@ -92,15 +92,14 @@ export default function HomePage() {
         <section className="grid gap-10 py-14 sm:py-20 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
           <div>
             <p className="mb-5 max-w-xl text-sm font-semibold leading-6 tracking-[0.14em] text-sage-700">
-              A decision-support tool for senior pet parents
+              A gentle quality-of-life tracker for aging pets
             </p>
             <h1 className="max-w-6xl font-display text-[2.25rem] leading-[1.08] text-navy-800 sm:text-[3.4rem] sm:leading-[1.04] lg:text-[4.25rem] xl:text-[4.55rem]">
-              Track senior pet changes before the vet visit.
+              Track subtle changes in your aging pet before the vet visit.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-navy-600">
-              A gentle, non-diagnostic way to assess your senior dog or cat,
-              prepare better questions, and check back in 7 days with a clearer
-              trend.
+              A gentle, non-diagnostic way to notice patterns, prepare better
+              questions, and check back in 7 days with a clearer trend.
             </p>
             <div className="mt-8">
               <CTAButton href="/tools/senior-pet-quality-of-life-calculator">
@@ -125,7 +124,7 @@ export default function HomePage() {
                 NOT SURE WHERE TO START?
               </span>
               <span className="mt-2 block font-display text-2xl leading-tight text-navy-800">
-                Tell us what&apos;s happening with your senior pet.
+                Tell us what&apos;s happening with your aging pet.
               </span>
               <span className="mt-2 block text-sm leading-6 text-navy-500">
                 Share what you&apos;re worried about. We can&apos;t give medical
