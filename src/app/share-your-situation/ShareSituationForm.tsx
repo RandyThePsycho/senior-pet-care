@@ -17,12 +17,35 @@ const CONCERNS = [
   { value: 'other', label: 'Other' },
 ] as const;
 
-const NEEDS = [
-  { value: 'printable_checklist', label: 'A simple checklist' },
-  { value: 'vet_questions', label: 'Questions to ask my vet' },
-  { value: 'tracking_changes', label: 'Help tracking changes over time' },
-  { value: 'home_care_guidance', label: 'Home-care or product guidance' },
-  { value: 'end_of_life_resources', label: 'End-of-life planning resources' },
+const STUCK_POINTS = [
+  {
+    value: 'whether_to_call_vet',
+    label: 'I am not sure whether to call the vet',
+  },
+  { value: 'what_to_track', label: 'I do not know what to track day to day' },
+  { value: 'what_to_ask', label: 'I do not know what to ask my vet' },
+  { value: 'home_setup', label: 'I am unsure how to make home care easier' },
+  { value: 'family_decision', label: 'I need help talking with family' },
+  {
+    value: 'hard_decisions',
+    label: 'I am facing a hard quality-of-life decision',
+  },
+] as const;
+
+const HELP_NEEDS = [
+  {
+    value: 'quality_of_life_tracker',
+    label: 'A simple quality-of-life tracker',
+  },
+  { value: 'vet_question_list', label: 'A question list for my vet' },
+  { value: 'printable_plan', label: 'A printable care plan or checklist' },
+  { value: 'home_care_ideas', label: 'Home-care ideas I can discuss with my vet' },
+  { value: 'product_guidance', label: 'Help choosing safer senior-pet supplies' },
+  { value: 'end_of_life_support', label: 'Gentle end-of-life planning support' },
+  {
+    value: 'emotional_support',
+    label: 'Reassurance that I am thinking clearly',
+  },
   { value: 'other', label: 'Something else' },
 ] as const;
 
@@ -30,13 +53,31 @@ export default function ShareSituationForm() {
   const [petType, setPetType] = useState('dog');
   const [petAge, setPetAge] = useState('');
   const [concerns, setConcerns] = useState<string[]>([]);
-  const [need, setNeed] = useState('');
+  const [stuckPoints, setStuckPoints] = useState<string[]>([]);
+  const [helpNeeds, setHelpNeeds] = useState<string[]>([]);
+  const [whatWouldHelp, setWhatWouldHelp] = useState('');
   const [freeText, setFreeText] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   function toggleConcern(value: string) {
     setConcerns((current) =>
+      current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value]
+    );
+  }
+
+  function toggleStuckPoint(value: string) {
+    setStuckPoints((current) =>
+      current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value]
+    );
+  }
+
+  function toggleHelpNeed(value: string) {
+    setHelpNeeds((current) =>
       current.includes(value)
         ? current.filter((item) => item !== value)
         : [...current, value]
@@ -50,7 +91,9 @@ export default function ShareSituationForm() {
       pet_type: petType,
       pet_age: petAge.trim() || null,
       main_concern: concerns,
-      current_need: need || null,
+      stuck_points: stuckPoints,
+      needed_help: helpNeeds,
+      what_would_help: whatWouldHelp.trim() || null,
       free_text: freeText.trim(),
       email: email.trim() || null,
       source: 'share_your_situation',
@@ -59,7 +102,9 @@ export default function ShareSituationForm() {
     track('situation_intake_submitted', {
       petType: payload.pet_type,
       concernCount: payload.main_concern.length,
-      hasNeed: Boolean(payload.current_need),
+      stuckPointCount: payload.stuck_points.length,
+      helpNeedCount: payload.needed_help.length,
+      hasOpenNeed: Boolean(payload.what_would_help),
       hasEmail: Boolean(payload.email),
     });
 
@@ -78,9 +123,10 @@ export default function ShareSituationForm() {
         </p>
         <p className="mt-4 leading-7 text-navy-600">
           We can&apos;t provide medical advice, but your note helps us
-          understand what senior pet families need most. If you&apos;re worried
-          about sudden pain, breathing changes, collapse, or severe distress,
-          please contact a licensed veterinarian or emergency clinic.
+          understand what senior pet families need most and what resources
+          should come next. If you&apos;re worried about sudden pain, breathing
+          changes, collapse, or severe distress, please contact a licensed
+          veterinarian or emergency clinic.
         </p>
         <div className="mt-6">
           <CTAButton href="/tools/senior-pet-quality-of-life-calculator">
@@ -123,8 +169,11 @@ export default function ShareSituationForm() {
 
       <fieldset>
         <legend className="text-sm font-semibold text-navy-700">
-          What are you most worried about?
+          What are you noticing?
         </legend>
+        <p className="mt-1 text-sm leading-6 text-navy-500">
+          Choose any concerns that fit your pet&apos;s situation.
+        </p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {CONCERNS.map((concern) => (
             <label
@@ -149,27 +198,58 @@ export default function ShareSituationForm() {
 
       <fieldset>
         <legend className="text-sm font-semibold text-navy-700">
-          What would be most helpful right now?
+          Where do you feel most stuck?
         </legend>
         <p className="mt-1 text-sm leading-6 text-navy-500">
-          Choose the kind of resource you would want first.
+          This helps us understand the pain point behind the concern.
         </p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          {NEEDS.map((item) => (
+          {STUCK_POINTS.map((item) => (
             <label
               key={item.value}
               className={`flex cursor-pointer gap-3 rounded-lg border px-4 py-3 text-sm transition ${
-                need === item.value
+                stuckPoints.includes(item.value)
                   ? 'border-sage-300 bg-sage-50 text-navy-800'
                   : 'border-navy-100 bg-white text-navy-600 hover:bg-cream-100'
               }`}
             >
               <input
-                type="radio"
-                name="current_need"
+                type="checkbox"
+                name="stuck_points"
                 value={item.value}
-                checked={need === item.value}
-                onChange={() => setNeed(item.value)}
+                checked={stuckPoints.includes(item.value)}
+                onChange={() => toggleStuckPoint(item.value)}
+                className="mt-1 accent-sage-600"
+              />
+              <span>{item.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend className="text-sm font-semibold text-navy-700">
+          What kind of help would you actually use?
+        </legend>
+        <p className="mt-1 text-sm leading-6 text-navy-500">
+          Choose any resources that would make caring for your pet easier.
+        </p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {HELP_NEEDS.map((item) => (
+            <label
+              key={item.value}
+              className={`flex cursor-pointer gap-3 rounded-lg border px-4 py-3 text-sm transition ${
+                helpNeeds.includes(item.value)
+                  ? 'border-sage-300 bg-sage-50 text-navy-800'
+                  : 'border-navy-100 bg-white text-navy-600 hover:bg-cream-100'
+              }`}
+            >
+              <input
+                type="checkbox"
+                name="needed_help"
+                value={item.value}
+                checked={helpNeeds.includes(item.value)}
+                onChange={() => toggleHelpNeed(item.value)}
                 className="mt-1 accent-sage-600"
               />
               <span>{item.label}</span>
@@ -180,13 +260,26 @@ export default function ShareSituationForm() {
 
       <label className="block">
         <span className="text-sm font-semibold text-navy-700">
-          What&apos;s been happening with your pet lately?
+          If we could make one thing easier, what would it be?
+        </span>
+        <textarea
+          value={whatWouldHelp}
+          onChange={(event) => setWhatWouldHelp(event.target.value)}
+          rows={4}
+          placeholder="For example: I need help knowing what to track, what to ask my vet, or what changes at home would be safest."
+          className="mt-2 w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300"
+        />
+      </label>
+
+      <label className="block">
+        <span className="text-sm font-semibold text-navy-700">
+          What has been happening with your pet lately?
         </span>
         <textarea
           value={freeText}
           onChange={(event) => setFreeText(event.target.value)}
-          rows={7}
-          placeholder="What’s been happening with your pet lately?"
+          rows={6}
+          placeholder="Share any recent changes, patterns, or moments that made you worry."
           className="mt-2 w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300"
         />
       </label>
@@ -199,7 +292,7 @@ export default function ShareSituationForm() {
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="Email me if you create resources for situations like this"
+          placeholder="Email me if you create resources that match this need"
           className="mt-2 w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300"
         />
       </label>
@@ -209,7 +302,7 @@ export default function ShareSituationForm() {
       </div>
 
       <CTAButton type="submit" fullWidth>
-        Share what&apos;s happening
+        Share what would help
       </CTAButton>
     </form>
   );
