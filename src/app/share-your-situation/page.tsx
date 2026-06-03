@@ -4,11 +4,30 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ShareSituationForm from './ShareSituationForm';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Tell Us What Would Help With Your Senior Pet',
   description:
     'Tell us what you are noticing, where you feel stuck, and what kind of senior pet care resource would help most.',
+  alternates: {
+    canonical: '/share-your-situation',
+  },
+  openGraph: {
+    title: 'Tell Us What Would Help With Your Senior Pet',
+    description:
+      'Share what you are noticing, where you feel stuck, and what kind of senior pet care resource would help most.',
+    url: '/share-your-situation',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 800,
+        alt: 'A senior dog resting in soft natural light',
+      },
+    ],
+  },
 };
 
 export default function ShareYourSituationPage() {

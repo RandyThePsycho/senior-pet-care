@@ -4,14 +4,33 @@ import Link from 'next/link';
 import CTAButton from '@/components/common/CTAButton';
 import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 import ExampleScenario from '@/components/common/ExampleScenario';
-import FAQSection from '@/components/common/FAQSection';
+import FAQSection, { FAQ_ITEMS } from '@/components/common/FAQSection';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import TrustNote from '@/components/common/TrustNote';
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
   description:
     'A gentle way to understand, track, and prepare questions about senior dog and cat quality of life. Not a substitute for veterinary care.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
+    description:
+      'Assess senior dog or cat quality of life, prepare vet questions, and return for a 7-day follow-up.',
+    url: '/',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 800,
+        alt: 'A senior dog resting in soft natural light',
+      },
+    ],
+  },
 };
 
 const CARE_LOOP = [
@@ -28,9 +47,37 @@ const PREVIEW_SCORES = [
   ['Good days vs. hard days', '7 / 10'],
 ] as const;
 
+const HOME_JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    description:
+      'A decision-support platform for senior pet parents to assess quality of life, prepare vet questions, and track changes over time.',
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-cream-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }}
+      />
       <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
         <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
           <span className="text-sm font-semibold tracking-[0.18em] text-navy-700">

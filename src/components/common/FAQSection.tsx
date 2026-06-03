@@ -5,7 +5,7 @@ interface FAQItem {
   answer: string;
 }
 
-const FAQ_ITEMS: FAQItem[] = [
+export const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'Does a low score mean I should euthanize my pet?',
     answer:

@@ -3,11 +3,30 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorClient from '@/components/calculator/CalculatorClient';
 import DataPrivacyNote from '@/components/common/DataPrivacyNote';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
   description:
     'A free, gentle quality-of-life calculator for senior dogs and cats. Get a clearer, non-diagnostic picture of how your pet is doing and what to track next.',
+  alternates: {
+    canonical: '/tools/senior-pet-quality-of-life-calculator',
+  },
+  openGraph: {
+    title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
+    description:
+      'Use a gentle HHHHHMM-based calculator to organize observations, prepare vet questions, and create a 7-day follow-up journal.',
+    url: '/tools/senior-pet-quality-of-life-calculator',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 800,
+        alt: 'A senior dog resting in soft natural light',
+      },
+    ],
+  },
 };
 
 export default function CalculatorPage() {

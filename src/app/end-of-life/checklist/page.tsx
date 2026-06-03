@@ -4,11 +4,30 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
+import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Pet End-of-Life Checklist',
   description:
     'A gentle, free checklist to help you prepare, ask the right questions, and talk with your vet.',
+  alternates: {
+    canonical: '/end-of-life/checklist',
+  },
+  openGraph: {
+    title: 'Pet End-of-Life Checklist',
+    description:
+      'A gentle checklist for preparing questions and talking with your vet about senior pet comfort and end-of-life decisions.',
+    url: '/end-of-life/checklist',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 800,
+        alt: 'A senior dog resting in soft natural light',
+      },
+    ],
+  },
 };
 
 const CHECKLIST = [
