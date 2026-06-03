@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorClient from '@/components/calculator/CalculatorClient';
+import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 
 export const metadata: Metadata = {
   title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
@@ -43,6 +44,10 @@ export default function CalculatorPage() {
               This is not a diagnosis. It helps you organize observations
               before talking with a licensed veterinarian.
             </p>
+            <p className="mt-4 rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
+              HHHHHMM looks at pain, eating, drinking, cleanliness, joy,
+              movement, and whether good days still outnumber difficult ones.
+            </p>
             <div className="mt-5 border-t border-navy-100 pt-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-navy-400">
                 AFTER SUBMIT
@@ -58,6 +63,10 @@ export default function CalculatorPage() {
 
         <section className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-soft sm:p-8">
           <CalculatorClient />
+        </section>
+
+        <section className="mt-6">
+          <DataPrivacyNote compact />
         </section>
       </div>
     </main>

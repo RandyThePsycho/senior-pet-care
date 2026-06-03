@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import CTAButton from '@/components/common/CTAButton';
+import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 import { track } from '@/lib/analytics';
 import { saveAssessmentSnapshot } from '@/lib/assessmentStorage';
 import type {
@@ -188,6 +189,9 @@ export default function EmailCaptureForm({
       <p className="mt-2 text-sm leading-6 text-navy-500">
         Includes a 7-day tracker and questions to ask your vet.
       </p>
+      <div className="mt-4">
+        <DataPrivacyNote compact />
+      </div>
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
         <input
           type="email"

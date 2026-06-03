@@ -1,35 +1,18 @@
 // src/app/page.tsx
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CTAButton from '@/components/common/CTAButton';
+import DataPrivacyNote from '@/components/common/DataPrivacyNote';
+import ExampleScenario from '@/components/common/ExampleScenario';
+import FAQSection from '@/components/common/FAQSection';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
+import TrustNote from '@/components/common/TrustNote';
 
 export const metadata: Metadata = {
   title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
   description:
     'A gentle, vet-informed way to understand, track, and care for senior dogs and cats. Not a substitute for veterinary care.',
 };
-
-const ENTRIES = [
-  {
-    title: "Check My Pet's Quality of Life",
-    body: 'A gentle, non-diagnostic assessment based on the HHHHHMM scale.',
-    href: '/tools/senior-pet-quality-of-life-calculator',
-    primary: true,
-  },
-  // QA: 暂时隐藏 Product Matcher 入口（页面未实现）。Feature B 上线后取消注释即可恢复。
-  // {
-  //   title: 'Find Senior-Safe Products',
-  //   body: 'Tell us your pet’s needs and get the right product categories — not a cluttered shelf.',
-  //   href: '/tools/senior-safe-product-matcher',
-  //   primary: false,
-  // },
-  {
-    title: 'Prepare for End-of-Life Care',
-    body: 'Gentle resources to help you understand options and talk with your vet.',
-    href: '/end-of-life/checklist',
-    primary: false,
-  },
-];
 
 const CARE_LOOP = [
   'Score the HHHHHMM dimensions',
@@ -72,14 +55,36 @@ export default function HomePage() {
               prepare better questions, and return in 7 days with a clearer
               trend.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8">
               <CTAButton href="/tools/senior-pet-quality-of-life-calculator">
                 Check my pet&apos;s quality of life
               </CTAButton>
-              <CTAButton href="/end-of-life/checklist" variant="secondary">
-                Prepare for end-of-life care
-              </CTAButton>
+              <p className="mt-4 text-sm leading-6 text-navy-500">
+                Facing a difficult goodbye?{' '}
+                <Link
+                  href="/end-of-life/checklist"
+                  className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800"
+                >
+                  Read our gentle end-of-life guide.
+                </Link>
+              </p>
             </div>
+
+            <Link
+              href="/share-your-situation"
+              className="mt-6 block max-w-2xl rounded-lg border border-sage-200 bg-white/88 p-5 shadow-sm shadow-sage-700/10 transition hover:-translate-y-0.5 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              <span className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+                NOT SURE WHERE TO START?
+              </span>
+              <span className="mt-2 block font-display text-2xl leading-tight text-navy-800">
+                Tell us what&apos;s happening with your senior pet.
+              </span>
+              <span className="mt-2 block text-sm leading-6 text-navy-500">
+                Share what you&apos;re worried about. This is not medical
+                advice, but it can help you organize your thoughts.
+              </span>
+            </Link>
           </div>
 
           <div className="space-y-4">
@@ -158,7 +163,7 @@ export default function HomePage() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold tracking-[0.14em] text-navy-400">
-                    QUALITY OF LIFE SUMMARY
+                    EXAMPLE REPORT PREVIEW
                   </p>
                   <p className="mt-4 text-5xl font-bold tabular-nums text-navy-800">
                     55
@@ -236,47 +241,53 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Three entry cards */}
+        {/* Secondary paths, deliberately lighter than the primary assessment CTA. */}
         <section className="mt-12 grid gap-5 sm:grid-cols-2">
-          {/* QA: Product Matcher 入口暂时隐藏，故由 3 列改为 2 列；恢复时改回 sm:grid-cols-3 */}
-          {ENTRIES.map((e) => (
-            <div
-              key={e.href}
-              className={`flex min-h-56 flex-col rounded-lg border p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 ${
-                e.primary
-                  ? 'border-sage-200 bg-sage-50 shadow-sage-700/10'
-                  : 'border-navy-100 bg-white/88 shadow-navy-800/5'
-              }`}
-            >
-              <h2 className="font-display text-2xl leading-tight text-navy-800">
-                {e.title}
-              </h2>
-              <p className="mt-3 flex-1 text-sm leading-6 text-navy-500">
-                {e.body}
-              </p>
-              <div className="mt-4">
-                <CTAButton
-                  href={e.href}
-                  variant={e.primary ? 'primary' : 'secondary'}
-                  fullWidth
-                >
-                  {e.primary ? 'Start now' : 'Learn more'}
-                </CTAButton>
-              </div>
-            </div>
-          ))}
+          <Link
+            href="/share-your-situation"
+            className="rounded-lg border border-navy-100 bg-white/88 p-6 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-200 hover:bg-sage-50"
+          >
+            <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+              SHARE YOUR SITUATION
+            </p>
+            <h2 className="mt-3 font-display text-2xl leading-tight text-navy-800">
+              Need a place to explain what&apos;s happening?
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-navy-500">
+              Tell us what you&apos;re noticing, what feels confusing, and what
+              resources would actually help.
+            </p>
+          </Link>
+
+          <Link
+            href="/end-of-life/checklist"
+            className="rounded-lg border border-navy-100 bg-white/88 p-6 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-200 hover:bg-cream-100"
+          >
+            <p className="text-sm font-semibold tracking-[0.14em] text-navy-400">
+              GENTLE RESOURCE
+            </p>
+            <h2 className="mt-3 font-display text-2xl leading-tight text-navy-800">
+              Facing a difficult goodbye?
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-navy-500">
+              Read a calm, non-salesy checklist for preparing questions and
+              talking with your vet.
+            </p>
+          </Link>
         </section>
 
         {/* Why tracking */}
-        <section className="mt-16 rounded-lg border border-navy-100 bg-white/88 p-8 shadow-soft">
-          <h2 className="font-display text-3xl leading-tight text-navy-800">
-            Aging isn&apos;t one moment — it&apos;s a trend
-          </h2>
-          <p className="mt-4 max-w-3xl leading-8 text-navy-600">
-            Tracking small changes week by week helps you and your vet make
-            better decisions, together. Our calculator gives you a clear,
-            non-diagnostic picture you can act on and revisit.
-          </p>
+        <section className="mt-16 grid gap-5 lg:grid-cols-[1fr_0.72fr]">
+          <ExampleScenario />
+          <DataPrivacyNote />
+        </section>
+
+        <section className="mt-6">
+          <TrustNote />
+        </section>
+
+        <section className="mt-6">
+          <FAQSection />
         </section>
 
         {/* Disclaimer */}

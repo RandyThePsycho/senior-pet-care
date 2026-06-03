@@ -47,6 +47,11 @@ export default function HHHHHMMScoreStep({
           Slide each rating from 0 (struggling) to 10 (doing well). There are no
           wrong answers — go with your honest sense of things.
         </p>
+        <p className="mt-4 max-w-2xl rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
+          HHHHHMM is a gentle quality-of-life framework that looks at seven
+          everyday signs: pain, eating, drinking, cleanliness, joy, movement,
+          and whether good days still outnumber difficult ones.
+        </p>
       </div>
 
       <div className="space-y-5">

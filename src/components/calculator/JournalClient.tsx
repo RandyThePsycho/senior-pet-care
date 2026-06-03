@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import CTAButton from '@/components/common/CTAButton';
+import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import { getPetJournal } from '@/lib/assessmentStorage';
 import { getRiskCopy } from '@/lib/scoring';
@@ -109,6 +110,10 @@ export default function JournalClient({ petId }: JournalClientProps) {
             </p>
           </aside>
         </header>
+
+        <section className="mt-6">
+          <DataPrivacyNote compact />
+        </section>
 
         {!loaded && (
           <section className="mt-10 rounded-lg border border-navy-100 bg-white/90 p-6 text-navy-500 shadow-sm">
