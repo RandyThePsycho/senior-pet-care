@@ -14,12 +14,12 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'How often should I reassess my senior pet?',
     answer:
-      'For this MVP, we suggest a 7-day reassessment so you can notice trends without reacting to one difficult day. If your pet changes suddenly, contact a veterinarian sooner.',
+      'We suggest reassessing in 7 days so you can notice patterns without reacting to one difficult day. If your pet changes suddenly, contact a veterinarian sooner.',
   },
   {
     question: 'Is this a veterinary diagnosis?',
     answer:
-      'No. This tool is educational and organizational. It does not diagnose, treat, or replace professional veterinary advice.',
+      'No. This tool is for education and organization only. It does not diagnose, treat, or replace professional veterinary advice.',
   },
   {
     question: "What if my pet's pain or breathing changes suddenly?",
@@ -34,7 +34,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What happens when I share my pet's situation?",
     answer:
-      'The share-your-situation form is not medical consultation and does not promise a reply. It helps us understand what senior pet families need most, so we can improve resources and future tools.',
+      'That form is not a medical consultation, and it does not guarantee a reply. It helps us understand what senior pet families need most, so we can improve future resources.',
   },
 ];
 
@@ -45,7 +45,7 @@ export default function FAQSection() {
         FAQ
       </p>
       <h2 className="mt-3 font-display text-3xl leading-tight text-navy-800">
-        Questions senior pet parents often ask.
+        Questions senior pet parents often ask
       </h2>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {FAQ_ITEMS.map((item) => (

@@ -150,7 +150,7 @@ export default function EmailCaptureForm({
     return (
       <div className="rounded-lg border border-sage-200 bg-sage-50 p-6 shadow-sm shadow-sage-700/10">
         <p className="font-display text-2xl leading-tight text-navy-800">
-          Your report is on its way.
+          Your report is ready.
         </p>
         <p className="mt-2 leading-7 text-navy-600">
           We&apos;ll also remind you to reassess {safeName} in 7 days.
@@ -166,7 +166,7 @@ export default function EmailCaptureForm({
             }
             className="inline-flex items-center justify-center rounded-lg bg-sage-600 px-6 py-3 text-base font-semibold text-white shadow-soft shadow-sage-700/10 transition-all duration-200 hover:-translate-y-0.5 hover:bg-sage-700 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
-            Download printable report
+            Open printable report
           </Link>
           <Link
             href={success.journalUrl ?? '#'}
@@ -184,10 +184,10 @@ export default function EmailCaptureForm({
   return (
     <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
       <h3 className="font-display text-2xl leading-tight text-navy-800">
-        Email me my full report (PDF)
+        Email me my full report
       </h3>
       <p className="mt-2 text-sm leading-6 text-navy-500">
-        Includes a 7-day tracker and questions to ask your vet.
+        Includes a printable 7-day tracker and questions to bring to your vet.
       </p>
       <div className="mt-4">
         <DataPrivacyNote compact />
@@ -208,8 +208,8 @@ export default function EmailCaptureForm({
       </div>
       {error && <p className="mt-2 text-sm text-clay-600">{error}</p>}
       <p className="mt-3 text-xs text-navy-400">
-        We&apos;ll only email you about {safeName}&apos;s care. Unsubscribe
-        anytime.
+        We&apos;ll use your email to send this report and follow-up reminders.
+        Unsubscribe anytime.
       </p>
     </div>
   );

@@ -89,8 +89,8 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
             We could not find this report
           </h1>
           <p className="mt-3 leading-7 text-navy-500">
-            Reports are saved through your assessment record. If you are on a
-            different device, please run the assessment again.
+            Reports are tied to the assessment record that created them. If
+            you&apos;re using a different device, please run the assessment again.
           </p>
           <div className="mt-7">
             <Link
@@ -122,14 +122,14 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
             href={snapshot.journalUrl}
             className="text-sm font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
-            Back to journal
+            Back to your journal
           </Link>
           <button
             type="button"
             onClick={() => window.print()}
             className="rounded-lg bg-sage-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sage-800 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
-            Print / Save as PDF
+            Print or save as PDF
           </button>
         </nav>
 
@@ -141,7 +141,7 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
             <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_16rem] lg:items-end">
               <div>
                 <h1 className="font-display text-[clamp(2.2rem,5vw,4rem)] leading-[1.02] text-navy-800">
-                  Quality of life summary for {safeName}
+                  Quality-of-life summary for {safeName}
                 </h1>
                 <p className="mt-4 text-sm leading-6 text-navy-500">
                   {petType} · Prepared {formatDate(snapshot.createdAt)} · Based
@@ -319,8 +319,8 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
                   {formatDate(snapshot.nextReassessmentDate)}
                 </p>
                 <p className="mt-3 text-sm leading-6 text-navy-500">
-                  A short reassessment helps you compare this week with the
-                  next one before speaking with your vet.
+                  A short reassessment helps you compare this week with next
+                  week before speaking with your vet.
                 </p>
               </div>
               <div className="rounded-lg border border-navy-100 bg-white p-5">
@@ -341,8 +341,9 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
               </span>
               This report is for educational purposes only. It is not a
               veterinary diagnosis and does not replace professional veterinary
-              advice. Quality-of-life scales are a starting point for
-              observation and conversation, not a medical assessment. Always
+              advice. Quality-of-life scales are a starting point for observing
+              changes and preparing for a conversation, not a medical
+              assessment. Always
               consult a licensed veterinarian about your pet&apos;s health and
               any decisions regarding their care.
             </p>

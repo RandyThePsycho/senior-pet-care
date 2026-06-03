@@ -1,5 +1,5 @@
 // src/components/common/DataPrivacyNote.tsx
-// Plain-language MVP data persistence note. No account-system claims.
+// Plain-language persistence note. No account-system claims.
 
 interface DataPrivacyNoteProps {
   compact?: boolean;
@@ -20,7 +20,7 @@ export default function DataPrivacyNote({
       <p className="mt-2 text-sm leading-6 text-navy-600">
         You&apos;ll receive a private report and care journal link by email, so
         you can revisit your pet&apos;s score next week. No account is required
-        in this MVP.
+        in this version.
       </p>
     </div>
   );

@@ -81,7 +81,7 @@ export default function JournalClient({ petId }: JournalClientProps) {
             href="/"
             className="text-sm font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
-            Back home
+            Back to home
           </Link>
           <span className="hidden text-sm text-navy-400 sm:block">
             Care journal
@@ -94,11 +94,11 @@ export default function JournalClient({ petId }: JournalClientProps) {
               My Senior Pet Care Journal
             </p>
             <h1 className="max-w-3xl font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.02] text-navy-800">
-              A calmer record of what is changing.
+              A calmer record of what&apos;s changing.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-navy-600">
               Keep each assessment connected to the next, so your vet
-              conversation can focus on trends instead of memory.
+              conversation can focus on patterns, not memory.
             </p>
           </div>
           <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 shadow-sm shadow-navy-800/5">
@@ -216,7 +216,7 @@ export default function JournalClient({ petId }: JournalClientProps) {
                 </p>
                 <p className="mt-4 text-sm leading-7 text-navy-600">
                   A single score can be noisy. A second check-in gives you a
-                  clearer pattern to bring into a veterinary conversation.
+                  clearer pattern to bring to your next vet conversation.
                 </p>
               </aside>
             </section>

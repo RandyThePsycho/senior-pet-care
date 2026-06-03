@@ -44,8 +44,9 @@ export default function HHHHHMMScoreStep({
           How is your pet doing?
         </h2>
         <p className="mt-2 max-w-2xl leading-7 text-navy-500">
-          Slide each rating from 0 (struggling) to 10 (doing well). There are no
-          wrong answers — go with your honest sense of things.
+          Move each slider from 0 (a difficult day) to 10 (doing well). There
+          are no wrong answers — choose the number that feels most accurate
+          today.
         </p>
         <p className="mt-4 max-w-2xl rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
           HHHHHMM is a gentle quality-of-life framework that looks at seven

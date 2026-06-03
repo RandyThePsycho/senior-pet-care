@@ -6,14 +6,14 @@ import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import { track } from '@/lib/analytics';
 
 const CONCERNS = [
-  { value: 'mobility', label: 'Mobility / trouble standing' },
+  { value: 'mobility', label: 'Mobility or trouble standing' },
   { value: 'pain', label: 'Pain or discomfort' },
   { value: 'night_confusion', label: 'Night crying / confusion' },
   { value: 'eating_drinking', label: 'Eating or drinking changes' },
   { value: 'incontinence', label: 'Incontinence / hygiene' },
   { value: 'end_of_life', label: 'End-of-life worries' },
   { value: 'product_confusion', label: 'Product confusion' },
-  { value: 'vet_conversation', label: 'Vet conversation help' },
+  { value: 'vet_conversation', label: 'Help preparing for a vet conversation' },
   { value: 'other', label: 'Other' },
 ] as const;
 
@@ -51,7 +51,7 @@ export default function ShareSituationForm() {
       hasEmail: Boolean(payload.email),
     });
 
-    // MVP mock only. TODO: Persist to a future need_submissions table for the internal dashboard.
+    // Mock submit only. TODO: Persist to a future need_submissions table for the internal dashboard.
     // eslint-disable-next-line no-console
     console.log('[situation_intake]', payload);
 
@@ -97,7 +97,7 @@ export default function ShareSituationForm() {
 
         <label className="block">
           <span className="text-sm font-semibold text-navy-700">
-            Pet age <span className="font-normal text-navy-400">(optional)</span>
+            Age <span className="font-normal text-navy-400">(optional)</span>
           </span>
           <input
             type="text"
@@ -156,7 +156,7 @@ export default function ShareSituationForm() {
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="Email me if you create resources for this situation"
+          placeholder="Email me if you create resources for situations like this"
           className="mt-2 w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300"
         />
       </label>
@@ -166,7 +166,7 @@ export default function ShareSituationForm() {
       </div>
 
       <CTAButton type="submit" fullWidth>
-        Share my situation
+        Share what&apos;s happening
       </CTAButton>
     </form>
   );

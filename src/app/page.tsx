@@ -11,21 +11,21 @@ import TrustNote from '@/components/common/TrustNote';
 export const metadata: Metadata = {
   title: 'Senior Pet Care — Track Your Aging Dog or Cat’s Quality of Life',
   description:
-    'A gentle, vet-informed way to understand, track, and care for senior dogs and cats. Not a substitute for veterinary care.',
+    'A gentle way to understand, track, and prepare questions about senior dog and cat quality of life. Not a substitute for veterinary care.',
 };
 
 const CARE_LOOP = [
-  'Score the HHHHHMM dimensions',
+  'Rate the HHHHHMM dimensions',
   'Save a printable report',
   'Return for a 7-day reassessment',
   'Build the care journal over time',
 ];
 
 const PREVIEW_SCORES = [
-  ['Hurt', '6 / 10'],
-  ['Hunger', '7 / 10'],
-  ['Mobility', '5 / 10'],
-  ['More good days', '7 / 10'],
+  ['Pain & comfort', '6 / 10'],
+  ['Food & appetite', '7 / 10'],
+  ['Movement', '5 / 10'],
+  ['Good days vs. hard days', '7 / 10'],
 ] as const;
 
 export default function HomePage() {
@@ -37,7 +37,7 @@ export default function HomePage() {
             SENIOR PET CARE
           </span>
           <span className="hidden text-sm text-navy-500 sm:block">
-            Assessment, report, journal, reassessment
+            Assessment, report, journal, 7-day follow-up
           </span>
         </nav>
 
@@ -48,11 +48,11 @@ export default function HomePage() {
               A decision-support tool for senior pet parents
             </p>
             <h1 className="max-w-5xl font-display text-[clamp(2.9rem,5.2vw,4.8rem)] leading-[1.02] text-navy-800">
-              Track senior pet changes before the vet visit.
+              Notice changes in your senior pet before the vet visit.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-navy-600">
               A gentle, non-diagnostic way to assess your senior dog or cat,
-              prepare better questions, and return in 7 days with a clearer
+              prepare better questions, and check back in 7 days with a clearer
               trend.
             </p>
             <div className="mt-8">
@@ -81,8 +81,8 @@ export default function HomePage() {
                 Tell us what&apos;s happening with your senior pet.
               </span>
               <span className="mt-2 block text-sm leading-6 text-navy-500">
-                Share what you&apos;re worried about. This is not medical
-                advice, but it can help you organize your thoughts.
+                Share what you&apos;re worried about. We can&apos;t give medical
+                advice, but writing it down can help you organize your thoughts.
               </span>
             </Link>
           </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
         <section className="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-navy-100/80 py-5 text-sm font-medium text-navy-500">
           <span className="inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-sage-500" aria-hidden />
-            Vet-informed guidance
+            HHHHHMM-based guidance
           </span>
           <span className="inline-flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-sage-500" aria-hidden />
@@ -153,8 +153,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 max-w-xl leading-8 text-navy-600">
               The point is not a one-time score. It is a record you can print,
-              revisit, and bring into a more focused conversation with your
-              vet.
+              revisit, and bring to a more focused conversation with your vet.
             </p>
           </div>
 
@@ -251,7 +250,7 @@ export default function HomePage() {
               SHARE YOUR SITUATION
             </p>
             <h2 className="mt-3 font-display text-2xl leading-tight text-navy-800">
-              Need a place to explain what&apos;s happening?
+              Need a place to explain what&apos;s going on?
             </h2>
             <p className="mt-3 text-sm leading-6 text-navy-500">
               Tell us what you&apos;re noticing, what feels confusing, and what
@@ -270,8 +269,8 @@ export default function HomePage() {
               Facing a difficult goodbye?
             </h2>
             <p className="mt-3 text-sm leading-6 text-navy-500">
-              Read a calm, non-salesy checklist for preparing questions and
-              talking with your vet.
+              Read a calm checklist for preparing questions and talking with
+              your vet.
             </p>
           </Link>
         </section>

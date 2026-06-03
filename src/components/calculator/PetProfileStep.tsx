@@ -70,7 +70,7 @@ export default function PetProfileStep({
           Tell us about your pet
         </h2>
         <p className="mt-2 max-w-2xl leading-7 text-navy-500">
-          A few details help us make your results more relevant.
+          A few details help make the results more relevant.
         </p>
       </div>
 
@@ -92,7 +92,7 @@ export default function PetProfileStep({
 
       {/* Pet type */}
       <div>
-        <span className={labelClass}>Is your companion a dog or a cat?</span>
+        <span className={labelClass}>Is your pet a dog or a cat?</span>
         <div className="grid grid-cols-2 gap-3">
           {(['dog', 'cat'] as PetType[]).map((t) => (
             <button

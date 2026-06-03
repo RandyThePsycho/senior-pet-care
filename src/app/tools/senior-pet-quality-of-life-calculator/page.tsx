@@ -7,7 +7,7 @@ import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 export const metadata: Metadata = {
   title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
   description:
-    'A free, gentle quality-of-life calculator for senior dogs and cats. Get a clear, non-diagnostic picture of how your pet is doing — and what to track next.',
+    'A free, gentle quality-of-life calculator for senior dogs and cats. Get a clearer, non-diagnostic picture of how your pet is doing and what to track next.',
 };
 
 export default function CalculatorPage() {
@@ -32,11 +32,11 @@ export default function CalculatorPage() {
               Quality-of-life calculator
             </p>
             <h1 className="max-w-3xl font-display text-[clamp(2.6rem,6vw,4.75rem)] leading-[0.98] text-navy-800">
-            Pet Quality of Life Calculator
+              Pet Quality of Life Calculator
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-navy-600">
-              Based on the HHHHHMM scale, used by veterinarians to help reflect
-              on a senior pet&apos;s comfort and wellbeing.
+              Based on the HHHHHMM scale, a framework often used to reflect on
+              a senior pet&apos;s comfort and wellbeing.
             </p>
           </div>
           <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 text-sm leading-6 text-navy-500 shadow-sm">

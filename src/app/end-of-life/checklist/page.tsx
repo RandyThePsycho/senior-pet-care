@@ -17,7 +17,7 @@ const CHECKLIST = [
   'Ask what options are available, including in-home and in-clinic care.',
   'Prepare a calm, familiar space with favorite blankets, toys, or food.',
   'Decide who will be present, and how to gently involve children if needed.',
-  'Consider aftercare options ahead of time, so you are not deciding in the moment.',
+  'Consider aftercare options ahead of time, so you do not have to decide in the moment.',
   'Be gentle with yourself. There is no perfect timeline, only what is kind.',
 ];
 
@@ -44,7 +44,7 @@ export default function EndOfLifeChecklistPage() {
             href="/"
             className="text-sm font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
-            Back home
+            Back to home
           </Link>
           <span className="hidden text-sm text-navy-400 sm:block">
             Gentle planning resource

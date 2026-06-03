@@ -30,7 +30,7 @@ export default function SymptomsStep({
           Have you noticed any of these recently?
         </h2>
         <p className="mt-2 max-w-2xl leading-7 text-navy-500">
-          Select any that apply. It is completely fine to select none.
+          Select any that apply. It&apos;s okay if none of these fit.
         </p>
       </div>
 

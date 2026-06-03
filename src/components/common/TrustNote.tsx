@@ -11,13 +11,13 @@ export default function TrustNote() {
         Built to organize observations before the vet visit.
       </h2>
       <p className="mt-4 max-w-3xl leading-7 text-navy-600">
-        This tool is designed to help you organize observations before speaking
-        with a licensed veterinarian. It is not a diagnosis, and it should not
-        replace professional veterinary advice.
+        This tool helps you organize observations before speaking with a
+        licensed veterinarian. It is not a diagnosis, and it should not replace
+        professional veterinary advice.
       </p>
       <div className="mt-5 grid gap-3 text-sm text-navy-500 sm:grid-cols-2">
         <p className="rounded-lg bg-cream-100 px-4 py-3">
-          Reviewed status:{' '}
+          Review status:{' '}
           <span className="font-semibold text-navy-700">
             Editorial review pending
           </span>

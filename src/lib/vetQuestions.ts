@@ -22,22 +22,26 @@ export function generateVetQuestions(input: AssessmentInput): string[] {
 
   // --- 基础问题（始终包含）---
   questions.push(
-    `Is ${safeName}'s current quality of life what you'd expect for their age and condition?`,
+    `Does ${safeName}'s current quality of life seem typical for their age and condition?`,
   );
-  questions.push("What signs should tell me it's time to come back?");
+  questions.push('What changes should prompt us to schedule another visit?');
 
   // --- 按 condition 追加 ---
   if (conditions.includes('arthritis') || conditions.includes('mobility_loss')) {
-    questions.push("Are there pain options or mobility aids you'd recommend?");
+    questions.push(
+      "Are there pain-management options or mobility supports you'd recommend?",
+    );
   }
   if (conditions.includes('kidney_disease')) {
-    questions.push('Should we adjust diet or hydration support?');
+    questions.push('Should we change anything about diet or hydration support?');
   }
   if (conditions.includes('dementia')) {
     questions.push('Are there ways to ease night-time anxiety?');
   }
   if (conditions.includes('incontinence')) {
-    questions.push('Could this be managed, or is it part of decline?');
+    questions.push(
+      'Could this be managed, or might it be part of a broader decline?',
+    );
   }
   if (conditions.includes('cancer') || conditions.includes('chronic_pain')) {
     questions.push(`How do we know if ${safeName} is comfortable?`);
@@ -50,18 +54,18 @@ export function generateVetQuestions(input: AssessmentInput): string[] {
   }
   if (isLow('hunger') || isLow('hydration')) {
     questions.push(
-      'Should I be worried about the drop in eating or drinking?',
+      'How concerned should I be about the drop in eating or drinking?',
     );
   }
   if (isLow('more_good_days')) {
     questions.push(
-      'How do we approach quality-of-life and end-of-life decisions?',
+      'How should we approach quality-of-life and end-of-life conversations?',
     );
   }
 
   // --- 按症状追加 ---
   if (symptoms.includes('rapid_breathing')) {
-    questions.push('Is the breathing change something we should check urgently?');
+    questions.push('Is the breathing change something we should check right away?');
   }
   if (symptoms.includes('night_crying')) {
     questions.push('Could the night-time crying be pain or anxiety?');

@@ -88,17 +88,17 @@ const RISK_COPY: Record<RiskLevel, RiskCopy> = {
   stable: {
     label: 'Stable',
     headline: 'Your pet seems to be doing well right now.',
-    body: "Based on what you've shared, {petName}'s quality of life looks stable. Keep doing what you're doing, and keep noticing the small changes. We'll check in again in a week.",
+    body: "Based on what you've shared, {petName}'s quality of life looks stable. Keep doing what seems to be working, and keep an eye on small changes. We'll check in again in a week.",
   },
   needs_monitoring: {
     label: 'Needs Monitoring',
     headline: 'There are a few things worth keeping an eye on.',
-    body: "Some areas of {petName}'s comfort may be starting to shift. None of this is a diagnosis — but tracking it over the next week will help you and your vet make good decisions together.",
+    body: "Some areas of {petName}'s comfort may be starting to shift. This isn't a diagnosis, but tracking the next week can help you and your vet have a clearer conversation.",
   },
   vet_visit: {
     label: 'Vet Visit Recommended',
     headline: 'It may be a good time to talk with your vet.',
-    body: "A few signs suggest {petName} could be uncomfortable. We've prepared questions to bring to your vet so the conversation is as helpful as possible. You know {petName} best — this is just here to support you.",
+    body: "A few signs may suggest {petName} is uncomfortable. We've prepared questions you can bring to your vet, so the conversation can be more focused. You know {petName} best — this is here to support you.",
   },
   end_of_life: {
     label: 'End-of-Life Conversation Suggested',
@@ -132,49 +132,49 @@ export interface DimensionMeta {
 export const DIMENSION_META: DimensionMeta[] = [
   {
     key: 'hurt',
-    label: 'Pain comfort 🩹',
+    label: 'Pain & comfort',
     question: "Is your pet's pain well managed?",
     lowAnchor: 'In constant pain',
     highAnchor: 'No signs of pain',
   },
   {
     key: 'hunger',
-    label: 'Eating 🍖',
+    label: 'Food & appetite',
     question: 'Is your pet eating enough?',
     lowAnchor: 'Refusing food',
     highAnchor: 'Eating normally',
   },
   {
     key: 'hydration',
-    label: 'Drinking 💧',
+    label: 'Water intake',
     question: 'Is your pet staying hydrated?',
     lowAnchor: 'Clearly dehydrated',
     highAnchor: 'Drinking well',
   },
   {
     key: 'hygiene',
-    label: 'Cleanliness & comfort 🧼',
+    label: 'Cleanliness & comfort',
     question: 'Can your pet stay clean and comfortable?',
     lowAnchor: 'Cannot stay clean',
     highAnchor: 'Clean and comfortable',
   },
   {
     key: 'happiness',
-    label: 'Joy & engagement ❤️',
+    label: 'Joy & engagement',
     question: 'Does your pet still show moments of joy?',
     lowAnchor: 'No longer engaged',
     highAnchor: 'Still joyful',
   },
   {
     key: 'mobility',
-    label: 'Movement 🐾',
+    label: 'Movement',
     question: 'Can your pet move around on their own?',
     lowAnchor: 'Cannot move unaided',
     highAnchor: 'Moves freely',
   },
   {
     key: 'more_good_days',
-    label: 'Good days vs hard days 🌤️',
+    label: 'Good days vs. hard days',
     question: 'Are there more good days than bad?',
     lowAnchor: 'Bad days outweigh good',
     highAnchor: 'Mostly good days',
@@ -191,13 +191,13 @@ const DIMENSION_FEEDBACK: Record<Dimension, string> = {
   hydration:
     'Staying hydrated matters, especially with kidney or other chronic conditions. Watch for dry gums or reduced drinking, and ask your vet whether anything could make drinking easier for {petName}.',
   hygiene:
-    "Staying clean and comfortable supports {petName}'s dignity and skin health. Soft, washable bedding and gentle cleaning routines can help. We can suggest options if you'd like.",
+    "Staying clean and comfortable supports {petName}'s dignity and skin health. Soft, washable bedding and gentle cleaning routines may help. Make a note of what is hardest to manage so you can discuss it with your vet.",
   happiness:
     'When a pet stops engaging with the things they loved, it can be one of the hardest changes to notice. Jot down any moments of joy that remain — they matter, and they help paint a fuller picture.',
   mobility:
-    'Getting around seems harder for {petName} right now. Small home changes — better traction, gentle support, easier access — can make a real difference. We can help you find the right setup.',
+    'Getting around seems harder for {petName} right now. Small home changes — better traction, gentle support, easier access — may help. Ask your vet what kind of support is safest for your pet.',
   more_good_days:
-    'When the hard days begin to outnumber the good ones, it is natural to start asking difficult questions. There is no rush — but you may find it helpful to look at our gentle resources when you feel ready.',
+    'When hard days begin to outnumber good ones, it is natural to start asking difficult questions. There is no rush — but you may find it helpful to look at gentle planning resources when you feel ready.',
 };
 
 export function getDimensionFeedback(
