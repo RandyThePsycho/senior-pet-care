@@ -17,14 +17,14 @@ export default function TrustNote() {
       </p>
       <div className="mt-5 grid gap-3 text-sm text-navy-500 sm:grid-cols-2">
         <p className="rounded-lg bg-cream-100 px-4 py-3">
-          Review status:{' '}
+          Content note:{' '}
           <span className="font-semibold text-navy-700">
-            Editorial review pending
+            Built for observation, not diagnosis
           </span>
         </p>
         <p className="rounded-lg bg-cream-100 px-4 py-3">
           Last updated:{' '}
-          <span className="font-semibold text-navy-700">2026</span>
+          <span className="font-semibold text-navy-700">June 2026</span>
         </p>
       </div>
     </section>
