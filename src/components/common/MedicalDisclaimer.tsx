@@ -11,7 +11,7 @@ export default function MedicalDisclaimer({
   const text =
     context === 'end_of_life'
       ? 'This page is for informational and emotional support only. It is not veterinary or medical advice, and it does not replace a conversation with a licensed veterinarian about decisions for your pet.'
-      : 'This tool is for educational purposes only. It is not a veterinary diagnosis and does not replace professional veterinary advice. Quality-of-life scales are a starting point for observation and conversation, not a medical assessment. Always consult a licensed veterinarian about your pet’s health.';
+      : 'Quality-of-life scales are a starting point for observation and conversation, not a medical assessment. Always consult a licensed veterinarian about your pet’s health.';
 
   return (
     <p className="rounded-lg border border-navy-100 bg-cream-100 px-4 py-3 text-sm leading-relaxed text-navy-500">

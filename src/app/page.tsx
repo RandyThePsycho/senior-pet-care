@@ -100,8 +100,8 @@ export default function HomePage() {
               />
               <figcaption className="absolute bottom-0 left-0 right-0 p-5">
                 <p className="max-w-sm text-sm font-medium leading-6 text-white/90">
-                  A calmer way to notice small changes before they become a
-                  rushed conversation.
+                  A calmer way to catch subtle changes before they turn into
+                  urgent concerns.
                 </p>
               </figcaption>
             </figure>

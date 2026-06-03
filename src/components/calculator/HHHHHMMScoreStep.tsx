@@ -26,6 +26,12 @@ export default function HHHHHMMScoreStep({
     onChange({ ...value, [dim]: score });
   }
 
+  function markDefaultAsRated(dim: Dimension) {
+    if (value[dim] === null) {
+      setScore(dim, 5);
+    }
+  }
+
   const allRated = DIMENSIONS.every((d) => value[d] !== null);
 
   function handleNext() {
@@ -79,6 +85,15 @@ export default function HHHHHMMScoreStep({
                 max={10}
                 step={1}
                 value={current ?? 5}
+                onPointerDown={() => markDefaultAsRated(meta.key)}
+                onKeyDown={(event) => {
+                  if (
+                    value[meta.key] === null &&
+                    (event.key === 'Enter' || event.key === ' ')
+                  ) {
+                    setScore(meta.key, 5);
+                  }
+                }}
                 onChange={(e) => setScore(meta.key, Number(e.target.value))}
                 aria-label={meta.question}
                 className={`w-full accent-sage-600 ${
@@ -96,7 +111,8 @@ export default function HHHHHMMScoreStep({
 
       {showError && !allRated && (
         <p className="rounded-lg bg-orange-50 px-4 py-3 text-sm font-medium text-clay-600">
-          Please slide each rating so we can give you the most helpful results.
+          Please click or move each slider so we can give you the most helpful
+          results.
         </p>
       )}
 

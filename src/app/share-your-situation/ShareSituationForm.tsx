@@ -17,10 +17,20 @@ const CONCERNS = [
   { value: 'other', label: 'Other' },
 ] as const;
 
+const NEEDS = [
+  { value: 'printable_checklist', label: 'A simple checklist' },
+  { value: 'vet_questions', label: 'Questions to ask my vet' },
+  { value: 'tracking_changes', label: 'Help tracking changes over time' },
+  { value: 'home_care_guidance', label: 'Home-care or product guidance' },
+  { value: 'end_of_life_resources', label: 'End-of-life planning resources' },
+  { value: 'other', label: 'Something else' },
+] as const;
+
 export default function ShareSituationForm() {
   const [petType, setPetType] = useState('dog');
   const [petAge, setPetAge] = useState('');
   const [concerns, setConcerns] = useState<string[]>([]);
+  const [need, setNeed] = useState('');
   const [freeText, setFreeText] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -40,6 +50,7 @@ export default function ShareSituationForm() {
       pet_type: petType,
       pet_age: petAge.trim() || null,
       main_concern: concerns,
+      current_need: need || null,
       free_text: freeText.trim(),
       email: email.trim() || null,
       source: 'share_your_situation',
@@ -48,6 +59,7 @@ export default function ShareSituationForm() {
     track('situation_intake_submitted', {
       petType: payload.pet_type,
       concernCount: payload.main_concern.length,
+      hasNeed: Boolean(payload.current_need),
       hasEmail: Boolean(payload.email),
     });
 
@@ -130,6 +142,37 @@ export default function ShareSituationForm() {
                 className="mt-1 accent-sage-600"
               />
               <span>{concern.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend className="text-sm font-semibold text-navy-700">
+          What would be most helpful right now?
+        </legend>
+        <p className="mt-1 text-sm leading-6 text-navy-500">
+          Choose the kind of resource you would want first.
+        </p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {NEEDS.map((item) => (
+            <label
+              key={item.value}
+              className={`flex cursor-pointer gap-3 rounded-lg border px-4 py-3 text-sm transition ${
+                need === item.value
+                  ? 'border-sage-300 bg-sage-50 text-navy-800'
+                  : 'border-navy-100 bg-white text-navy-600 hover:bg-cream-100'
+              }`}
+            >
+              <input
+                type="radio"
+                name="current_need"
+                value={item.value}
+                checked={need === item.value}
+                onChange={() => setNeed(item.value)}
+                className="mt-1 accent-sage-600"
+              />
+              <span>{item.label}</span>
             </label>
           ))}
         </div>
