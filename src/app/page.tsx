@@ -47,7 +47,7 @@ export default function HomePage() {
             <p className="mb-5 max-w-xl text-sm font-semibold leading-6 tracking-[0.14em] text-sage-700">
               A decision-support tool for senior pet parents
             </p>
-            <h1 className="max-w-5xl font-display text-[clamp(2.9rem,5.2vw,4.8rem)] leading-[1.02] text-navy-800">
+            <h1 className="max-w-6xl font-display text-[2.25rem] leading-[1.08] text-navy-800 sm:text-[3.4rem] sm:leading-[1.04] lg:text-[4.25rem] xl:text-[4.55rem]">
               Notice changes in your senior pet before the vet visit.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-navy-600">
