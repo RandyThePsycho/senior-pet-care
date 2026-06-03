@@ -6,6 +6,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from '@/lib/site';
+import AttributionCapture from '@/components/common/AttributionCapture';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -54,7 +55,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-cream-50 text-navy-700 antialiased">{children}</body>
+      <body className="bg-cream-50 text-navy-700 antialiased">
+        <AttributionCapture />
+        {children}
+      </body>
     </html>
   );
 }

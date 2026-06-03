@@ -34,6 +34,7 @@ interface SubscribeBody {
   scores?: Record<string, number>;
   symptoms?: string[];
   vetQuestions?: string[];
+  attribution?: unknown;
   existingPetId?: string;
   reassessmentMode?: string;
   reassessmentSource?: string;
@@ -103,6 +104,17 @@ function buildServerAssessmentInput(body: SubscribeBody) {
   };
 }
 
+function sanitizeAttribution(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  try {
+    const serialized = JSON.stringify(value);
+    if (serialized.length > 5000) return null;
+    return JSON.parse(serialized) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
 export async function POST(request: Request) {
   let body: SubscribeBody;
   try {
@@ -120,6 +132,7 @@ export async function POST(request: Request) {
     reassessmentMode,
     reassessmentSource,
     reassessmentOf,
+    attribution,
   } = body;
   // 注意：客户端可能仍传 tags / resultSummary / scores / symptoms，
   //       但服务端不信任这些派生值，统一在下文用 buildServerAssessmentInput(body)
@@ -251,6 +264,7 @@ export async function POST(request: Request) {
     const assessmentId = asmtRow.id as string;
 
     // f. insert email_events
+    const attributionPayload = sanitizeAttribution(attribution);
     const { error: evtErr } = await supabase.from('email_events').insert({
       user_id: userId,
       pet_id: petId,
@@ -261,6 +275,7 @@ export async function POST(request: Request) {
         source: source ?? null,
         reassessment_mode: reassessmentMode ?? null,
         reassessment_source: reassessmentSource ?? null,
+        attribution: attributionPayload,
         tags: serverResult.tags,
       },
     });

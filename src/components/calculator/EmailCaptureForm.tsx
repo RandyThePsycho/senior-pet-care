@@ -7,6 +7,10 @@ import CTAButton from '@/components/common/CTAButton';
 import DataPrivacyNote from '@/components/common/DataPrivacyNote';
 import { track } from '@/lib/analytics';
 import { saveAssessmentSnapshot } from '@/lib/assessmentStorage';
+import {
+  getAttributionSnapshot,
+  getAttributionSource,
+} from '@/lib/attribution';
 import type {
   AssessmentInput,
   AssessmentResult,
@@ -67,12 +71,14 @@ export default function EmailCaptureForm({
     track('email_subscribe_started', {});
 
     try {
+      const attribution = getAttributionSnapshot();
       const res = await fetch('/api/email/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          source: 'calculator_result',
+          source: getAttributionSource('calculator_result'),
+          attribution,
           tags: result.tags,
           petProfile: {
             petName: input.profile.petName,

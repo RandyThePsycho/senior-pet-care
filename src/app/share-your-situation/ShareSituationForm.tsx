@@ -4,6 +4,10 @@ import { FormEvent, useState } from 'react';
 import CTAButton from '@/components/common/CTAButton';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import { track } from '@/lib/analytics';
+import {
+  getAttributionSnapshot,
+  getAttributionSource,
+} from '@/lib/attribution';
 
 const CONCERNS = [
   { value: 'mobility', label: 'Mobility or trouble standing' },
@@ -90,6 +94,7 @@ export default function ShareSituationForm() {
     event.preventDefault();
     if (submitting) return;
 
+    const attribution = getAttributionSnapshot();
     const payload = {
       pet_type: petType,
       pet_age: petAge.trim() || null,
@@ -99,7 +104,8 @@ export default function ShareSituationForm() {
       what_would_help: whatWouldHelp.trim() || null,
       free_text: freeText.trim(),
       email: email.trim() || null,
-      source: 'share_your_situation',
+      source: getAttributionSource('share_your_situation'),
+      attribution,
     };
 
     setError('');
@@ -130,6 +136,7 @@ export default function ShareSituationForm() {
         helpNeedCount: payload.needed_help.length,
         hasOpenNeed: Boolean(payload.what_would_help),
         hasEmail: Boolean(payload.email),
+        source: payload.source,
         persisted: Boolean(data.persisted),
         submissionId: data.submissionId,
       });
