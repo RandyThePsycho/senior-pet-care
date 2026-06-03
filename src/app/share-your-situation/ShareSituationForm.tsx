@@ -58,6 +58,8 @@ export default function ShareSituationForm() {
   const [whatWouldHelp, setWhatWouldHelp] = useState('');
   const [freeText, setFreeText] = useState('');
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   function toggleConcern(value: string) {
@@ -84,8 +86,9 @@ export default function ShareSituationForm() {
     );
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting) return;
 
     const payload = {
       pet_type: petType,
@@ -99,20 +102,48 @@ export default function ShareSituationForm() {
       source: 'share_your_situation',
     };
 
-    track('situation_intake_submitted', {
-      petType: payload.pet_type,
-      concernCount: payload.main_concern.length,
-      stuckPointCount: payload.stuck_points.length,
-      helpNeedCount: payload.needed_help.length,
-      hasOpenNeed: Boolean(payload.what_would_help),
-      hasEmail: Boolean(payload.email),
-    });
+    setError('');
+    setSubmitting(true);
 
-    // Mock submit only. TODO: Persist to a future need_submissions table for the internal dashboard.
-    // eslint-disable-next-line no-console
-    console.log('[situation_intake]', payload);
+    try {
+      const res = await fetch('/api/need-submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    setSubmitted(true);
+      const data = (await res.json()) as {
+        ok?: boolean;
+        error?: string;
+        persisted?: boolean;
+        submissionId?: string;
+      };
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'Submission failed');
+      }
+
+      track('situation_intake_submitted', {
+        petType: payload.pet_type,
+        concernCount: payload.main_concern.length,
+        stuckPointCount: payload.stuck_points.length,
+        helpNeedCount: payload.needed_help.length,
+        hasOpenNeed: Boolean(payload.what_would_help),
+        hasEmail: Boolean(payload.email),
+        persisted: Boolean(data.persisted),
+        submissionId: data.submissionId,
+      });
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Could not save your note right now. Please try again.',
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -292,6 +323,7 @@ export default function ShareSituationForm() {
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          disabled={submitting}
           placeholder="Email me if you create resources that match this need"
           className="mt-2 w-full rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300"
         />
@@ -301,8 +333,14 @@ export default function ShareSituationForm() {
         <MedicalDisclaimer />
       </div>
 
-      <CTAButton type="submit" fullWidth>
-        Share what would help
+      {error && (
+        <p className="rounded-lg bg-orange-50 px-4 py-3 text-sm font-medium text-clay-600">
+          {error}
+        </p>
+      )}
+
+      <CTAButton type="submit" fullWidth disabled={submitting}>
+        {submitting ? 'Sharing...' : 'Share what would help'}
       </CTAButton>
     </form>
   );

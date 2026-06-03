@@ -1,5 +1,5 @@
 // src/app/share-your-situation/page.tsx
-// Lightweight demand-intake page. Mock submit only; no Supabase, ESP, or admin dashboard.
+// Lightweight demand-intake page. Submit writes through /api/need-submissions when Supabase is configured.
 
 import type { Metadata } from 'next';
 import Link from 'next/link';

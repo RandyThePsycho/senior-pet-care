@@ -81,6 +81,35 @@ create index if not exists email_events_assessment_idx on email_events(assessmen
 create index if not exists email_events_event_type_idx on email_events(event_type);
 
 -- ---------------------------------------------------------------------------
+-- need_submissions：Share Situation 页面收集的需求与痛点。
+-- 不做诊断，不承诺回复；用于判断哪些资源应优先建设。
+-- ---------------------------------------------------------------------------
+create table if not exists need_submissions (
+  id               uuid primary key default gen_random_uuid(),
+  pet_type         text check (pet_type in ('dog','cat','other')) default 'dog',
+  pet_age          text,
+  main_concern     jsonb not null default '[]'::jsonb,
+  stuck_points     jsonb not null default '[]'::jsonb,
+  needed_help      jsonb not null default '[]'::jsonb,
+  what_would_help  text,
+  free_text        text,
+  email            text,
+  source           text default 'share_your_situation',
+  created_at       timestamptz not null default now()
+);
+
+create index if not exists need_submissions_created_at_idx
+  on need_submissions(created_at desc);
+create index if not exists need_submissions_pet_type_idx
+  on need_submissions(pet_type);
+create index if not exists need_submissions_main_concern_gin_idx
+  on need_submissions using gin(main_concern);
+create index if not exists need_submissions_stuck_points_gin_idx
+  on need_submissions using gin(stuck_points);
+create index if not exists need_submissions_needed_help_gin_idx
+  on need_submissions using gin(needed_help);
+
+-- ---------------------------------------------------------------------------
 -- TODO（下一阶段）：用 email_events + assessments 计算 7-day re-assessment rate。
 --   思路：
 --   1) 分母 = 留资用户数：count(distinct user_id) from email_events where event_type='subscribe'
