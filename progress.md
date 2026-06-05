@@ -1,0 +1,140 @@
+# Senior Pet Care Growth Progress
+
+## 2026-06-04
+- Published no-link Reddit reply on r/seniordogs "The concept of good and bad days".
+- Published no-link Reddit reply on r/seniordogs "Tips for Senior Dog Mobility".
+- Cleared Reddit local empty comment draft after publishing.
+- Verified Chrome Apple Events JavaScript control works after enabling `browser.allow_javascript_apple_events`.
+- Verified project build health using workspace Node runtime:
+  - Typecheck passed.
+  - Next.js build passed.
+- Created persistent planning files for growth execution continuity.
+- Recovered cross-channel growth plan from local docs and prior thread notes.
+- Confirmed Reddit is only one channel; next non-Reddit action is X/Threads no-link educational posting, followed by Quora and Pinterest.
+- Recorded user's standing authorization for compliant, conservative, low-risk posting/replying without per-post confirmation.
+- Published no-link X post from `@RandythePsycho`:
+  - "Senior pets often change gradually. Before a vet visit, a simple note can help..."
+  - Platform confirmation: "Your post was sent."
+- Published no-link Threads post from `@cetrolcen`:
+  - "When caring for an older dog or cat, patterns matter..."
+  - Confirmed visible at `https://www.threads.com/@cetrolcen/post/DZJ5AIOlQwt`.
+- Created Pinterest pin pack for Feature A launch:
+  - Metadata and posting copy: `docs/pinterest-pin-pack.md`.
+  - SVG source graphics: `public/growth/pinterest/*.svg`.
+  - Upload-ready 1000x1500 PNGs: `public/growth/pinterest/png/*.png`.
+- Verified Pinterest SVG syntax with `xmllint`.
+- Generated and visually checked the three 1000x1500 Pinterest PNGs.
+- Recovered additional matrix-growth context from the old ChatGPT planning page:
+  - Feature A remains the lead capture and retention engine.
+  - Feature B/C should be driven by logged demand signals, not built prematurely.
+  - Growth execution requires action logs, needs-intake logs, UTM discipline, and page-readiness checks.
+- Verified `pawcheckin.com` key public routes returned 200: `/`, calculator, `/share-your-situation`, and `/end-of-life/checklist`.
+- Created `growth/growth-log.csv`, `growth/needs-intake-log.csv`, and `growth/daily-review-2026-06-04.md`.
+- Checked Pinterest publishing path; local Chrome is not logged in and shows sign-up/birthdate flow, so no Pinterest pin was published.
+- Processed the pasted matrix-growth execution brief and created the first planning-pass artifacts:
+  - `growth/platform-opportunity-matrix.md`
+  - `growth/keyword-monitoring-list.md`
+  - `growth/7-day-matrix-growth-plan.md`
+  - `growth/reply-template-library.md`
+- Rechecked the four required `pawcheckin.com` public routes; all returned 200.
+- Did not publish any additional posts/replies during this planning pass.
+- After the user logged into Pinterest, created/confirmed the `Senior Pet Care Checklists` board:
+  - `https://www.pinterest.com/b0962039409/senior-pet-care-checklists/`
+- Re-uploaded the first Pinterest PNG and filled the pin title, description, and calculator UTM link, but publishing was blocked:
+  - Board selection in the pin editor would not open/select the board.
+  - Board-level create-pin control did not respond after closing the new-board onboarding modal.
+  - Pinterest continued showing a reCAPTCHA service-unavailable warning.
+  - Logged the platform blocker and stopped Pinterest attempts for this execution window.
+- Published one Quora answer from `RandyCen` on old dog comfort:
+  - `https://www.quora.com/My-dog-is-old-very-old-what-are-the-best-ways-to-make-him-comfortable/answer/RandyCen`
+  - Included practical comfort guidance, vet-consult framing, non-diagnostic wording, and one disclosed PawCheckin calculator link with UTM.
+  - Logged the action and the related demand signal.
+- Rechecked Pinterest after suspected failure:
+  - `Senior Pet Care Checklists` still shows `0 Pins`.
+  - Pin creation tool still shows `Pin drafts (2)`.
+  - Confirmed no Pinterest pin was published and logged `verified_not_published`.
+- Checked network/proxy state after a disconnect:
+  - `.codex/config.toml` has no proxy env configured.
+  - Outline VPN service `美国专线` is connected and default IPv4 route/DNS use `utun4`.
+  - Direct traffic through TUN works; local ShadowsocksX-NG HTTP/SOCKS ports `127.0.0.1:1087` and `127.0.0.1:1086` timed out, so do not point Codex env at those ports.
+- Checked published channel visibility:
+  - Quora answer is visible and still contains the PawCheckin UTM link.
+  - Threads post is visible with 114 views and no replies.
+  - Reddit mobility reply is visible.
+  - Reddit good-days thread is visible; the specific comment did not surface in the first-page DOM check.
+  - X status page loaded with an empty DOM excerpt in Chrome automation; recheck later or manually in the browser before logging outcome.
+- Stabilized the reconnecting/network issue on 2026-06-05:
+  - Reproduced Chrome `x.com/home` showing `DNS_PROBE_FINISHED_NO_INTERNET` while the VPN still reported `Connected`.
+  - Confirmed `.codex/config.toml` still has no proxy env and local `127.0.0.1:1086/1087` proxy checks still time out, so those env vars should not be added.
+  - Restarted the Outline VPN service `美国专线`, flushed DNS, and verified Chrome X recovered.
+  - `utun4` changed from link-local `169.254.x.x` to `172.16.9.1` after the restart, confirming the previous state was a TUN half-connected state.
+  - Added and tested `scripts/net-watchdog.sh`; detached background monitoring did not persist in this Codex tool session, so growth execution should use one-shot health checks before browser actions.
+- Published one additional no-link X post on 2026-06-05:
+  - `https://x.com/RandythePsycho/status/2062721617147695367`
+  - Topic: 7-day senior pet reassessment / weekly comparison.
+  - Logged in `growth/growth-log.csv`.
+- Continued 2026-06-05 growth execution:
+  - Published a no-link Threads post: `https://www.threads.com/@cetrolcen/post/DZMBNbjlJ0c`.
+  - Published a no-link Reddit reply in `r/SeniorCats`: `https://old.reddit.com/r/SeniorCats/comments/1tx5bm4/is_adopting_a_12_year_old_cat_a_bad_idea/opu517m/`.
+  - Explored Pinterest create flow and documented it in `growth/pinterest-publish-playbook.md`; upload/form/board selection work, final Publish still needs foreground user gesture.
+  - Added optional Plausible/GA4 analytics forwarding and UTM-enriched event props.
+  - Verified with `tsc --noEmit` and `next build`.
+- After the user completed Pinterest Publish, verified the first Pinterest Pin is live:
+  - `https://www.pinterest.com/pin/1102537552555555729/`
+  - Board `Senior Pet Care Checklists` shows `1 Pin`.
+- Implemented the first internal read-only launch signal dashboard:
+  - Route: `/internal/dashboard?token=...`.
+  - Protected by `INTERNAL_DASHBOARD_TOKEN`.
+  - Excluded from robots via `/internal/`.
+  - Shows aggregate Supabase counts and recent non-PII conversion/intake samples only.
+  - Added `scripts/internal-dashboard-aggregation.test.mjs` for aggregation behavior.
+  - Verified with the aggregation test, `tsc --noEmit`, `next build`, local dashboard HTTP check, locked-page HTTP check, and `robots.txt` check.
+- Current measurement conclusion:
+  - Pinterest is published.
+  - Supabase has stored smoke/test conversion rows, but no reliable real growth conversion signal yet.
+  - Plausible and GA4 are not configured in `.env.local`, so pageviews cannot be judged from the app yet.
+- Tightened the internal dashboard attribution quality:
+  - Real external signals are separated from test/smoke and unattributed signals.
+  - Internal/default sources like `calculator_result` no longer count as real external growth attribution.
+  - Local dashboard currently shows `Real 0`, `Test 6`, `Unattributed 2`.
+- Published two value-first attributed link posts:
+  - X: `https://x.com/RandythePsycho/status/2062765053229912341`
+  - Threads: `https://www.threads.com/@cetrolcen/post/DZMTKGUFBqT`
+  - Both include one UTM calculator link and non-diagnostic vet-conversation framing.
+- Attempted Pinterest Pin 2 with the vet-visit-notes JPG:
+  - The image, title, description, and UTM link were prepared.
+  - Pinterest remained stuck on `Saving...`, and board selection stayed disabled.
+  - Stopped to avoid duplicate drafts/platform friction.
+- Added first-party pageview tracking:
+  - `/api/analytics/page-view` records public pageviews when `page_events` exists.
+  - Private paths are skipped so journal/report/internal URLs are not stored.
+  - `supabase/schema.sql` now includes `page_events`.
+  - Local API check safely returned `page_events_unavailable`, confirming the live Supabase table still needs to be created before pageviews are stored.
+- Published and logged one additional no-link Reddit reply:
+  - `r/CatAdvice`: `https://old.reddit.com/r/CatAdvice/comments/1twua01/what_should_i_be_doing_for_my_cats_as_they_grow/opv4q8v/`
+  - Topic: aging-cat baseline tracking, vet screening, home setup, and asking a vet before supplements.
+  - Logged both the growth action and the needs-intake signal.
+- Checked production route readiness:
+  - `https://pawcheckin.com/` returned `200`.
+  - `https://pawcheckin.com/api/analytics/page-view` returned `404`.
+  - `https://pawcheckin.com/internal/dashboard?token=invalid` returned `404`.
+  - The dashboard/pageview code has not been deployed to production yet.
+- Rechecked attributed social link posts:
+  - X link post showed 2 views and no replies.
+  - Threads link post showed 13 views and no replies.
+  - Decision: do not add more X/Threads link posts in this window; prioritize measurement deployment.
+- Ran deployment-readiness checks:
+  - Vercel CLI is not installed/authenticated; no local `.vercel` binding exists.
+  - Git remote exists on `main`, but pushing to trigger production deployment requires explicit user approval.
+  - Clean build passed with `/Users/wu/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node`.
+  - Typecheck passed after the clean build.
+  - No-auth Vercel preview fallback started but the deploy POST did not return a URL and was stopped.
+  - Added `scripts/dependency-security-audit.mjs`.
+  - Audit via npm advisory API found `next@14.2.35` advisories; `next-14` dist-tag is also `14.2.35`, so there is no safer stable Next 14 patch.
+  - Added `docs/deploy-readiness-2026-06-05.md`.
+- Final verification for this pass:
+  - `git diff --check` passed.
+  - `scripts/dependency-security-audit.mjs` ran successfully.
+  - `scripts/internal-dashboard-aggregation.test.mjs`, `scripts/page-view-event.test.mjs`, and `scripts/page-events-schema.test.mjs` passed.
+  - `tsc --noEmit` passed with the workspace runtime node.
+  - `next build` passed and showed `/api/analytics/page-view` plus `/internal/dashboard` in the route output.

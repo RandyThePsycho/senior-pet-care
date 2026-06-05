@@ -9,8 +9,11 @@ decision dashboard.
 The dashboard should help decide what to build next for Feature B and Feature C
 based on real senior pet parent demand, not assumptions.
 
-This document is planning only. No admin dashboard, auth, database table, or
-private route is implemented in this pass.
+An initial read-only private route is now implemented at `/internal/dashboard`.
+It is protected by `INTERNAL_DASHBOARD_TOKEN`, excluded from public navigation,
+and blocked in `robots.txt`. It intentionally shows aggregate metrics only and
+does not display emails, pet names, free-text submissions, report links, or
+journal links.
 
 ## 1. Feature A Funnel
 
@@ -107,6 +110,16 @@ not a broad directory.
 - Build an internal read-only dashboard at `/internal/dashboard`.
 - Protect it with an environment variable or simple admin secret.
 - Keep it out of sitemap and public navigation.
+
+Initial status:
+
+- `/internal/dashboard?token=...` reads Supabase counts and recent non-PII event
+  samples.
+- Pageview tracking still requires Plausible or GA4 env configuration.
+- First-party pageview tracking is implemented as a best-effort fallback through
+  `/api/analytics/page-view`, but it requires the `page_events` table from
+  `supabase/schema.sql` to be applied in Supabase before rows are stored.
+- The dashboard is a launch signal view, not a full admin system.
 
 ## Guardrails
 

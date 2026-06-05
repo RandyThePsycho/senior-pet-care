@@ -110,6 +110,28 @@ create index if not exists need_submissions_needed_help_gin_idx
   on need_submissions using gin(needed_help);
 
 -- ---------------------------------------------------------------------------
+-- page_events：轻量 first-party pageview 事件。
+-- 仅用于判断外部渠道是否有人点进来；不存邮箱、petId、report/journal token 或 IP。
+-- ---------------------------------------------------------------------------
+create table if not exists page_events (
+  id            uuid primary key default gen_random_uuid(),
+  path          text not null,
+  referrer      text,
+  utm_source    text,
+  utm_medium    text,
+  utm_campaign  text,
+  utm_content   text,
+  created_at    timestamptz not null default now()
+);
+
+create index if not exists page_events_created_at_idx
+  on page_events(created_at desc);
+create index if not exists page_events_path_idx
+  on page_events(path);
+create index if not exists page_events_utm_source_idx
+  on page_events(utm_source);
+
+-- ---------------------------------------------------------------------------
 -- TODO（下一阶段）：用 email_events + assessments 计算 7-day re-assessment rate。
 --   思路：
 --   1) 分母 = 留资用户数：count(distinct user_id) from email_events where event_type='subscribe'

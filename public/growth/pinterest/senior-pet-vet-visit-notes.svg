@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title desc">
+  <title id="title">What to Track Before a Senior Pet Vet Visit</title>
+  <desc id="desc">A vertical Pinterest graphic with vet visit note prompts for senior pet parents.</desc>
+  <rect width="1000" height="1500" fill="#F8F7F2"/>
+  <rect x="78" y="78" width="844" height="1350" rx="34" fill="#FFFFFF" stroke="#29374A" stroke-width="4"/>
+  <path d="M760 100 L900 240 L900 100 Z" fill="#CFE7EA"/>
+  <rect x="118" y="118" width="176" height="52" rx="10" fill="#29374A"/>
+  <text x="142" y="154" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#FFFFFF">VET PREP</text>
+
+  <text x="118" y="250" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="850" fill="#29374A">What to Track</text>
+  <text x="118" y="330" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="850" fill="#29374A">Before a</text>
+  <text x="118" y="410" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="850" fill="#29374A">Senior Pet</text>
+  <text x="118" y="490" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="850" fill="#29374A">Vet Visit</text>
+
+  <line x1="118" y1="560" x2="882" y2="560" stroke="#E76653" stroke-width="6" stroke-linecap="round"/>
+  <text x="118" y="625" font-family="Inter, Arial, sans-serif" font-size="32" fill="#5E6875">Bring patterns, not a rushed memory.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#29374A">
+    <rect x="118" y="710" width="764" height="74" rx="14" fill="#F1E6CC"/>
+    <text x="158" y="759">1. What changed?</text>
+    <rect x="118" y="815" width="764" height="74" rx="14" fill="#E6F2F0"/>
+    <text x="158" y="864">2. When did it start?</text>
+    <rect x="118" y="920" width="764" height="74" rx="14" fill="#ECEAF7"/>
+    <text x="158" y="969">3. How often does it happen?</text>
+    <rect x="118" y="1025" width="764" height="74" rx="14" fill="#F8E4DE"/>
+    <text x="158" y="1074">4. Appetite, water, bathroom</text>
+    <rect x="118" y="1130" width="764" height="74" rx="14" fill="#E6F2F0"/>
+    <text x="158" y="1179">5. Mobility, comfort, mood</text>
+    <rect x="118" y="1235" width="764" height="74" rx="14" fill="#F1E6CC"/>
+    <text x="158" y="1284">6. Questions for the vet</text>
+  </g>
+
+  <circle cx="798" cy="627" r="40" fill="#E76653"/>
+  <path d="M782 627 l14 16 l28 -38" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="118" y="1364" font-family="Inter, Arial, sans-serif" font-size="26" fill="#5E6875">Observation support only. Not medical advice.</text>
+  <text x="118" y="1408" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#E76653">PawCheckin.com</text>
+</svg>

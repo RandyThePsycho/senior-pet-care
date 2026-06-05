@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Senior Pet Quality-of-Life Checklist</title>
+  <desc id="desc">A vertical Pinterest checklist graphic for senior pet quality-of-life observations before a vet visit.</desc>
+  <rect width="1000" height="1500" fill="#F6FAF7"/>
+  <rect x="72" y="72" width="856" height="1356" rx="36" fill="#FFFFFF" stroke="#23413E" stroke-width="4"/>
+  <circle cx="825" cy="170" r="58" fill="#F3B85B"/>
+  <circle cx="775" cy="138" r="18" fill="#23413E"/>
+  <circle cx="818" cy="114" r="18" fill="#23413E"/>
+  <circle cx="860" cy="139" r="18" fill="#23413E"/>
+  <ellipse cx="819" cy="177" rx="44" ry="34" fill="#23413E"/>
+
+  <text x="120" y="160" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#D9604C" letter-spacing="2">PAWCHECKIN</text>
+  <text x="120" y="250" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800" fill="#1D3230">Senior Pet</text>
+  <text x="120" y="332" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800" fill="#1D3230">Quality-of-Life</text>
+  <text x="120" y="414" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800" fill="#1D3230">Checklist</text>
+  <text x="120" y="500" font-family="Inter, Arial, sans-serif" font-size="34" fill="#526662">A gentle way to organize observations</text>
+  <text x="120" y="548" font-family="Inter, Arial, sans-serif" font-size="34" fill="#526662">before a licensed vet conversation.</text>
+
+  <rect x="120" y="645" width="760" height="88" rx="18" fill="#E7F2EE"/>
+  <circle cx="165" cy="689" r="18" fill="#D9604C"/>
+  <path d="M156 688 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="702" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Comfort and pain signs</text>
+
+  <rect x="120" y="763" width="760" height="88" rx="18" fill="#FFF3DD"/>
+  <circle cx="165" cy="807" r="18" fill="#D9604C"/>
+  <path d="M156 806 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="820" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Appetite and water</text>
+
+  <rect x="120" y="881" width="760" height="88" rx="18" fill="#EAF0FB"/>
+  <circle cx="165" cy="925" r="18" fill="#D9604C"/>
+  <path d="M156 924 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="938" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Mobility and stairs</text>
+
+  <rect x="120" y="999" width="760" height="88" rx="18" fill="#F8E8E1"/>
+  <circle cx="165" cy="1043" r="18" fill="#D9604C"/>
+  <path d="M156 1042 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="1056" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Bathroom and hygiene</text>
+
+  <rect x="120" y="1117" width="760" height="88" rx="18" fill="#E7F2EE"/>
+  <circle cx="165" cy="1161" r="18" fill="#D9604C"/>
+  <path d="M156 1160 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="1174" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Mood and engagement</text>
+
+  <rect x="120" y="1235" width="760" height="88" rx="18" fill="#FFF3DD"/>
+  <circle cx="165" cy="1279" r="18" fill="#D9604C"/>
+  <path d="M156 1278 l8 9 l17 -20" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="205" y="1292" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Good days vs. hard days</text>
+
+  <text x="120" y="1364" font-family="Inter, Arial, sans-serif" font-size="26" fill="#526662">Not a diagnosis. Talk with a licensed veterinarian.</text>
+  <text x="120" y="1408" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#D9604C">PawCheckin.com</text>
+</svg>

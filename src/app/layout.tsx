@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import {
   DEFAULT_OG_IMAGE,
   SITE_DESCRIPTION,
@@ -8,6 +9,9 @@ import {
 } from '@/lib/site';
 import AttributionCapture from '@/components/common/AttributionCapture';
 import './globals.css';
+
+const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -56,6 +60,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-cream-50 text-navy-700 antialiased">
+        {plausibleDomain ? (
+          <Script
+            defer
+            data-domain={plausibleDomain}
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', ${JSON.stringify(gaMeasurementId)});
+              `}
+            </Script>
+          </>
+        ) : null}
         <AttributionCapture />
         {children}
       </body>

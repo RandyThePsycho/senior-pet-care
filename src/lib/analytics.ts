@@ -1,8 +1,18 @@
 // src/lib/analytics.ts
-// MVP 埋点：用 console.log 模拟。
-// TODO: 后续接 Plausible 自定义事件或 GA4。
-//   - Plausible:  window.plausible?.(event, { props })
-//   - GA4:        window.gtag?.('event', event, props)
+// Lightweight launch analytics. Console logging remains the fallback; optional
+// Plausible/GA4 forwarding is enabled by env-loaded scripts in the root layout.
+
+import { getAttributionSnapshot } from '@/lib/attribution';
+
+declare global {
+  interface Window {
+    plausible?: (
+      eventName: string,
+      options?: { props?: Record<string, unknown> },
+    ) => void;
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 export type AnalyticsEvent =
   // 计算器漏斗
@@ -36,13 +46,36 @@ export function track(
   event: AnalyticsEvent,
   props: Record<string, unknown> = {},
 ): void {
+  const enrichedProps = {
+    ...getLaunchAttributionProps(),
+    ...props,
+  };
+
   // MVP: 仅打印到控制台
   // eslint-disable-next-line no-console
-  console.log('[analytics]', event, props);
+  console.log('[analytics]', event, enrichedProps);
 
-  // TODO: 接入真实分析工具，例如：
-  // if (typeof window !== 'undefined') {
-  //   (window as any).plausible?.(event, { props });
-  //   (window as any).gtag?.('event', event, props);
-  // }
+  if (typeof window === 'undefined') return;
+
+  window.plausible?.(event, { props: enrichedProps });
+  window.gtag?.('event', event, enrichedProps);
+}
+
+function getLaunchAttributionProps(): Record<string, unknown> {
+  if (typeof window === 'undefined') return {};
+
+  const snapshot = getAttributionSnapshot();
+  if (!snapshot) return {};
+
+  return {
+    first_utm_source: snapshot.first.utmSource,
+    first_utm_medium: snapshot.first.utmMedium,
+    first_utm_campaign: snapshot.first.utmCampaign,
+    first_utm_content: snapshot.first.utmContent,
+    last_utm_source: snapshot.last.utmSource,
+    last_utm_medium: snapshot.last.utmMedium,
+    last_utm_campaign: snapshot.last.utmCampaign,
+    last_utm_content: snapshot.last.utmContent,
+    last_referrer: snapshot.last.referrer,
+  };
 }
