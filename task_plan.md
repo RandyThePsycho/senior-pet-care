@@ -71,11 +71,17 @@ Status: completed_submitted
 Purpose: notify Bing and other IndexNow-participating engines about the new public guide and partner pages.
 Acceptance: public key file exists, submission URL batch is documented, and only public non-private URLs are submitted.
 
+### 11. Search console submissions
+Status: partial_google_sitemap_complete_bing_complete
+Purpose: get new guide and partner URLs discovered through logged-in webmaster tools.
+Acceptance: Google sitemap re-submitted, Bing sitemap re-submitted, Bing URL batch submitted, and remaining Google URL Inspection blocker documented.
+
 ## Next Actions
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
 3. Review attribution or analytics for `pawcheckin.com` social/direct visits and any email captures.
-4. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
-5. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
-6. Use the partner kit page for newsletter/rescue/creator outreach once the sender account is confirmed.
-7. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.
+4. Enable accessibility access for `osascript` or the terminal process before retrying Pinterest file upload.
+5. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
+6. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
+7. Use the partner kit page for newsletter/rescue/creator outreach once the sender account is confirmed.
+8. Request Google URL Inspection manually or after a reliable automation path is available.

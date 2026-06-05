@@ -191,3 +191,12 @@
   - Verified the key file at `https://pawcheckin.com/58e7569ade80eef031c0307ca865bb8e.txt`.
   - Submitted the public URL batch to Bing IndexNow.
   - Bing returned HTTP `202 Accepted`.
+- Continued logged-in search discovery:
+  - Google Search Console sitemap was re-submitted successfully for
+    `pawcheckin.com`.
+  - Bing Webmaster Tools sitemap was re-submitted and four new URLs were
+    submitted: three guide pages plus the partner kit.
+- Rechecked Pinterest:
+  - The create page no longer showed the previous reCAPTCHA/service warning.
+  - Publishing still blocked because macOS denied `osascript/System Events`
+    accessibility access for the file picker.

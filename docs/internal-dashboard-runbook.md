@@ -98,13 +98,20 @@ Current production state on 2026-06-05:
 
 ## How To View The Internal Dashboard Yourself
 
-1. Find the private token in local `.env.local`:
+1. Find the private URL in local `.env.local`:
+
+   `INTERNAL_DASHBOARD_URL`
+
+   Or find the private token:
 
    `INTERNAL_DASHBOARD_TOKEN`
 
-2. Open the shorter bookmark URL:
+2. Open the private dashboard URL. Do not open this literal placeholder:
 
    `https://pawcheckin.com/dashboard/YOUR_TOKEN`
+
+   Replace `YOUR_TOKEN` with the real token from `.env.local`, or use
+   `INTERNAL_DASHBOARD_URL` directly.
 
    This redirects to the private dashboard route:
 

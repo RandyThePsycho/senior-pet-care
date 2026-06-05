@@ -147,6 +147,18 @@
   - Red/green verification passed for the IndexNow setup.
   - After deployment, verified the key file at `https://pawcheckin.com/58e7569ade80eef031c0307ca865bb8e.txt`.
   - Submitted the URL batch to Bing IndexNow; Bing returned HTTP `202 Accepted`.
+- Continued logged-in search discovery execution:
+  - Opened Google Search Console for `sc-domain:pawcheckin.com`.
+  - Re-submitted `https://pawcheckin.com/sitemap.xml`; Search Console returned the success message and updated the submitted date to 2026-06-05.
+  - URL Inspection direct deep link returned a Google 404, and the top inspection box did not accept automated entry reliably, so URL-level Google indexing requests remain pending.
+  - Opened Bing Webmaster Tools for `https://pawcheckin.com/`.
+  - Re-submitted `https://pawcheckin.com/sitemap.xml`; Bing updated Last submit to 2026-06-05 and status to Processing.
+  - Submitted four new Bing URLs: the three guide pages and `/partners/senior-pet-check-in-kit`; Bing showed all four submitted today and quota decreased from 100 to 96.
+- Rechecked Pinterest publishing:
+  - Pinterest create page loaded without the previous reCAPTCHA/service warning.
+  - Local image URLs are deployed and return HTTP `200`.
+  - File upload still could not proceed because macOS denied `osascript/System Events` accessibility access; enabling only Codex was not enough for system file-picker automation.
+  - Save-from-URL did not expose a usable image-entry flow in the current Pinterest page state, so no new Pinterest Pin was published in this pass.
 
 ## Current Channel State
 
@@ -168,9 +180,10 @@
 
 ## Next Actions
 
-1. Configure either Plausible or GA4 in production env before judging channel conversion.
-2. Send the first 3 partner outreach messages from `growth/partner-targets-2026-06-05.md` after the sender identity/account is confirmed.
-3. Keep Pinterest paused until the reCAPTCHA/saving-state issue clears; avoid repeated failed attempts.
-4. Check Threads and X for replies or asks for a tool link, but do not add more link posts in this window.
-5. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
-6. Recheck dashboard attribution after several hours for `utm_source=x`, `utm_source=threads`, `utm_source=pinterest`, and future `utm_source=partner_outreach` signals.
+1. Enable macOS accessibility access for `osascript` or the terminal process if Pinterest file-picker automation should continue.
+2. Configure either Plausible or GA4 in production env before judging channel conversion.
+3. Send the first 3 partner outreach messages from `growth/partner-targets-2026-06-05.md` after the sender identity/account is confirmed.
+4. Use Google URL Inspection manually or after a reliable automation path is available; the sitemap is already resubmitted.
+5. Check Threads and X for replies or asks for a tool link, but do not add more link posts in this window.
+6. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
+7. Recheck dashboard attribution after several hours for `utm_source=x`, `utm_source=threads`, `utm_source=pinterest`, and future `utm_source=partner_outreach` signals.

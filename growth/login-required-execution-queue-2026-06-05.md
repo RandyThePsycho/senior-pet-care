@@ -55,6 +55,9 @@ Success:
 Goal:
 Get the new SEO guide URLs discovered.
 
+Status:
+Sitemap re-submitted on 2026-06-05. URL Inspection requests remain pending.
+
 User login needed:
 Google Search Console.
 
@@ -72,10 +75,20 @@ Success:
 - Sitemap submitted.
 - Indexing requested for the 3 guide URLs.
 
+Current result:
+
+- `https://pawcheckin.com/sitemap.xml` was re-submitted successfully.
+- Direct URL Inspection deep link returned a Google 404.
+- The top inspection input did not reliably accept automated URL submission in
+  the current UI state.
+
 ## 4. Bing Webmaster Tools
 
 Goal:
 Get the same guide URLs into Bing.
+
+Status:
+Completed on 2026-06-05.
 
 User login needed:
 Bing Webmaster Tools.
@@ -91,10 +104,23 @@ Success:
 - Sitemap accepted.
 - URLs submitted.
 
+Current result:
+
+- `https://pawcheckin.com/sitemap.xml` was re-submitted; Bing shows Processing.
+- Submitted:
+  - `https://pawcheckin.com/guides/senior-dog-quality-of-life-checklist`
+  - `https://pawcheckin.com/guides/senior-cat-quality-of-life-checklist`
+  - `https://pawcheckin.com/guides/older-pet-vet-visit-notes`
+  - `https://pawcheckin.com/partners/senior-pet-check-in-kit`
+- Bing showed 4 URLs submitted today and quota left 96.
+
 ## 5. Pinterest
 
 Goal:
 Publish prepared checklist/tracker pins without repeated failed attempts.
+
+Status:
+Blocked by macOS accessibility permission for file-picker automation.
 
 User login needed:
 Pinterest account in Chrome.
@@ -110,6 +136,15 @@ Success:
 
 - Pins are live.
 - Each pin uses one distinct guide or calculator UTM destination.
+
+Current result:
+
+- Create page loads without the earlier reCAPTCHA/service warning.
+- `osascript/System Events` still cannot operate the system file picker.
+- Save-from-URL did not expose a usable image-entry flow in the current
+  Pinterest page state.
+- Enable accessibility access for `osascript` or the terminal process before
+  retrying local image upload.
 
 ## 6. Facebook Groups
 
