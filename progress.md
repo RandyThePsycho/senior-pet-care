@@ -138,3 +138,22 @@
   - `scripts/internal-dashboard-aggregation.test.mjs`, `scripts/page-view-event.test.mjs`, and `scripts/page-events-schema.test.mjs` passed.
   - `tsc --noEmit` passed with the workspace runtime node.
   - `next build` passed and showed `/api/analytics/page-view` plus `/internal/dashboard` in the route output.
+- Researched current growth opportunity after the dashboard deployment:
+  - Next 15/16 differences are mostly security/framework maintenance, not acquisition.
+  - Dashboard should remain minimal until real traffic exists.
+  - Added `growth/growth-opportunity-review-2026-06-05.md`.
+  - Recommended shifting execution to SEO pages, Pinterest, Facebook groups, YouTube Shorts, Quora/Reddit customer-language loops, and partner outreach.
+- Implemented the first high-intent SEO guide batch:
+  - `/guides/senior-dog-quality-of-life-checklist`
+  - `/guides/senior-cat-quality-of-life-checklist`
+  - `/guides/older-pet-vet-visit-notes`
+  - Added shared content in `src/lib/seoGuides.ts`.
+  - Added reusable `src/components/guides/GuidePage.tsx`.
+  - Added homepage internal links under "Common senior-pet questions".
+  - Added the guide routes to `src/app/sitemap.ts`.
+  - Added `scripts/seo-guides.test.mjs`; verified red first, then green.
+  - Verification passed: `seo-guides`, dashboard/pageview/schema scripts, `git diff --check`, `next build`, sequential `tsc --noEmit`, and local HTTP checks for all 3 guide pages.
+- Prepared next-channel assets for the SEO pages:
+  - Added Pinterest SVG/PNG/JPG assets for senior cat quality-of-life checklist and senior dog mobility notes.
+  - Updated `docs/pinterest-pin-pack.md` with 5 pins and guide-specific UTM destinations.
+  - Added `growth/short-video-and-facebook-prompts-2026-06-05.md` with 5 short-video scripts, 3 Facebook group prompts, and a compliant tool reply.

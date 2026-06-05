@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Senior Dog Mobility Notes</title>
+  <desc id="desc">A vertical Pinterest graphic for tracking senior dog mobility, stairs, slipping, standing, walks, rest, and vet questions.</desc>
+  <rect width="1000" height="1500" fill="#FFF8EC"/>
+  <rect x="70" y="70" width="860" height="1360" rx="36" fill="#FFFFFF" stroke="#23413E" stroke-width="4"/>
+  <circle cx="820" cy="170" r="58" fill="#F3B85B"/>
+  <circle cx="785" cy="150" r="18" fill="#23413E"/>
+  <circle cx="838" cy="150" r="18" fill="#23413E"/>
+  <ellipse cx="811" cy="187" rx="46" ry="32" fill="#23413E"/>
+  <circle cx="774" cy="128" r="14" fill="#23413E"/>
+  <circle cx="852" cy="128" r="14" fill="#23413E"/>
+
+  <text x="120" y="158" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#D9604C" letter-spacing="2">PAWCHECKIN</text>
+  <text x="120" y="250" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#1D3230">Senior Dog</text>
+  <text x="120" y="334" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#1D3230">Mobility</text>
+  <text x="120" y="418" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#1D3230">Notes</text>
+  <text x="120" y="504" font-family="Inter, Arial, sans-serif" font-size="34" fill="#526662">Simple weekly prompts for walks,</text>
+  <text x="120" y="552" font-family="Inter, Arial, sans-serif" font-size="34" fill="#526662">stairs, slipping, and comfort.</text>
+
+  <rect x="120" y="640" width="760" height="96" rx="20" fill="#E7F2EE"/>
+  <text x="158" y="700" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Standing up</text>
+  <text x="650" y="700" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#D9604C">this week?</text>
+
+  <rect x="120" y="770" width="760" height="96" rx="20" fill="#EAF0FB"/>
+  <text x="158" y="830" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Stairs and ramps</text>
+
+  <rect x="120" y="900" width="760" height="96" rx="20" fill="#FFF3DD"/>
+  <text x="158" y="960" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Slipping or hesitation</text>
+
+  <rect x="120" y="1030" width="760" height="96" rx="20" fill="#F8E8E1"/>
+  <text x="158" y="1090" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Walk length and recovery</text>
+
+  <rect x="120" y="1160" width="760" height="96" rx="20" fill="#E7F2EE"/>
+  <text x="158" y="1220" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#1D3230">Vet questions to bring</text>
+
+  <text x="120" y="1364" font-family="Inter, Arial, sans-serif" font-size="26" fill="#526662">Not a diagnosis. Talk with a licensed veterinarian.</text>
+  <text x="120" y="1408" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#D9604C">PawCheckin.com</text>
+</svg>

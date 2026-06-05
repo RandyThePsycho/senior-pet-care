@@ -101,6 +101,17 @@
   - Dashboard/pageview/schema scripts passed.
   - Typecheck passed.
   - Next build passed and included the dashboard plus pageview API routes.
+- Started the high-intent SEO acquisition track:
+  - Built `/guides/senior-dog-quality-of-life-checklist`.
+  - Built `/guides/senior-cat-quality-of-life-checklist`.
+  - Built `/guides/older-pet-vet-visit-notes`.
+  - Added homepage internal links and sitemap entries.
+  - Each guide includes a calculator CTA, medical boundary language, "not a diagnosis", and licensed-veterinarian wording.
+  - Local HTTP checks returned `200` for all 3 pages and confirmed the CTA/disclaimer markers.
+- Prepared next-channel assets:
+  - Added Pinterest assets for senior cat quality-of-life checklist and senior dog mobility notes.
+  - Updated the Pinterest pin pack with guide-specific UTM destinations.
+  - Added short-video scripts and Facebook group prompts for the new SEO pages.
 
 ## Current Channel State
 

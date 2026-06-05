@@ -51,6 +51,11 @@ Status: blocked_pending_deploy_and_security_decision
 Purpose: ensure attribution and event names line up with the growth channels.
 Acceptance: campaign links use UTM; track email captures, report opens, journal opens, reassessment starts.
 
+### 7. High-intent SEO guide pages
+Status: completed_first_batch_local
+Purpose: create narrow, search-intent entry points that route users into the Feature A calculator and 7-day loop.
+Acceptance: first 3 pages exist, include medical boundaries, link to the calculator, appear in sitemap, and build successfully.
+
 ## Next Actions
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
@@ -58,3 +63,5 @@ Acceptance: campaign links use UTM; track email captures, report opens, journal 
 4. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
 5. Get explicit approval before pushing `main` to trigger production deployment.
 6. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
+7. Deploy the first 3 SEO guide pages after review.
+8. Prepare Pinterest/short-video assets that point to the new guide pages and calculator.

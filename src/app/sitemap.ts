@@ -14,6 +14,21 @@ const PUBLIC_ROUTES = [
     priority: 0.95,
   },
   {
+    path: '/guides/senior-dog-quality-of-life-checklist',
+    changeFrequency: 'weekly',
+    priority: 0.82,
+  },
+  {
+    path: '/guides/senior-cat-quality-of-life-checklist',
+    changeFrequency: 'weekly',
+    priority: 0.82,
+  },
+  {
+    path: '/guides/older-pet-vet-visit-notes',
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  },
+  {
     path: '/end-of-life/checklist',
     changeFrequency: 'monthly',
     priority: 0.75,

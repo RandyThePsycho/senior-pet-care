@@ -7,6 +7,7 @@ import ExampleScenario from '@/components/common/ExampleScenario';
 import FAQSection, { FAQ_ITEMS } from '@/components/common/FAQSection';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import TrustNote from '@/components/common/TrustNote';
+import { SEO_GUIDES } from '@/lib/seoGuides';
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -186,6 +187,44 @@ export default function HomePage() {
             <span className="h-1.5 w-1.5 rounded-full bg-sage-500" aria-hidden />
             Built for senior dogs and cats
           </span>
+        </section>
+
+        <section className="mt-12">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+                Common senior-pet questions
+              </p>
+              <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800">
+                Start with the checklist that matches your week.
+              </h2>
+            </div>
+            <Link
+              href="/tools/senior-pet-quality-of-life-calculator"
+              className="text-sm font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800"
+            >
+              Or go straight to the calculator
+            </Link>
+          </div>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {SEO_GUIDES.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="rounded-lg border border-navy-100 bg-white/88 p-5 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-200 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage-700">
+                  {guide.eyebrow}
+                </p>
+                <h3 className="mt-3 font-display text-2xl leading-tight text-navy-800">
+                  {guide.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-navy-500">
+                  {guide.description}
+                </p>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Report and journal preview */}
