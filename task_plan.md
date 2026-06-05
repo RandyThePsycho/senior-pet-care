@@ -56,6 +56,11 @@ Status: completed_first_batch_local
 Purpose: create narrow, search-intent entry points that route users into the Feature A calculator and 7-day loop.
 Acceptance: first 3 pages exist, include medical boundaries, link to the calculator, appear in sitemap, and build successfully.
 
+### 8. Partner distribution kit
+Status: completed_local
+Purpose: adapt the useful part of AI-agency validation patterns into a non-diagnostic partner/referral landing page.
+Acceptance: partner kit page exists, routes to guides/calculator with UTM links, avoids product/affiliate language, appears in sitemap, and build succeeds.
+
 ## Next Actions
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
@@ -65,3 +70,4 @@ Acceptance: first 3 pages exist, include medical boundaries, link to the calcula
 6. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
 7. Deploy the first 3 SEO guide pages after review.
 8. Prepare Pinterest/short-video assets that point to the new guide pages and calculator.
+9. Deploy the partner kit page and use it for newsletter/rescue/creator outreach.

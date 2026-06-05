@@ -112,6 +112,10 @@
   - Added Pinterest assets for senior cat quality-of-life checklist and senior dog mobility notes.
   - Updated the Pinterest pin pack with guide-specific UTM destinations.
   - Added short-video scripts and Facebook group prompts for the new SEO pages.
+- Evaluated the AI monetization framework:
+  - Useful pattern: landing page validation, manual delivery first, and creator/partner distribution.
+  - Not a fit: pivoting into generic AI agents, AI consulting, or lead-selling.
+  - Built `/partners/senior-pet-check-in-kit` as a non-diagnostic partner/referral landing page.
 
 ## Current Channel State
 

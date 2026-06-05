@@ -38,6 +38,11 @@ const PUBLIC_ROUTES = [
     changeFrequency: 'monthly',
     priority: 0.6,
   },
+  {
+    path: '/partners/senior-pet-check-in-kit',
+    changeFrequency: 'monthly',
+    priority: 0.55,
+  },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -157,3 +157,15 @@
   - Added Pinterest SVG/PNG/JPG assets for senior cat quality-of-life checklist and senior dog mobility notes.
   - Updated `docs/pinterest-pin-pack.md` with 5 pins and guide-specific UTM destinations.
   - Added `growth/short-video-and-facebook-prompts-2026-06-05.md` with 5 short-video scripts, 3 Facebook group prompts, and a compliant tool reply.
+- After reconnect, rechecked production measurement state:
+  - Dashboard route is live but disabled because `INTERNAL_DASHBOARD_TOKEN` is not set in Vercel.
+  - Pageview API is live but returns `page_events_unavailable` because the Supabase migration is not applied.
+  - Updated `docs/internal-dashboard-runbook.md` with current status and self-view instructions.
+  - Added `growth/login-required-execution-queue-2026-06-05.md` for Vercel, Supabase, Search Console, Bing, Pinterest, Facebook, and short-video tasks.
+- Evaluated the AI monetization framework from the user:
+  - Decided not to pivot into a generic AI-agent/consulting business.
+  - Adopted the useful pattern: landing-page validation, manual delivery first, and creator/partner distribution.
+  - Added `growth/ai-monetization-framework-evaluation-2026-06-05.md`.
+  - Added a partner landing page: `/partners/senior-pet-check-in-kit`.
+  - Added `scripts/partner-kit-page.test.mjs`; verified red first, then green.
+  - Verification passed: partner-kit test, SEO guide test, dashboard/pageview/schema tests, `git diff --check`, `next build`, and `tsc --noEmit`.
