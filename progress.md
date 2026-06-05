@@ -169,3 +169,11 @@
   - Added a partner landing page: `/partners/senior-pet-check-in-kit`.
   - Added `scripts/partner-kit-page.test.mjs`; verified red first, then green.
   - Verification passed: partner-kit test, SEO guide test, dashboard/pageview/schema tests, `git diff --check`, `next build`, and `tsc --noEmit`.
+- Simplified internal dashboard access:
+  - Added `/dashboard/[token]` shortcut route.
+  - The bookmarkable URL is now `https://pawcheckin.com/dashboard/YOUR_TOKEN`.
+  - The shortcut redirects to `/internal/dashboard?token=YOUR_TOKEN`.
+  - Added `scripts/dashboard-shortcut.test.mjs`.
+  - Updated robots to disallow `/dashboard/`.
+- Continued no-login growth preparation:
+  - Added `growth/partner-outreach-pack-2026-06-05.md` with outreach targets, email/contact-form copy, DM copy, Facebook admin copy, and tracking rules.

@@ -116,6 +116,12 @@
   - Useful pattern: landing page validation, manual delivery first, and creator/partner distribution.
   - Not a fit: pivoting into generic AI agents, AI consulting, or lead-selling.
   - Built `/partners/senior-pet-check-in-kit` as a non-diagnostic partner/referral landing page.
+- Simplified internal dashboard access:
+  - Added a bookmarkable shortcut pattern: `https://pawcheckin.com/dashboard/YOUR_TOKEN`.
+  - The shortcut still requires the private token and redirects to the protected internal dashboard.
+- Prepared partner outreach copy:
+  - Added `growth/partner-outreach-pack-2026-06-05.md`.
+  - Includes email/contact-form, short DM, and Facebook admin permission drafts.
 
 ## Current Channel State
 

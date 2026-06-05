@@ -86,7 +86,11 @@ token and Supabase migration are both completed.
      `openssl rand -hex 32`
    - Environment: `Production`
 4. Redeploy the current production deployment in Vercel.
-5. Open:
+5. Open the shorter bookmark URL:
+
+   `https://pawcheckin.com/dashboard/YOUR_TOKEN`
+
+   This redirects to the private dashboard route:
 
    `https://pawcheckin.com/internal/dashboard?token=YOUR_TOKEN`
 

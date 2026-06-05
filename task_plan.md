@@ -61,6 +61,11 @@ Status: completed_local
 Purpose: adapt the useful part of AI-agency validation patterns into a non-diagnostic partner/referral landing page.
 Acceptance: partner kit page exists, routes to guides/calculator with UTM links, avoids product/affiliate language, appears in sitemap, and build succeeds.
 
+### 9. Partner outreach preparation
+Status: completed_local
+Purpose: prepare low-risk partner outreach copy and tracking rules while waiting for logged-in accounts.
+Acceptance: outreach pack exists, includes no-diagnosis boundaries, one-link drafts, and logging instructions.
+
 ## Next Actions
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
@@ -71,3 +76,5 @@ Acceptance: partner kit page exists, routes to guides/calculator with UTM links,
 7. Deploy the first 3 SEO guide pages after review.
 8. Prepare Pinterest/short-video assets that point to the new guide pages and calculator.
 9. Deploy the partner kit page and use it for newsletter/rescue/creator outreach.
+10. After Vercel/Supabase login, enable the dashboard token and page_events migration.
+11. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.
