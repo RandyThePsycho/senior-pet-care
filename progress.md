@@ -187,3 +187,7 @@
   - Added a public IndexNow key file under `public/`.
   - Added `growth/indexnow-submission-2026-06-05.md` with the public URL batch.
   - Added and passed `scripts/indexnow-setup.test.mjs`.
+- Deployed and submitted IndexNow:
+  - Verified the key file at `https://pawcheckin.com/58e7569ade80eef031c0307ca865bb8e.txt`.
+  - Submitted the public URL batch to Bing IndexNow.
+  - Bing returned HTTP `202 Accepted`.

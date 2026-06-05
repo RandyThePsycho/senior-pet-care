@@ -31,8 +31,9 @@ Submit after the key file is deployed:
 
 ## Submission Status
 
-- Key file prepared locally.
-- Waiting for production deployment before API submission.
+- Key file deployed and verified at `https://pawcheckin.com/58e7569ade80eef031c0307ca865bb8e.txt`.
+- Submitted the URL batch to Bing IndexNow on 2026-06-05.
+- Bing returned HTTP `202 Accepted`.
 
 ## Risk Check
 

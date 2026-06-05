@@ -145,6 +145,8 @@
   - Added `growth/indexnow-submission-2026-06-05.md` with the public URL batch.
   - Added `scripts/indexnow-setup.test.mjs`.
   - Red/green verification passed for the IndexNow setup.
+  - After deployment, verified the key file at `https://pawcheckin.com/58e7569ade80eef031c0307ca865bb8e.txt`.
+  - Submitted the URL batch to Bing IndexNow; Bing returned HTTP `202 Accepted`.
 
 ## Current Channel State
 
@@ -166,10 +168,9 @@
 
 ## Next Actions
 
-1. Deploy the IndexNow key file and submit the URL batch to the IndexNow API.
-2. Configure either Plausible or GA4 in production env before judging channel conversion.
-3. Send the first 3 partner outreach messages from `growth/partner-targets-2026-06-05.md` after the sender identity/account is confirmed.
-4. Keep Pinterest paused until the reCAPTCHA/saving-state issue clears; avoid repeated failed attempts.
-5. Check Threads and X for replies or asks for a tool link, but do not add more link posts in this window.
-6. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
-7. Recheck dashboard attribution after several hours for `utm_source=x`, `utm_source=threads`, `utm_source=pinterest`, and future `utm_source=partner_outreach` signals.
+1. Configure either Plausible or GA4 in production env before judging channel conversion.
+2. Send the first 3 partner outreach messages from `growth/partner-targets-2026-06-05.md` after the sender identity/account is confirmed.
+3. Keep Pinterest paused until the reCAPTCHA/saving-state issue clears; avoid repeated failed attempts.
+4. Check Threads and X for replies or asks for a tool link, but do not add more link posts in this window.
+5. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
+6. Recheck dashboard attribution after several hours for `utm_source=x`, `utm_source=threads`, `utm_source=pinterest`, and future `utm_source=partner_outreach` signals.

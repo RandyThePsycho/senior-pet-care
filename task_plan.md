@@ -67,7 +67,7 @@ Purpose: prepare low-risk partner outreach copy and tracking rules while waiting
 Acceptance: outreach pack exists, includes no-diagnosis boundaries, one-link drafts, and logging instructions.
 
 ### 10. IndexNow search discovery
-Status: prepared_pending_deploy_and_submit
+Status: completed_submitted
 Purpose: notify Bing and other IndexNow-participating engines about the new public guide and partner pages.
 Acceptance: public key file exists, submission URL batch is documented, and only public non-private URLs are submitted.
 
@@ -75,8 +75,7 @@ Acceptance: public key file exists, submission URL batch is documented, and only
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
 3. Review attribution or analytics for `pawcheckin.com` social/direct visits and any email captures.
-4. Deploy the IndexNow key file and submit the URL batch.
-5. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
-6. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
-7. Use the partner kit page for newsletter/rescue/creator outreach once the sender account is confirmed.
-8. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.
+4. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
+5. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
+6. Use the partner kit page for newsletter/rescue/creator outreach once the sender account is confirmed.
+7. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.
