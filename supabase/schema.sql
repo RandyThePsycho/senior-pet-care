@@ -124,6 +124,8 @@ create table if not exists page_events (
   created_at    timestamptz not null default now()
 );
 
+alter table page_events enable row level security;
+
 create index if not exists page_events_created_at_idx
   on page_events(created_at desc);
 create index if not exists page_events_path_idx

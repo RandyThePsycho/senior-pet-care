@@ -8,6 +8,9 @@ Do not attempt logged-in actions until the user confirms the account is ready.
 Goal:
 Enable the private dashboard.
 
+Status:
+Completed on 2026-06-05.
+
 User login needed:
 Vercel dashboard.
 
@@ -21,11 +24,15 @@ Success:
 
 - Dashboard is no longer disabled.
 - The page is private behind the token.
+- Verified live after redeploy.
 
 ## 2. Supabase
 
 Goal:
 Enable first-party pageview storage.
+
+Status:
+Completed on 2026-06-05.
 
 User login needed:
 Supabase project dashboard.
@@ -41,6 +48,7 @@ Success:
 
 - `/api/analytics/page-view` returns `{"ok":true,"persisted":true}` for a public path.
 - Dashboard shows recent pageviews.
+- `page_events` has row level security enabled.
 
 ## 3. Google Search Console
 
@@ -142,3 +150,24 @@ Success:
 
 - First short video published.
 - URL and observed views are logged.
+
+## 8. Partner Outreach Sender Account
+
+Goal:
+Start the trust-based referral track without guessing the sender identity.
+
+User login needed:
+Email account, contact-form sender details, or social account approved for DMs.
+
+Action:
+
+- Use `growth/partner-targets-2026-06-05.md`.
+- Send only the first 3 Batch 1 outreach messages.
+- Use each target's `utm_content` slug in the partner kit URL.
+- Do not mass-message the whole list in one pass.
+
+Success:
+
+- Three outreach attempts are logged in `growth/growth-log.csv`.
+- Any partner reply, objection, or wording suggestion is logged for copy and
+  SEO improvements.

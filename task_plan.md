@@ -47,7 +47,7 @@ Purpose: answer one suitable senior-pet comfort or vet-prep question with a comp
 Acceptance: no diagnosis, no urgency, no repeated links, and no second Quora answer until the next review window.
 
 ### 6. Measurement readiness
-Status: blocked_pending_deploy_and_security_decision
+Status: completed_live_dashboard_enabled
 Purpose: ensure attribution and event names line up with the growth channels.
 Acceptance: campaign links use UTM; track email captures, report opens, journal opens, reassessment starts.
 
@@ -66,15 +66,17 @@ Status: completed_local
 Purpose: prepare low-risk partner outreach copy and tracking rules while waiting for logged-in accounts.
 Acceptance: outreach pack exists, includes no-diagnosis boundaries, one-link drafts, and logging instructions.
 
+### 10. IndexNow search discovery
+Status: prepared_pending_deploy_and_submit
+Purpose: notify Bing and other IndexNow-participating engines about the new public guide and partner pages.
+Acceptance: public key file exists, submission URL batch is documented, and only public non-private URLs are submitted.
+
 ## Next Actions
 1. Revisit Pinterest only after the `Senior Pet Care Checklists` board can accept a new pin without the saving-state or reCAPTCHA service-unavailable warning.
 2. Check 24-hour outcomes from Reddit, X, Threads, and Quora.
 3. Review attribution or analytics for `pawcheckin.com` social/direct visits and any email captures.
-4. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
-5. Get explicit approval before pushing `main` to trigger production deployment.
+4. Deploy the IndexNow key file and submit the URL batch.
+5. Pause additional Reddit posting in the current window after the latest `r/CatAdvice` reply unless someone responds directly.
 6. Get explicit approval before upgrading beyond Next.js 14 to address Next advisories.
-7. Deploy the first 3 SEO guide pages after review.
-8. Prepare Pinterest/short-video assets that point to the new guide pages and calculator.
-9. Deploy the partner kit page and use it for newsletter/rescue/creator outreach.
-10. After Vercel/Supabase login, enable the dashboard token and page_events migration.
-11. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.
+7. Use the partner kit page for newsletter/rescue/creator outreach once the sender account is confirmed.
+8. After Search Console/Bing login, submit sitemap and request indexing for guide/partner pages.

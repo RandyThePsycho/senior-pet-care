@@ -177,3 +177,13 @@
   - Updated robots to disallow `/dashboard/`.
 - Continued no-login growth preparation:
   - Added `growth/partner-outreach-pack-2026-06-05.md` with outreach targets, email/contact-form copy, DM copy, Facebook admin copy, and tracking rules.
+- Completed production dashboard enablement:
+  - Added `INTERNAL_DASHBOARD_TOKEN` in Vercel for the live `pawcheckin.com` project.
+  - Triggered a production redeploy.
+  - Ran the `page_events` migration in Supabase SQL Editor and enabled RLS.
+  - Verified `/api/analytics/page-view` returned `{"ok":true,"persisted":true}`.
+  - Verified `https://pawcheckin.com/dashboard/YOUR_TOKEN` no longer shows `Dashboard disabled`.
+- Prepared IndexNow search discovery:
+  - Added a public IndexNow key file under `public/`.
+  - Added `growth/indexnow-submission-2026-06-05.md` with the public URL batch.
+  - Added and passed `scripts/indexnow-setup.test.mjs`.

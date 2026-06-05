@@ -79,11 +79,12 @@
   - `https://old.reddit.com/r/CatAdvice/comments/1twua01/what_should_i_be_doing_for_my_cats_as_they_grow/opv4q8v/`
   - Topic: senior-cat baseline tracking, vet screening, easier home setup, and asking a vet before vitamins/supplements.
   - No link, no diagnosis claim, no advertising.
-- Checked production readiness for the new internal measurement routes:
+- Earlier pre-deployment production check for the new internal measurement routes:
   - `https://pawcheckin.com/` returned `200`.
   - `https://pawcheckin.com/api/analytics/page-view` returned `404`.
   - `https://pawcheckin.com/internal/dashboard?token=invalid` returned `404`.
-  - Conclusion: the internal dashboard and first-party pageview API are implemented locally but not deployed to production yet.
+  - Historical conclusion at that point: the internal dashboard and first-party pageview API were implemented locally but not deployed to production yet.
+  - This status was later superseded after deployment; the current blocker is production env plus Supabase migration, not a missing route.
 - Rechecked the two attributed social link posts:
   - X: `https://x.com/RandythePsycho/status/2062765053229912341` showed `2 Views` and no reply at check time.
   - Threads: `https://www.threads.com/@cetrolcen/post/DZMTKGUFBqT` showed `13次浏览` and `暂无回复`.
@@ -122,6 +123,28 @@
 - Prepared partner outreach copy:
   - Added `growth/partner-outreach-pack-2026-06-05.md`.
   - Includes email/contact-form, short DM, and Facebook admin permission drafts.
+- Rechecked production dashboard after the shortcut deployment:
+  - `https://pawcheckin.com/dashboard/test-token` redirects to `/internal/dashboard?token=test-token`.
+  - The dashboard route is live, but currently renders `Dashboard disabled` because `INTERNAL_DASHBOARD_TOKEN` is not configured in Vercel production.
+  - The pageview API is live, but currently returns `page_events_unavailable` because the live Supabase database has not run `supabase/migrations/20260605_add_page_events.sql`.
+  - Root cause: the code is deployed; production dashboard usability is blocked by Vercel env setup and the Supabase migration, not by a missing route.
+- Completed the production dashboard setup:
+  - Added `INTERNAL_DASHBOARD_TOKEN` to Vercel production/preview env for the `senior-pet-care-egel` project.
+  - Triggered a production redeploy from Vercel.
+  - Ran `supabase/migrations/20260605_add_page_events.sql` in Supabase SQL Editor.
+  - Chose Supabase's `Run and enable RLS` option, so `page_events` has row level security enabled.
+  - Live API check returned `{"ok":true,"persisted":true}`.
+  - Live dashboard check no longer shows `Dashboard disabled`, no longer reports an invalid token, and shows the launch dashboard shell plus recent pageview data.
+- Prepared the first partner outreach target list:
+  - Added `growth/partner-targets-2026-06-05.md`.
+  - Prioritizes senior dog/cat rescues, senior-pet education orgs, and carefully scoped hospice-adjacent resource partners.
+  - Includes target-specific UTM content slugs and a first-message variant.
+  - All listed public URLs returned HTTP `200` during the first check.
+- Started no-login search discovery acceleration:
+  - Added an IndexNow key file in `public/`.
+  - Added `growth/indexnow-submission-2026-06-05.md` with the public URL batch.
+  - Added `scripts/indexnow-setup.test.mjs`.
+  - Red/green verification passed for the IndexNow setup.
 
 ## Current Channel State
 
@@ -134,8 +157,8 @@
 - Measurement: current `.env.local` has no Plausible or GA4 configured, so pageviews are not reliably counted yet.
 - Measurement: Supabase currently shows 6 users, 6 pets, 8 assessments, 2 reassessments, 12 email event rows, and 0 need submissions, but recent sources are smoke/test rows rather than real growth attribution.
 - Measurement: two external-platform link posts now exist with UTM sources `x` and `threads`; wait for pageview/click tracking before judging performance.
-- Measurement: first-party pageview code is ready, but Supabase has not yet stored pageviews because `page_events` is not created in the live database.
-- Measurement: production still returns `404` for `/api/analytics/page-view` and `/internal/dashboard`, so deployment is also required before live pageviews can be counted.
+- Measurement: first-party pageview code is deployed and live; the production API has persisted a manual test pageview.
+- Measurement: production dashboard route is enabled behind the private token. The token is saved locally in `.env.local` and should not be shared publicly.
 - Post-performance check:
   - X attributed link post is visible at `https://x.com/RandythePsycho/status/2062765053229912341` with 2 views and no replies at check time.
   - Threads attributed link post is visible at `https://www.threads.com/@cetrolcen/post/DZMTKGUFBqT` with 13 views and no replies at check time.
@@ -143,11 +166,10 @@
 
 ## Next Actions
 
-1. Check Threads and X for replies or asks for a tool link.
-2. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
-3. Keep Pinterest paused until the reCAPTCHA warning clears.
-4. Review whether analytics is still mock-only before claiming attribution results.
-5. Configure either Plausible or GA4 in production env before judging channel conversion.
-6. Set `INTERNAL_DASHBOARD_TOKEN` in production env and redeploy so the internal dashboard and pageview API exist on the live domain.
-7. Recheck the dashboard after several hours for `utm_source=x`, `utm_source=threads`, and Pinterest `utm_source=pinterest` signals.
-8. Apply the `page_events` section of `supabase/schema.sql` in Supabase SQL Editor, then reload a public UTM URL and confirm pageviews appear in the dashboard.
+1. Deploy the IndexNow key file and submit the URL batch to the IndexNow API.
+2. Configure either Plausible or GA4 in production env before judging channel conversion.
+3. Send the first 3 partner outreach messages from `growth/partner-targets-2026-06-05.md` after the sender identity/account is confirmed.
+4. Keep Pinterest paused until the reCAPTCHA/saving-state issue clears; avoid repeated failed attempts.
+5. Check Threads and X for replies or asks for a tool link, but do not add more link posts in this window.
+6. If no replies, do not force engagement; pause additional Reddit posting in this window after the `r/CatAdvice` reply.
+7. Recheck dashboard attribution after several hours for `utm_source=x`, `utm_source=threads`, `utm_source=pinterest`, and future `utm_source=partner_outreach` signals.
