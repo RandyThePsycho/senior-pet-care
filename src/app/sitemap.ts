@@ -19,6 +19,16 @@ const PUBLIC_ROUTES = [
     priority: 0.82,
   },
   {
+    path: '/guides/senior-dog-night-waking-log',
+    changeFrequency: 'weekly',
+    priority: 0.84,
+  },
+  {
+    path: '/guides/senior-dog-low-appetite-log',
+    changeFrequency: 'weekly',
+    priority: 0.84,
+  },
+  {
     path: '/guides/senior-cat-quality-of-life-checklist',
     changeFrequency: 'weekly',
     priority: 0.82,

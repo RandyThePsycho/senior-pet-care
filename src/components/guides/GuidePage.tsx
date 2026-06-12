@@ -121,12 +121,15 @@ export default function GuidePage({ guide }: GuidePageProps) {
           </p>
           <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
             <p className="max-w-2xl leading-7 text-navy-600">
-              Turn these notes into a printable quality-of-life report and a
-              7-day follow-up journal. The calculator uses the same
-              observation-first approach.
+              {guide.nextStepBody ??
+                'Turn these notes into a printable quality-of-life report and a 7-day follow-up journal. The calculator uses the same observation-first approach.'}
             </p>
-            <CTAButton href="/tools/senior-pet-quality-of-life-calculator">
-              Start the quality-of-life calculator
+            <CTAButton
+              href={
+                guide.ctaHref ?? '/tools/senior-pet-quality-of-life-calculator'
+              }
+            >
+              {guide.ctaLabel ?? 'Start the quality-of-life calculator'}
             </CTAButton>
           </div>
         </section>

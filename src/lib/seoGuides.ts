@@ -19,6 +19,9 @@ export interface SeoGuide {
     question: string;
     answer: string;
   }>;
+  ctaHref?: string;
+  ctaLabel?: string;
+  nextStepBody?: string;
 }
 
 const SHARED_BOUNDARY =
@@ -72,6 +75,112 @@ export const SEO_GUIDES: SeoGuide[] = [
           'No. A checklist can organize what you notice, but health decisions should be made with a licensed veterinarian.',
       },
     ],
+  },
+  {
+    slug: 'senior-dog-night-waking-log',
+    title: 'Senior Dog Night-Waking Log',
+    description:
+      'A simple senior dog night-waking log for tracking barking, pacing, water, potty needs, appetite, mobility, comfort, and what helps them settle.',
+    eyebrow: 'Night-waking log',
+    h1: 'Senior Dog Night-Waking Log',
+    intro:
+      'When an older dog starts waking, barking, pacing, or needing help at night, the details blur quickly. A short, consistent log can make the next vet conversation clearer.',
+    audience:
+      'For families whose senior dog has started waking, barking, pacing, seeming unsettled, or needing more support overnight.',
+    lastUpdated: '2026-06-12',
+    checklistTitle: 'What to write down overnight',
+    checklist: [
+      'Time: when the waking, barking, pacing, or whining started and how long it lasted.',
+      'Pattern: whether it happened once, several times, or around the same time each night.',
+      'Need vs. confusion: whether your dog seemed to need water, potty, comfort, food, light, or help finding a resting spot.',
+      'Movement: pacing route, slipping, trouble standing, stairs, circling, or difficulty settling back down.',
+      'Comfort signs: panting, trembling, restlessness, licking, guarding, or not wanting to lie down.',
+      'Food and water: appetite that day, evening snacks, extra drinking, or overnight water trips.',
+      'What helped: lights, a calmer room, a potty break, water, a different bed, company, or nothing obvious.',
+    ],
+    notesTitle: 'How to keep the log useful',
+    notes: [
+      'Use the same short fields for several nights instead of rewriting the whole story each time.',
+      'Separate what you saw from what you think caused it. "Paced kitchen to hallway for 20 minutes" is more useful than guessing.',
+      'Do not use a 7-day log to delay care if your dog seems suddenly distressed, weak, painful, or very different from normal.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Which night-waking details are most useful for you to review?',
+      'Should we check pain, vision, hearing, anxiety, bathroom needs, appetite, or cognitive changes?',
+      'Are there signs that would mean we should contact you sooner than our planned follow-up?',
+      'Would a 7-day quality-of-life check-in help us compare this week with next week?',
+    ],
+    faq: [
+      {
+        question: 'Is night waking normal for senior dogs?',
+        answer:
+          'Some older dogs do wake more often, but a new or worsening pattern is worth discussing with a veterinarian. A log can show timing, frequency, and related changes without trying to diagnose the cause.',
+      },
+      {
+        question: 'What should I track if my old dog barks at night?',
+        answer:
+          'Track the time, duration, pacing or confusion, water or potty needs, appetite, comfort, mobility, light level, and what helped your dog settle.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-night-waking-log',
+    ctaLabel: 'Start a 7-day senior dog check-in',
+    nextStepBody:
+      'Use the night notes as a starting point, then turn the broader comfort, appetite, mobility, mood, and good-day pattern into a printable quality-of-life report.',
+  },
+  {
+    slug: 'senior-dog-low-appetite-log',
+    title: 'Senior Dog Low Appetite Log',
+    description:
+      'A senior dog low-appetite log for tracking skipped meals, accepted foods, treats, water, stool, energy, weight, and vet follow-up questions.',
+    eyebrow: 'Appetite log',
+    h1: 'Senior Dog Low Appetite Log',
+    intro:
+      'A senior dog who starts skipping meals or only accepting favorite foods can leave families guessing. A simple meal log helps turn scattered memories into clearer vet notes.',
+    audience:
+      'For families whose older dog is eating less, skipping meals, refusing usual food, or becoming more selective than before.',
+    lastUpdated: '2026-06-12',
+    checklistTitle: 'What to record for each meal',
+    checklist: [
+      'Time offered: breakfast, dinner, snacks, overnight food, or unusual feeding times.',
+      'Food offered: kibble, wet food, broth, treats, cat food, home additions, or a changed diet.',
+      'What happened: refused, sniffed and walked away, ate a bite, ate half, or finished the meal.',
+      'Amount: a rough estimate is enough, such as none, a few bites, half, most, or all.',
+      'Related signs: water, stool, vomiting, drooling, energy, mood, comfort, or bathroom changes.',
+      'Setup changes: plate or bowl height, location, texture, temperature, quiet room, or hand feeding.',
+      'Weight trend: current weight if you can measure it safely, or whether harness/collar fit seems different.',
+    ],
+    notesTitle: 'How to discuss appetite changes',
+    notes: [
+      'Bring the log to your veterinarian instead of deciding alone whether the change is "just age".',
+      'List treats and cat food too. They can make the pattern clearer, especially if regular meals are refused.',
+      'Ask your vet before starting appetite stimulants, supplements, or major diet changes.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Would you like a recheck weight, bloodwork, urinalysis, dental review, or pain/nausea discussion?',
+      'Which appetite or water changes would make you want to see my dog sooner?',
+      'Is the current food setup comfortable, or should we try a different height, texture, or feeding routine?',
+      'What should I track for the next 7 days before we follow up?',
+    ],
+    faq: [
+      {
+        question: 'Is low appetite normal in an old dog?',
+        answer:
+          'Aging can change routines, but new or persistent appetite loss should be discussed with a veterinarian. A meal log helps show what changed and how often it happens.',
+      },
+      {
+        question: 'Should I use an appetite stimulant for my senior dog?',
+        answer:
+          'Ask your veterinarian. Appetite stimulants may be appropriate in some situations, but the decision should account for your dog\'s exam, health history, and current signs.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-low-appetite-log',
+    ctaLabel: 'Turn appetite notes into a 7-day check-in',
+    nextStepBody:
+      'Use the meal log alongside comfort, water, mobility, mood, and good-day notes to create a printable quality-of-life report for the next vet conversation.',
   },
   {
     slug: 'senior-cat-quality-of-life-checklist',
