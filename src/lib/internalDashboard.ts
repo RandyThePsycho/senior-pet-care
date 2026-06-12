@@ -34,6 +34,18 @@ export interface DashboardPageEventRow {
   utm_content: string | null;
 }
 
+export interface DashboardFunnelEventRow {
+  created_at: string | null;
+  event_name: string | null;
+  path: string | null;
+  referrer: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  utm_content: string | null;
+  metadata: unknown;
+}
+
 export interface DashboardInput {
   usersCount: number;
   petsCount: number;
@@ -44,10 +56,12 @@ export interface DashboardInput {
   needSubmissionsCount?: number;
   reassessmentsCount?: number;
   pageViewsCount?: number;
+  funnelEventsCount?: number;
   assessments: DashboardAssessmentRow[];
   emailEvents: DashboardEmailEventRow[];
   needSubmissions: DashboardNeedSubmissionRow[];
   pageEvents?: DashboardPageEventRow[];
+  funnelEvents?: DashboardFunnelEventRow[];
   analytics: {
     plausibleConfigured: boolean;
     ga4Configured: boolean;
@@ -66,6 +80,7 @@ export interface DashboardSummary {
     needSubmissions: number;
     reassessments: number;
     pageViews: number;
+    funnelEvents: number;
   };
   riskCounts: CountMap;
   lowDimensionCounts: CountMap;
@@ -78,6 +93,9 @@ export interface DashboardSummary {
   signalQuality: Record<SignalSourceType, number>;
   pageViewSourceCounts: CountMap;
   pageViewQuality: Record<SignalSourceType, number>;
+  funnelEventCounts: CountMap;
+  funnelEventSourceCounts: CountMap;
+  funnelEventQuality: Record<SignalSourceType, number>;
   recentPageViews: Array<{
     createdAt: string | null;
     path: string | null;
@@ -85,6 +103,17 @@ export interface DashboardSummary {
     sourceType: SignalSourceType;
     campaign: string | null;
     content: string | null;
+  }>;
+  recentFunnelEvents: Array<{
+    createdAt: string | null;
+    eventName: string | null;
+    path: string | null;
+    source: string | null;
+    sourceType: SignalSourceType;
+    campaign: string | null;
+    content: string | null;
+    riskLevel: string | null;
+    totalScore: number | null;
   }>;
   recentEmailEvents: Array<{
     createdAt: string | null;
@@ -132,12 +161,19 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
   const realSourceCounts: CountMap = {};
   const testSourceCounts: CountMap = {};
   const pageViewSourceCounts: CountMap = {};
+  const funnelEventCounts: CountMap = {};
+  const funnelEventSourceCounts: CountMap = {};
   const signalQuality: Record<SignalSourceType, number> = {
     real: 0,
     test: 0,
     unattributed: 0,
   };
   const pageViewQuality: Record<SignalSourceType, number> = {
+    real: 0,
+    test: 0,
+    unattributed: 0,
+  };
+  const funnelEventQuality: Record<SignalSourceType, number> = {
     real: 0,
     test: 0,
     unattributed: 0,
@@ -193,6 +229,16 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
     if (source && sourceType === 'real') increment(pageViewSourceCounts, source);
   }
 
+  const funnelEvents = input.funnelEvents ?? [];
+  for (const event of funnelEvents) {
+    if (event.event_name) increment(funnelEventCounts, event.event_name);
+
+    const source = getFunnelEventSource(event);
+    const sourceType = classifySource(source);
+    funnelEventQuality[sourceType] += 1;
+    if (source && sourceType === 'real') increment(funnelEventSourceCounts, source);
+  }
+
   return {
     analytics: input.analytics,
     totals: {
@@ -216,6 +262,7 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
           Boolean(assessment.reassessment_of),
         ).length,
       pageViews: input.pageViewsCount ?? pageEvents.length,
+      funnelEvents: input.funnelEventsCount ?? funnelEvents.length,
     },
     riskCounts,
     lowDimensionCounts,
@@ -228,6 +275,9 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
     signalQuality,
     pageViewSourceCounts,
     pageViewQuality,
+    funnelEventCounts,
+    funnelEventSourceCounts,
+    funnelEventQuality,
     recentPageViews: pageEvents.slice(0, 12).map((event) => {
       const source = getPageViewSource(event);
       return {
@@ -237,6 +287,20 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
         sourceType: classifySource(source),
         campaign: stringOrNull(event.utm_campaign),
         content: stringOrNull(event.utm_content),
+      };
+    }),
+    recentFunnelEvents: funnelEvents.slice(0, 12).map((event) => {
+      const source = getFunnelEventSource(event);
+      return {
+        createdAt: event.created_at,
+        eventName: event.event_name,
+        path: event.path,
+        source,
+        sourceType: classifySource(source),
+        campaign: stringOrNull(event.utm_campaign),
+        content: stringOrNull(event.utm_content),
+        riskLevel: getMetadataString(event.metadata, 'riskLevel'),
+        totalScore: getMetadataNumber(event.metadata, 'totalScore'),
       };
     }),
     recentEmailEvents: input.emailEvents.slice(0, 12).map((event) => ({
@@ -268,6 +332,10 @@ function getPageViewSource(event: DashboardPageEventRow): string | null {
   } catch {
     return 'referral';
   }
+}
+
+function getFunnelEventSource(event: DashboardFunnelEventRow): string | null {
+  return getPageViewSource(event);
 }
 
 function increment(map: CountMap, key: string): void {
@@ -363,6 +431,17 @@ function getEventUtmSource(payload: unknown): string | null {
 function getEventRiskLevel(payload: unknown): string | null {
   const data = asRecord(payload);
   return stringOrNull(data?.risk_level);
+}
+
+function getMetadataString(metadata: unknown, key: string): string | null {
+  const data = asRecord(metadata);
+  return stringOrNull(data?.[key]);
+}
+
+function getMetadataNumber(metadata: unknown, key: string): number | null {
+  const data = asRecord(metadata);
+  const value = data?.[key];
+  return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }
 
 function stringOrNull(value: unknown): string | null {

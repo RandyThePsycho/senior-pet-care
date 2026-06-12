@@ -134,6 +134,35 @@ create index if not exists page_events_utm_source_idx
   on page_events(utm_source);
 
 -- ---------------------------------------------------------------------------
+-- funnel_events：轻量 first-party 漏斗事件。
+-- 仅用于判断外部渠道带来的用户是否进入 Feature A 核心动作；
+-- 不存邮箱、petId、assessmentId、report/journal token 或私密 URL。
+-- ---------------------------------------------------------------------------
+create table if not exists funnel_events (
+  id            uuid primary key default gen_random_uuid(),
+  event_name    text not null,
+  path          text not null,
+  referrer      text,
+  utm_source    text,
+  utm_medium    text,
+  utm_campaign  text,
+  utm_content   text,
+  metadata      jsonb not null default '{}'::jsonb,
+  created_at    timestamptz not null default now()
+);
+
+alter table funnel_events enable row level security;
+
+create index if not exists funnel_events_created_at_idx
+  on funnel_events(created_at desc);
+create index if not exists funnel_events_event_name_idx
+  on funnel_events(event_name);
+create index if not exists funnel_events_utm_source_idx
+  on funnel_events(utm_source);
+create index if not exists funnel_events_utm_content_idx
+  on funnel_events(utm_content);
+
+-- ---------------------------------------------------------------------------
 -- TODO（下一阶段）：用 email_events + assessments 计算 7-day re-assessment rate。
 --   思路：
 --   1) 分母 = 留资用户数：count(distinct user_id) from email_events where event_type='subscribe'

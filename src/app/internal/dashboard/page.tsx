@@ -4,6 +4,7 @@ import {
   buildDashboardSummary,
   type DashboardAssessmentRow,
   type DashboardEmailEventRow,
+  type DashboardFunnelEventRow,
   type DashboardNeedSubmissionRow,
   type DashboardPageEventRow,
   type DashboardSummary,
@@ -47,6 +48,7 @@ const METRIC_LABELS = {
   needSubmissions: 'Need submissions',
   emailEvents: 'Email event rows',
   pageViews: 'Page views',
+  funnelEvents: 'Funnel events',
 } as const;
 
 const RISK_LABELS: Record<string, string> = {
@@ -146,11 +148,23 @@ export default async function InternalDashboardPage({
               in Supabase SQL Editor.
             </p>
           ) : null}
+          {issues.some((issue) => issue.label === 'funnel_events') ? (
+            <p className="mt-3 max-w-3xl text-navy-500">
+              To enable first-party funnel storage, run
+              {' '}
+              <code className="rounded bg-cream-100 px-1 py-0.5 text-navy-700">
+                supabase/migrations/20260612_add_funnel_events.sql
+              </code>
+              {' '}
+              in Supabase SQL Editor.
+            </p>
+          ) : null}
         </section>
       ) : null}
 
       <AnalyticsStatus summary={summary} />
       <PageViewSignalPanel summary={summary} />
+      <FunnelSignalPanel summary={summary} />
       <GrowthSignalPanel summary={summary} />
       <MetricGrid summary={summary} />
 
@@ -175,6 +189,16 @@ export default async function InternalDashboardPage({
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
+        <DistributionPanel
+          title="Funnel events"
+          emptyLabel="No funnel events yet"
+          counts={summary.funnelEventCounts}
+        />
+        <DistributionPanel
+          title="Funnel sources"
+          emptyLabel="No attributed funnel events yet"
+          counts={summary.funnelEventSourceCounts}
+        />
         <DistributionPanel
           title="All sources"
           emptyLabel="No source signals yet"
@@ -209,6 +233,7 @@ export default async function InternalDashboardPage({
 
       <div className="grid gap-4 xl:grid-cols-2">
         <RecentPageViews pageViews={summary.recentPageViews} />
+        <RecentFunnelEvents events={summary.recentFunnelEvents} />
         <RecentEmailEvents events={summary.recentEmailEvents} />
         <RecentNeedSubmissions submissions={summary.recentNeedSubmissions} />
       </div>
@@ -232,10 +257,12 @@ async function loadDashboardData(): Promise<{
     mailerLiteSucceededCount,
     needSubmissionsCount,
     pageViewsCount,
+    funnelEventsCount,
     assessments,
     emailEvents,
     needSubmissions,
     pageEvents,
+    funnelEvents,
   ] = await Promise.all([
     countTable(supabase, 'users'),
     countTable(supabase, 'pets'),
@@ -251,6 +278,7 @@ async function loadDashboardData(): Promise<{
     ),
     countTable(supabase, 'need_submissions'),
     countTable(supabase, 'page_events'),
+    countTable(supabase, 'funnel_events'),
     selectRows<DashboardAssessmentRow>(
       supabase,
       'assessments',
@@ -275,6 +303,12 @@ async function loadDashboardData(): Promise<{
       'created_at, path, referrer, utm_source, utm_medium, utm_campaign, utm_content',
       300,
     ),
+    selectRows<DashboardFunnelEventRow>(
+      supabase,
+      'funnel_events',
+      'created_at, event_name, path, referrer, utm_source, utm_medium, utm_campaign, utm_content, metadata',
+      300,
+    ),
   ]);
 
   const issues = [
@@ -287,10 +321,12 @@ async function loadDashboardData(): Promise<{
     mailerLiteSucceededCount.issue,
     needSubmissionsCount.issue,
     pageViewsCount.issue,
+    funnelEventsCount.issue,
     assessments.issue,
     emailEvents.issue,
     needSubmissions.issue,
     pageEvents.issue,
+    funnelEvents.issue,
   ].filter((issue): issue is QueryIssue => Boolean(issue));
 
   return {
@@ -305,10 +341,12 @@ async function loadDashboardData(): Promise<{
       mailerLiteSucceededCount: mailerLiteSucceededCount.count,
       needSubmissionsCount: needSubmissionsCount.count,
       pageViewsCount: pageViewsCount.count,
+      funnelEventsCount: funnelEventsCount.count,
       assessments: assessments.rows,
       emailEvents: emailEvents.rows,
       needSubmissions: needSubmissions.rows,
       pageEvents: pageEvents.rows,
+      funnelEvents: funnelEvents.rows,
       analytics: {
         plausibleConfigured: Boolean(process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN),
         ga4Configured: Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID),
@@ -497,6 +535,32 @@ function PageViewSignalPanel({ summary }: { summary: DashboardSummary }) {
   );
 }
 
+function FunnelSignalPanel({ summary }: { summary: DashboardSummary }) {
+  const { real, test, unattributed } = summary.funnelEventQuality;
+
+  return (
+    <section className="rounded-lg border border-navy-200 bg-white/88 p-5 shadow-inset">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h2 className="text-base font-semibold text-navy-800">
+            Funnel attribution
+          </h2>
+          <p className="mt-1 text-sm leading-6 text-navy-500">
+            {summary.totals.funnelEvents > 0
+              ? 'Feature A actions are stored as aggregate events, making channel quality measurable beyond raw visits.'
+              : 'No funnel events are stored yet. Run the funnel_events SQL migration and complete a calculator flow to populate this view.'}
+          </p>
+        </div>
+        <dl className="grid min-w-full grid-cols-3 gap-2 sm:min-w-[26rem]">
+          <SignalStat label="Real" value={real} tone="real" />
+          <SignalStat label="Test" value={test} tone="test" />
+          <SignalStat label="Unattributed" value={unattributed} tone="neutral" />
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 function StatusBadge({ label, active }: { label: string; active: boolean }) {
   return (
     <span
@@ -567,6 +631,7 @@ function SignalStat({
 function MetricGrid({ summary }: { summary: DashboardSummary }) {
   const metrics = [
     { key: 'pageViews', value: summary.totals.pageViews },
+    { key: 'funnelEvents', value: summary.totals.funnelEvents },
     { key: 'users', value: summary.totals.users },
     { key: 'pets', value: summary.totals.pets },
     { key: 'assessments', value: summary.totals.assessments },
@@ -595,6 +660,67 @@ function MetricGrid({ summary }: { summary: DashboardSummary }) {
           </p>
         </article>
       ))}
+    </section>
+  );
+}
+
+function RecentFunnelEvents({
+  events,
+}: {
+  events: DashboardSummary['recentFunnelEvents'];
+}) {
+  return (
+    <section className="rounded-lg border border-navy-200 bg-white/88 p-5 shadow-inset">
+      <h2 className="text-base font-semibold text-navy-800">
+        Recent funnel events
+      </h2>
+      {events.length > 0 ? (
+        <div className="mt-4 overflow-x-auto">
+          <table className="min-w-full text-left text-sm">
+            <thead className="text-xs uppercase tracking-[0.12em] text-navy-400">
+              <tr>
+                <th className="pb-2 pr-4 font-semibold">Time</th>
+                <th className="pb-2 pr-4 font-semibold">Event</th>
+                <th className="pb-2 pr-4 font-semibold">Source</th>
+                <th className="pb-2 pr-4 font-semibold">Risk</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-navy-100">
+              {events.map((event, index) => (
+                <tr key={`${event.createdAt}-${event.eventName}-${index}`}>
+                  <td className="py-2 pr-4 text-navy-400">
+                    {formatDate(event.createdAt)}
+                  </td>
+                  <td className="py-2 pr-4 text-navy-600">
+                    {event.eventName ? humanizeKey(event.eventName) : 'unknown'}
+                    <span className="ml-1 text-navy-300">
+                      / {event.path ?? 'unknown path'}
+                    </span>
+                  </td>
+                  <td className="py-2 pr-4 text-navy-600">
+                    {event.source ?? 'unknown'}
+                    <span className="ml-1 text-navy-300">
+                      / {event.sourceType}
+                    </span>
+                  </td>
+                  <td className="py-2 pr-4 text-navy-600">
+                    {event.riskLevel ? humanizeKey(event.riskLevel) : 'n/a'}
+                    {typeof event.totalScore === 'number' ? (
+                      <span className="ml-1 text-navy-300">
+                        / {event.totalScore}
+                      </span>
+                    ) : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p className="mt-4 text-sm text-navy-400">
+          No funnel events are stored yet.
+        </p>
+      )}
     </section>
   );
 }

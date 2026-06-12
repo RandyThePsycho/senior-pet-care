@@ -59,6 +59,7 @@ export function track(
 
   window.plausible?.(event, { props: enrichedProps });
   window.gtag?.('event', event, enrichedProps);
+  sendFunnelEvent(event, enrichedProps);
 }
 
 function getLaunchAttributionProps(): Record<string, unknown> {
@@ -78,4 +79,39 @@ function getLaunchAttributionProps(): Record<string, unknown> {
     last_utm_content: snapshot.last.utmContent,
     last_referrer: snapshot.last.referrer,
   };
+}
+
+function sendFunnelEvent(
+  event: AnalyticsEvent,
+  props: Record<string, unknown>,
+): void {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      eventName: event,
+      path: window.location.pathname,
+      referrer: document.referrer || textProp(props.last_referrer),
+      utmSource: params.get('utm_source') || textProp(props.last_utm_source),
+      utmMedium: params.get('utm_medium') || textProp(props.last_utm_medium),
+      utmCampaign:
+        params.get('utm_campaign') || textProp(props.last_utm_campaign),
+      utmContent: params.get('utm_content') || textProp(props.last_utm_content),
+      props,
+    };
+
+    void fetch('/api/analytics/funnel-event', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {
+      // Best-effort analytics should never affect the assessment flow.
+    });
+  } catch {
+    // Ignore browser/runtime edge cases.
+  }
+}
+
+function textProp(value: unknown): string | null {
+  return typeof value === 'string' && value.trim() ? value : null;
 }
