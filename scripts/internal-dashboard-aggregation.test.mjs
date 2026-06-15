@@ -170,7 +170,12 @@ const summary = buildDashboardSummary({
       utm_medium: 'social',
       utm_campaign: 'feature_a_quality_life',
       utm_content: 'night_waking_reply',
-      metadata: { riskLevel: 'needs_monitoring', email: 'hidden@example.com' },
+      metadata: {
+        guide: 'senior-dog-night-waking-log',
+        intent: 'caregiver_sustainability',
+        riskLevel: 'needs_monitoring',
+        email: 'hidden@example.com',
+      },
     },
     {
       created_at: '2026-06-05T11:05:00.000Z',
@@ -305,6 +310,8 @@ assert.deepEqual(summary.recentFunnelEvents[0], {
   sourceType: 'real',
   campaign: 'feature_a_quality_life',
   content: 'night_waking_reply',
+  guide: 'senior-dog-night-waking-log',
+  intent: 'caregiver_sustainability',
   riskLevel: 'needs_monitoring',
   totalScore: null,
 });

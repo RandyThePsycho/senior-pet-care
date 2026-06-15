@@ -112,6 +112,8 @@ export interface DashboardSummary {
     sourceType: SignalSourceType;
     campaign: string | null;
     content: string | null;
+    guide: string | null;
+    intent: string | null;
     riskLevel: string | null;
     totalScore: number | null;
   }>;
@@ -299,6 +301,8 @@ export function buildDashboardSummary(input: DashboardInput): DashboardSummary {
         sourceType: classifySource(source),
         campaign: stringOrNull(event.utm_campaign),
         content: stringOrNull(event.utm_content),
+        guide: getMetadataString(event.metadata, 'guide'),
+        intent: getMetadataString(event.metadata, 'intent'),
         riskLevel: getMetadataString(event.metadata, 'riskLevel'),
         totalScore: getMetadataNumber(event.metadata, 'totalScore'),
       };

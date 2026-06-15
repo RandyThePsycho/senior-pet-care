@@ -682,6 +682,7 @@ function RecentFunnelEvents({
                 <th className="pb-2 pr-4 font-semibold">Time</th>
                 <th className="pb-2 pr-4 font-semibold">Event</th>
                 <th className="pb-2 pr-4 font-semibold">Source</th>
+                <th className="pb-2 pr-4 font-semibold">Context</th>
                 <th className="pb-2 pr-4 font-semibold">Risk</th>
               </tr>
             </thead>
@@ -702,6 +703,14 @@ function RecentFunnelEvents({
                     <span className="ml-1 text-navy-300">
                       / {event.sourceType}
                     </span>
+                  </td>
+                  <td className="py-2 pr-4 text-navy-600">
+                    {event.intent ? humanizeKey(event.intent) : 'n/a'}
+                    {event.guide ? (
+                      <span className="ml-1 text-navy-300">
+                        / {humanizeKey(event.guide)}
+                      </span>
+                    ) : null}
                   </td>
                   <td className="py-2 pr-4 text-navy-600">
                     {event.riskLevel ? humanizeKey(event.riskLevel) : 'n/a'}
