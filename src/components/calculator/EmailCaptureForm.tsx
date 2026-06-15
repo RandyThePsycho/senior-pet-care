@@ -156,10 +156,11 @@ export default function EmailCaptureForm({
     return (
       <div className="rounded-lg border border-sage-200 bg-sage-50 p-6 shadow-sm shadow-sage-700/10">
         <p className="font-display text-2xl leading-tight text-navy-800">
-          Your report is ready.
+          Your report and journal are ready.
         </p>
         <p className="mt-2 leading-7 text-navy-600">
-          We&apos;ll also remind you to reassess {safeName} in 7 days.
+          Use the report for vet questions now, then come back to the journal
+          to reassess {safeName} in 7 days.
         </p>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
@@ -190,11 +191,23 @@ export default function EmailCaptureForm({
   return (
     <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
       <h3 className="font-display text-2xl leading-tight text-navy-800">
-        Email me my full report
+        Get the printable report and 7-day journal
       </h3>
       <p className="mt-2 text-sm leading-6 text-navy-500">
-        Includes a printable 7-day tracker and questions to bring to your vet.
+        We&apos;ll create a report with {safeName}&apos;s score summary,
+        lower-scoring areas, vet questions, and a 7-day reassessment link.
       </p>
+      <ul className="mt-4 grid gap-2 text-sm text-navy-600 sm:grid-cols-3">
+        <li className="rounded-lg bg-cream-100 px-3 py-2">
+          Printable vet-prep summary
+        </li>
+        <li className="rounded-lg bg-cream-100 px-3 py-2">
+          Care journal link
+        </li>
+        <li className="rounded-lg bg-cream-100 px-3 py-2">
+          7-day reassessment reminder
+        </li>
+      </ul>
       <div className="mt-4">
         <DataPrivacyNote compact />
       </div>
@@ -209,7 +222,7 @@ export default function EmailCaptureForm({
           className="flex-1 rounded-lg border border-navy-200 bg-white px-4 py-3 text-navy-700 transition-colors focus:border-sage-500 focus:outline-none focus:ring-2 focus:ring-sage-300 disabled:opacity-60"
         />
         <CTAButton onClick={handleSubmit} disabled={submitting}>
-          {submitting ? 'Sending…' : 'Send my report'}
+          {submitting ? 'Sending…' : 'Send report and journal'}
         </CTAButton>
       </div>
       {error && <p className="mt-2 text-sm text-clay-600">{error}</p>}

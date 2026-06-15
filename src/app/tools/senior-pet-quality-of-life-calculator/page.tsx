@@ -8,14 +8,14 @@ import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
   description:
-    'A free, gentle quality-of-life calculator for aging or senior dogs and cats. Organize what you are noticing and prepare better questions for your vet.',
+    'A free, gentle quality-of-life calculator for aging or senior dogs and cats. Create a printable score summary, vet questions, and a 7-day follow-up journal.',
   alternates: {
     canonical: '/tools/senior-pet-quality-of-life-calculator',
   },
   openGraph: {
     title: 'Pet Quality of Life Calculator (HHHHHMM Scale)',
     description:
-      'Use a gentle HHHHHMM-based calculator to organize changes, prepare vet questions, and create a 7-day follow-up journal.',
+      'Use a gentle HHHHHMM-based calculator to organize changes, prepare vet questions, and create a printable report with a 7-day follow-up journal.',
     url: '/tools/senior-pet-quality-of-life-calculator',
     siteName: SITE_NAME,
     images: [
@@ -54,8 +54,9 @@ export default function CalculatorPage() {
               Pet Quality of Life Calculator
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-navy-600">
-              Based on the HHHHHMM scale, a framework often used to reflect on
-              a senior pet&apos;s comfort and wellbeing.
+              In about 3 minutes, turn what you are noticing into a score
+              summary, vet questions, a printable report, and a 7-day follow-up
+              journal.
             </p>
           </div>
           <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 text-sm leading-6 text-navy-500 shadow-sm">
@@ -72,15 +73,19 @@ export default function CalculatorPage() {
                 AFTER SUBMIT
               </p>
               <ul className="mt-3 space-y-2 text-sm text-navy-600">
-                <li>Printable report</li>
-                <li>Vet questions</li>
-                <li>7-day journal link</li>
+                <li>Printable score summary</li>
+                <li>Vet questions based on lower-scoring areas</li>
+                <li>7-day reassessment and care journal link</li>
               </ul>
             </div>
           </aside>
         </header>
 
         <section className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-soft sm:p-8">
+          <div className="mb-6 rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
+            Step 1 of 3: pet basics, HHHHHMM ratings, then symptoms. Email is
+            optional after results if you want the report and journal links.
+          </div>
           <CalculatorClient />
         </section>
 
