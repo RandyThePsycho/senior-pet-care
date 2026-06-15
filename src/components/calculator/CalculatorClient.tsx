@@ -1,7 +1,7 @@
 // src/components/calculator/CalculatorClient.tsx
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { PetProfile } from '@/types/pet';
 import type {
   AssessmentInput,
@@ -34,6 +34,27 @@ const EMPTY_PROFILE: PetProfile = {
   conditions: [],
 };
 
+type CalculatorEntryContext = {
+  guide?: string;
+  intent?: string;
+};
+
+function readCalculatorEntryContext(
+  params: URLSearchParams,
+): CalculatorEntryContext {
+  return {
+    guide: safeContextParam(params.get('guide')),
+    intent: safeContextParam(params.get('intent')),
+  };
+}
+
+function safeContextParam(value: string | null): string | undefined {
+  if (!value) return undefined;
+
+  const trimmed = value.trim().slice(0, 80);
+  return /^[a-z0-9_-]+$/i.test(trimmed) ? trimmed : undefined;
+}
+
 export default function CalculatorClient() {
   const [step, setStep] = useState(1); // 1,2,3 = 表单步骤；4 = 结果页
   const [profile, setProfile] = useState<PetProfile>(EMPTY_PROFILE);
@@ -43,12 +64,16 @@ export default function CalculatorClient() {
   const [finalInput, setFinalInput] = useState<AssessmentInput | null>(null);
   const [reassessmentContext, setReassessmentContext] =
     useState<ReassessmentContext>({});
+  const entryContextRef = useRef<CalculatorEntryContext>({});
 
   // 进入计算器即埋点；若来自复评链接（URL 含 reassessment 参数）解析上下文并额外埋点
   useEffect(() => {
-    track('calculator_started', {});
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
+      const entryContext = readCalculatorEntryContext(params);
+      entryContextRef.current = entryContext;
+      track('calculator_started', entryContext);
+
       const petId = params.get('petId') ?? undefined;
       const reassessment = params.get('reassessment') ?? undefined;
       const source = params.get('source') ?? undefined;
@@ -65,27 +90,38 @@ export default function CalculatorClient() {
 
       if (reassessment) {
         track('reassessment_started', {
+          ...entryContext,
           mode: reassessment, // '7d' | 'manual' | ...
           petId,
           source,
           reassessmentOf,
         });
       }
+
+      return;
     }
+
+    track('calculator_started', {});
   }, []);
 
   function handleProfileNext() {
-    track('pet_profile_completed', { petType: profile.petType });
+    track('pet_profile_completed', {
+      ...entryContextRef.current,
+      petType: profile.petType,
+    });
     setStep(2);
   }
 
   function handleScoresNext() {
-    track('scores_completed', {});
+    track('scores_completed', entryContextRef.current);
     setStep(3);
   }
 
   function handleSubmit() {
-    track('symptoms_completed', { count: symptoms.length });
+    track('symptoms_completed', {
+      ...entryContextRef.current,
+      count: symptoms.length,
+    });
 
     // 此处 scores 已保证全部非 null（Step 2 校验过），安全断言为 number
     const numericScores = DIMENSIONS.reduce((acc, d) => {
@@ -105,6 +141,7 @@ export default function CalculatorClient() {
     setFinalInput(input);
     setResult(r);
     track('calculator_completed', {
+      ...entryContextRef.current,
       totalScore: r.totalScore,
       riskLevel: r.riskLevel,
     });
@@ -123,7 +160,10 @@ export default function CalculatorClient() {
     setResult(null);
     setFinalInput(null);
     setStep(1);
-    track('calculator_started', { restarted: true });
+    track('calculator_started', {
+      ...entryContextRef.current,
+      restarted: true,
+    });
   }
 
   return (

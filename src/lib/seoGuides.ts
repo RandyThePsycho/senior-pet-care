@@ -132,10 +132,10 @@ export const SEO_GUIDES: SeoGuide[] = [
       },
     ],
     ctaHref:
-      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-night-waking-log',
-    ctaLabel: 'Start a 7-day senior dog check-in',
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-night-waking-log&intent=caregiver_sustainability',
+    ctaLabel: 'Start a night-waking check-in',
     nextStepBody:
-      'Use the night notes as a starting point, then turn the broader comfort, appetite, mobility, mood, and good-day pattern into a printable quality-of-life report.',
+      'Use the overnight notes and your own sleep limits as a starting point, then turn the broader comfort, appetite, mobility, mood, and good-day pattern into a printable quality-of-life report and 7-day follow-up.',
   },
   {
     slug: 'senior-dog-low-appetite-log',

@@ -54,3 +54,15 @@ assert.match(
   /caregiver sustainability/i,
   'Expected night-waking guide to address caregiver sustainability.',
 );
+
+assert.match(
+  guideSource,
+  /intent=caregiver_sustainability/,
+  'Expected night-waking guide CTA to preserve the caregiver sustainability intent.',
+);
+
+assert.match(
+  guideSource,
+  /Start a night-waking check-in/,
+  'Expected night-waking guide CTA to match the high-intent entry path.',
+);
