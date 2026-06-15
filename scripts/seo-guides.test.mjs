@@ -14,6 +14,14 @@ const guides = [
     slug: 'older-pet-vet-visit-notes',
     title: 'What to Track Before a Vet Visit for an Older Pet',
   },
+  {
+    slug: 'senior-dog-night-waking-log',
+    title: 'Senior Dog Night-Waking Log',
+  },
+  {
+    slug: 'senior-dog-low-appetite-log',
+    title: 'Senior Dog Low Appetite Log',
+  },
 ];
 
 assert.ok(
@@ -40,3 +48,9 @@ for (const guide of guides) {
   assert.match(pageSource, /generateMetadata/);
   assert.match(sitemapSource, new RegExp(route));
 }
+
+assert.match(
+  guideSource,
+  /caregiver sustainability/i,
+  'Expected night-waking guide to address caregiver sustainability.',
+);

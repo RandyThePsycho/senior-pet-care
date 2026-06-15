@@ -80,14 +80,14 @@ export const SEO_GUIDES: SeoGuide[] = [
     slug: 'senior-dog-night-waking-log',
     title: 'Senior Dog Night-Waking Log',
     description:
-      'A simple senior dog night-waking log for tracking barking, pacing, water, potty needs, appetite, mobility, comfort, and what helps them settle.',
+      'A simple senior dog night-waking log for tracking barking, pacing, water, potty needs, caregiver sleep disruption, comfort, and what helps them settle.',
     eyebrow: 'Night-waking log',
     h1: 'Senior Dog Night-Waking Log',
     intro:
-      'When an older dog starts waking, barking, pacing, or needing help at night, the details blur quickly. A short, consistent log can make the next vet conversation clearer.',
+      'When an older dog starts waking, barking, pacing, or needing help at night, the details blur quickly, especially when everyone is short on sleep. A short, consistent log can make the next vet conversation clearer.',
     audience:
-      'For families whose senior dog has started waking, barking, pacing, seeming unsettled, or needing more support overnight.',
-    lastUpdated: '2026-06-12',
+      'For families whose senior dog has started waking, barking, pacing, seeming unsettled, or needing more overnight support while the caregiver is also losing sleep.',
+    lastUpdated: '2026-06-15',
     checklistTitle: 'What to write down overnight',
     checklist: [
       'Time: when the waking, barking, pacing, or whining started and how long it lasted.',
@@ -96,18 +96,21 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Movement: pacing route, slipping, trouble standing, stairs, circling, or difficulty settling back down.',
       'Comfort signs: panting, trembling, restlessness, licking, guarding, or not wanting to lie down.',
       'Food and water: appetite that day, evening snacks, extra drinking, or overnight water trips.',
+      'Caregiver sustainability: how many times you woke up, how fragmented your sleep was, whether anyone can cover a night, and whether the routine is becoming unsafe.',
       'What helped: lights, a calmer room, a potty break, water, a different bed, company, or nothing obvious.',
     ],
     notesTitle: 'How to keep the log useful',
     notes: [
       'Use the same short fields for several nights instead of rewriting the whole story each time.',
       'Separate what you saw from what you think caused it. "Paced kitchen to hallway for 20 minutes" is more useful than guessing.',
+      'Include your own sleep and safety limits without shame. That context helps your veterinarian understand the real home routine.',
       'Do not use a 7-day log to delay care if your dog seems suddenly distressed, weak, painful, or very different from normal.',
       SHARED_BOUNDARY,
     ],
     vetQuestions: [
       'Which night-waking details are most useful for you to review?',
       'Should we check pain, vision, hearing, anxiety, bathroom needs, appetite, or cognitive changes?',
+      'What options are realistic if both my dog\'s comfort and my ability to keep caring safely are getting worse?',
       'Are there signs that would mean we should contact you sooner than our planned follow-up?',
       'Would a 7-day quality-of-life check-in help us compare this week with next week?',
     ],
@@ -121,6 +124,11 @@ export const SEO_GUIDES: SeoGuide[] = [
         question: 'What should I track if my old dog barks at night?',
         answer:
           'Track the time, duration, pacing or confusion, water or potty needs, appetite, comfort, mobility, light level, and what helped your dog settle.',
+      },
+      {
+        question: 'Should I tell the vet that I am exhausted too?',
+        answer:
+          'Yes. Broken sleep, stairs, heavy lifting, and lack of backup help can affect what is realistic at home. Sharing that context is not selfish; it helps the veterinarian discuss a plan that considers both your dog\'s comfort and safe caregiving.',
       },
     ],
     ctaHref:
