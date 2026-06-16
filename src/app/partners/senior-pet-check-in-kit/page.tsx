@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import CTAButton from '@/components/common/CTAButton';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
+import PartnerKitSharePanel from '@/components/partners/PartnerKitSharePanel';
 import { DEFAULT_OG_IMAGE, SITE_NAME } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -27,33 +27,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
-const SHARE_RESOURCES = [
-  {
-    label: 'Senior dog checklist',
-    href: '/guides/senior-dog-quality-of-life-checklist?utm_source=partner&utm_medium=referral&utm_campaign=senior_pet_checkin_kit&utm_content=senior_dog_checklist',
-    description:
-      'A weekly way to notice comfort, appetite, mobility, mood, and good days vs. hard days.',
-  },
-  {
-    label: 'Senior cat checklist',
-    href: '/guides/senior-cat-quality-of-life-checklist?utm_source=partner&utm_medium=referral&utm_campaign=senior_pet_checkin_kit&utm_content=senior_cat_checklist',
-    description:
-      'A gentle checklist for appetite, water, litter box changes, grooming, jumping, hiding, and sleep.',
-  },
-  {
-    label: 'Vet visit notes',
-    href: '/guides/older-pet-vet-visit-notes?utm_source=partner&utm_medium=referral&utm_campaign=senior_pet_checkin_kit&utm_content=vet_visit_notes',
-    description:
-      'A simple prompt for organizing what changed, when it started, and what to ask the vet.',
-  },
-  {
-    label: 'Quality-of-life calculator',
-    href: '/tools/senior-pet-quality-of-life-calculator?utm_source=partner&utm_medium=referral&utm_campaign=senior_pet_checkin_kit&utm_content=calculator',
-    description:
-      'A printable HHHHHMM-based report and 7-day follow-up journal for senior pet families.',
-  },
-];
 
 const PARTNER_TYPES = [
   'Senior dog and cat rescues',
@@ -101,7 +74,8 @@ export default function SeniorPetCheckInKitPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-navy-600">
               Share calm checklists, vet-visit notes, and a printable
               quality-of-life calculator with families caring for older dogs
-              and cats.
+              and cats. Review the kit first, then forward one family-facing
+              link when it fits your audience.
             </p>
           </div>
 
@@ -117,38 +91,7 @@ export default function SeniorPetCheckInKitPage() {
           </aside>
         </header>
 
-        <section className="mt-10 rounded-lg border border-sage-200 bg-sage-50/80 p-6 shadow-sm shadow-sage-700/5 sm:p-7">
-          <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
-            PRIMARY LINK
-          </p>
-          <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
-            <p className="max-w-2xl leading-7 text-navy-600">
-              Use this link when you want one simple destination for families:
-              the calculator creates a report and points them into the 7-day
-              follow-up loop.
-            </p>
-            <CTAButton href="/tools/senior-pet-quality-of-life-calculator?utm_source=partner&utm_medium=referral&utm_campaign=senior_pet_checkin_kit&utm_content=primary_cta">
-              Open the calculator
-            </CTAButton>
-          </div>
-        </section>
-
-        <section className="mt-8 grid gap-4 md:grid-cols-2">
-          {SHARE_RESOURCES.map((resource) => (
-            <Link
-              key={resource.href}
-              href={resource.href}
-              className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-200 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
-            >
-              <h2 className="font-display text-2xl leading-tight text-navy-800">
-                {resource.label}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-navy-500">
-                {resource.description}
-              </p>
-            </Link>
-          ))}
-        </section>
+        <PartnerKitSharePanel />
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="rounded-lg border border-navy-100 bg-white/90 p-6 shadow-sm shadow-navy-800/5">
