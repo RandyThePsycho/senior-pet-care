@@ -28,9 +28,10 @@ const tempDir = mkdtempSync(join(tmpdir(), 'senior-pet-analytics-request-'));
 const compiledPath = join(tempDir, 'analyticsRequest.mjs');
 writeFileSync(compiledPath, compiled.outputText);
 
-const { shouldSkipAnalyticsPersistence } = await import(
-  pathToFileURL(compiledPath)
-);
+const {
+  shouldSkipAnalyticsPersistence,
+  shouldSkipSyntheticAnalyticsSource,
+} = await import(pathToFileURL(compiledPath));
 
 assert.equal(
   shouldSkipAnalyticsPersistence(
@@ -83,4 +84,22 @@ assert.equal(
   ),
   true,
   'local forwarded hosts should not persist to Supabase',
+);
+
+assert.equal(
+  shouldSkipSyntheticAnalyticsSource({
+    utmSource: 'codex_local',
+    utmCampaign: 'local_verification',
+  }),
+  true,
+  'synthetic local verification analytics should not persist on production',
+);
+
+assert.equal(
+  shouldSkipSyntheticAnalyticsSource({
+    utmSource: 'partner_outreach',
+    utmCampaign: 'senior_pet_checkin_kit',
+  }),
+  false,
+  'real partner outreach analytics should still persist',
 );

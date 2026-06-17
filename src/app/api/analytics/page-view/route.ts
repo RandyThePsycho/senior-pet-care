@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
-import { shouldSkipAnalyticsPersistence } from '@/lib/analyticsRequest';
+import {
+  shouldSkipAnalyticsPersistence,
+  shouldSkipSyntheticAnalyticsSource,
+} from '@/lib/analyticsRequest';
 import { normalizePageViewPayload } from '@/lib/pageViewEvent';
 import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase/server';
 
@@ -34,6 +37,19 @@ export async function POST(request: Request) {
       ok: true,
       persisted: false,
       skipped: 'local_analytics_request',
+    });
+  }
+
+  if (
+    shouldSkipSyntheticAnalyticsSource({
+      utmSource: normalized.data.utm_source,
+      utmCampaign: normalized.data.utm_campaign,
+    })
+  ) {
+    return NextResponse.json({
+      ok: true,
+      persisted: false,
+      skipped: 'synthetic_analytics_request',
     });
   }
 

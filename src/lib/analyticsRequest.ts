@@ -1,4 +1,6 @@
 const LOCAL_HOSTS = new Set(['localhost', '0.0.0.0', '::1']);
+const SYNTHETIC_UTM_SOURCES = new Set(['codex_local']);
+const SYNTHETIC_UTM_CAMPAIGNS = new Set(['local_verification']);
 
 export function shouldSkipAnalyticsPersistence(request: Request): boolean {
   const candidates = [
@@ -11,6 +13,21 @@ export function shouldSkipAnalyticsPersistence(request: Request): boolean {
 
   return candidates.some((candidate) =>
     hostnamesFrom(candidate).some(isLocalHostname),
+  );
+}
+
+export function shouldSkipSyntheticAnalyticsSource({
+  utmSource,
+  utmCampaign,
+}: {
+  utmSource: string | null;
+  utmCampaign?: string | null;
+}): boolean {
+  return (
+    (utmSource !== null && SYNTHETIC_UTM_SOURCES.has(utmSource)) ||
+    (utmCampaign !== null &&
+      utmCampaign !== undefined &&
+      SYNTHETIC_UTM_CAMPAIGNS.has(utmCampaign))
   );
 }
 
