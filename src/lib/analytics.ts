@@ -2,7 +2,10 @@
 // Lightweight launch analytics. Console logging remains the fallback; optional
 // Plausible/GA4 forwarding is enabled by env-loaded scripts in the root layout.
 
-import { getAttributionSnapshot } from '@/lib/attribution';
+import {
+  getAttributionSnapshot,
+  getAttributionUtm,
+} from '@/lib/attribution';
 
 declare global {
   interface Window {
@@ -87,15 +90,15 @@ function sendFunnelEvent(
 ): void {
   try {
     const params = new URLSearchParams(window.location.search);
+    const attribution = getAttributionUtm();
     const payload = {
       eventName: event,
       path: window.location.pathname,
       referrer: document.referrer || textProp(props.last_referrer),
-      utmSource: params.get('utm_source') || textProp(props.last_utm_source),
-      utmMedium: params.get('utm_medium') || textProp(props.last_utm_medium),
-      utmCampaign:
-        params.get('utm_campaign') || textProp(props.last_utm_campaign),
-      utmContent: params.get('utm_content') || textProp(props.last_utm_content),
+      utmSource: params.get('utm_source') || attribution.utmSource,
+      utmMedium: params.get('utm_medium') || attribution.utmMedium,
+      utmCampaign: params.get('utm_campaign') || attribution.utmCampaign,
+      utmContent: params.get('utm_content') || attribution.utmContent,
       props,
     };
 

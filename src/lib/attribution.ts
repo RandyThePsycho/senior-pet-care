@@ -17,6 +17,13 @@ export interface AttributionSnapshot {
   last: AttributionTouch;
 }
 
+export interface AttributionUtm {
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  utmContent: string | null;
+}
+
 const STORAGE_KEY = 'spc_attribution_v1';
 
 function hasWindow() {
@@ -81,7 +88,10 @@ export function captureAttributionFromLocation(): AttributionSnapshot | null {
     const existing = parseStored(window.localStorage.getItem(STORAGE_KEY));
     const snapshot: AttributionSnapshot = {
       first: existing?.first ?? touch,
-      last: touch,
+      last:
+        existing && !shouldUpdateLastTouch(touch, existing)
+          ? existing.last
+          : touch,
     };
 
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
@@ -98,6 +108,33 @@ export function getAttributionSnapshot(): AttributionSnapshot | null {
   } catch {
     return null;
   }
+}
+
+export function getAttributionUtm(
+  snapshot: AttributionSnapshot | null = getAttributionSnapshot(),
+): AttributionUtm {
+  return {
+    utmSource: snapshot?.last.utmSource ?? snapshot?.first.utmSource ?? null,
+    utmMedium: snapshot?.last.utmMedium ?? snapshot?.first.utmMedium ?? null,
+    utmCampaign:
+      snapshot?.last.utmCampaign ?? snapshot?.first.utmCampaign ?? null,
+    utmContent: snapshot?.last.utmContent ?? snapshot?.first.utmContent ?? null,
+  };
+}
+
+function shouldUpdateLastTouch(
+  touch: AttributionTouch,
+  existing: AttributionSnapshot | null,
+): boolean {
+  if (!existing) return true;
+  return Boolean(
+    touch.referrer ||
+      touch.utmSource ||
+      touch.utmMedium ||
+      touch.utmCampaign ||
+      touch.utmTerm ||
+      touch.utmContent,
+  );
 }
 
 function sourceFromTouch(touch?: AttributionTouch): string | null {

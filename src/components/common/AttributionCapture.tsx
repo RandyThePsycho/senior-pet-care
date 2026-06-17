@@ -2,18 +2,22 @@
 'use client';
 
 import { useEffect } from 'react';
-import { captureAttributionFromLocation } from '@/lib/attribution';
+import {
+  captureAttributionFromLocation,
+  getAttributionUtm,
+  type AttributionSnapshot,
+} from '@/lib/attribution';
 
 export default function AttributionCapture() {
   useEffect(() => {
-    captureAttributionFromLocation();
-    sendPageViewEvent();
+    const snapshot = captureAttributionFromLocation();
+    sendPageViewEvent(snapshot);
   }, []);
 
   return null;
 }
 
-function sendPageViewEvent(): void {
+function sendPageViewEvent(snapshot: AttributionSnapshot | null): void {
   const path = `${window.location.pathname}${window.location.search}`;
   if (isPrivatePath(path)) return;
 
@@ -22,13 +26,14 @@ function sendPageViewEvent(): void {
   window.sessionStorage.setItem(dedupeKey, '1');
 
   const params = new URLSearchParams(window.location.search);
+  const attribution = getAttributionUtm(snapshot);
   const payload = {
     path: window.location.pathname,
     referrer: document.referrer || null,
-    utmSource: params.get('utm_source'),
-    utmMedium: params.get('utm_medium'),
-    utmCampaign: params.get('utm_campaign'),
-    utmContent: params.get('utm_content'),
+    utmSource: params.get('utm_source') || attribution.utmSource,
+    utmMedium: params.get('utm_medium') || attribution.utmMedium,
+    utmCampaign: params.get('utm_campaign') || attribution.utmCampaign,
+    utmContent: params.get('utm_content') || attribution.utmContent,
   };
 
   window
