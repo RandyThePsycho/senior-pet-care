@@ -37,14 +37,23 @@ const EMPTY_PROFILE: PetProfile = {
 type CalculatorEntryContext = {
   guide?: string;
   intent?: string;
+  entrySource?: 'partner_kit';
 };
 
 function readCalculatorEntryContext(
   params: URLSearchParams,
 ): CalculatorEntryContext {
+  const utmSource = params.get('utm_source')?.trim().toLowerCase();
+  const utmCampaign = params.get('utm_campaign')?.trim().toLowerCase();
+  const isPartnerKitEntry =
+    utmSource === 'partner_outreach' ||
+    utmSource === 'partner' ||
+    utmCampaign === 'senior_pet_checkin_kit';
+
   return {
     guide: safeContextParam(params.get('guide')),
     intent: safeContextParam(params.get('intent')),
+    entrySource: isPartnerKitEntry ? 'partner_kit' : undefined,
   };
 }
 
@@ -64,6 +73,7 @@ export default function CalculatorClient() {
   const [finalInput, setFinalInput] = useState<AssessmentInput | null>(null);
   const [reassessmentContext, setReassessmentContext] =
     useState<ReassessmentContext>({});
+  const [entryContext, setEntryContext] = useState<CalculatorEntryContext>({});
   const entryContextRef = useRef<CalculatorEntryContext>({});
 
   // 进入计算器即埋点；若来自复评链接（URL 含 reassessment 参数）解析上下文并额外埋点
@@ -72,6 +82,7 @@ export default function CalculatorClient() {
       const params = new URLSearchParams(window.location.search);
       const entryContext = readCalculatorEntryContext(params);
       entryContextRef.current = entryContext;
+      setEntryContext(entryContext);
       track('calculator_started', entryContext);
 
       const petId = params.get('petId') ?? undefined;
@@ -168,6 +179,19 @@ export default function CalculatorClient() {
 
   return (
     <div>
+      {entryContext.entrySource === 'partner_kit' && step <= 3 && (
+        <div className="mb-5 rounded-lg border border-sage-200 bg-sage-50/80 px-4 py-3 text-sm leading-6 text-navy-600">
+          <p className="font-semibold text-navy-800">
+            Shared by a senior-pet organization or community?
+          </p>
+          <p className="mt-1">
+            This check-in is private to you. The organization that shared the
+            link does not receive your answers, and email is optional after you
+            see the result if you want the printable report and 7-day journal.
+          </p>
+        </div>
+      )}
+
       {step <= 3 && <CalculatorProgress step={step} total={3} />}
 
       {step === 1 && (
