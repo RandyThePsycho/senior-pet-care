@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { shouldSkipAnalyticsPersistence } from '@/lib/analyticsRequest';
 import { normalizeFunnelEventPayload } from '@/lib/funnelEvent';
 import { getServerSupabase, isSupabaseConfigured } from '@/lib/supabase/server';
 
@@ -25,6 +26,14 @@ export async function POST(request: Request) {
       ok: true,
       persisted: false,
       skipped: normalized.error,
+    });
+  }
+
+  if (shouldSkipAnalyticsPersistence(request)) {
+    return NextResponse.json({
+      ok: true,
+      persisted: false,
+      skipped: 'local_analytics_request',
     });
   }
 
