@@ -78,3 +78,15 @@ assert.match(
   /medication timing/i,
   'Expected night-waking guide to include medication timing language.',
 );
+
+assert.match(
+  guideSource,
+  /twitter:\s*\{/,
+  'Expected guide metadata to define page-specific Twitter card metadata.',
+);
+
+assert.match(
+  guideSource,
+  /title:\s*guide\.title/,
+  'Expected guide metadata title to rely on the layout template without duplicating the site name.',
+);

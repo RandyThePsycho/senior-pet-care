@@ -310,7 +310,7 @@ export function buildGuideMetadata(guide: SeoGuide): Metadata {
   const path = `/guides/${guide.slug}`;
 
   return {
-    title: `${guide.title} | Senior Pet Care`,
+    title: guide.title,
     description: guide.description,
     alternates: {
       canonical: path,
@@ -329,6 +329,12 @@ export function buildGuideMetadata(guide: SeoGuide): Metadata {
           alt: 'A senior pet resting in soft natural light',
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: guide.title,
+      description: guide.description,
+      images: [DEFAULT_OG_IMAGE],
     },
   };
 }
