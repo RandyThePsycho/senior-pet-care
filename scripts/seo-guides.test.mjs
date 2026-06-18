@@ -66,3 +66,15 @@ assert.match(
   /Start a night-waking check-in/,
   'Expected night-waking guide CTA to match the high-intent entry path.',
 );
+
+assert.match(
+  guideSource,
+  /Food-driven waking/,
+  'Expected night-waking guide to include food-driven overnight waking language.',
+);
+
+assert.match(
+  guideSource,
+  /medication timing/i,
+  'Expected night-waking guide to include medication timing language.',
+);

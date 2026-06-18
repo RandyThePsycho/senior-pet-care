@@ -80,20 +80,22 @@ export const SEO_GUIDES: SeoGuide[] = [
     slug: 'senior-dog-night-waking-log',
     title: 'Senior Dog Night-Waking Log',
     description:
-      'A simple senior dog night-waking log for tracking barking, pacing, water, potty needs, caregiver sleep disruption, comfort, and what helps them settle.',
+      'A simple senior dog night-waking log for tracking barking, pacing, food requests, medication timing, water, potty needs, caregiver sleep disruption, comfort, and what helps them settle.',
     eyebrow: 'Night-waking log',
     h1: 'Senior Dog Night-Waking Log',
     intro:
       'When an older dog starts waking, barking, pacing, or needing help at night, the details blur quickly, especially when everyone is short on sleep. A short, consistent log can make the next vet conversation clearer.',
     audience:
-      'For families whose senior dog has started waking, barking, pacing, seeming unsettled, or needing more overnight support while the caregiver is also losing sleep.',
-    lastUpdated: '2026-06-15',
+      'For families whose senior dog has started waking, barking, pacing, asking for food overnight, seeming unsettled, or needing more overnight support while the caregiver is also losing sleep.',
+    lastUpdated: '2026-06-18',
     checklistTitle: 'What to write down overnight',
     checklist: [
       'Time: when the waking, barking, pacing, or whining started and how long it lasted.',
       'Pattern: whether it happened once, several times, or around the same time each night.',
       'Need vs. confusion: whether your dog seemed to need water, potty, comfort, food, light, or help finding a resting spot.',
+      'Food-driven waking: whether the pattern is tied to breakfast time, treats, food puzzles, overnight snacks, or demanding food after waking.',
       'Movement: pacing route, slipping, trouble standing, stairs, circling, or difficulty settling back down.',
+      'Medication effects: when medications were given, whether they helped sleep, and whether your dog became too wobbly or unsafe to move comfortably.',
       'Comfort signs: panting, trembling, restlessness, licking, guarding, or not wanting to lie down.',
       'Food and water: appetite that day, evening snacks, extra drinking, or overnight water trips.',
       'Caregiver sustainability: how many times you woke up, how fragmented your sleep was, whether anyone can cover a night, and whether the routine is becoming unsafe.',
@@ -111,6 +113,7 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Which night-waking details are most useful for you to review?',
       'Should we check pain, vision, hearing, anxiety, bathroom needs, appetite, or cognitive changes?',
       'What options are realistic if both my dog\'s comfort and my ability to keep caring safely are getting worse?',
+      'Could food-driven waking, medication timing, or wobbliness after medication change what we should try next?',
       'Are there signs that would mean we should contact you sooner than our planned follow-up?',
       'Would a 7-day quality-of-life check-in help us compare this week with next week?',
     ],
@@ -123,7 +126,12 @@ export const SEO_GUIDES: SeoGuide[] = [
       {
         question: 'What should I track if my old dog barks at night?',
         answer:
-          'Track the time, duration, pacing or confusion, water or potty needs, appetite, comfort, mobility, light level, and what helped your dog settle.',
+          'Track the time, duration, pacing or confusion, water or potty needs, food requests, medication timing, appetite, comfort, mobility, light level, and what helped your dog settle.',
+      },
+      {
+        question: 'What if my senior dog wakes up mostly asking for food?',
+        answer:
+          'Write down the time, what food was offered, whether your dog settled after eating, and whether the pattern is shifting earlier. Bring that pattern to your veterinarian instead of assuming it is only behavior or only age.',
       },
       {
         question: 'Should I tell the vet that I am exhausted too?',
