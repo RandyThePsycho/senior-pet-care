@@ -13,6 +13,7 @@ import RiskLevelCard from './RiskLevelCard';
 import DimensionFeedbackCard from './DimensionFeedbackCard';
 import VetQuestionsList from './VetQuestionsList';
 import EmailCaptureForm from './EmailCaptureForm';
+import MonetizationIntentCard from './MonetizationIntentCard';
 import NextStepCards from './NextStepCards';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import CTAButton from '@/components/common/CTAButton';
@@ -93,6 +94,10 @@ export default function ResultView({
         vetQuestions={vetQuestions}
         reassessmentContext={reassessmentContext}
       />
+
+      {!isEndOfLife && (
+        <MonetizationIntentCard input={input} result={result} />
+      )}
 
       {/* 医疗免责 */}
       <MedicalDisclaimer context={isEndOfLife ? 'end_of_life' : 'default'} />
