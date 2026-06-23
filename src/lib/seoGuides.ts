@@ -221,6 +221,12 @@ export const SEO_GUIDES: SeoGuide[] = [
     title: 'Senior Dog Caregiver Burnout Notes',
     description:
       'A calm note guide for senior dog caregiver burnout: tracking accidents, barking, pacing, separation anxiety, sitter strain, weight changes, sleep, and vet questions.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-caregiver-burnout-notes.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog caregiver burnout notes checklist with home-care capacity prompts',
+    },
     eyebrow: 'Caregiver capacity notes',
     h1: 'Senior Dog Caregiver Burnout Notes',
     intro:

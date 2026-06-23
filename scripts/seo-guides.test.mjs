@@ -131,6 +131,12 @@ assert.match(
   'Expected low-appetite guide to use its own social preview image.',
 );
 
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-caregiver-burnout-notes\.jpg/,
+  'Expected caregiver-burnout guide to use its own social preview image.',
+);
+
 assert.ok(
   existsSync('public/growth/pinterest/jpg/senior-dog-night-waking-log.jpg'),
   'Expected night-waking guide social image asset to exist.',
@@ -139,4 +145,11 @@ assert.ok(
 assert.ok(
   existsSync('public/growth/pinterest/jpg/senior-dog-low-appetite-log.jpg'),
   'Expected low-appetite guide social image asset to exist.',
+);
+
+assert.ok(
+  existsSync(
+    'public/growth/pinterest/jpg/senior-dog-caregiver-burnout-notes.jpg',
+  ),
+  'Expected caregiver-burnout guide social image asset to exist.',
 );
