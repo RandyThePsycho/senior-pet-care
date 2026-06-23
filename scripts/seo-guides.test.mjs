@@ -19,12 +19,20 @@ const guides = [
     title: 'Senior Dog Night-Waking Log',
   },
   {
+    slug: 'old-dog-waking-up-at-night-asking-for-food',
+    title: 'Old Dog Waking Up at Night Asking for Food',
+  },
+  {
     slug: 'senior-dog-low-appetite-log',
     title: 'Senior Dog Low Appetite Log',
   },
   {
     slug: 'senior-dog-caregiver-burnout-notes',
     title: 'Senior Dog Caregiver Burnout Notes',
+  },
+  {
+    slug: 'senior-dog-accidents-in-house-caregiver-exhausted',
+    title: 'Senior Dog Accidents in the House and Caregiver Exhaustion',
   },
 ];
 
@@ -103,6 +111,42 @@ assert.match(
 
 assert.match(
   guideSource,
+  /food-driven night check-in/i,
+  'Expected old-dog food-waking guide to have a high-intent calculator CTA.',
+);
+
+assert.match(
+  guideSource,
+  /intent=food_driven_night_waking/,
+  'Expected old-dog food-waking guide CTA to preserve food-driven night-waking intent.',
+);
+
+assert.match(
+  guideSource,
+  /Caregiver sleep/i,
+  'Expected old-dog food-waking guide to include caregiver sleep context.',
+);
+
+assert.match(
+  guideSource,
+  /accidents and care-capacity check-in/i,
+  'Expected accident guide to have a care-capacity calculator CTA.',
+);
+
+assert.match(
+  guideSource,
+  /intent=accidents_caregiver_capacity/,
+  'Expected accident guide CTA to preserve accidents caregiver-capacity intent.',
+);
+
+assert.match(
+  guideSource,
+  /cleanup burden/i,
+  'Expected accident guide to capture cleanup burden language.',
+);
+
+assert.match(
+  guideSource,
   /twitter:\s*\{/,
   'Expected guide metadata to define page-specific Twitter card metadata.',
 );
@@ -127,6 +171,12 @@ assert.match(
 
 assert.match(
   guideSource,
+  /\/growth\/pinterest\/jpg\/old-dog-waking-up-at-night-asking-for-food\.jpg/,
+  'Expected old-dog food-waking guide to use its own social preview image.',
+);
+
+assert.match(
+  guideSource,
   /\/growth\/pinterest\/jpg\/senior-dog-low-appetite-log\.jpg/,
   'Expected low-appetite guide to use its own social preview image.',
 );
@@ -137,9 +187,22 @@ assert.match(
   'Expected caregiver-burnout guide to use its own social preview image.',
 );
 
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-accidents-in-house-caregiver-exhausted\.jpg/,
+  'Expected accident guide to use its own social preview image.',
+);
+
 assert.ok(
   existsSync('public/growth/pinterest/jpg/senior-dog-night-waking-log.jpg'),
   'Expected night-waking guide social image asset to exist.',
+);
+
+assert.ok(
+  existsSync(
+    'public/growth/pinterest/jpg/old-dog-waking-up-at-night-asking-for-food.jpg',
+  ),
+  'Expected old-dog food-waking guide social image asset to exist.',
 );
 
 assert.ok(
@@ -152,4 +215,11 @@ assert.ok(
     'public/growth/pinterest/jpg/senior-dog-caregiver-burnout-notes.jpg',
   ),
   'Expected caregiver-burnout guide social image asset to exist.',
+);
+
+assert.ok(
+  existsSync(
+    'public/growth/pinterest/jpg/senior-dog-accidents-in-house-caregiver-exhausted.jpg',
+  ),
+  'Expected accident guide social image asset to exist.',
 );

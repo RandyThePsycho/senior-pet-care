@@ -158,6 +158,74 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the overnight notes and your own sleep limits as a starting point, then turn the broader comfort, appetite, mobility, mood, and good-day pattern into a printable quality-of-life report and 7-day follow-up.',
   },
   {
+    slug: 'old-dog-waking-up-at-night-asking-for-food',
+    title: 'Old Dog Waking Up at Night Asking for Food',
+    description:
+      'A simple log for an old dog waking up at night asking for food, with prompts for timing, appetite, medication, water, potty needs, comfort, and caregiver sleep.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/old-dog-waking-up-at-night-asking-for-food.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Old dog waking up at night asking for food tracking checklist',
+    },
+    eyebrow: 'Food-driven night waking',
+    h1: 'Old Dog Waking Up at Night Asking for Food',
+    intro:
+      'When an older dog starts waking everyone up for breakfast, treats, or food at 2am, the pattern can feel confusing fast. A short log helps separate timing, appetite, comfort, medication, and caregiver sleep details before the next vet conversation.',
+    audience:
+      'For families whose senior dog wakes overnight, seems food-focused, settles only after eating, or shifts breakfast requests earlier while the caregiver is losing sleep.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to record when food is part of the waking',
+    checklist: [
+      'Wake time: the first time your dog woke, barked, paced, stared, or asked for food.',
+      'Food request: whether your dog wanted breakfast, treats, a puzzle, table food, or anything available.',
+      'What was offered: type of food, amount, and whether your dog ate normally, gulped it down, or refused it.',
+      'Settling pattern: whether eating helped your dog settle, how long it lasted, and whether the waking returned.',
+      'Daytime appetite: normal meals, skipped meals, extra hunger, weight changes, nausea signs, or food selectivity.',
+      'Water and potty: overnight drinking, urination, stool, accidents, or asking to go outside.',
+      'Medication timing: evening medications, supplements, appetite changes, wobbliness, restlessness, or sleep changes after dosing.',
+      'Comfort and movement: pacing, panting, trembling, circling, trouble standing, slipping, or not wanting to lie down.',
+      'Caregiver sleep: how many times you woke, whether anyone can rotate nights, and whether the routine is becoming unsafe or unsustainable.',
+    ],
+    notesTitle: 'How to make the pattern easier to discuss',
+    notes: [
+      'Track three to five nights with the same fields instead of trying to explain every detail from memory.',
+      'Write what happened before guessing why. "Woke at 2:10, ate half a cup, settled 40 minutes" is more useful than "being stubborn".',
+      'Include food that seems unrelated, such as treats, table scraps, breakfast timing, and skipped meals.',
+      'Do not change medications, restrict food, or start supplements without asking your veterinarian.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Could the overnight food requests be related to appetite, nausea, pain, cognitive change, medication timing, or another health change?',
+      'Which food, water, potty, or weight details would help you decide what to check next?',
+      'Should we adjust meal timing, medication timing, or follow-up monitoring, and what should I avoid changing on my own?',
+      'What signs would mean I should call sooner than our planned follow-up?',
+      'How should I balance my dog settling after food with the fact that nobody is sleeping?',
+    ],
+    faq: [
+      {
+        question: 'Why is my old dog waking up at night asking for food?',
+        answer:
+          'There are many possible reasons, including routine changes, appetite changes, discomfort, medication timing, bathroom needs, or cognitive changes. A log can show the timing and related signs, but a veterinarian should help interpret the pattern.',
+      },
+      {
+        question: 'Should I feed my senior dog every time they wake up?',
+        answer:
+          'Ask your veterinarian before making a big routine change. In the meantime, track what you offered, whether your dog settled, and whether appetite, water, stool, weight, or comfort changed.',
+      },
+      {
+        question: 'What should I bring to the vet if food requests happen overnight?',
+        answer:
+          'Bring wake times, food offered, amount eaten, settling time, daytime appetite, water, potty, medications, weight trend, and your own sleep disruption. Those details are easier to use than a general description of "waking all night".',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=old-dog-waking-up-at-night-asking-for-food&intent=food_driven_night_waking',
+    ctaLabel: 'Start a food-driven night check-in',
+    nextStepBody:
+      'Use the food and sleep log as the starting point, then check comfort, appetite, hydration, mobility, mood, and good-day patterns in a printable quality-of-life report.',
+  },
+  {
     slug: 'senior-dog-low-appetite-log',
     title: 'Senior Dog Low Appetite Log',
     description:
@@ -281,6 +349,74 @@ export const SEO_GUIDES: SeoGuide[] = [
     ctaLabel: 'Turn care notes into a 7-day check-in',
     nextStepBody:
       'Use the home-care notes alongside comfort, appetite, mobility, mood, and good-day patterns to create a printable quality-of-life report and a 7-day follow-up.',
+  },
+  {
+    slug: 'senior-dog-accidents-in-house-caregiver-exhausted',
+    title: 'Senior Dog Accidents in the House and Caregiver Exhaustion',
+    description:
+      'A practical note guide for senior dog accidents in the house, cleanup burden, sleep loss, mobility, appetite, water, and caregiver capacity before a vet conversation.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-accidents-in-house-caregiver-exhausted.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog accidents in the house caregiver exhaustion checklist',
+    },
+    eyebrow: 'Accident and cleanup notes',
+    h1: 'Senior Dog Accidents in the House and Caregiver Exhaustion',
+    intro:
+      'House accidents can turn senior dog care from hard into overwhelming, especially when cleanup, laundry, sleep loss, and work schedules collide. Clear notes can help you talk with your veterinarian about the dog in front of you and the care routine you can actually sustain.',
+    audience:
+      'For caregivers dealing with new or worsening urine, stool, or overnight accidents from a senior dog, especially when cleanup and supervision are exhausting the household.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to track about accidents and cleanup',
+    checklist: [
+      'Timing: when accidents happen, including overnight, after meals, after drinking, after naps, or when left alone.',
+      'Type: urine, stool, diarrhea, dribbling, leaking while resting, or accidents while trying to get outside.',
+      'Location: bed, crate, hallway, doorway, carpet, stairs, favorite resting spot, or near the exit.',
+      'Opportunity: when your dog last went outside and whether they could stand, walk, squat, or signal in time.',
+      'Cleanup burden: how many cleanups per day, whether coat or bedding is involved, and whether the routine affects work or sleep.',
+      'Water and appetite: drinking more or less, appetite changes, vomiting, stool changes, weight changes, or food switches.',
+      'Mobility and pain signs: slipping, trouble standing, stairs, weakness, reluctance to move, panting, trembling, or guarding.',
+      'Stress and separation: barking, pacing, accidents when alone, sitter reports, or changes after family schedules shift.',
+      'Caregiver capacity: who can help, what is unsafe, and which parts of the routine cannot continue another week without a plan.',
+    ],
+    notesTitle: 'How to talk about accidents without shame',
+    notes: [
+      'Use plain facts. "Three urine accidents before noon and one stool cleanup overnight" gives your vet a clearer starting point.',
+      'Include what the cleanup is doing to the household. Sleep loss, lifting risk, laundry, stairs, and lack of backup help matter.',
+      'Do not assume accidents are only behavior or only age. Bring the pattern to your veterinarian so they can decide what is worth checking.',
+      'Avoid starting products, supplements, or major routine changes before asking what fits your dog\'s health history.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Which accident details would help you decide whether to check urine, stool, pain, mobility, medication effects, or cognitive changes?',
+      'What signs would make this more urgent or worth contacting you sooner?',
+      'What can we track for the next 7 days so we know whether the pattern is improving or worsening?',
+      'What is realistic if cleanup, sleep loss, or lifting is becoming unsafe for the caregiver?',
+      'Are there home-care changes we should avoid until you examine my dog or review the pattern?',
+    ],
+    faq: [
+      {
+        question: 'Are house accidents normal for senior dogs?',
+        answer:
+          'They can become more common with age, but new, frequent, or worsening accidents are worth discussing with a veterinarian. A log helps show timing, type, mobility, water, appetite, and cleanup burden.',
+      },
+      {
+        question: 'What should I track if my old dog is having accidents inside?',
+        answer:
+          'Track the time, type of accident, location, last potty break, water, appetite, stool, mobility, whether your dog signaled, and how much cleanup was required.',
+      },
+      {
+        question: 'Is caregiver exhaustion relevant to a vet visit?',
+        answer:
+          'Yes. A plan that ignores cleanup burden, sleep loss, lifting risk, or lack of backup help may not work at home. It is reasonable to tell your veterinarian what is no longer sustainable.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-accidents-in-house-caregiver-exhausted&intent=accidents_caregiver_capacity',
+    ctaLabel: 'Start an accidents and care-capacity check-in',
+    nextStepBody:
+      'Use the accident notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
   },
   {
     slug: 'senior-cat-quality-of-life-checklist',

@@ -24,12 +24,22 @@ const PUBLIC_ROUTES = [
     priority: 0.84,
   },
   {
+    path: '/guides/old-dog-waking-up-at-night-asking-for-food',
+    changeFrequency: 'weekly',
+    priority: 0.84,
+  },
+  {
     path: '/guides/senior-dog-low-appetite-log',
     changeFrequency: 'weekly',
     priority: 0.84,
   },
   {
     path: '/guides/senior-dog-caregiver-burnout-notes',
+    changeFrequency: 'weekly',
+    priority: 0.83,
+  },
+  {
+    path: '/guides/senior-dog-accidents-in-house-caregiver-exhausted',
     changeFrequency: 'weekly',
     priority: 0.83,
   },

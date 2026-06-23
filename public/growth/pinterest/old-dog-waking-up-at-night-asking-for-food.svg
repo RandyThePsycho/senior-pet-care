@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1500" viewBox="0 0 1000 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Old Dog Waking Up at Night Asking for Food</title>
+  <desc id="desc">A vertical tracking checklist for an old dog waking up at night asking for food, including food requests, water, potty, medication timing, comfort, and caregiver sleep.</desc>
+  <rect width="1000" height="1500" fill="#F5F7F2"/>
+  <rect x="70" y="70" width="860" height="1360" rx="34" fill="#FFFFFF" stroke="#1F3142" stroke-width="4"/>
+
+  <rect x="70" y="70" width="860" height="360" rx="34" fill="#1F3142"/>
+  <rect x="70" y="320" width="860" height="110" fill="#1F3142"/>
+  <circle cx="795" cy="195" r="78" fill="#F3C75F"/>
+  <circle cx="830" cy="172" r="74" fill="#1F3142"/>
+  <rect x="690" y="288" width="170" height="56" rx="28" fill="#F3C75F"/>
+  <g fill="#F3C75F">
+    <circle cx="656" cy="170" r="7"/>
+    <circle cx="875" cy="290" r="6"/>
+    <circle cx="728" cy="115" r="5"/>
+    <circle cx="880" cy="122" r="4"/>
+  </g>
+
+  <text x="120" y="154" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="800" fill="#F3C75F" letter-spacing="2">SENIOR DOG CARE</text>
+  <text x="120" y="238" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="850" fill="#FFFFFF">Wakes at Night</text>
+  <text x="120" y="316" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="850" fill="#FFFFFF">Asking for Food?</text>
+
+  <text x="120" y="494" font-family="Inter, Arial, sans-serif" font-size="33" fill="#526577">Track the food pattern before guessing</text>
+  <text x="120" y="542" font-family="Inter, Arial, sans-serif" font-size="33" fill="#526577">why breakfast moved to 2am.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="120" y="620" width="760" height="90" rx="16" fill="#FFF3D6" stroke="#E8D9AC"/>
+    <text x="160" y="677" font-size="34" font-weight="800" fill="#1F3142">Wake time and food requested</text>
+
+    <rect x="120" y="740" width="760" height="90" rx="16" fill="#EEF5F7" stroke="#D4E2E7"/>
+    <text x="160" y="797" font-size="34" font-weight="800" fill="#1F3142">Water, potty, appetite, weight</text>
+
+    <rect x="120" y="860" width="760" height="90" rx="16" fill="#F8E5E3" stroke="#E7C4C0"/>
+    <text x="160" y="917" font-size="34" font-weight="800" fill="#1F3142">Medication timing and wobbliness</text>
+
+    <rect x="120" y="980" width="760" height="90" rx="16" fill="#E4F2EB" stroke="#C8DED3"/>
+    <text x="160" y="1037" font-size="34" font-weight="800" fill="#1F3142">Caregiver sleep and what helped</text>
+  </g>
+
+  <rect x="120" y="1130" width="760" height="150" rx="22" fill="#1F3142"/>
+  <text x="160" y="1196" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="850" fill="#FFFFFF">Start a 7-day check-in</text>
+  <text x="160" y="1244" font-family="Inter, Arial, sans-serif" font-size="29" fill="#DDE9EF">Bring the pattern to your veterinarian.</text>
+
+  <text x="120" y="1362" font-family="Inter, Arial, sans-serif" font-size="26" fill="#526577">Not a diagnosis. Use with a licensed veterinarian.</text>
+  <text x="120" y="1406" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#D96951">PawCheckin.com</text>
+</svg>
