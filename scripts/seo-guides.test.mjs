@@ -90,3 +90,31 @@ assert.match(
   /title:\s*guide\.title/,
   'Expected guide metadata title to rely on the layout template without duplicating the site name.',
 );
+
+assert.match(
+  guideSource,
+  /socialImage:\s*\{/,
+  'Expected high-intent guides to support page-specific social preview images.',
+);
+
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-night-waking-log\.jpg/,
+  'Expected night-waking guide to use its own social preview image.',
+);
+
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-low-appetite-log\.jpg/,
+  'Expected low-appetite guide to use its own social preview image.',
+);
+
+assert.ok(
+  existsSync('public/growth/pinterest/jpg/senior-dog-night-waking-log.jpg'),
+  'Expected night-waking guide social image asset to exist.',
+);
+
+assert.ok(
+  existsSync('public/growth/pinterest/jpg/senior-dog-low-appetite-log.jpg'),
+  'Expected low-appetite guide social image asset to exist.',
+);

@@ -5,6 +5,12 @@ export interface SeoGuide {
   slug: string;
   title: string;
   description: string;
+  socialImage?: {
+    url: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
   eyebrow: string;
   h1: string;
   intro: string;
@@ -81,6 +87,12 @@ export const SEO_GUIDES: SeoGuide[] = [
     title: 'Senior Dog Night-Waking Log',
     description:
       'A simple senior dog night-waking log for tracking barking, pacing, food requests, medication timing, water, potty needs, caregiver sleep disruption, comfort, and what helps them settle.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-night-waking-log.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog night-waking log checklist with overnight tracking prompts',
+    },
     eyebrow: 'Night-waking log',
     h1: 'Senior Dog Night-Waking Log',
     intro:
@@ -150,6 +162,12 @@ export const SEO_GUIDES: SeoGuide[] = [
     title: 'Senior Dog Low Appetite Log',
     description:
       'A senior dog low-appetite log for tracking skipped meals, accepted foods, treats, water, stool, energy, weight, and vet follow-up questions.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-low-appetite-log.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog low-appetite log checklist with meal tracking prompts',
+    },
     eyebrow: 'Appetite log',
     h1: 'Senior Dog Low Appetite Log',
     intro:
@@ -308,6 +326,12 @@ export function getSeoGuide(slug: string): SeoGuide {
 
 export function buildGuideMetadata(guide: SeoGuide): Metadata {
   const path = `/guides/${guide.slug}`;
+  const socialImage = guide.socialImage ?? {
+    url: DEFAULT_OG_IMAGE,
+    width: 1200,
+    height: 800,
+    alt: 'A senior pet resting in soft natural light',
+  };
 
   return {
     title: guide.title,
@@ -323,10 +347,10 @@ export function buildGuideMetadata(guide: SeoGuide): Metadata {
       type: 'article',
       images: [
         {
-          url: DEFAULT_OG_IMAGE,
-          width: 1200,
-          height: 800,
-          alt: 'A senior pet resting in soft natural light',
+          url: socialImage.url,
+          width: socialImage.width,
+          height: socialImage.height,
+          alt: socialImage.alt,
         },
       ],
     },
@@ -334,7 +358,12 @@ export function buildGuideMetadata(guide: SeoGuide): Metadata {
       card: 'summary_large_image',
       title: guide.title,
       description: guide.description,
-      images: [DEFAULT_OG_IMAGE],
+      images: [
+        {
+          url: socialImage.url,
+          alt: socialImage.alt,
+        },
+      ],
     },
   };
 }
