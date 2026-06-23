@@ -34,6 +34,14 @@ const guides = [
     slug: 'senior-dog-accidents-in-house-caregiver-exhausted',
     title: 'Senior Dog Accidents in the House and Caregiver Exhaustion',
   },
+  {
+    slug: 'senior-dog-separation-anxiety-when-left-alone',
+    title: 'Senior Dog Separation Anxiety When Left Alone',
+  },
+  {
+    slug: 'senior-dog-pacing-at-night-caregiver-cannot-sleep',
+    title: 'Senior Dog Pacing at Night and Caregiver Cannot Sleep',
+  },
 ];
 
 assert.ok(
@@ -143,6 +151,30 @@ assert.match(
   guideSource,
   /cleanup burden/i,
   'Expected accident guide to capture cleanup burden language.',
+);
+
+assert.match(
+  guideSource,
+  /intent=separation_anxiety_caregiver_capacity/,
+  'Expected separation anxiety guide CTA to preserve caregiver-capacity intent.',
+);
+
+assert.match(
+  guideSource,
+  /Start a separation-support check-in/,
+  'Expected separation anxiety guide to have a calculator CTA.',
+);
+
+assert.match(
+  guideSource,
+  /intent=night_pacing_caregiver_sleep/,
+  'Expected night-pacing guide CTA to preserve caregiver sleep intent.',
+);
+
+assert.match(
+  guideSource,
+  /Start a night-pacing check-in/,
+  'Expected night-pacing guide to have a calculator CTA.',
 );
 
 assert.match(

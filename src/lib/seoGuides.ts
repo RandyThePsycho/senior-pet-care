@@ -419,6 +419,113 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the accident notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
   },
   {
+    slug: 'senior-dog-separation-anxiety-when-left-alone',
+    title: 'Senior Dog Separation Anxiety When Left Alone',
+    description:
+      'A calm observation guide for senior dog separation anxiety when left alone, with prompts for barking, pacing, accidents, appetite, sleep, triggers, and caregiver capacity.',
+    eyebrow: 'Separation and supervision notes',
+    h1: 'Senior Dog Separation Anxiety When Left Alone',
+    intro:
+      'When a senior dog cannot be left alone without barking, pacing, accidents, or panic, the whole household can start planning life around the dog. A short pattern log can make the next vet conversation more concrete.',
+    audience:
+      'For caregivers whose older dog is newly distressed when alone, needs constant supervision, or is making work, sleep, errands, sitters, or family routines feel impossible.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to track when leaving your dog alone',
+    checklist: [
+      'Time alone: how long your dog was left, what time of day, and whether anyone was nearby.',
+      'Behavior: barking, whining, pacing, scratching, panting, trembling, hiding, or waiting by the door.',
+      'Accidents or damage: urine, stool, bedding, doors, crates, gates, or cleanup required afterward.',
+      'Recovery: how long it took your dog to settle after you returned.',
+      'Food and water: appetite before and after, treats refused, extra drinking, vomiting, or stool changes.',
+      'Sleep and night pattern: whether daytime distress also connects with night waking or caregiver sleep loss.',
+      'Triggers and helpers: keys, shoes, car sounds, room setup, sitter visits, company, light, music, or a predictable routine.',
+      'Caregiver capacity: what errands, work blocks, or rest periods are no longer possible without a plan.',
+    ],
+    notesTitle: 'How to make the notes useful',
+    notes: [
+      'Separate what you saw from what you fear it means. "Barked 35 minutes after I left" is more useful than "cannot cope".',
+      'Include sitter, camera, neighbor, or family reports if you have them.',
+      'Ask your veterinarian before changing medications, supplements, confinement, or training intensity.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Could pain, sensory change, cognitive change, anxiety, medication effects, or bathroom needs be contributing?',
+      'Which signs should I track for a week before we decide what to try next?',
+      'What should I avoid doing until you review the pattern or examine my dog?',
+      'What is realistic if my dog cannot be left alone and I have no reliable backup care?',
+    ],
+    faq: [
+      {
+        question: 'Can senior dogs develop separation anxiety later in life?',
+        answer:
+          'Some older dogs do become more distressed when alone, but the reason is not always simple. Tracking timing, behavior, accidents, appetite, sleep, and recovery can help your veterinarian decide what to consider.',
+      },
+      {
+        question: 'Should I use a camera to track senior dog separation distress?',
+        answer:
+          'A camera can be useful if it helps you record timing and patterns without guessing. Bring short notes to your veterinarian rather than trying to diagnose the cause yourself.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-separation-anxiety-when-left-alone&intent=separation_anxiety_caregiver_capacity',
+    ctaLabel: 'Start a separation-support check-in',
+    nextStepBody:
+      'Use the alone-time notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
+  },
+  {
+    slug: 'senior-dog-pacing-at-night-caregiver-cannot-sleep',
+    title: 'Senior Dog Pacing at Night and Caregiver Cannot Sleep',
+    description:
+      'A senior dog night pacing log for tracking timing, route, food, water, potty, medication, comfort, mobility, and caregiver sleep before a vet conversation.',
+    eyebrow: 'Night pacing and sleep notes',
+    h1: 'Senior Dog Pacing at Night and Caregiver Cannot Sleep',
+    intro:
+      'Night pacing can turn one hard evening into weeks of broken sleep. A consistent log helps show whether the pattern connects with food, bathroom needs, discomfort, medication timing, mobility, or confusion.',
+    audience:
+      'For families whose senior dog paces, circles, wanders, or cannot settle at night while the caregiver is also becoming exhausted.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to record during night pacing',
+    checklist: [
+      'Start time and duration: when pacing began, how long it lasted, and whether it repeated.',
+      'Route: hallway, kitchen, bedroom, door, stairs, crate, bed, water bowl, or outside door.',
+      'Body signs: panting, trembling, stumbling, circling, slipping, weakness, restlessness, or trouble lying down.',
+      'Needs: food, water, potty, company, light, temperature change, or help finding a resting spot.',
+      'Medication timing: evening doses, effects, wobbliness, restlessness, or sedation that seems unsafe.',
+      'What helped: potty break, water, snack, different bed, lights, calm room, company, or nothing obvious.',
+      'Caregiver sleep: how often you woke, whether anyone can rotate nights, and whether the routine is becoming unsafe.',
+    ],
+    notesTitle: 'How to bring it to your veterinarian',
+    notes: [
+      'Use the same fields for several nights so the pattern is easier to compare.',
+      'Include your own sleep limits. Caregiver exhaustion changes what is realistic at home.',
+      'Do not use a log to delay care if your dog seems suddenly distressed, weak, painful, or very different.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Which night pacing details are most important for you to review?',
+      'Could pain, bathroom needs, appetite, cognitive change, vision, hearing, or medication timing be involved?',
+      'What signs mean I should contact you sooner than our planned follow-up?',
+      'What options are realistic if nobody in the home can sleep safely?',
+    ],
+    faq: [
+      {
+        question: 'Why is my senior dog pacing at night?',
+        answer:
+          'There are many possible reasons, including discomfort, bathroom needs, appetite, sensory changes, medication effects, anxiety, or cognitive changes. A log can organize the pattern for a veterinarian.',
+      },
+      {
+        question: 'What should I track if my old dog paces all night?',
+        answer:
+          'Track start time, duration, route, body signs, food, water, potty needs, medication timing, what helped, and how much sleep the caregiver lost.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-pacing-at-night-caregiver-cannot-sleep&intent=night_pacing_caregiver_sleep',
+    ctaLabel: 'Start a night-pacing check-in',
+    nextStepBody:
+      'Use the night-pacing notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
+  },
+  {
     slug: 'senior-cat-quality-of-life-checklist',
     title: 'Senior Cat Quality of Life Checklist',
     description:

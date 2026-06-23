@@ -44,6 +44,16 @@ const PUBLIC_ROUTES = [
     priority: 0.83,
   },
   {
+    path: '/guides/senior-dog-separation-anxiety-when-left-alone',
+    changeFrequency: 'weekly',
+    priority: 0.83,
+  },
+  {
+    path: '/guides/senior-dog-pacing-at-night-caregiver-cannot-sleep',
+    changeFrequency: 'weekly',
+    priority: 0.83,
+  },
+  {
     path: '/guides/senior-cat-quality-of-life-checklist',
     changeFrequency: 'weekly',
     priority: 0.82,
