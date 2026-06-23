@@ -526,6 +526,74 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the night-pacing notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
   },
   {
+    slug: 'senior-dog-dementia-vet-checklist',
+    title: 'Senior Dog Dementia Vet Checklist',
+    description:
+      'A non-diagnostic senior dog dementia vet checklist for tracking night waking, pacing, accidents, appetite, medication effects, caregiver sleep, and questions for a licensed veterinarian.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-dementia-vet-checklist.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog dementia vet checklist with night waking, pacing, accidents, medication, and caregiver sleep prompts',
+    },
+    eyebrow: 'Cognitive-change vet notes',
+    h1: 'Senior Dog Dementia Vet Checklist',
+    intro:
+      'Families often use the word dementia when an older dog starts pacing, waking at night, seeming confused, having accidents, or needing more supervision. This checklist does not diagnose dementia. It helps you bring clearer patterns to a licensed veterinarian.',
+    audience:
+      'For caregivers worried about possible cognitive changes in a senior dog, especially when night waking, pacing, accidents, food requests, medication effects, or caregiver sleep loss are part of the pattern.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to track before asking about cognitive changes',
+    checklist: [
+      'Timing: when confusion, pacing, staring, barking, or night waking happens and how long it lasts.',
+      'Navigation: getting stuck, circling, staring at walls, trouble finding doors, or needing help settling.',
+      'Sleep pattern: day sleeping, night waking, food requests, pacing, barking, and how often the caregiver wakes.',
+      'Bathroom changes: accidents, asking to go out, forgetting routines, leaking, stool changes, or cleanup burden.',
+      'Food and water: appetite shifts, food-driven waking, extra drinking, skipped meals, weight changes, or nausea signs.',
+      'Movement and comfort: slipping, trouble standing, pain signs, panting, trembling, restlessness, or reluctance to lie down.',
+      'Medication effects: dose timing, sleepiness, wobbliness, restlessness, appetite changes, or unsafe movement after medication.',
+      'Sensory context: vision, hearing, lighting, shadows, stairs, noise, room layout, and whether a calmer setup helps.',
+      'Caregiver capacity: sleep loss, supervision demands, cleanup, lifting risk, lack of backup help, and what cannot continue safely.',
+    ],
+    notesTitle: 'How to keep the notes useful and safe',
+    notes: [
+      'Write what you see before naming the cause. "Paced hallway for 40 minutes at 2:10am" is more useful than "dementia episode".',
+      'Track several linked categories together: sleep, appetite, bathroom, mobility, comfort, and medication timing can overlap.',
+      'Include videos or short examples if they show a pattern clearly, but avoid overwhelming the appointment with every moment.',
+      'Do not start supplements, change medication timing, restrict food, or make major routine changes without asking your veterinarian.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Could pain, vision, hearing, urinary or GI issues, medication effects, anxiety, appetite changes, or cognitive changes be contributing?',
+      'Which details would help you decide what to examine, test, or monitor next?',
+      'What should I track for the next 7 days so we can compare the pattern instead of relying on memory?',
+      'Are there signs that mean I should call sooner than our planned follow-up?',
+      'What is realistic if night waking, accidents, or supervision needs are making care unsafe for the household?',
+    ],
+    faq: [
+      {
+        question: 'How do I know if my senior dog has dementia?',
+        answer:
+          'You cannot confirm that from a checklist. A veterinarian should evaluate possible causes. Your notes can help show timing, behavior, sleep, bathroom changes, appetite, mobility, comfort, and medication effects.',
+      },
+      {
+        question: 'What should I track if my old dog seems confused at night?',
+        answer:
+          'Track wake time, pacing route, barking or staring, food and water, potty needs, medication timing, comfort signs, what helped your dog settle, and how much sleep the caregiver lost.',
+      },
+      {
+        question: 'Should caregiver exhaustion be part of a dementia vet visit?',
+        answer:
+          'Yes. Sleep loss, cleanup burden, supervision needs, lifting risk, and lack of backup help affect what care is realistic at home and are appropriate to discuss with your veterinarian.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-dementia-vet-checklist&intent=cognitive_change_caregiver_capacity',
+    ctaLabel: 'Start a cognitive-change check-in',
+    nextStepBody:
+      'Use the cognitive-change notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
+  },
+  {
     slug: 'senior-cat-quality-of-life-checklist',
     title: 'Senior Cat Quality of Life Checklist',
     description:

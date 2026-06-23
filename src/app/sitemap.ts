@@ -54,6 +54,11 @@ const PUBLIC_ROUTES = [
     priority: 0.83,
   },
   {
+    path: '/guides/senior-dog-dementia-vet-checklist',
+    changeFrequency: 'weekly',
+    priority: 0.83,
+  },
+  {
     path: '/guides/senior-cat-quality-of-life-checklist',
     changeFrequency: 'weekly',
     priority: 0.82,

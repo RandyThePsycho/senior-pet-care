@@ -42,6 +42,10 @@ const guides = [
     slug: 'senior-dog-pacing-at-night-caregiver-cannot-sleep',
     title: 'Senior Dog Pacing at Night and Caregiver Cannot Sleep',
   },
+  {
+    slug: 'senior-dog-dementia-vet-checklist',
+    title: 'Senior Dog Dementia Vet Checklist',
+  },
 ];
 
 assert.ok(
@@ -179,6 +183,24 @@ assert.match(
 
 assert.match(
   guideSource,
+  /intent=cognitive_change_caregiver_capacity/,
+  'Expected dementia vet checklist guide CTA to preserve cognitive-change caregiver-capacity intent.',
+);
+
+assert.match(
+  guideSource,
+  /This checklist does not diagnose dementia/,
+  'Expected dementia vet checklist to avoid diagnostic framing.',
+);
+
+assert.match(
+  guideSource,
+  /medication effects/i,
+  'Expected dementia vet checklist to include medication-effect tracking.',
+);
+
+assert.match(
+  guideSource,
   /twitter:\s*\{/,
   'Expected guide metadata to define page-specific Twitter card metadata.',
 );
@@ -217,6 +239,12 @@ assert.match(
   guideSource,
   /\/growth\/pinterest\/jpg\/senior-dog-caregiver-burnout-notes\.jpg/,
   'Expected caregiver-burnout guide to use its own social preview image.',
+);
+
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-dementia-vet-checklist\.jpg/,
+  'Expected dementia vet checklist guide to use its own social preview image.',
 );
 
 assert.match(
