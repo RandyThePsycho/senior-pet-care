@@ -22,6 +22,10 @@ const guides = [
     slug: 'senior-dog-low-appetite-log',
     title: 'Senior Dog Low Appetite Log',
   },
+  {
+    slug: 'senior-dog-caregiver-burnout-notes',
+    title: 'Senior Dog Caregiver Burnout Notes',
+  },
 ];
 
 assert.ok(
@@ -77,6 +81,24 @@ assert.match(
   guideSource,
   /medication timing/i,
   'Expected night-waking guide to include medication timing language.',
+);
+
+assert.match(
+  guideSource,
+  /caregiver capacity/i,
+  'Expected caregiver-burnout guide to include caregiver capacity language.',
+);
+
+assert.match(
+  guideSource,
+  /intent=caregiver_capacity/,
+  'Expected caregiver-burnout guide CTA to preserve caregiver capacity intent.',
+);
+
+assert.match(
+  guideSource,
+  /sitter, groomer, or family reports/i,
+  'Expected caregiver-burnout guide to capture third-party care reports.',
 );
 
 assert.match(

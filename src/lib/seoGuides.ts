@@ -217,6 +217,66 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the meal log alongside comfort, water, mobility, mood, and good-day notes to create a printable quality-of-life report for the next vet conversation.',
   },
   {
+    slug: 'senior-dog-caregiver-burnout-notes',
+    title: 'Senior Dog Caregiver Burnout Notes',
+    description:
+      'A calm note guide for senior dog caregiver burnout: tracking accidents, barking, pacing, separation anxiety, sitter strain, weight changes, sleep, and vet questions.',
+    eyebrow: 'Caregiver capacity notes',
+    h1: 'Senior Dog Caregiver Burnout Notes',
+    intro:
+      'It is possible to love an old dog deeply and still feel exhausted, trapped, guilty, or angry when the daily care routine becomes too much. Short notes can help turn that swirl into a clearer vet conversation about both your dog and what is realistic at home.',
+    audience:
+      'For families caring for a senior dog whose anxiety, accidents, pacing, barking, toileting changes, grooming difficulty, or need for supervision is overwhelming the caregiver.',
+    lastUpdated: '2026-06-23',
+    checklistTitle: 'What to capture before the vet conversation',
+    checklist: [
+      'Care routine: how long your dog can be left alone, what happens when you leave, and how long the barking, pacing, or distress lasts.',
+      'Toileting pattern: where accidents happen, how often they happen, whether your dog can still toilet outside, and how much cleanup is involved.',
+      'Sleep and supervision: whether anyone is sleeping through the night, whether your dog needs constant watching, and whether the routine is becoming unsafe.',
+      'Food, water, and weight: appetite, drinking, weight changes after you travel or leave, and whether your dog eats normally with sitters.',
+      'Movement and grooming: slipping, trouble standing, resistance to grooming, difficulty being handled, or reports from groomers and sitters.',
+      'Stress reducers: what actually helps, such as shorter absences, a smaller room, a sitter, a predictable potty schedule, light, sound, or company.',
+      'Caregiver capacity: which tasks are no longer sustainable, who can help, and what would happen if the current routine continues another week.',
+    ],
+    notesTitle: 'How to write it without judging yourself',
+    notes: [
+      'Use concrete examples instead of labels. "Cleaned stool from the floor and coat three times before work" is more useful than "I cannot handle this".',
+      'Include sitter, groomer, or family reports. Outside observations can help show whether the pattern happens only with you or across settings.',
+      'Name your own limits plainly. Caregiver exhaustion, sleep loss, lifting risk, and cleanup burden are relevant home-care facts.',
+      'Ask for a plan that considers your dog\'s comfort and your ability to keep providing care safely.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Which behavior, toileting, weight, or sleep changes should we prioritize first?',
+      'Could pain, anxiety, cognitive change, GI issues, urinary problems, vision, hearing, or medication effects be contributing?',
+      'What should I track for the next 7 days so we can compare the pattern instead of relying on memory?',
+      'What options are realistic if I cannot safely continue the current cleanup, supervision, or sleep routine?',
+      'Are there signs that mean I should contact you sooner than the planned follow-up?',
+    ],
+    faq: [
+      {
+        question: 'Am I a bad person for feeling burnt out by senior dog care?',
+        answer:
+          'No. Exhaustion and frustration can happen even when you love your dog. Those feelings are worth bringing into the vet conversation because they affect what care is realistic at home.',
+      },
+      {
+        question: 'What should I track if my old dog has accidents in the house?',
+        answer:
+          'Track when accidents happen, where they happen, stool or urine details, whether your dog had a chance to go outside, cleanup burden, appetite, water, mobility, and whether the pattern changes when someone else watches your dog.',
+      },
+      {
+        question: 'Should I tell the vet that sitters or groomers are struggling too?',
+        answer:
+          'Yes. Sitter and groomer reports can help show how your dog is coping outside the usual routine and whether handling, anxiety, toileting, or mobility has changed.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-caregiver-burnout-notes&intent=caregiver_capacity',
+    ctaLabel: 'Turn care notes into a 7-day check-in',
+    nextStepBody:
+      'Use the home-care notes alongside comfort, appetite, mobility, mood, and good-day patterns to create a printable quality-of-life report and a 7-day follow-up.',
+  },
+  {
     slug: 'senior-cat-quality-of-life-checklist',
     title: 'Senior Cat Quality of Life Checklist',
     description:
