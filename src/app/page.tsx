@@ -48,6 +48,32 @@ const PREVIEW_SCORES = [
   ['Good days vs. hard days', '7 / 10'],
 ] as const;
 
+const HOME_PRIMARY_CALCULATOR_HREF =
+  '/tools/senior-pet-quality-of-life-calculator?guide=homepage&intent=general_quality_of_life';
+
+const HOME_INTENT_LINKS = [
+  {
+    label: 'Night waking or pacing',
+    body: 'Track wake time, food requests, medication timing, and caregiver sleep.',
+    href: '/guides/senior-dog-night-waking-log',
+  },
+  {
+    label: 'Accidents or burnout',
+    body: 'Organize cleanup burden, barking when alone, and what is realistic at home.',
+    href: '/guides/senior-dog-caregiver-burnout-notes',
+  },
+  {
+    label: 'Eating less',
+    body: 'Note skipped meals, favorite foods, water, stool, weight, and energy.',
+    href: '/guides/senior-dog-low-appetite-log',
+  },
+  {
+    label: 'Unsure where to start',
+    body: 'Write down the situation first, then choose the next check-in path.',
+    href: '/share-your-situation',
+  },
+] as const;
+
 const HOME_JSON_LD = [
   {
     '@context': 'https://schema.org',
@@ -103,7 +129,7 @@ export default function HomePage() {
               questions, and check back in 7 days with a clearer trend.
             </p>
             <div className="mt-8">
-              <CTAButton href="/tools/senior-pet-quality-of-life-calculator">
+              <CTAButton href={HOME_PRIMARY_CALCULATOR_HREF}>
                 Check my pet&apos;s quality of life
               </CTAButton>
               <p className="mt-4 text-sm leading-6 text-navy-500">
@@ -115,6 +141,23 @@ export default function HomePage() {
                   Read our gentle end-of-life guide.
                 </Link>
               </p>
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {HOME_INTENT_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg border border-navy-100 bg-white/88 p-4 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-200 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+                >
+                  <span className="block text-sm font-semibold leading-5 text-navy-800">
+                    {link.label}
+                  </span>
+                  <span className="mt-1 block text-sm leading-6 text-navy-500">
+                    {link.body}
+                  </span>
+                </Link>
+              ))}
             </div>
 
             <Link
@@ -200,7 +243,7 @@ export default function HomePage() {
               </h2>
             </div>
             <Link
-              href="/tools/senior-pet-quality-of-life-calculator"
+              href={HOME_PRIMARY_CALCULATOR_HREF}
               className="text-sm font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800"
             >
               Or go straight to the calculator
