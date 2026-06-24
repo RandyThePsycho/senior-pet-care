@@ -9,6 +9,11 @@ interface GuidePageProps {
 
 export default function GuidePage({ guide }: GuidePageProps) {
   const jsonLd = buildGuideJsonLd(guide);
+  const calculatorHref =
+    guide.ctaHref ?? '/tools/senior-pet-quality-of-life-calculator';
+  const nextStepBody =
+    guide.nextStepBody ??
+    'Turn these notes into a printable quality-of-life report and a 7-day follow-up journal. The calculator uses the same observation-first approach.';
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-cream-50">
@@ -43,12 +48,28 @@ export default function GuidePage({ guide }: GuidePageProps) {
           </div>
 
           <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 shadow-sm shadow-navy-800/5">
-            <p className="text-sm font-semibold tracking-[0.14em] text-navy-400">
-              BEST FOR
-            </p>
-            <p className="mt-3 text-sm leading-6 text-navy-600">
-              {guide.audience}
-            </p>
+            <div data-guide-primary-cta>
+              <p className="text-xs font-semibold tracking-[0.14em] text-sage-700">
+                TURN NOTES INTO A CHECK-IN
+              </p>
+              <p className="mt-2 text-sm leading-6 text-navy-500">
+                Use this guide as context for a printable quality-of-life
+                report and 7-day follow-up.
+              </p>
+              <div className="mt-4">
+                <CTAButton href={calculatorHref} fullWidth>
+                  Start check-in
+                </CTAButton>
+              </div>
+            </div>
+            <div className="mt-5 border-t border-navy-100 pt-4">
+              <p className="text-sm font-semibold tracking-[0.14em] text-navy-400">
+                BEST FOR
+              </p>
+              <p className="mt-3 text-sm leading-6 text-navy-600">
+                {guide.audience}
+              </p>
+            </div>
             <p className="mt-5 border-t border-navy-100 pt-4 text-xs font-semibold tracking-[0.14em] text-navy-400">
               LAST UPDATED
             </p>
@@ -121,14 +142,9 @@ export default function GuidePage({ guide }: GuidePageProps) {
           </p>
           <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
             <p className="max-w-2xl leading-7 text-navy-600">
-              {guide.nextStepBody ??
-                'Turn these notes into a printable quality-of-life report and a 7-day follow-up journal. The calculator uses the same observation-first approach.'}
+              {nextStepBody}
             </p>
-            <CTAButton
-              href={
-                guide.ctaHref ?? '/tools/senior-pet-quality-of-life-calculator'
-              }
-            >
+            <CTAButton href={calculatorHref}>
               {guide.ctaLabel ?? 'Start the quality-of-life calculator'}
             </CTAButton>
           </div>

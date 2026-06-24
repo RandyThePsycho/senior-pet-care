@@ -54,6 +54,7 @@ assert.ok(
 );
 
 const guideSource = readFileSync('src/lib/seoGuides.ts', 'utf8');
+const guidePageSource = readFileSync('src/components/guides/GuidePage.tsx', 'utf8');
 const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8');
 
 for (const guide of guides) {
@@ -72,6 +73,24 @@ for (const guide of guides) {
   assert.match(pageSource, /generateMetadata/);
   assert.match(sitemapSource, new RegExp(route));
 }
+
+assert.match(
+  guidePageSource,
+  /data-guide-primary-cta/,
+  'Expected guide pages to expose a first-screen calculator handoff before the long checklist.',
+);
+
+assert.match(
+  guidePageSource,
+  /TURN NOTES INTO A CHECK-IN/,
+  'Expected guide pages to frame the first-screen CTA around turning notes into a check-in.',
+);
+
+assert.match(
+  guidePageSource,
+  /Start check-in/,
+  'Expected guide pages to use a short first-screen CTA label that fits compact cards.',
+);
 
 assert.match(
   guideSource,
