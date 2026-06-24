@@ -18,10 +18,12 @@ assert.doesNotMatch(
 for (const expected of [
   'Night waking or pacing',
   'Accidents or burnout',
+  'Confusion or dementia worries',
   'Eating less',
   'Unsure where to start',
   '/guides/senior-dog-night-waking-log',
   '/guides/senior-dog-caregiver-burnout-notes',
+  '/guides/senior-dog-dementia-vet-checklist',
   '/guides/senior-dog-low-appetite-log',
   '/share-your-situation',
 ]) {

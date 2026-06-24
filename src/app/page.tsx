@@ -63,6 +63,11 @@ const HOME_INTENT_LINKS = [
     href: '/guides/senior-dog-caregiver-burnout-notes',
   },
   {
+    label: 'Confusion or dementia worries',
+    body: 'Track night waking, pacing, accidents, medication effects, and caregiver sleep.',
+    href: '/guides/senior-dog-dementia-vet-checklist',
+  },
+  {
     label: 'Eating less',
     body: 'Note skipped meals, favorite foods, water, stool, weight, and energy.',
     href: '/guides/senior-dog-low-appetite-log',
