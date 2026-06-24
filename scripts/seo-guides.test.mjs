@@ -55,6 +55,7 @@ assert.ok(
 
 const guideSource = readFileSync('src/lib/seoGuides.ts', 'utf8');
 const guidePageSource = readFileSync('src/components/guides/GuidePage.tsx', 'utf8');
+const guideCheckInCtaPath = 'src/components/guides/GuideCheckInCta.tsx';
 const sitemapSource = readFileSync('src/app/sitemap.ts', 'utf8');
 
 for (const guide of guides) {
@@ -90,6 +91,37 @@ assert.match(
   guidePageSource,
   /Start check-in/,
   'Expected guide pages to use a short first-screen CTA label that fits compact cards.',
+);
+
+assert.ok(
+  existsSync(guideCheckInCtaPath),
+  'Expected guide pages to use a client CTA component that can track calculator handoff clicks.',
+);
+
+const guideCheckInCtaSource = readFileSync(guideCheckInCtaPath, 'utf8');
+
+assert.match(
+  guidePageSource,
+  /GuideCheckInCta/,
+  'Expected guide pages to render the tracked guide check-in CTA.',
+);
+
+assert.match(
+  guideCheckInCtaSource,
+  /'use client'/,
+  'Expected the guide check-in CTA to run click tracking on the client.',
+);
+
+assert.match(
+  guideCheckInCtaSource,
+  /track\('guide_checkin_clicked'/,
+  'Expected guide check-in CTA clicks to be sent as funnel events.',
+);
+
+assert.match(
+  guideCheckInCtaSource,
+  /ctaPlacement/,
+  'Expected guide check-in CTA clicks to include CTA placement metadata.',
 );
 
 assert.match(

@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import CTAButton from '@/components/common/CTAButton';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
+import GuideCheckInCta from '@/components/guides/GuideCheckInCta';
 import { buildGuideJsonLd, type SeoGuide } from '@/lib/seoGuides';
 
 interface GuidePageProps {
@@ -11,6 +11,7 @@ export default function GuidePage({ guide }: GuidePageProps) {
   const jsonLd = buildGuideJsonLd(guide);
   const calculatorHref =
     guide.ctaHref ?? '/tools/senior-pet-quality-of-life-calculator';
+  const guideIntent = getQueryParam(calculatorHref, 'intent');
   const nextStepBody =
     guide.nextStepBody ??
     'Turn these notes into a printable quality-of-life report and a 7-day follow-up journal. The calculator uses the same observation-first approach.';
@@ -57,9 +58,15 @@ export default function GuidePage({ guide }: GuidePageProps) {
                 report and 7-day follow-up.
               </p>
               <div className="mt-4">
-                <CTAButton href={calculatorHref} fullWidth>
+                <GuideCheckInCta
+                  href={calculatorHref}
+                  guideSlug={guide.slug}
+                  guideIntent={guideIntent}
+                  ctaPlacement="hero"
+                  fullWidth
+                >
                   Start check-in
-                </CTAButton>
+                </GuideCheckInCta>
               </div>
             </div>
             <div className="mt-5 border-t border-navy-100 pt-4">
@@ -144,9 +151,14 @@ export default function GuidePage({ guide }: GuidePageProps) {
             <p className="max-w-2xl leading-7 text-navy-600">
               {nextStepBody}
             </p>
-            <CTAButton href={calculatorHref}>
+            <GuideCheckInCta
+              href={calculatorHref}
+              guideSlug={guide.slug}
+              guideIntent={guideIntent}
+              ctaPlacement="next_step"
+            >
               {guide.ctaLabel ?? 'Start the quality-of-life calculator'}
-            </CTAButton>
+            </GuideCheckInCta>
           </div>
         </section>
 
@@ -172,4 +184,15 @@ export default function GuidePage({ guide }: GuidePageProps) {
       </div>
     </main>
   );
+}
+
+function getQueryParam(href: string, key: string): string | undefined {
+  try {
+    return (
+      new URL(href, 'https://pawcheckin.com').searchParams.get(key) ??
+      undefined
+    );
+  } catch {
+    return undefined;
+  }
 }

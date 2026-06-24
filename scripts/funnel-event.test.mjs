@@ -62,6 +62,34 @@ assert.deepEqual(valid, {
   },
 });
 
+const guideCtaClick = normalizeFunnelEventPayload({
+  eventName: 'guide_checkin_clicked',
+  path: '/guides/senior-dog-dementia-vet-checklist',
+  props: {
+    guideSlug: 'senior-dog-dementia-vet-checklist',
+    guideIntent: 'cognitive_change_caregiver_capacity',
+    ctaPlacement: 'hero',
+  },
+});
+
+assert.deepEqual(guideCtaClick, {
+  ok: true,
+  data: {
+    event_name: 'guide_checkin_clicked',
+    path: '/guides/senior-dog-dementia-vet-checklist',
+    referrer: null,
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    utm_content: null,
+    metadata: {
+      guideSlug: 'senior-dog-dementia-vet-checklist',
+      guideIntent: 'cognitive_change_caregiver_capacity',
+      ctaPlacement: 'hero',
+    },
+  },
+});
+
 assert.deepEqual(
   normalizeFunnelEventPayload({
     eventName: 'made_up_event',

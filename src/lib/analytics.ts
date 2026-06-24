@@ -20,6 +20,7 @@ declare global {
 export type AnalyticsEvent =
   // 计算器漏斗
   | 'calculator_started'
+  | 'guide_checkin_clicked'
   | 'pet_profile_completed'
   | 'scores_completed'
   | 'symptoms_completed'

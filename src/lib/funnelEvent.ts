@@ -1,5 +1,6 @@
 export type FunnelEventName =
   | 'calculator_started'
+  | 'guide_checkin_clicked'
   | 'pet_profile_completed'
   | 'scores_completed'
   | 'symptoms_completed'
@@ -56,6 +57,7 @@ interface FunnelEventBody {
 
 const FUNNEL_EVENTS = new Set<FunnelEventName>([
   'calculator_started',
+  'guide_checkin_clicked',
   'pet_profile_completed',
   'scores_completed',
   'symptoms_completed',
