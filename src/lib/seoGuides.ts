@@ -229,7 +229,7 @@ export const SEO_GUIDES: SeoGuide[] = [
     slug: 'senior-dog-low-appetite-log',
     title: 'Senior Dog Low Appetite Log',
     description:
-      'A senior dog low-appetite log for tracking skipped meals, accepted foods, treats, water, stool, energy, weight, and vet follow-up questions.',
+      'A senior dog low-appetite log for tracking skipped meals, post-dental changes, late-night eating, 24-hour food totals, water, stool, weight, and vet follow-up questions.',
     socialImage: {
       url: '/growth/pinterest/jpg/senior-dog-low-appetite-log.jpg',
       width: 1000,
@@ -239,31 +239,37 @@ export const SEO_GUIDES: SeoGuide[] = [
     eyebrow: 'Appetite log',
     h1: 'Senior Dog Low Appetite Log',
     intro:
-      'A senior dog who starts skipping meals or only accepting favorite foods can leave families guessing. A simple meal log helps turn scattered memories into clearer vet notes.',
+      'A senior dog who starts skipping meals, only eats late, or changes appetite after dental work can leave families guessing. A simple meal log helps turn scattered memories into clearer vet notes.',
     audience:
-      'For families whose older dog is eating less, skipping meals, refusing usual food, or becoming more selective than before.',
-    lastUpdated: '2026-06-12',
+      'For families whose older dog is eating less, skipping breakfast, refusing usual food, changing after tooth extractions, or becoming more selective than before.',
+    lastUpdated: '2026-06-24',
     checklistTitle: 'What to record for each meal',
     checklist: [
       'Time offered: breakfast, dinner, snacks, overnight food, or unusual feeding times.',
+      'Schedule pattern: whether your dog skips morning food, only eats late, or has late-night eating that is replacing normal meals.',
       'Food offered: kibble, wet food, broth, treats, cat food, home additions, or a changed diet.',
       'What happened: refused, sniffed and walked away, ate a bite, ate half, or finished the meal.',
-      'Amount: a rough estimate is enough, such as none, a few bites, half, most, or all.',
-      'Related signs: water, stool, vomiting, drooling, energy, mood, comfort, or bathroom changes.',
+      'Amount across 24 hours: estimate the total food eaten in the day, not only whether breakfast or dinner was finished.',
+      'Mouth comfort: recent dental work, chewing oddly, dropping pieces, pawing at the mouth, lip-smacking, or preferring soaked or softened food.',
+      'Related signs: water, stool, vomiting, drooling, nausea signs, energy, mood, comfort, or bathroom changes.',
       'Setup changes: plate or bowl height, location, texture, temperature, quiet room, or hand feeding.',
-      'Weight trend: current weight if you can measure it safely, or whether harness/collar fit seems different.',
+      'Weight trend: current weight if you can measure it safely, especially for a small dog where small changes can matter, or whether harness/collar fit seems different.',
     ],
     notesTitle: 'How to discuss appetite changes',
     notes: [
       'Bring the log to your veterinarian instead of deciding alone whether the change is "just age".',
+      'Separate amount from pattern: "ate enough over 24 hours but only after 9pm" is different from "ate very little all day".',
       'List treats and cat food too. They can make the pattern clearer, especially if regular meals are refused.',
-      'Ask your vet before starting appetite stimulants, supplements, or major diet changes.',
+      'Include dental history, recent tooth extractions, kidney trends, GI workups, medications, and any foods that suddenly became easier or harder to eat.',
+      'Ask your vet before starting appetite stimulants, supplements, major diet changes, or a new feeding schedule.',
       SHARED_BOUNDARY,
     ],
     vetQuestions: [
-      'Would you like a recheck weight, bloodwork, urinalysis, dental review, or pain/nausea discussion?',
+      'Is this weight trend acceptable for my dog\'s size, and when should we recheck weight?',
+      'Would you like a mouth recheck after dental work, bloodwork, urinalysis, dental review, or pain/nausea discussion?',
       'Which appetite or water changes would make you want to see my dog sooner?',
       'Is the current food setup comfortable, or should we try a different height, texture, or feeding routine?',
+      'Could kidney trends, nausea, mouth discomfort, medication effects, or routine changes still matter even if the bigger tests looked okay?',
       'What should I track for the next 7 days before we follow up?',
     ],
     faq: [
@@ -273,16 +279,26 @@ export const SEO_GUIDES: SeoGuide[] = [
           'Aging can change routines, but new or persistent appetite loss should be discussed with a veterinarian. A meal log helps show what changed and how often it happens.',
       },
       {
+        question: 'What if my senior dog only eats late at night?',
+        answer:
+          'Track both the total eaten across 24 hours and the timing pattern. Bring notes about skipped breakfast, late-night eating, texture, water, stool, weight, and energy to your veterinarian so they can help interpret the change.',
+      },
+      {
+        question: 'Can dental work change how my senior dog eats?',
+        answer:
+          'Some dogs may change chewing or food preferences after dental work, but you should not assume the cause. Track chewing, dropped pieces, softened food response, mouth-pawing, drooling, and appetite timing, then ask your veterinarian whether a recheck is needed.',
+      },
+      {
         question: 'Should I use an appetite stimulant for my senior dog?',
         answer:
           'Ask your veterinarian. Appetite stimulants may be appropriate in some situations, but the decision should account for your dog\'s exam, health history, and current signs.',
       },
     ],
     ctaHref:
-      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-low-appetite-log',
-    ctaLabel: 'Turn appetite notes into a 7-day check-in',
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-low-appetite-log&intent=low_appetite_post_dental_timing',
+    ctaLabel: 'Start an appetite timing check-in',
     nextStepBody:
-      'Use the meal log alongside comfort, water, mobility, mood, and good-day notes to create a printable quality-of-life report for the next vet conversation.',
+      'Use the meal log alongside comfort, water, mobility, mood, and good-day notes to create a printable quality-of-life report and 7-day follow-up for the next vet conversation.',
   },
   {
     slug: 'senior-dog-caregiver-burnout-notes',

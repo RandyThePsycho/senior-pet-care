@@ -286,6 +286,36 @@ assert.match(
 
 assert.match(
   guideSource,
+  /intent=low_appetite_post_dental_timing/,
+  'Expected low-appetite guide CTA to preserve post-dental timing intent.',
+);
+
+assert.match(
+  guideSource,
+  /dental work|tooth extractions/i,
+  'Expected low-appetite guide to capture post-dental appetite timing language.',
+);
+
+assert.match(
+  guideSource,
+  /24 hours/i,
+  'Expected low-appetite guide to track total food eaten across 24 hours.',
+);
+
+assert.match(
+  guideSource,
+  /late-night eating|only eats late/i,
+  'Expected low-appetite guide to include late eating schedule language.',
+);
+
+assert.match(
+  guideSource,
+  /8 lb|small dog|small changes/i,
+  'Expected low-appetite guide to acknowledge small-dog weight sensitivity.',
+);
+
+assert.match(
+  guideSource,
   /twitter:\s*\{/,
   'Expected guide metadata to define page-specific Twitter card metadata.',
 );
