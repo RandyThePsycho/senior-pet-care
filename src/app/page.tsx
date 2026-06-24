@@ -73,8 +73,8 @@ const HOME_INTENT_LINKS = [
     href: '/guides/senior-dog-mobility-notes',
   },
   {
-    label: 'Eating less',
-    body: 'Note skipped meals, favorite foods, water, stool, weight, and energy.',
+    label: 'Eating less or only late',
+    body: 'Track skipped breakfast, dental changes, 24-hour food total, water, stool, and weight.',
     href: '/guides/senior-dog-low-appetite-log',
   },
 ] as const;
