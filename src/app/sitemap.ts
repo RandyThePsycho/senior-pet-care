@@ -44,6 +44,11 @@ const PUBLIC_ROUTES = [
     priority: 0.83,
   },
   {
+    path: '/guides/senior-dog-mobility-notes',
+    changeFrequency: 'weekly',
+    priority: 0.83,
+  },
+  {
     path: '/guides/senior-dog-separation-anxiety-when-left-alone',
     changeFrequency: 'weekly',
     priority: 0.83,

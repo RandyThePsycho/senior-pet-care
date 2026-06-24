@@ -68,14 +68,14 @@ const HOME_INTENT_LINKS = [
     href: '/guides/senior-dog-dementia-vet-checklist',
   },
   {
+    label: 'Mobility or slipping',
+    body: 'Track stairs, standing, restricted activity, medication effects, and caregiver limits.',
+    href: '/guides/senior-dog-mobility-notes',
+  },
+  {
     label: 'Eating less',
     body: 'Note skipped meals, favorite foods, water, stool, weight, and energy.',
     href: '/guides/senior-dog-low-appetite-log',
-  },
-  {
-    label: 'Unsure where to start',
-    body: 'Write down the situation first, then choose the next check-in path.',
-    href: '/share-your-situation',
   },
 ] as const;
 

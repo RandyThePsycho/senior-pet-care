@@ -419,6 +419,73 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the accident notes with comfort, appetite, hydration, mobility, mood, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
   },
   {
+    slug: 'senior-dog-mobility-notes',
+    title: 'Senior Dog Mobility Notes',
+    description:
+      'A senior dog mobility notes guide for tracking slipping, stairs, standing, restricted activity, medication effects, caregiver sleep, and vet or neurologist follow-up questions.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-mobility-notes.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog mobility notes checklist with movement, safety, and caregiver capacity prompts',
+    },
+    eyebrow: 'Mobility and safe-care notes',
+    h1: 'Senior Dog Mobility Notes',
+    intro:
+      'When a senior dog suddenly needs help standing, slips on normal routes, struggles with stairs, or has a vet-directed restricted activity plan, the whole home routine can change overnight. These notes help you bring clearer patterns to your veterinarian or neurologist without trying to diagnose the cause yourself.',
+    audience:
+      'For caregivers tracking senior dog mobility changes, including slipping, weakness, stairs, pain signs, medication wobbliness, restricted activity instructions from a vet, or caregiver sleep loss from overnight support.',
+    lastUpdated: '2026-06-24',
+    checklistTitle: 'What to track about movement and home safety',
+    checklist: [
+      'Movement pattern: standing up, lying down, turning, stairs, doorways, walks, car rides, favorite resting spots, and slipping.',
+      'Timing: when mobility looks best or worst, including after sleep, meals, walks, medication, potty trips, or overnight wakeups.',
+      'Body signs: panting, trembling, guarding, yelping, dragging, weakness, wobbliness, restlessness, or reluctance to lie down.',
+      'Potty access: whether your dog can get outside, squat, balance, return safely, or avoid pulling and slipping.',
+      'Vet-directed restrictions: any restricted activity, crate or room-rest instructions, leash limits, follow-up dates, and what is hard to follow at home.',
+      'Medication effects: dose timing, sleepiness, wobbliness, appetite change, GI signs, restlessness, or unsafe movement after medication.',
+      'Vision and layout: lighting, shadows, steps, flooring, room changes, cues, or confusion that may affect a dog with reduced sight or hearing.',
+      'Caregiver capacity: lifting risk, lost sleep, missed work, lack of backup help, and moments when support becomes unsafe for the caregiver.',
+    ],
+    notesTitle: 'How to keep mobility notes useful',
+    notes: [
+      'Write observable examples before naming the problem. "Slipped twice on the hallway turn after evening medication" is more useful than guessing the cause.',
+      'If your veterinarian or neurologist gave restricted activity instructions, track what worked, what failed, and what was not realistic at home.',
+      'Include caregiver sleep and lifting limits plainly. A plan that requires constant overnight support may not be safe without backup.',
+      'Do not change medication timing, activity limits, supplements, ramps, braces, or exercise plans without asking your licensed veterinarian.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Which mobility details would help you decide whether to recheck pain, neurologic function, medication effects, or home-safety limits?',
+      'If restricted activity was recommended, what should I track before the next appointment or neurologist follow-up?',
+      'What signs mean I should contact you sooner than the planned follow-up?',
+      'What home-care tasks are unsafe for me to keep doing alone, and what backup plan should we discuss?',
+      'Would a 7-day quality-of-life check-in help compare mobility, comfort, appetite, sleep, and good-day patterns?',
+    ],
+    faq: [
+      {
+        question: 'What should I track if my senior dog is suddenly slipping or weak?',
+        answer:
+          'Track when it happens, the surface or route, whether your dog can stand, potty, eat, drink, and settle, medication timing, pain signs, and whether the caregiver can help safely. A veterinarian should interpret the pattern.',
+      },
+      {
+        question: 'Should I mention caregiver sleep loss during a mobility visit?',
+        answer:
+          'Yes. Overnight support, lifting, potty trips, and supervision affect whether a home plan is realistic and safe. That context can help your veterinarian discuss next steps.',
+      },
+      {
+        question: 'Can these notes replace a neurologist or vet follow-up?',
+        answer:
+          'No. These notes are only for organizing what you observe. Health decisions, activity restrictions, medication changes, and specialist referrals should come from a licensed veterinarian.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-pet-quality-of-life-calculator?guide=senior-dog-mobility-notes&intent=mobility_caregiver_capacity',
+    ctaLabel: 'Start a mobility check-in',
+    nextStepBody:
+      'Use the mobility notes with comfort, appetite, hydration, mood, sleep, and good-day ratings to create a printable quality-of-life report and 7-day follow-up.',
+  },
+  {
     slug: 'senior-dog-separation-anxiety-when-left-alone',
     title: 'Senior Dog Separation Anxiety When Left Alone',
     description:

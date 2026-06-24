@@ -46,6 +46,10 @@ const guides = [
     slug: 'senior-dog-dementia-vet-checklist',
     title: 'Senior Dog Dementia Vet Checklist',
   },
+  {
+    slug: 'senior-dog-mobility-notes',
+    title: 'Senior Dog Mobility Notes',
+  },
 ];
 
 assert.ok(
@@ -252,6 +256,36 @@ assert.match(
 
 assert.match(
   guideSource,
+  /intent=mobility_caregiver_capacity/,
+  'Expected mobility guide CTA to preserve caregiver-capacity intent.',
+);
+
+assert.match(
+  guideSource,
+  /Start a mobility check-in/,
+  'Expected mobility guide to have a calculator CTA.',
+);
+
+assert.match(
+  guideSource,
+  /restricted activity/i,
+  'Expected mobility guide to capture vet-directed restricted-activity language without giving treatment advice.',
+);
+
+assert.match(
+  guideSource,
+  /neurologist/i,
+  'Expected mobility guide to include specialist follow-up language.',
+);
+
+assert.match(
+  guideSource,
+  /caregiver sleep/i,
+  'Expected mobility guide to include caregiver sleep capacity language.',
+);
+
+assert.match(
+  guideSource,
   /twitter:\s*\{/,
   'Expected guide metadata to define page-specific Twitter card metadata.',
 );
@@ -304,6 +338,12 @@ assert.match(
   'Expected accident guide to use its own social preview image.',
 );
 
+assert.match(
+  guideSource,
+  /\/growth\/pinterest\/jpg\/senior-dog-mobility-notes\.jpg/,
+  'Expected mobility guide to use its own social preview image.',
+);
+
 assert.ok(
   existsSync('public/growth/pinterest/jpg/senior-dog-night-waking-log.jpg'),
   'Expected night-waking guide social image asset to exist.',
@@ -333,4 +373,9 @@ assert.ok(
     'public/growth/pinterest/jpg/senior-dog-accidents-in-house-caregiver-exhausted.jpg',
   ),
   'Expected accident guide social image asset to exist.',
+);
+
+assert.ok(
+  existsSync('public/growth/pinterest/jpg/senior-dog-mobility-notes.jpg'),
+  'Expected mobility guide social image asset to exist.',
 );
