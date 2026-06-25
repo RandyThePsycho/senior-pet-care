@@ -5,8 +5,16 @@ import Link from 'next/link';
 import CTAButton from '@/components/common/CTAButton';
 
 const ATTRIBUTION_CAMPAIGN = 'senior_pet_checkin_kit';
+const PARTNER_TOOLS_HUB_PATH = '/tools';
 
 const SHARE_RESOURCES = [
+  {
+    label: 'Free tools hub',
+    path: PARTNER_TOOLS_HUB_PATH,
+    fallbackContent: 'tools_hub',
+    description:
+      'A family-facing starting point for the calculator, printable report, and focused senior pet checklists.',
+  },
   {
     label: 'Senior dog checklist',
     path: '/guides/senior-dog-quality-of-life-checklist',
@@ -28,13 +36,6 @@ const SHARE_RESOURCES = [
     description:
       'A simple prompt for organizing what changed, when it started, and what to ask the vet.',
   },
-  {
-    label: 'Quality-of-life calculator',
-    path: '/tools/senior-pet-quality-of-life-calculator',
-    fallbackContent: 'calculator',
-    description:
-      'A printable HHHHHMM-based report and 7-day follow-up journal for senior pet families.',
-  },
 ];
 
 export default function PartnerKitSharePanel() {
@@ -45,8 +46,8 @@ export default function PartnerKitSharePanel() {
   }, []);
 
   const primaryHref = buildTrackedHref({
-    path: '/tools/senior-pet-quality-of-life-calculator',
-    fallbackContent: 'primary_cta',
+    path: PARTNER_TOOLS_HUB_PATH,
+    fallbackContent: 'primary_tools_hub',
     currentSearch,
   });
 
@@ -59,7 +60,7 @@ export default function PartnerKitSharePanel() {
         <div className="mt-3 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="max-w-2xl">
             <p className="leading-7 text-navy-600">
-              If this seems useful for your audience, forward this calculator
+              If this seems useful for your audience, forward this free tools
               link to one senior pet family or include the short blurb below.
               Each family receives its own private report and journal link; you
               do not need to collect their information.
@@ -76,7 +77,7 @@ export default function PartnerKitSharePanel() {
               </li>
             </ul>
           </div>
-          <CTAButton href={primaryHref}>Review family calculator</CTAButton>
+          <CTAButton href={primaryHref}>Review family tools</CTAButton>
         </div>
       </section>
 

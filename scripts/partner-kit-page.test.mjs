@@ -14,17 +14,23 @@ const sharePanelSource = readFileSync(sharePanelPath, 'utf8');
 assert.match(pageSource, /Senior Pet Check-In Kit/);
 assert.match(pageSource, /not a diagnosis/i);
 assert.match(pageSource, /licensed veterinarian/i);
-assert.match(pageSource, /forward one family-facing\s+link/i);
+assert.match(pageSource, /forward one\s+family-facing\s+link/i);
 assert.doesNotMatch(pageSource, /product recommendations/i);
 assert.doesNotMatch(pageSource, /affiliate/i);
 
+assert.match(sharePanelSource, /const PARTNER_TOOLS_HUB_PATH = '\/tools'/);
 assert.match(
   sharePanelSource,
-  /\/tools\/senior-pet-quality-of-life-calculator/,
+  /label: 'Free tools hub'/,
+);
+assert.doesNotMatch(
+  sharePanelSource,
+  /path: '\/tools\/senior-pet-quality-of-life-calculator'/,
 );
 assert.match(sharePanelSource, /\/guides\/senior-dog-quality-of-life-checklist/);
 assert.match(sharePanelSource, /\/guides\/senior-cat-quality-of-life-checklist/);
-assert.match(sharePanelSource, /forward this calculator\s+link to one senior pet family/i);
+assert.match(sharePanelSource, /forward this free tools\s+link to one senior pet family/i);
+assert.match(sharePanelSource, /Review family tools/);
 assert.match(sharePanelSource, /you\s+do not need to collect their information/i);
 assert.match(sharePanelSource, /currentSource \?\? 'partner'/);
 assert.match(sharePanelSource, /currentContent \?\? fallbackContent/);

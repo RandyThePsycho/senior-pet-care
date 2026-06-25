@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Senior Pet Check-In Kit for Partners',
     description:
-      'Share free senior dog and cat checklists, vet-visit notes, and a quality-of-life calculator with older pet families.',
+      'Share a free senior pet tools hub with older pet families, including checklists, vet-visit notes, and a quality-of-life calculator.',
     url: '/partners/senior-pet-check-in-kit',
     siteName: SITE_NAME,
     images: [
@@ -72,10 +72,10 @@ export default function SeniorPetCheckInKitPage() {
               Senior Pet Check-In Kit
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-navy-600">
-              Share calm checklists, vet-visit notes, and a printable
-              quality-of-life calculator with families caring for older dogs
-              and cats. Review the kit first, then forward one family-facing
-              link when it fits your audience.
+              Share a calm tools hub with checklists, vet-visit notes, and a
+              printable quality-of-life calculator for families caring for
+              older dogs and cats. Review the kit first, then forward one
+              family-facing link when it fits your audience.
             </p>
           </div>
 
