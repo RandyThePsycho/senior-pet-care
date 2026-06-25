@@ -63,6 +63,10 @@ Checked on 2026-06-04:
 
 ## Approved UTM Patterns
 
+Free tools hub:
+
+`https://pawcheckin.com/tools?utm_source={platform}&utm_medium={medium}&utm_campaign=tools_hub&utm_content={context}`
+
 Calculator:
 
 `https://pawcheckin.com/tools/senior-pet-quality-of-life-calculator?utm_source={platform}&utm_medium={medium}&utm_campaign=feature_a_quality_life&utm_content={context}`
@@ -79,4 +83,3 @@ Pinterest examples:
 
 - `https://pawcheckin.com/tools/senior-pet-quality-of-life-calculator?utm_source=pinterest&utm_medium=pin&utm_campaign=feature_a_quality_life&utm_content=quality_of_life_checklist`
 - `https://pawcheckin.com/tools/senior-pet-quality-of-life-calculator?utm_source=pinterest&utm_medium=pin&utm_campaign=feature_a_quality_life&utm_content=seven_day_tracker`
-

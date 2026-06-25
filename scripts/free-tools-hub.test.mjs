@@ -16,6 +16,8 @@ for (const expected of [
   'Caregiver capacity checklists',
   '7-day reassessment',
   'printable report',
+  'Free to start',
+  'Printable report for your vet conversation',
   'not a diagnosis',
   'licensed veterinarian',
   '/tools/senior-pet-quality-of-life-calculator?guide=tools-hub&intent=free_tools_quality_of_life',

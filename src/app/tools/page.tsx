@@ -68,6 +68,12 @@ const CARE_LOOP = [
   'Return for a 7-day reassessment so the journal shows what changed.',
 ] as const;
 
+const TRUST_POINTS = [
+  'Free to start',
+  'Not a diagnosis',
+  'Printable report for your vet conversation',
+] as const;
+
 export default function ToolsHubPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-cream-50">
@@ -115,6 +121,16 @@ export default function ToolsHubPage() {
                 Share your situation
               </Link>
             </div>
+            <ul className="mt-4 flex flex-wrap gap-2 text-sm text-navy-500">
+              {TRUST_POINTS.map((point) => (
+                <li
+                  key={point}
+                  className="rounded-md border border-navy-100 bg-white/80 px-3 py-1"
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
           </div>
 
           <aside className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-sm shadow-navy-800/5">
