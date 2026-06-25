@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-25 19:18 CST.
+Last updated: 2026-06-25 20:05 CST.
 
 ## Executive Summary
 
@@ -78,6 +78,21 @@ both `free_tools_hub_20260625` and `free_tools_hub_answer_20260625`.
 Next read should include both `free_tools_hub_20260625` from Pinterest and
 `free_tools_hub_answer_20260625` from Quora before deciding whether the next
 failure is still exposure/trust or has moved into `/tools` click/activation.
+
+2026-06-25 trust cleanup and next-candidate prep: after the Quora answer,
+Codex attempted to add a truthful builder credential, but Quora rendered it as
+`Former Builder`, which looked worse than no credential. Codex deleted that bad
+credential through the answer menu and verified the answer still shows the
+PawCheckin disclosure plus `/tools` UTM while the byline no longer contains
+`Former Builder`. Evidence:
+`growth/quora-answer-credential-cleanup-2026-06-25.png`. Codex also created
+`growth/next-candidate-pool-2026-06-25.md` so tomorrow's action starts from a
+diagnosis gate, not a reactive search. Finally, `/tools` gained a small
+first-screen trust row under the CTA: `Free to start`, `Not a diagnosis`, and
+`Printable report for your vet conversation`. This shipped in commit
+`7e48b06`; both Vercel deployments succeeded and production HTML at
+`https://pawcheckin.com/tools` contains the new trust copy and the
+`guide=tools-hub&intent=free_tools_quality_of_life` calculator link.
 
 2026-06-25 midday read and action: network preflight passed but still showed
 slow first-sample DNS for `pawcheckin.com` and Supabase. There were no leftover
