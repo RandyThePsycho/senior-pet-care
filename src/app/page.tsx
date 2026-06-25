@@ -115,9 +115,17 @@ export default function HomePage() {
           <span className="text-sm font-semibold tracking-[0.18em] text-navy-700">
             SENIOR PET CARE
           </span>
-          <span className="hidden text-sm text-navy-500 sm:block">
-            Assessment, report, journal, 7-day follow-up
-          </span>
+          <div className="flex items-center gap-4 text-sm">
+            <Link
+              href="/tools"
+              className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              Free tools
+            </Link>
+            <span className="hidden text-navy-500 sm:block">
+              Assessment, report, journal, 7-day follow-up
+            </span>
+          </div>
         </nav>
 
         {/* Hero */}
