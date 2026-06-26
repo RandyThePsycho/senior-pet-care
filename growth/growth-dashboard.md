@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 15:56 CST.
+Last updated: 2026-06-26 16:00 CST.
 
 ## Executive Summary
 
@@ -50,6 +50,15 @@ distribution/offer exposure rather than calculator usability. Next targeted
 modification should be a high-intent distribution asset specifically around
 "do not buy random senior dog supplements before you sort the pattern", not
 more generic caregiver-support posting.
+
+Production deployment note: commit `764575b` was pushed to `main`. Network
+preflight before production checks returned `stable=true` with slow DNS warnings
+for PawCheckin and Supabase but no failures. Production
+`https://pawcheckin.com/tools/senior-safe-product-matcher` returned HTTP 200
+from Vercel with the expected title, canonical URL, paid-intent copy, medical
+boundary copy, and early-access support-plan marker. Production `/tools` exposes
+the `Support product matcher` card, and `sitemap.xml` includes
+`/tools/senior-safe-product-matcher`.
 
 2026-06-26 operating correction: project-owner feedback correctly identified
 that "continue the plan" is not enough when repeated actions produce no signal.
