@@ -31,7 +31,7 @@ export default function SeniorSafeProductMatcherPage({
   searchParams,
 }: SeniorSafeProductMatcherPageProps) {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-cream-50">
+    <main id="main-content" className="min-h-screen overflow-x-hidden bg-cream-50">
       <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-10">
         <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-navy-100/80 pb-5">
           <Link

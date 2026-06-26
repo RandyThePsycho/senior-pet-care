@@ -451,7 +451,10 @@ function DashboardShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen px-4 py-8 text-navy-700 sm:px-6 lg:px-8">
+    <main
+      id="main-content"
+      className="min-h-screen px-4 py-8 text-navy-700 sm:px-6 lg:px-8"
+    >
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
         <header className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">

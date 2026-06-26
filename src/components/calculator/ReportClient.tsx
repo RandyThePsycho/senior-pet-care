@@ -70,7 +70,7 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
 
   if (!loaded) {
     return (
-      <main className="min-h-screen bg-cream-50 px-5 py-10 text-navy-600">
+      <main id="main-content" className="min-h-screen bg-cream-50 px-5 py-10 text-navy-600">
         <div className="mx-auto max-w-3xl rounded-lg border border-navy-100 bg-white/86 p-6 shadow-sm">
           Loading your printable report...
         </div>
@@ -80,7 +80,7 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
 
   if (!snapshot) {
     return (
-      <main className="min-h-screen bg-cream-50 px-5 py-16">
+      <main id="main-content" className="min-h-screen bg-cream-50 px-5 py-16">
         <div className="mx-auto max-w-xl rounded-lg border border-navy-100 bg-white/90 p-8 text-center shadow-soft">
           <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
             REPORT NOT FOUND
@@ -115,7 +115,7 @@ export default function ReportClient({ assessmentId }: ReportClientProps) {
   );
 
   return (
-    <main className="report-root min-h-screen bg-cream-50 px-5 py-6 text-navy-800 sm:px-8 sm:py-10">
+    <main id="main-content" className="report-root min-h-screen bg-cream-50 px-5 py-6 text-navy-800 sm:px-8 sm:py-10">
       <div className="mx-auto max-w-5xl">
         <nav className="no-print mb-8 flex items-center justify-between gap-4 border-b border-navy-100/80 pb-5">
           <Link

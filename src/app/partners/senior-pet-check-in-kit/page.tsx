@@ -49,7 +49,7 @@ const COPY_BLOCKS = [
 
 export default function SeniorPetCheckInKitPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-cream-50">
+    <main id="main-content" className="min-h-screen overflow-x-hidden bg-cream-50">
       <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
         <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
           <Link

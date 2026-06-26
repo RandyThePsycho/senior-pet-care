@@ -9,13 +9,20 @@ html {
 body {
   font-feature-settings: 'kern';
   background:
+    radial-gradient(circle at top left, rgba(188, 208, 184, 0.28), transparent 30rem),
+    radial-gradient(circle at 85% 10%, rgba(232, 221, 202, 0.42), transparent 26rem),
     linear-gradient(90deg, rgba(42, 55, 73, 0.028) 1px, transparent 1px),
     linear-gradient(180deg, rgba(42, 55, 73, 0.022) 1px, transparent 1px),
     #fbf8f3;
   background-size:
+    auto,
+    auto,
     34px 34px,
     34px 34px,
     auto;
+  color: #1f2937;
+  font-size: 18px;
+  line-height: 1.65;
   text-rendering: geometricPrecision;
 }
 
@@ -30,8 +37,67 @@ li {
   text-wrap: pretty;
 }
 
+a {
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(84, 128, 77, 0.72);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: rgba(188, 208, 184, 0.72);
+  color: #1f2937;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  border-radius: 0.75rem;
+  background: #1f2937;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  transition: transform 160ms ease-out;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.paper-panel {
+  border: 1px solid rgba(42, 55, 73, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 22px 70px rgba(42, 55, 73, 0.1);
+}
+
+.warm-callout {
+  border-left: 5px solid #6f9a68;
+  background: rgba(238, 243, 238, 0.86);
+}
+
 /* 让 range 滑块在各浏览器更友好、可触达 */
 input[type='range'] {
   height: 1.5rem;
   cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
 }

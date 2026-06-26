@@ -35,7 +35,7 @@ export default function CTAButton({
   fullWidth = false,
 }: CTAButtonProps) {
   const base =
-    'inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold transition-all duration-200 ease-out active:translate-y-0 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0';
+    'inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-base font-semibold leading-6 transition-all duration-200 ease-out active:translate-y-0 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0';
   const classes = `${base} ${VARIANT_CLASSES[variant]} ${
     fullWidth ? 'w-full' : ''
   }`;

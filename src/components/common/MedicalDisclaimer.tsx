@@ -14,7 +14,7 @@ export default function MedicalDisclaimer({
       : 'Quality-of-life scales are a starting point for observation and conversation, not a medical assessment. Always consult a licensed veterinarian about your pet’s health.';
 
   return (
-    <p className="rounded-lg border border-navy-100 bg-cream-100 px-4 py-3 text-sm leading-relaxed text-navy-500">
+    <p className="rounded-xl border border-navy-100 bg-cream-100 px-5 py-4 text-base leading-7 text-navy-600 shadow-sm shadow-navy-800/5">
       <span className="font-semibold text-navy-600">Please note: </span>
       {text}
     </p>

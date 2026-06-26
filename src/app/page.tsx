@@ -105,7 +105,7 @@ const HOME_JSON_LD = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-cream-50">
+    <main id="main-content" className="min-h-screen overflow-x-hidden bg-cream-50">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }}

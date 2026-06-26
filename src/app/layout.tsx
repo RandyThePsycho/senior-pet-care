@@ -85,6 +85,9 @@ export default function RootLayout({
           </>
         ) : null}
         <AttributionCapture />
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>
