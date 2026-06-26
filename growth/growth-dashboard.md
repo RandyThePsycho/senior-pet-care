@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 13:19 CST.
+Last updated: 2026-06-26 13:25 CST.
 
 ## Executive Summary
 
@@ -29,6 +29,23 @@ Production deployment note: commit `53d7ebd` was pushed to `main`. Production
 `https://pawcheckin.com/approach` initially returned 404 while Vercel was still
 deploying, then returned HTTP 200 with title `How PawCheckin Works · Senior Pet
 Care` and the expected page markers. The public trust/approach page is live.
+
+2026-06-26 Reddit standalone-post test: Codex tested the first non-link,
+non-promotional standalone discussion post in `r/seniordogs` because repeated
+reply-only work had produced no replies, profile visits, or page_events. The
+post title was "For caregivers of senior dogs: what notes actually helped
+before a vet visit?" and the body asked what notes helped families talk with a
+vet, with no PawCheckin mention, no link, and no medical advice. Result:
+Reddit accepted the submit flow, but the subreddit feed immediately showed the
+post as removed by Reddit filters. URL:
+`https://www.reddit.com/r/seniordogs/comments/1ufxo28/for_caregivers_of_senior_dogs_what_notes_actually/`.
+Post-action reflection: benefit is a clear failure diagnosis; cost is one
+filtered account action; risk is that more standalone attempts from this
+account could worsen trust. Targeted modification: do not retry standalone
+Reddit posts in `r/seniordogs` today. Future Reddit standalone distribution
+requires mod permission, a community that explicitly welcomes discussion/research
+posts, or a different trust path. This was not a valid exposure test and should
+not be counted as acquisition.
 
 2026-06-26 next action after the correction: Codex did not add another social
 reply. Pre-action rationale: the evidence is still exposure/trust/source-quality

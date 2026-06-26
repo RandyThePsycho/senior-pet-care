@@ -97,6 +97,11 @@ Run one bounded block per day. Default time: 12:35 CST.
   target list is reviewed.
 - X linked posts: paused until a stronger distribution hypothesis exists.
 - Reddit/X no-link replies: max 1 high-intent reply per day.
+- Reddit standalone posts: blocked for `r/seniordogs` after the 2026-06-26
+  no-link discussion post was removed by Reddit filters. Do not retry by
+  changing the title. Reopen only with mod permission, a community that clearly
+  welcomes discussion/research posts, or a different non-Reddit distribution
+  path.
 - Pinterest: do not republish the same pin; new assets need a new angle and UTM.
 - Quora: max 1 answer per high-intent question, no duplicated angle.
 
