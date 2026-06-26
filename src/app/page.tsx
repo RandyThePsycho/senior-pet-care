@@ -50,6 +50,8 @@ const PREVIEW_SCORES = [
 
 const HOME_PRIMARY_CALCULATOR_HREF =
   '/tools/senior-pet-quality-of-life-calculator?guide=homepage&intent=general_quality_of_life';
+const HOME_SUPPORT_MATCHER_HREF =
+  '/tools/senior-safe-product-matcher?source=homepage_hero&intent=before_product_purchase';
 
 const HOME_INTENT_LINKS = [
   {
@@ -115,7 +117,7 @@ export default function HomePage() {
           <span className="text-sm font-semibold text-navy-700">
             SENIOR PET CARE
           </span>
-          <div className="flex items-center gap-4 text-base">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-base">
             <Link
               href="/approach"
               className="font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
@@ -128,22 +130,28 @@ export default function HomePage() {
             >
               Free tools
             </Link>
-            <span className="hidden text-navy-500 sm:block">
+            <Link
+              href={HOME_SUPPORT_MATCHER_HREF}
+              className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              Support matcher
+            </Link>
+            <span className="hidden text-navy-500 lg:block">
               Assessment, report, journal, 7-day follow-up
             </span>
           </div>
         </nav>
 
         {/* Hero */}
-        <section className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+        <section className="grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,0.96fr)_minmax(25rem,0.82fr)] lg:items-start">
           <div className="max-w-3xl">
             <p className="mb-5 max-w-xl text-base font-semibold leading-7 text-sage-700">
               A gentle quality-of-life tracker for aging pets
             </p>
-            <h1 className="max-w-5xl font-display text-5xl leading-[1.04] text-navy-800 sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-5xl font-display text-4xl leading-[1.08] text-navy-800 sm:text-6xl lg:text-7xl">
               Track subtle changes in your aging pet before the vet visit.
             </h1>
-            <p className="mt-7 max-w-2xl text-xl leading-9 text-navy-600">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-navy-600 sm:mt-7 sm:text-xl sm:leading-9">
               A gentle, non-diagnostic way to notice patterns, prepare better
               questions, and check back in 7 days with a clearer trend.
             </p>
@@ -151,7 +159,16 @@ export default function HomePage() {
               <CTAButton href={HOME_PRIMARY_CALCULATOR_HREF}>
                 Check my pet&apos;s quality of life
               </CTAButton>
-              <p className="mt-4 text-base leading-7 text-navy-500">
+              <p className="mt-5 text-base leading-7 text-navy-500">
+                Considering supplements or home products?{' '}
+                <Link
+                  href={HOME_SUPPORT_MATCHER_HREF}
+                  className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800"
+                >
+                  Match the support category first.
+                </Link>
+              </p>
+              <p className="mt-2 text-base leading-7 text-navy-500">
                 Facing a difficult goodbye?{' '}
                 <Link
                   href="/end-of-life/checklist"
@@ -161,42 +178,39 @@ export default function HomePage() {
                 </Link>
               </p>
             </div>
-
-            <div className="mt-9 grid gap-3">
-              {HOME_INTENT_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="group grid gap-2 rounded-xl border border-navy-100 bg-white/78 p-4 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-300 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 sm:grid-cols-[13rem_1fr] sm:items-start"
-                >
-                  <span className="block text-base font-semibold leading-6 text-navy-800 group-hover:text-sage-700">
-                    {link.label}
-                  </span>
-                  <span className="block text-base leading-7 text-navy-600">
-                    {link.body}
-                  </span>
-                </Link>
-              ))}
-            </div>
-
-            <Link
-              href="/share-your-situation"
-              className="mt-6 block max-w-2xl rounded-lg border border-sage-200 bg-white/88 p-5 shadow-sm shadow-sage-700/10 transition hover:-translate-y-0.5 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
-            >
-              <span className="text-sm font-semibold text-sage-700">
-                NOT SURE WHERE TO START?
-              </span>
-              <span className="mt-2 block font-display text-2xl leading-tight text-navy-800">
-                Tell us what&apos;s happening with your aging pet.
-              </span>
-              <span className="mt-2 block text-base leading-7 text-navy-600">
-                Share what you&apos;re worried about. We can&apos;t give medical
-                advice, but writing it down can help you organize your thoughts.
-              </span>
-            </Link>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 lg:pt-2">
+            <Link
+              href={HOME_SUPPORT_MATCHER_HREF}
+              className="group block rounded-2xl border border-sage-200 bg-sage-50/92 p-6 shadow-soft shadow-sage-700/10 transition hover:-translate-y-0.5 hover:border-sage-300 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              <span className="text-sm font-semibold text-sage-700">
+                BEFORE BUYING SUPPLEMENTS
+              </span>
+              <span className="mt-3 block font-display text-3xl leading-tight text-navy-800">
+                Support Matcher
+              </span>
+              <span className="mt-3 block text-base leading-7 text-navy-600">
+                Match mobility, night waking, appetite, accidents, or caregiver
+                sleep pressure to safer support categories and vet questions.
+              </span>
+              <span className="mt-5 inline-flex items-center justify-center rounded-xl bg-navy-800 px-5 py-3 text-base font-semibold text-white transition group-hover:bg-sage-800">
+                Open support matcher
+              </span>
+              <span className="mt-4 grid gap-2 text-sm font-medium text-navy-600 sm:grid-cols-3">
+                <span className="rounded-lg bg-white/70 px-3 py-2">
+                  Category-first
+                </span>
+                <span className="rounded-lg bg-white/70 px-3 py-2">
+                  Vet-first warnings
+                </span>
+                <span className="rounded-lg bg-white/70 px-3 py-2">
+                  Paid-intent test
+                </span>
+              </span>
+            </Link>
+
             <figure className="relative overflow-hidden rounded-lg border border-navy-100 bg-navy-800 shadow-soft">
               <img
                 src="/images/senior-pet-home.jpg"
@@ -232,6 +246,33 @@ export default function HomePage() {
                 ))}
               </ol>
             </aside>
+          </div>
+        </section>
+
+        <section className="grid gap-5 border-t border-navy-100/70 pt-8 lg:grid-cols-[0.34fr_0.66fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold text-sage-700">
+              Start from this week&apos;s pressure
+            </p>
+            <h2 className="mt-2 max-w-sm font-display text-3xl leading-tight text-navy-800">
+              Pick the pattern that feels most urgent.
+            </h2>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {HOME_INTENT_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group rounded-xl border border-navy-100 bg-white/78 p-5 shadow-sm shadow-navy-800/5 transition hover:-translate-y-0.5 hover:border-sage-300 hover:bg-sage-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+              >
+                <span className="block text-base font-semibold leading-6 text-navy-800 group-hover:text-sage-700">
+                  {link.label}
+                </span>
+                <span className="mt-2 block text-base leading-7 text-navy-600">
+                  {link.body}
+                </span>
+              </Link>
+            ))}
           </div>
         </section>
 

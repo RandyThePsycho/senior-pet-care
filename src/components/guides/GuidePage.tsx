@@ -50,15 +50,15 @@ export default function GuidePage({ guide }: GuidePageProps) {
           </span>
         </nav>
 
-        <header className="mt-12 grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-end">
+        <header className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-[1fr_22rem] lg:items-end">
           <div>
             <p className="mb-4 text-base font-semibold text-sage-700">
               {guide.eyebrow}
             </p>
-            <h1 className="max-w-5xl font-display text-5xl leading-[1.04] text-navy-800 sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-5xl font-display text-4xl leading-[1.08] text-navy-800 sm:text-6xl lg:text-7xl">
               {guide.h1}
             </h1>
-            <p className="mt-7 max-w-3xl text-xl leading-9 text-navy-600">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-navy-600 sm:mt-7 sm:text-xl sm:leading-9">
               {guide.intro}
             </p>
           </div>
