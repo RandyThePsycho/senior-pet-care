@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 16:28 CST.
+Last updated: 2026-06-26 16:34 CST.
 
 ## Executive Summary
 
@@ -45,6 +45,15 @@ matcher clicks, improve first-screen CTA/offer framing. If it produces no visits
 the failure remains distribution, so the next action should publish or pitch
 this specific guide with one high-intent asset rather than making another broad
 caregiver-support post.
+
+Production verification: commit `e08cb41` was pushed to main. Network preflight
+before production checks returned `stable=true` with no warnings. The first
+production request returned an old-deployment 404 while Vercel was still
+updating; a retry returned HTTP 200 with Vercel `x-matched-path:
+/guides/senior-dog-supplements-before-buying`, the expected title, H1,
+`MATCH SUPPORT CATEGORIES`, not-a-diagnosis language, and the support-matcher
+CTA. Production `/tools` exposes the guide card and `sitemap.xml` includes
+`/guides/senior-dog-supplements-before-buying`.
 
 2026-06-26 commercial pivot executed: after reviewing the weak traffic pattern
 and the owner's concern that the project is not moving toward monetization,
