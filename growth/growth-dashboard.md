@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 13:14 CST.
+Last updated: 2026-06-26 13:19 CST.
 
 ## Executive Summary
 
@@ -24,6 +24,11 @@ changed. This especially applies to Reddit no-link replies and low-reach social
 posts: they may support customer research and trust, but they are not counted as
 acquisition unless they produce replies, profile visits, page_events, or funnel
 movement.
+
+Production deployment note: commit `53d7ebd` was pushed to `main`. Production
+`https://pawcheckin.com/approach` initially returned 404 while Vercel was still
+deploying, then returned HTTP 200 with title `How PawCheckin Works · Senior Pet
+Care` and the expected page markers. The public trust/approach page is live.
 
 2026-06-26 next action after the correction: Codex did not add another social
 reply. Pre-action rationale: the evidence is still exposure/trust/source-quality
