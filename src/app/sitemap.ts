@@ -19,6 +19,11 @@ const PUBLIC_ROUTES = [
     priority: 0.9,
   },
   {
+    path: '/approach',
+    changeFrequency: 'monthly',
+    priority: 0.78,
+  },
+  {
     path: '/guides/senior-dog-quality-of-life-checklist',
     changeFrequency: 'weekly',
     priority: 0.82,

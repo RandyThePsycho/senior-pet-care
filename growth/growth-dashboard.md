@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-25 20:05 CST.
+Last updated: 2026-06-26 13:14 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,119 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-26 operating correction: project-owner feedback correctly identified
+that "continue the plan" is not enough when repeated actions produce no signal.
+The growth process now requires a mandatory action review loop before any new
+external action: pre-action rationale, expected signal, downside risk,
+post-action benefits/costs, failure reason, and targeted modification. A tactic
+with two consecutive zero-signal reads is paused until the action itself is
+changed. This especially applies to Reddit no-link replies and low-reach social
+posts: they may support customer research and trust, but they are not counted as
+acquisition unless they produce replies, profile visits, page_events, or funnel
+movement.
+
+2026-06-26 next action after the correction: Codex did not add another social
+reply. Pre-action rationale: the evidence is still exposure/trust/source-quality
+failure, and repeated no-link replies have not produced replies, profile visits,
+or page_events. The chosen modification was a reusable trust/approach page at
+`/approach` so profiles, Quora disclosures, partner notes, and future community
+contexts have one clear place explaining what PawCheckin is, what it does, and
+what it explicitly does not do. Expected signal: future visitors from profiles
+or partner/community contexts should have a clearer trust path to `/tools` or
+the calculator; if future reads still show 0 `/approach`, `/tools`, and guide
+visits, the failure is more likely channel exposure/source quality than landing
+trust. Implementation: added `/approach`, linked it from `/` and `/tools`, and
+included it in `sitemap.xml`. Verification: `tsc --noEmit` passed using bundled
+Node and local `node_modules/.bin`; `next build` passed and generated `/approach`
+as a static route; browser checks at 1440px and 390px found the correct title,
+H1, tools/calculator links, boundary copy, and 0 horizontal overflow on
+`/approach`; mobile checks on `/` and `/tools` confirmed the new "How it works"
+link with 0 horizontal overflow. Post-action reflection: benefit is improved
+trust explanation and reusable disclosure target; cost is one more page in the
+navigation that may distract slightly from the calculator; risk is limited
+because the page links back to `/tools` and the calculator. This does not count
+as acquisition yet. The next external action should use `/approach` only when
+the context needs trust/affiliation explanation, otherwise use a pain-specific
+guide or `/tools`.
+
+2026-06-26 morning read: network preflight passed with `stable=true`, VPN
+`Connected`, and no DNS/HTTPS warnings; local stability was clean with no
+listeners on ports 3000-3020, no net-watchdog/growth-utm-read/Next loops, and
+no unusually large recent WorkBuddy/Codex logs. Supabase read since the
+2026-06-25 Pinterest `/tools` pin (`2026-06-25T09:45:00Z`) found
+0 page_events, 0 `/tools` page_events, 0 funnel_events, 0
+`guide=tools-hub&intent=free_tools_quality_of_life` calculator starts, and
+0 email_events/assessments/reassessments/need_submissions. Target reads also
+found 0 page_events and 0 funnel events for
+`free_tools_hub_20260625` and `free_tools_hub_answer_20260625`. A 7-day
+sanity check found tracking is not completely dead: 14 real page_events exist,
+but all are unattributed homepage `/` visits; `/tools` and funnel_events remain
+0. Diagnosis: still exposure/trust/source-quality failure. Do not edit the
+`/tools` CTA or calculator activation yet; today's next action should improve
+qualified source selection and profile/placement trust, or prepare one safe
+no-link high-intent community action only if the thread is fresh and clearly
+aligned with Feature A.
+
+2026-06-26 first growth action: after a second stable network preflight, Codex
+chose one high-intent r/seniordogs caregiver-fatigue thread rather than adding
+linked volume. Thread:
+`https://old.reddit.com/r/seniordogs/comments/1uf3dl1/ive_been_caring_for_my_14yearold_dog_for_2_years/`.
+The post was 18-19 hours old, 75 points, and explicitly said "Not looking for
+solutions." Codex therefore posted a no-link, no-PawCheckin, no-treatment reply
+focused only on validating caregiver fatigue and separating exhaustion from
+love for the dog. Verification found RandyThePsycho visible at
+`https://old.reddit.com/r/seniordogs/comments/1uf3dl1/ive_been_caring_for_my_14yearold_dog_for_2_years/otupjiv/`
+with 1 point just now. Evidence screenshots:
+`growth/reddit-reply-presend-caregiver-fatigue-2026-06-26.png` and
+`growth/reddit-reply-postsend-caregiver-fatigue-2026-06-26.png`. Stop rule:
+no more Reddit replies today unless a reply to RandyThePsycho directly asks
+for a checklist/resource; do not add a link retroactively.
+
+2026-06-26 second growth action: because the morning read still classified the
+bottleneck as exposure/trust/source-quality, Codex converted the same caregiver
+fatigue signal into one durable Pinterest guide-entry asset rather than adding
+more Reddit volume. New pin:
+`https://www.pinterest.com/pin/1102537552557070387/`, titled "Senior Dog
+Caregiver Burnout Notes", on board "Senior Pet Care Checklists". It links to
+`https://pawcheckin.com/guides/senior-dog-caregiver-burnout-notes?utm_source=pinterest&utm_medium=pin&utm_campaign=caregiver_capacity&utm_content=caregiver_fatigue_notes_20260626`.
+The pin description frames accidents, medications, night checks, guilt,
+unsustainable care, and a licensed-veterinarian conversation; it says "Not a
+diagnosis" and has Pinterest AI disclosure enabled. Verification found the pin
+on the profile created pins page and the live pin page has a "Visit site" link
+with the correct UTM; Codex did not click the site link. Immediate baseline
+read since `2026-06-26T04:01:00Z` found 0 page_events, 0 funnel_events, and
+0 downstream events for `caregiver_fatigue_notes_20260626`. Evidence:
+`growth/pinterest-caregiver-fatigue-presend-fixed-2026-06-26.png`,
+`growth/pinterest-caregiver-fatigue-profile-check-2026-06-26.png`, and
+`growth/pinterest-caregiver-fatigue-pin-verified-2026-06-26.png`. Next read:
+check this UTM at 24h and 72h, plus the guide page, `guide_checkin_clicked`,
+calculator starts, and downstream email/assessment events. Do not publish more
+Pinterest pins today.
+
+2026-06-26 heartbeat read at 12:42 CST: preflight passed with `stable=true`
+and warning `supabase_slow_dns_max_2556ms`; local stability stayed clean with
+no 3000-3020 listeners, no net-watchdog/growth-utm-read/Next loops, and no
+unusually large recent WorkBuddy/Codex logs. Fresh 24h read since
+`2026-06-25T04:39:00Z` found 0 page_events, 0 `/tools` visits, 0 caregiver
+guide visits, 0 funnel_events, 0 `guide_checkin_clicked`, 0
+`calculator_started`, and 0 email_events/assessments/reassessments/
+need_submissions. Active UTM contents all remained 0, including
+`free_tools_hub_20260625`, `free_tools_hub_answer_20260625`,
+`caregiver_fatigue_notes_20260626`, `0625`, `primary_tools_hub`, and
+`tools_hub`. Placement verification: production `/tools` still contains the
+free tools hub, trust row, and tools-hub calculator link; Pinterest pin
+`1102537552557070387` is live with the correct PawCheckin guide UTM; the
+2026-06-25 end-of-life Reddit reply and 2026-06-26 caregiver-fatigue Reddit
+reply remain visible as RandyThePsycho with 0 displayed points and 0 child
+replies. Diagnosis remains exposure/trust/source-quality failure, not landing,
+activation, completion, retention, or monetization-intent failure. Candidate
+scan found related prompts around caregiver burnout, low appetite, dementia
+night waking, and senior-cat quality-of-life, but the decision is no new
+external action in this block because two actions were already made today and
+the evidence still has no visit signal. Next action is a 24h read of
+`caregiver_fatigue_notes_20260626` and the existing `/tools`/Quora/Pinterest
+targets before any more posting.
 
 2026-06-25 /tools entry-alignment update: the next step was executed by moving
 the measurable entrances toward the new free tools hub instead of continuing

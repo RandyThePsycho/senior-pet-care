@@ -42,6 +42,9 @@ Run one bounded block per day. Default time: 12:35 CST.
    - State which skill/playbook supports the chosen action.
    - Do not treat a completed action as progress unless the expected signal and
      failure interpretation are defined.
+   - Write a pre-action rationale before doing anything external: why this
+     action now, expected signal, deadline for judging it, downside risk, and
+     the targeted modification if it fails.
 
 4. Asset build, 45-90 minutes
    - Ship or improve one high-intent guide/tool page in the caregiver-capacity
@@ -61,13 +64,18 @@ Run one bounded block per day. Default time: 12:35 CST.
      treatment-instruction threads.
 
 6. Action, 15-25 minutes
+   - Do not automatically default to another reply. Choose reply, standalone
+     discussion post, durable asset, partner target, profile/tool-hub
+     distribution, or no-action based on the diagnosed failure stage.
    - Execute at most one no-link community reply per day unless the user
-     explicitly expands the limit.
+     explicitly expands the limit and the diagnosis justifies it.
    - Use a link only when rules allow it, the thread asks for a tool/checklist,
      and the reply has clear standalone value.
    - Prefer direct guide URLs with UTM over homepage links.
    - Do not count no-link replies as acquisition unless they produce profile or
      page events.
+   - After the action, record benefits, costs, risks, whether the expected
+     signal appeared, and why it did or did not work.
 
 7. Monetization intent, 15-30 minutes
    - Improve or test one ethical monetization signal: product-guidance interest,
@@ -78,7 +86,10 @@ Run one bounded block per day. Default time: 12:35 CST.
 8. Record and set next gate, 10 minutes
    - Update `growth/growth-log.csv`.
    - Update `growth/growth-dashboard.md`.
-   - Schedule or note the next 24h read only for a specific placement.
+   - Schedule or note the next read only for a specific placement and signal.
+   - If the result is zero-signal, record the failure reason and a targeted
+     modification. Do not repeat the same tactic after two zero-signal reads
+     unless that modification has been made.
 
 ## Daily Limits
 

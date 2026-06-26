@@ -78,19 +78,27 @@ export default function ToolsHubPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-cream-50">
       <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-10">
-        <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
+        <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-navy-100/80 pb-5">
           <Link
             href="/"
             className="text-sm font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
             Senior Pet Care
           </Link>
-          <Link
-            href={CALCULATOR_HREF}
-            className="text-sm font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
-          >
-            Quality-of-life calculator
-          </Link>
+          <div className="flex items-center gap-4 text-sm">
+            <Link
+              href="/approach"
+              className="font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              How it works
+            </Link>
+            <Link
+              href={CALCULATOR_HREF}
+              className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              Quality-of-life calculator
+            </Link>
+          </div>
         </nav>
 
         <header className="grid gap-8 py-12 lg:grid-cols-[1fr_22rem] lg:items-end">

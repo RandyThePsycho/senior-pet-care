@@ -111,11 +111,17 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(HOME_JSON_LD) }}
       />
       <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
-        <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
+        <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-navy-100/80 pb-5">
           <span className="text-sm font-semibold tracking-[0.18em] text-navy-700">
             SENIOR PET CARE
           </span>
           <div className="flex items-center gap-4 text-sm">
+            <Link
+              href="/approach"
+              className="font-semibold text-navy-500 transition hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            >
+              How it works
+            </Link>
             <Link
               href="/tools"
               className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
