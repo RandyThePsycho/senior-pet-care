@@ -18,6 +18,7 @@ export type FunnelEventName =
   | 'reassessment_started'
   | 'reassessment_link_created'
   | 'situation_intake_submitted'
+  | 'support_matcher_interest_submitted'
   | 'product_matcher_cta_clicked'
   | 'end_of_life_cta_clicked';
 
@@ -75,6 +76,7 @@ const FUNNEL_EVENTS = new Set<FunnelEventName>([
   'reassessment_started',
   'reassessment_link_created',
   'situation_intake_submitted',
+  'support_matcher_interest_submitted',
   'product_matcher_cta_clicked',
   'end_of_life_cta_clicked',
 ]);

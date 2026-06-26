@@ -37,15 +37,14 @@ export default function NextStepCards({ result }: NextStepCardsProps) {
       tone: 'gentle',
     });
   } else {
-    // QA: Product Matcher 页面未实现，暂时隐藏所有产品 CTA，避免跳转到 404。
-    //     Feature B 上线后把下面的 SHOW_PRODUCT_CTAS 改为 true 即可恢复。
-    const SHOW_PRODUCT_CTAS = false;
+    // Product/support CTAs stay hidden for end-of-life results above.
+    const SHOW_PRODUCT_CTAS = true;
     if (SHOW_PRODUCT_CTAS && routes.matcher) {
       cards.push({
         key: 'mobility',
-        title: 'Mobility support may help',
-        body: 'Small home changes can make standing, walking, and resting easier for senior pets.',
-        cta: 'Find senior-safe mobility products',
+        title: 'Do not buy mobility products at random',
+        body: 'Match slipping, stairs, stiffness, and known conditions to safer support categories and vet-first questions.',
+        cta: 'Match support categories',
         href: '/tools/senior-safe-product-matcher?focus=mobility',
         event: 'product_matcher_cta_clicked',
         tone: 'product',
@@ -54,9 +53,9 @@ export default function NextStepCards({ result }: NextStepCardsProps) {
     if (SHOW_PRODUCT_CTAS && routes.incontinence) {
       cards.push({
         key: 'hygiene',
-        title: 'Comfort and hygiene support',
-        body: "Washable bedding, easier bathroom access, and gentle cleaning routines can help protect your pet's comfort and dignity.",
-        cta: 'See hygiene care ideas',
+        title: 'Accidents need a safer buying plan',
+        body: "Sort cleanup, bathroom access, washable bedding, and vet-first warning signs before spending money.",
+        cta: 'Match support categories',
         href: '/tools/senior-safe-product-matcher?focus=hygiene',
         event: 'product_matcher_cta_clicked',
         tone: 'product',

@@ -40,6 +40,11 @@ const FEATURED_GUIDES = FEATURED_GUIDE_SLUGS.map((slug) => {
 
 const TOOL_GROUPS = [
   {
+    title: 'Support product matcher',
+    body: 'Match mobility, night-waking, digestion, accidents, and caregiver sleep pressure to support categories before buying random products.',
+    href: '/tools/senior-safe-product-matcher',
+  },
+  {
     title: 'Night-waking logs',
     body: 'Track waking time, pacing, food requests, medication timing, potty needs, and caregiver sleep.',
     href: '/guides/senior-dog-night-waking-log',
@@ -160,7 +165,7 @@ export default function ToolsHubPage() {
           </aside>
         </header>
 
-        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           {TOOL_GROUPS.map((tool) => (
             <Link
               key={tool.href}

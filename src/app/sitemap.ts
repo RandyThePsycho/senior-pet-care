@@ -19,6 +19,11 @@ const PUBLIC_ROUTES = [
     priority: 0.9,
   },
   {
+    path: '/tools/senior-safe-product-matcher',
+    changeFrequency: 'weekly',
+    priority: 0.86,
+  },
+  {
     path: '/approach',
     changeFrequency: 'monthly',
     priority: 0.78,
