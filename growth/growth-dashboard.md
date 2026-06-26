@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 16:34 CST.
+Last updated: 2026-06-26 20:20 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,28 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-26 20:17 CST post-deploy read and next distribution action prepared:
+network preflight returned `stable=true` with no warnings. Supabase reads since
+the supplement guide production window (`2026-06-26T08:31:00Z`) found 0
+target page_events for `senior-dog-supplements-before-buying`, 0 target
+page_events for `random_supplement_purchase_confusion`, 0 full page_events,
+0 funnel_events, and 0 need_submissions. Diagnosis: the new commercial guide is
+not yet receiving exposure, so the next action should be distribution, not CTA
+or landing edits. Candidate selected: one fresh `r/seniordogs` thread asking
+whether to switch a 12-year-old dog from Cosequin DS to a HA-containing joint
+chew. This is a high-intent purchase-comparison context directly matched to the
+new guide. Skill/playbook: `senior-pet-community-growth`, using transparent
+affiliation, one relevant link only, no diagnosis/treatment claims, and vet-first
+language. Prepared action: a single disclosed Reddit comment with UTM
+`utm_source=reddit&utm_medium=comment&utm_campaign=support_matcher_paid_intent&utm_content=joint_chew_vs_cosequin_20260626`.
+Expected signal: within 24h, at least one Reddit-attributed guide page_event or
+visible thread reply; if both remain 0, classify as source/account trust failure
+and do not add more Reddit volume without changing source or permission path.
+Downside risk: link-bearing Reddit comments can be treated as promotion, so the
+comment leads with practical tracking advice and includes the link only as a
+disclosed optional resource. Browser-side submission is pending explicit
+confirmation because it creates a third-party public comment.
 
 2026-06-26 high-intent distribution asset executed: after the support matcher
 went live, Codex did not return to generic Reddit replies or soft social posts.
