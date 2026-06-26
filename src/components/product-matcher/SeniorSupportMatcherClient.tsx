@@ -166,16 +166,16 @@ export default function SeniorSupportMatcherClient({
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_24rem]">
       <section className="space-y-8">
-        <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
-          <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+        <div className="rounded-2xl border border-navy-100 bg-white/90 p-6 shadow-sm shadow-navy-800/5 sm:p-7">
+          <p className="text-sm font-semibold text-sage-700">
             STEP 1
           </p>
-          <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800">
+          <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800 sm:text-4xl">
             What are you trying not to buy randomly?
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-navy-500">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-navy-600">
             Choose the pattern that is creating the most pressure. The matcher
             recommends support categories first, not specific treatment claims.
           </p>
@@ -186,7 +186,7 @@ export default function SeniorSupportMatcherClient({
                 key={type}
                 type="button"
                 onClick={() => setPetType(type)}
-                className={`rounded-md border px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 ${
+                className={`rounded-xl border px-4 py-2.5 text-base font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 ${
                   petType === type
                     ? 'border-sage-300 bg-sage-50 text-sage-800'
                     : 'border-navy-100 bg-cream-50 text-navy-500 hover:bg-cream-100'
@@ -203,7 +203,7 @@ export default function SeniorSupportMatcherClient({
               return (
                 <label
                   key={concern.key}
-                  className={`cursor-pointer rounded-lg border p-4 transition ${
+                  className={`cursor-pointer rounded-xl border p-5 transition ${
                     checked
                       ? 'border-sage-300 bg-sage-50 text-navy-800'
                       : 'border-navy-100 bg-cream-50 text-navy-600 hover:bg-cream-100'
@@ -217,10 +217,10 @@ export default function SeniorSupportMatcherClient({
                       className="mt-1 accent-sage-600"
                     />
                     <span>
-                      <span className="block text-sm font-semibold">
+                      <span className="block text-base font-semibold">
                         {concern.label}
                       </span>
-                      <span className="mt-1 block text-sm leading-5 text-navy-500">
+                      <span className="mt-1 block text-base leading-6 text-navy-600">
                         {concern.description}
                       </span>
                     </span>
@@ -231,14 +231,14 @@ export default function SeniorSupportMatcherClient({
           </div>
         </div>
 
-        <div className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5">
-          <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+        <div className="rounded-2xl border border-navy-100 bg-white/90 p-6 shadow-sm shadow-navy-800/5 sm:p-7">
+          <p className="text-sm font-semibold text-sage-700">
             STEP 2
           </p>
-          <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800">
+          <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800 sm:text-4xl">
             Any known conditions that should slow the buying decision?
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-navy-500">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-navy-600">
             These do not diagnose your pet. They help the matcher add
             vet-first warnings where supplements or home products could be a
             poor shortcut.
@@ -251,7 +251,7 @@ export default function SeniorSupportMatcherClient({
                   key={condition.value}
                   type="button"
                   onClick={() => toggleCondition(condition.value)}
-                  className={`rounded-md border px-3 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 ${
+                  className={`rounded-xl border px-4 py-2.5 text-base font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 ${
                     checked
                       ? 'border-sage-300 bg-sage-50 text-sage-800'
                       : 'border-navy-100 bg-cream-50 text-navy-500 hover:bg-cream-100'
@@ -266,16 +266,16 @@ export default function SeniorSupportMatcherClient({
 
         <div className="space-y-4">
           <div>
-            <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+            <p className="text-sm font-semibold text-sage-700">
               MATCHED SUPPORT CATEGORIES
             </p>
-            <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800">
+            <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800 sm:text-4xl">
               Start with categories, then decide what is worth buying.
             </h2>
           </div>
 
           {result.vetFirstReasons.length > 0 && (
-            <div className="rounded-lg border border-clay-200 bg-clay-50 p-5 text-sm leading-6 text-navy-700">
+            <div className="rounded-2xl border border-clay-200 bg-clay-50 p-6 text-base leading-7 text-navy-700">
               <p className="font-semibold text-navy-800">
                 Vet-first warning before supplements
               </p>
@@ -291,51 +291,51 @@ export default function SeniorSupportMatcherClient({
             {result.categories.map((category) => (
               <article
                 key={category.key}
-                className="rounded-lg border border-navy-100 bg-white p-6 shadow-sm shadow-navy-800/5"
+                className="rounded-2xl border border-navy-100 bg-white/90 p-6 shadow-sm shadow-navy-800/5 sm:p-7"
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-sage-700">
+                    <p className="text-sm font-semibold text-sage-700">
                       {category.kind.replace('_', ' ')}
                     </p>
                     <h3 className="mt-2 font-display text-2xl leading-tight text-navy-800">
                       {category.title}
                     </h3>
                   </div>
-                  <p className="rounded-md bg-cream-100 px-3 py-1 text-xs font-semibold text-navy-500">
+                  <p className="rounded-lg bg-cream-100 px-3 py-1.5 text-sm font-semibold text-navy-600">
                     {category.priceRange}
                   </p>
                 </div>
-                <p className="mt-3 text-sm leading-6 text-navy-500">
+                <p className="mt-4 text-base leading-7 text-navy-600">
                   {category.summary}
                 </p>
 
                 <div className="mt-5 grid gap-4 md:grid-cols-3">
                   <div>
-                    <h4 className="text-sm font-semibold text-navy-800">
+                    <h4 className="text-base font-semibold text-navy-800">
                       Suitable for
                     </h4>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-navy-500">
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-base leading-7 text-navy-600">
                       {category.suitableFor.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-navy-800">
+                    <h4 className="text-base font-semibold text-navy-800">
                       Not suitable for
                     </h4>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-navy-500">
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-base leading-7 text-navy-600">
                       {category.notSuitableFor.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-navy-800">
+                    <h4 className="text-base font-semibold text-navy-800">
                       What to look for
                     </h4>
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-navy-500">
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-base leading-7 text-navy-600">
                       {category.whatToLookFor.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -343,7 +343,7 @@ export default function SeniorSupportMatcherClient({
                   </div>
                 </div>
 
-                <p className="mt-5 rounded-lg bg-sage-50 px-4 py-3 text-sm leading-6 text-navy-600">
+                <p className="mt-5 rounded-xl bg-sage-50 px-4 py-3 text-base leading-7 text-navy-600">
                   <span className="font-semibold text-navy-800">
                     Ask your vet:{' '}
                   </span>
@@ -356,14 +356,14 @@ export default function SeniorSupportMatcherClient({
       </section>
 
       <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
-        <div className="rounded-lg border border-sage-200 bg-sage-50 p-6 shadow-sm shadow-sage-700/5">
-          <p className="text-sm font-semibold tracking-[0.14em] text-sage-700">
+        <div className="rounded-2xl border border-sage-200 bg-sage-50/90 p-6 shadow-sm shadow-sage-700/5 sm:p-7">
+          <p className="text-sm font-semibold text-sage-700">
             PAID VALIDATION
           </p>
           <h2 className="mt-2 font-display text-3xl leading-tight text-navy-800">
             Would this be worth paying for?
           </h2>
-          <p className="mt-3 text-sm leading-6 text-navy-600">
+          <p className="mt-4 text-base leading-7 text-navy-600">
             This does not buy a supplement today. It tells us whether families
             would pay for a clearer support plan before purchasing products.
           </p>
@@ -374,7 +374,7 @@ export default function SeniorSupportMatcherClient({
               return (
                 <label
                   key={option.value}
-                  className={`cursor-pointer rounded-lg border p-4 transition ${
+                  className={`cursor-pointer rounded-xl border p-5 transition ${
                     checked
                       ? 'border-sage-300 bg-white text-navy-800'
                       : 'border-sage-100 bg-sage-50/70 text-navy-600 hover:bg-white/80'
@@ -389,13 +389,13 @@ export default function SeniorSupportMatcherClient({
                       className="mt-1 accent-sage-600"
                     />
                     <span>
-                      <span className="block text-sm font-semibold">
+                      <span className="block text-base font-semibold">
                         {option.title}
                       </span>
                       <span className="mt-1 block text-lg font-semibold text-navy-800">
                         {option.price}
                       </span>
-                      <span className="mt-1 block text-sm leading-5 text-navy-500">
+                      <span className="mt-1 block text-base leading-6 text-navy-600">
                         {option.body}
                       </span>
                     </span>
@@ -406,23 +406,23 @@ export default function SeniorSupportMatcherClient({
           </div>
 
           {submitted ? (
-            <div className="mt-5 rounded-lg border border-sage-200 bg-white px-4 py-3 text-sm leading-6 text-navy-600">
+            <div className="mt-5 rounded-xl border border-sage-200 bg-white px-4 py-3 text-base leading-7 text-navy-600">
               Saved. This is now counted as a paid-intent signal, not a product
               purchase or medical recommendation.
             </div>
           ) : (
             <div className="mt-5 space-y-3">
-              <label className="block text-sm font-semibold text-navy-700">
+              <label className="block text-base font-semibold text-navy-700">
                 Email for early access
                 <input
                   type="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   placeholder="you@example.com"
-                  className="mt-2 w-full rounded-lg border border-navy-100 bg-white px-3 py-3 text-sm text-navy-800 outline-none transition placeholder:text-navy-300 focus:border-sage-300 focus:ring-2 focus:ring-sage-200"
+                  className="mt-2 w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-base text-navy-800 outline-none transition placeholder:text-navy-300 focus:border-sage-300 focus:ring-2 focus:ring-sage-200"
                 />
               </label>
-              {error && <p className="text-sm text-clay-600">{error}</p>}
+              {error && <p className="text-base text-clay-600">{error}</p>}
               <CTAButton
                 variant="primary"
                 onClick={handleSubmit}
@@ -434,7 +434,7 @@ export default function SeniorSupportMatcherClient({
           )}
         </div>
 
-        <div className="rounded-lg border border-navy-100 bg-white p-5 text-sm leading-6 text-navy-500 shadow-sm shadow-navy-800/5">
+        <div className="rounded-2xl border border-navy-100 bg-white/90 p-5 text-base leading-7 text-navy-600 shadow-sm shadow-navy-800/5">
           <p className="font-semibold text-navy-800">Why this is not a store</p>
           <p className="mt-2">
             The first commercial test is whether caregivers want a clearer

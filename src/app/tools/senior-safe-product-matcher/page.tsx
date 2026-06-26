@@ -32,36 +32,36 @@ export default function SeniorSafeProductMatcherPage({
 }: SeniorSafeProductMatcherPageProps) {
   return (
     <main id="main-content" className="min-h-screen overflow-x-hidden bg-cream-50">
-      <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-10">
+      <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8 sm:py-10">
         <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-navy-100/80 pb-5">
           <Link
             href="/tools"
-            className="text-sm font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            className="text-base font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
             Free tools
           </Link>
           <Link
             href="/tools/senior-pet-quality-of-life-calculator?guide=support-matcher&intent=before_product_purchase"
-            className="text-sm font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            className="text-base font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
             Start with quality-of-life check-in
           </Link>
         </nav>
 
-        <header className="py-12">
-          <p className="mb-4 text-sm font-semibold tracking-[0.14em] text-sage-700">
+        <header className="py-14 sm:py-20">
+          <p className="mb-4 text-base font-semibold text-sage-700">
             CATEGORY-FIRST PRODUCT GUIDANCE
           </p>
-          <h1 className="max-w-5xl font-display text-[2.45rem] leading-[1.05] text-navy-800 sm:text-[4rem]">
+          <h1 className="max-w-5xl font-display text-5xl leading-[1.04] text-navy-800 sm:text-6xl lg:text-7xl">
             Senior Pet Support Matcher
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-navy-600">
+          <p className="mt-7 max-w-4xl text-xl leading-9 text-navy-600">
             Before buying another supplement or home product, match the pattern
             you are seeing to safer support categories, why-not boundaries, and
             questions for a licensed veterinarian. This is not a diagnosis, a
             treatment plan, or a substitute for veterinary care.
           </p>
-          <div className="mt-6 grid gap-3 text-sm text-navy-600 md:grid-cols-3">
+          <div className="mt-8 grid gap-3 text-base text-navy-600 md:grid-cols-3">
             {[
               'Support categories first',
               'Vet-first warnings where risk is higher',
@@ -69,7 +69,7 @@ export default function SeniorSafeProductMatcherPage({
             ].map((point) => (
               <p
                 key={point}
-                className="rounded-lg border border-navy-100 bg-white/88 px-4 py-3 shadow-sm shadow-navy-800/5"
+                className="rounded-xl border border-navy-100 bg-white/84 px-5 py-4 shadow-sm shadow-navy-800/5"
               >
                 {point}
               </p>
@@ -79,19 +79,19 @@ export default function SeniorSafeProductMatcherPage({
 
         <SeniorSupportMatcherClient initialFocus={searchParams?.focus} />
 
-        <section className="mt-10 grid gap-4 md:grid-cols-2">
-          <div className="rounded-lg border border-navy-100 bg-white p-5 shadow-sm shadow-navy-800/5">
-            <p className="text-sm font-semibold text-navy-800">
+        <section className="mt-12 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-navy-100 bg-white/84 p-6 shadow-sm shadow-navy-800/5">
+            <p className="text-lg font-semibold text-navy-800">
               Commercial test
             </p>
-            <p className="mt-2 text-sm leading-6 text-navy-500">
+            <p className="mt-3 text-base leading-7 text-navy-600">
               The current goal is to learn whether senior-pet families would pay
               for a clearer vet-prep support plan and category shortlist before
               we source real products or affiliate links.
             </p>
           </div>
-          <div className="rounded-lg border border-navy-100 bg-white p-5 shadow-sm shadow-navy-800/5">
-            <p className="text-sm font-semibold text-navy-800">
+          <div className="rounded-2xl border border-navy-100 bg-white/84 p-6 shadow-sm shadow-navy-800/5">
+            <p className="text-lg font-semibold text-navy-800">
               Product disclosure
             </p>
             <div className="mt-2">

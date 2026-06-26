@@ -32,11 +32,11 @@ export const metadata: Metadata = {
 export default function CalculatorPage() {
   return (
     <main id="main-content" className="min-h-screen overflow-x-hidden bg-cream-50">
-      <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-10">
+      <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-10">
         <nav className="flex items-center justify-between border-b border-navy-100/80 pb-5">
           <Link
             href="/"
-            className="text-sm font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
+            className="text-base font-semibold text-navy-500 transition-colors hover:text-navy-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
           >
             ← Senior Pet Care
           </Link>
@@ -45,34 +45,34 @@ export default function CalculatorPage() {
           </span>
         </nav>
 
-        <header className="mb-8 mt-10 grid gap-6 lg:grid-cols-[1fr_18rem] lg:items-end">
+        <header className="mb-10 mt-12 grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-end">
           <div>
-            <p className="mb-3 text-sm font-semibold tracking-[0.14em] text-sage-700">
+            <p className="mb-4 text-base font-semibold text-sage-700">
               Quality-of-life calculator
             </p>
-            <h1 className="max-w-3xl font-display text-[clamp(2.6rem,6vw,4.75rem)] leading-[0.98] text-navy-800">
+            <h1 className="max-w-4xl font-display text-5xl leading-[1.03] text-navy-800 sm:text-6xl lg:text-7xl">
               Pet Quality of Life Calculator
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-navy-600">
+            <p className="mt-6 max-w-3xl text-xl leading-9 text-navy-600">
               In about 3 minutes, turn what you are noticing into a score
               summary, vet questions, a printable report, and a 7-day follow-up
               journal.
             </p>
           </div>
-          <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 text-sm leading-6 text-navy-500 shadow-sm">
+          <aside className="paper-panel rounded-2xl p-6 text-base leading-7 text-navy-600">
             <p>
               This is not a diagnosis. It helps you organize observations
               before talking with a licensed veterinarian.
             </p>
-            <p className="mt-4 rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
+            <p className="mt-4 rounded-xl bg-cream-100 px-4 py-3 text-base leading-7 text-navy-700">
               HHHHHMM looks at pain, eating, drinking, cleanliness, joy,
               movement, and whether good days still outnumber difficult ones.
             </p>
             <div className="mt-5 border-t border-navy-100 pt-4">
-              <p className="text-xs font-semibold tracking-[0.14em] text-navy-400">
+              <p className="text-sm font-semibold text-navy-400">
                 AFTER SUBMIT
               </p>
-              <ul className="mt-3 space-y-2 text-sm text-navy-600">
+              <ul className="mt-3 space-y-2 text-base text-navy-600">
                 <li>Printable score summary</li>
                 <li>Vet questions based on lower-scoring areas</li>
                 <li>7-day reassessment and care journal link</li>
@@ -81,8 +81,8 @@ export default function CalculatorPage() {
           </aside>
         </header>
 
-        <section className="rounded-lg border border-navy-100 bg-white/90 p-5 shadow-soft sm:p-8">
-          <div className="mb-6 rounded-lg bg-cream-100 px-4 py-3 text-sm leading-6 text-navy-600">
+        <section className="paper-panel rounded-2xl p-5 sm:p-8">
+          <div className="mb-6 rounded-xl bg-cream-100 px-5 py-4 text-base leading-7 text-navy-700">
             Step 1 of 3: pet basics, HHHHHMM ratings, then symptoms. Email is
             optional after results if you want the report and journal links.
           </div>
