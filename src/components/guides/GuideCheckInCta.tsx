@@ -10,6 +10,7 @@ interface GuideCheckInCtaProps {
   guideSlug: string;
   guideIntent?: string;
   ctaPlacement: 'hero' | 'next_step';
+  eventName?: 'guide_checkin_clicked' | 'product_matcher_cta_clicked';
   fullWidth?: boolean;
 }
 
@@ -19,10 +20,11 @@ export default function GuideCheckInCta({
   guideSlug,
   guideIntent,
   ctaPlacement,
+  eventName = 'guide_checkin_clicked',
   fullWidth = false,
 }: GuideCheckInCtaProps) {
   const handleClick = () => {
-    track('guide_checkin_clicked', {
+    track(eventName, {
       guideSlug,
       ...(guideIntent ? { guideIntent } : {}),
       ctaPlacement,

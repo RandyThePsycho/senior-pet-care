@@ -26,6 +26,7 @@ const CALCULATOR_HREF =
 const FEATURED_GUIDE_SLUGS = [
   'senior-dog-night-waking-log',
   'senior-dog-low-appetite-log',
+  'senior-dog-supplements-before-buying',
   'senior-dog-mobility-notes',
   'senior-dog-caregiver-burnout-notes',
 ] as const;

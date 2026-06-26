@@ -12,9 +12,24 @@ export default function GuidePage({ guide }: GuidePageProps) {
   const calculatorHref =
     guide.ctaHref ?? '/tools/senior-pet-quality-of-life-calculator';
   const guideIntent = getQueryParam(calculatorHref, 'intent');
+  const isSupportMatcherCta = calculatorHref.startsWith(
+    '/tools/senior-safe-product-matcher',
+  );
+  const ctaEventName = isSupportMatcherCta
+    ? 'product_matcher_cta_clicked'
+    : 'guide_checkin_clicked';
   const nextStepBody =
     guide.nextStepBody ??
     'Turn these notes into a printable quality-of-life report and a 7-day follow-up journal. The calculator uses the same observation-first approach.';
+  const heroCtaEyebrow = isSupportMatcherCta
+    ? 'MATCH SUPPORT CATEGORIES'
+    : 'TURN NOTES INTO A CHECK-IN';
+  const heroCtaBody = isSupportMatcherCta
+    ? 'Use this guide to sort the pattern before buying supplements or home products.'
+    : 'Use this guide as context for a printable quality-of-life report and 7-day follow-up.';
+  const heroCtaLabel = isSupportMatcherCta
+    ? 'Match support categories'
+    : 'Start check-in';
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-cream-50">
@@ -51,11 +66,10 @@ export default function GuidePage({ guide }: GuidePageProps) {
           <aside className="rounded-lg border border-navy-100 bg-white/88 p-5 shadow-sm shadow-navy-800/5">
             <div data-guide-primary-cta>
               <p className="text-xs font-semibold tracking-[0.14em] text-sage-700">
-                TURN NOTES INTO A CHECK-IN
+                {heroCtaEyebrow}
               </p>
               <p className="mt-2 text-sm leading-6 text-navy-500">
-                Use this guide as context for a printable quality-of-life
-                report and 7-day follow-up.
+                {heroCtaBody}
               </p>
               <div className="mt-4">
                 <GuideCheckInCta
@@ -63,9 +77,10 @@ export default function GuidePage({ guide }: GuidePageProps) {
                   guideSlug={guide.slug}
                   guideIntent={guideIntent}
                   ctaPlacement="hero"
+                  eventName={ctaEventName}
                   fullWidth
                 >
-                  Start check-in
+                  {heroCtaLabel}
                 </GuideCheckInCta>
               </div>
             </div>
@@ -156,6 +171,7 @@ export default function GuidePage({ guide }: GuidePageProps) {
               guideSlug={guide.slug}
               guideIntent={guideIntent}
               ctaPlacement="next_step"
+              eventName={ctaEventName}
             >
               {guide.ctaLabel ?? 'Start the quality-of-life calculator'}
             </GuideCheckInCta>

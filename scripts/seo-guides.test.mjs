@@ -118,8 +118,14 @@ assert.match(
 
 assert.match(
   guideCheckInCtaSource,
-  /track\('guide_checkin_clicked'/,
-  'Expected guide check-in CTA clicks to be sent as funnel events.',
+  /eventName = 'guide_checkin_clicked'/,
+  'Expected guide check-in CTA clicks to default to guide funnel events.',
+);
+
+assert.match(
+  guideCheckInCtaSource,
+  /track\(eventName/,
+  'Expected guide CTA clicks to use the configured funnel event.',
 );
 
 assert.match(

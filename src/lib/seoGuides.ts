@@ -301,6 +301,72 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use the meal log alongside comfort, water, mobility, mood, and good-day notes to create a printable quality-of-life report and 7-day follow-up for the next vet conversation.',
   },
   {
+    slug: 'senior-dog-supplements-before-buying',
+    title: 'Senior Dog Supplements Before Buying',
+    description:
+      'Before buying random senior dog supplements or support products, sort the pattern, vet-first warning signs, and category questions for joint support, omega-3, digestion, calming, mobility, and cleanup.',
+    eyebrow: 'Before buying supplements',
+    h1: 'Do not buy random senior dog supplements before sorting the pattern',
+    intro:
+      'When a senior dog starts slipping, waking at night, eating differently, having accidents, or needing more help, it is tempting to buy the first joint chew, omega-3, probiotic, calming product, bed, ramp, or washable pad that sounds reassuring. The risky part is buying before you know what problem you are actually trying to support.',
+    audience:
+      'For families who are ready to spend money on senior dog supplements or home support products but are not sure whether the pattern is mobility, appetite, digestion, night waking, accidents, caregiver sleep, or something to ask a veterinarian about first.',
+    lastUpdated: '2026-06-26',
+    checklistTitle: 'Sort this before you buy',
+    checklist: [
+      'Main pattern: write the one change that is driving the purchase, such as slipping, stiffness, night waking, pacing, appetite change, accidents, loose stool, or caregiver sleep loss.',
+      'Timeline: note whether the change was sudden, gradual over weeks, tied to a medication change, tied to food, or worse at a certain time of day.',
+      'Mobility context: stairs, hard floors, standing up, car rides, jumping, slipping, falls, and whether non-slip rugs or ramps might be safer than starting with a supplement.',
+      'Appetite and digestion context: skipped meals, late eating, stool changes, vomiting, water changes, weight trend, dental history, and whether digestive support should wait for a vet question.',
+      'Night and calming context: when waking starts, whether your dog needs potty, water, food, comfort, light, or help settling, and whether calming products might hide a pattern you still need to understand.',
+      'Accidents and cleanup context: urine, stool, overnight leakage, bathroom access, washable bedding, skin comfort, and whether the issue is cleanup support or a new health change.',
+      'Known conditions and medications: kidney disease, heart disease, cancer, chronic pain, dementia, arthritis, incontinence, prescription diets, sedatives, pain medication, or seizure medication.',
+      'Red flags: sudden pain, collapse, rapid or labored breathing, severe diarrhea, blood, vomiting, dehydration signs, refusal to eat, distress, or fast worsening should not be handled by shopping.',
+    ],
+    notesTitle: 'How to avoid the wrong purchase',
+    notes: [
+      'Start with a category, not a product. Joint support, omega-3, digestive support, calming products, non-slip rugs, ramps, washable bedding, and cameras solve different problems.',
+      'Use "not suitable for" rules. A product category may be reasonable for one senior dog and a poor shortcut for another dog with kidney disease, heart disease, medication interactions, or sudden symptoms.',
+      'Treat ingredient claims carefully. Look for clear serving amounts, batch testing, manufacturer transparency, storage guidance, and support language rather than disease-treatment promises.',
+      'Do not let a product purchase replace the vet question. The point is to arrive with a clearer pattern and a safer shortlist.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Given this pattern, should we investigate pain, nausea, bathroom needs, cognitive change, medication timing, weight, or mobility before buying anything?',
+      'Which support category is safest to consider first: home setup, joint support, omega-3, digestive support, calming support, monitoring, or a tracking plan?',
+      'Are any ingredients, serving amounts, product categories, or diets risky with my dog\'s conditions or medications?',
+      'Would a non-supplement change such as traction, a lower bed, ramp, washable bedding, or overnight monitoring be safer than starting with a chew or powder?',
+      'What should I track for 7 days so we can tell whether the pattern is improving, stable, or getting worse?',
+    ],
+    faq: [
+      {
+        question: 'What senior dog supplement should I buy first?',
+        answer:
+          'Do not start with a brand. Start with the pattern you are trying to support and ask your veterinarian what categories are safe with your dog\'s health history, diet, and medications.',
+      },
+      {
+        question: 'Are joint supplements safe for senior dogs?',
+        answer:
+          'Some families discuss joint support with their veterinarian, but safety depends on ingredients, dosing, conditions, medications, and the reason for the mobility change. Sudden pain, weakness, or falling needs veterinary attention first.',
+      },
+      {
+        question: 'Should I use calming chews for an old dog waking at night?',
+        answer:
+          'Ask a veterinarian before using calming products, especially if the night waking is new, worsening, or paired with panting, pacing, confusion, pain signs, bathroom changes, or medication changes.',
+      },
+      {
+        question: 'When should I avoid buying supplements and call the vet instead?',
+        answer:
+          'Call a veterinarian if changes are sudden, severe, fast worsening, painful, distressing, or paired with breathing changes, vomiting, blood, dehydration signs, collapse, or refusal to eat.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-safe-product-matcher?guide=senior-dog-supplements-before-buying&intent=random_supplement_purchase_confusion',
+    ctaLabel: 'Match support categories before buying',
+    nextStepBody:
+      'Use this guide to name the pattern, then open the support matcher to compare categories, why-not boundaries, price ranges, and vet-first questions before spending money.',
+  },
+  {
     slug: 'senior-dog-caregiver-burnout-notes',
     title: 'Senior Dog Caregiver Burnout Notes',
     description:
