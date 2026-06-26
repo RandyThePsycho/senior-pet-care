@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 20:20 CST.
+Last updated: 2026-06-26 20:44 CST.
 
 ## Executive Summary
 
@@ -33,8 +33,14 @@ visible thread reply; if both remain 0, classify as source/account trust failure
 and do not add more Reddit volume without changing source or permission path.
 Downside risk: link-bearing Reddit comments can be treated as promotion, so the
 comment leads with practical tracking advice and includes the link only as a
-disclosed optional resource. Browser-side submission is pending explicit
-confirmation because it creates a third-party public comment.
+disclosed optional resource. Owner confirmed publishing. Codex switched from the
+Codex in-app browser to the computer's Google Chrome, verified the Chrome page
+was logged in as `RandyThePsycho`, submitted the comment, and verified the
+visible comment `t1_otx5wnu` at
+`https://old.reddit.com/r/seniordogs/comments/1ufm9jx/anyone_tried_paws_and_whiskers_joint_chew_vs/otx5wnu/`.
+The comment contains the disclosed PawCheckin link with the expected UTM. It was
+visible immediately after posting. Next read: check Reddit visibility/replies
+and Supabase `utm_content=joint_chew_vs_cosequin_20260626` after 1h and 24h.
 
 2026-06-26 high-intent distribution asset executed: after the support matcher
 went live, Codex did not return to generic Reddit replies or soft social posts.
