@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-29 15:20 CST.
+Last updated: 2026-06-29 14:58 CST.
 
 ## Executive Summary
 
@@ -68,6 +68,16 @@ unattributed posting. Verification passed:
 not be used because `npm` is not on the current shell PATH; direct Codex.app
 Node also failed to load Next SWC due macOS code-signing restrictions, so the
 bundled runtime Node was used for the successful checks.
+
+Production verification: commit `2a6f634` was pushed to `main`. A post-push
+network preflight returned `stable=true` with slow DNS warnings for PawCheckin
+and Supabase but no failures. Production `https://pawcheckin.com/` returned
+HTTP 200 and its shipped JS contains `support_matcher_home_cta_clicked`.
+Production `https://pawcheckin.com/tools/senior-safe-product-matcher` returned
+HTTP 200 and its shipped JS contains `support_matcher_started` and
+`support_matcher_price_intent_selected`. This confirms the next Supabase read
+can distinguish homepage monetization CTA failure, matcher first-interaction
+failure, paid-intent value-exchange failure, and pure distribution failure.
 
 2026-06-26 20:17 CST post-deploy read and next distribution action prepared:
 network preflight returned `stable=true` with no warnings. Supabase reads since
