@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-29 15:39 CST.
+Last updated: 2026-06-29 16:10 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,32 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-29 15:46-16:05 CST Pinterest link-bearing fallback result: after the
+Reddit linked mobility reply was removed and rapid follow-up comments became
+unreliable, Codex moved the next link-bearing attempt to Pinterest instead of
+forcing more Reddit volume. The chosen angle was the same high-intent purchase
+moment from today's candidate pool: "Senior Dog Slipping on Hardwood?" The
+asset was created at
+`public/growth/pinterest/senior-dog-slipping-hardwood-support.svg`, rendered to
+1000x1500 PNG and JPG, and visually checked. The pin draft was filled in the
+computer's Chrome session with title, description, board, image, and this UTM:
+`https://pawcheckin.com/tools/senior-safe-product-matcher?focus=mobility&utm_source=pinterest&utm_medium=pin&utm_campaign=support_matcher_paid_intent&utm_content=slipping_hardwood_support_20260629`.
+
+Observed result: the Pinterest editor accepted the draft, but the Publish click
+did not produce a verifiable new pin. The created-pins/profile page did not show
+the new "Senior Dog Slipping on Hardwood?" pin or the UTM, so this action is not
+counted as published acquisition. Evidence screenshots are local under
+`growth/pinterest-slipping-*-2026-06-29.png`.
+
+Diagnosis: this is an execution/publish-control blocker, not an offer or
+landing-page result. The asset and UTM are ready, but there is no live external
+placement yet. Targeted modification: do not log this UTM as active until a live
+pin URL is verified. If Pinterest's final publish button continues to resist
+remote control, use either a foreground/manual final click or move the same
+asset/copy to Quora or partner outreach. This preserves the strategic shift:
+link-bearing acquisition should happen on channels with evergreen link surfaces,
+while Reddit stays limited to slow, visible, no-link trust replies.
 
 2026-06-29 15:09-15:39 CST mechanical Reddit sprint result: network preflight
 passed with `stable=true` and no warnings, so Codex used the computer's Chrome
