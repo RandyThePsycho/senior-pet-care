@@ -367,6 +367,78 @@ export const SEO_GUIDES: SeoGuide[] = [
       'Use this guide to name the pattern, then open the support matcher to compare categories, why-not boundaries, price ranges, and vet-first questions before spending money.',
   },
   {
+    slug: 'senior-dog-slipping-on-hardwood',
+    title: 'Senior Dog Slipping on Hardwood',
+    description:
+      'A practical senior dog slipping-on-hardwood guide for sorting traction routes, first steps after rest, nails and paw pads, ramps, red flags, and vet-first support questions before buying gear.',
+    socialImage: {
+      url: '/growth/pinterest/jpg/senior-dog-slipping-hardwood-support.jpg',
+      width: 1000,
+      height: 1500,
+      alt: 'Senior dog slipping on hardwood checklist with traction and vet-question prompts',
+    },
+    eyebrow: 'Mobility and traction notes',
+    h1: 'Senior Dog Slipping on Hardwood?',
+    intro:
+      'When an older dog starts slipping on hardwood, tile, or other smooth floors, it is easy to buy random traction gear first. A safer first step is to sort where the slipping happens, when it happens, and what support category actually matches the pattern.',
+    audience:
+      'For families whose senior dog has trouble standing up, turning, walking to water, getting off a bed, crossing hardwood floors, or choosing between rugs, paw grips, booties, ramps, or other mobility support.',
+    lastUpdated: '2026-06-29',
+    checklistTitle: 'Sort the slipping pattern first',
+    checklist: [
+      'Route: where the slipping happens most, such as beside the bed, near food and water, by the door, on stairs, in hallways, or during turns.',
+      'Timing: whether the worst moments are after naps, after walks, late at night, before medication, after medication, or only when your dog is tired.',
+      'Movement: standing up, turning, starting from a stop, jumping down, climbing, backing up, or crossing a shiny open floor.',
+      'Surface: hardwood, tile, rugs that slide, rug edges, stairs, ramps, wet floors, or a bed that shifts under your dog.',
+      'Body clues: long nails, fur between paw pads, dry pads, weak rear legs, stiffness, trembling, knuckling, falling, or reluctance to move.',
+      'Home setup: whether a continuous non-slip route would help more than scattered small rugs or a single product.',
+      'Product tolerance: whether your dog accepts boots, paw grips, toe grips, harness help, ramps, low platforms, or non-slip mats without moving less confidently.',
+      'Sudden or worsening signs: pain, collapse, fast decline, appetite change, accidents, confusion, or trouble rising should be discussed with a veterinarian rather than handled by shopping alone.',
+    ],
+    notesTitle: 'How to reduce risk before buying gear',
+    notes: [
+      'Start with the path, not the product. A continuous non-slip route often solves a different problem than a chew, boot, toe grip, ramp, or bed.',
+      'Watch the first few steps after rest. Many senior dogs show the clearest pattern when they stand from sleep or turn around.',
+      'Treat traction gear as a test, not a guarantee. If boots or grips make your dog freeze, stumble, or move less, the product is not helping that dog in that moment.',
+      'Separate home-support questions from health questions. The floor may be where you notice the problem, but pain, weakness, nails, paw pads, vision, medication effects, or another health change may be part of the pattern.',
+      SHARED_BOUNDARY,
+    ],
+    vetQuestions: [
+      'Does this slipping pattern suggest we should check pain, weakness, nails, paw pads, vision, medication timing, or another health issue?',
+      'Are there signs here that make rugs, ramps, toe grips, boots, or a harness safer or less suitable for my dog?',
+      'Would a continuous non-slip route, lower bed, low platform, or ramp be a safer first home change than a supplement or traction product?',
+      'What should I track for the next 7 days so we can tell whether the slipping is stable, improving, or worsening?',
+      'Are there signs that should make me contact you sooner than our planned follow-up?',
+    ],
+    faq: [
+      {
+        question: 'What should I buy first if my senior dog is slipping on hardwood?',
+        answer:
+          'Do not start with a brand. First identify where and when the slipping happens. Many families discuss continuous non-slip routes, rugs with secure backing, ramps, paw care, or other support categories with their veterinarian before buying gear.',
+      },
+      {
+        question: 'Are dog boots or paw grips good for old dogs slipping on floors?',
+        answer:
+          'They may help some dogs, but other senior dogs dislike them or change their gait. Test slowly and stop if your dog seems less confident, more wobbly, or unwilling to move.',
+      },
+      {
+        question: 'Can slipping on hardwood mean something medical is going on?',
+        answer:
+          'It can. The floor may reveal pain, weakness, nail or paw-pad issues, vision changes, medication effects, or other health changes. A guide can organize observations, but a veterinarian should interpret health concerns.',
+      },
+      {
+        question: 'When is slipping urgent enough to call the vet?',
+        answer:
+          'Contact a veterinarian promptly if slipping is sudden, rapidly worsening, painful, paired with collapse, knuckling, refusal to rise, appetite change, accidents, confusion, or distress.',
+      },
+    ],
+    ctaHref:
+      '/tools/senior-safe-product-matcher?guide=senior-dog-slipping-on-hardwood&intent=hardwood_slipping_support_options',
+    ctaLabel: 'Match mobility support categories',
+    nextStepBody:
+      'Use the slipping pattern to compare support categories, why-not boundaries, price ranges, and vet-first questions before spending money on traction gear.',
+  },
+  {
     slug: 'senior-dog-caregiver-burnout-notes',
     title: 'Senior Dog Caregiver Burnout Notes',
     description:

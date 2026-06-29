@@ -26,6 +26,7 @@ const CALCULATOR_HREF =
 const FEATURED_GUIDE_SLUGS = [
   'senior-dog-night-waking-log',
   'senior-dog-low-appetite-log',
+  'senior-dog-slipping-on-hardwood',
   'senior-dog-supplements-before-buying',
   'senior-dog-mobility-notes',
   'senior-dog-caregiver-burnout-notes',
@@ -54,6 +55,11 @@ const TOOL_GROUPS = [
     title: 'Appetite and mobility notes',
     body: 'Organize skipped meals, 24-hour food totals, stairs, slipping, standing, and safe-care limits.',
     href: '/guides/senior-dog-low-appetite-log',
+  },
+  {
+    title: 'Hardwood slipping support',
+    body: 'Sort traction routes, first steps after rest, paws, nails, rugs, ramps, and vet-first questions before buying gear.',
+    href: '/guides/senior-dog-slipping-on-hardwood',
   },
   {
     title: 'Mobility and safe-care notes',

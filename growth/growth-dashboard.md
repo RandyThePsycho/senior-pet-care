@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-29 16:23 CST.
+Last updated: 2026-06-29 21:05 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,43 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-29 20:58-21:05 CST owned-asset correction implemented: instead of
+retrying the deleted Quora answer or adding more Reddit volume, Codex converted
+the useful hardwood-slipping answer into an owned PawCheckin guide:
+`/guides/senior-dog-slipping-on-hardwood`. This is the targeted modification
+after both Reddit and Quora showed new-domain/account link filtering. The page
+uses the lower-friction SEO/information asset as the external destination and
+routes internally to Support Matcher with
+`guide=senior-dog-slipping-on-hardwood&intent=hardwood_slipping_support_options`.
+
+Why this is the right next action: the observed user intent is commercial and
+urgent enough to matter (`slipping`, `hardwood`, `bad knees/hips`, `trouble
+standing`, `solutions`), but direct platform links to the tool are being treated
+as promotion. An owned guide lets PawCheckin capture the long-tail search
+language, show a calmer vet-first trust boundary, and still route high-intent
+readers to mobility support categories before they buy random traction gear.
+Verification passed locally: the new guide has H1, medical boundary language,
+Support Matcher CTA links, 0 horizontal overflow, appears in `/tools`, and is
+present in `sitemap.xml`.
+
+2026-06-29 20:54 CST Quora correction: after reopening the RandyCen hardwood
+answer in Chrome, the page showed `Quora deleted this answer. This post can be
+restored by the Quora moderation team.` This supersedes the earlier
+`published_text_url_not_anchor` status. The answer should now be treated as
+`removed_by_quora`, not active text-only exposure, and
+`utm_content=hardwood_slipping_support_20260629` is no longer an active target.
+
+Why this result happened: Quora likely treated the fresh answer as promotional
+because it was a new account answer with a full commercial-looking URL to a
+tool, even though the content was relevant and disclosed. This is the same
+pattern as Reddit's removal of the direct PawCheckin link: the issue is no
+longer only copy quality; it is platform trust and link tolerance for a new
+domain/account. Targeted modification: stop trying to rescue this Quora answer
+or repost the same link. Convert the useful answer into an owned PawCheckin
+guide page first, then distribute lower-friction versions that point to the
+guide only where links are tolerated. The guide can route internally to Support
+Matcher, which is less promotional at the platform edge and better for SEO.
 
 2026-06-29 16:09-16:23 CST Quora link-bearing fallback result: network
 preflight passed with `stable=true` and no warnings, so Codex used the

@@ -54,6 +54,11 @@ const PUBLIC_ROUTES = [
     priority: 0.84,
   },
   {
+    path: '/guides/senior-dog-slipping-on-hardwood',
+    changeFrequency: 'weekly',
+    priority: 0.84,
+  },
+  {
     path: '/guides/senior-dog-caregiver-burnout-notes',
     changeFrequency: 'weekly',
     priority: 0.83,
