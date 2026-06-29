@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-29 16:10 CST.
+Last updated: 2026-06-29 16:23 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,39 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-29 16:09-16:23 CST Quora link-bearing fallback result: network
+preflight passed with `stable=true` and no warnings, so Codex used the
+computer's Chrome CDP session to move the same mobility/purchase-intent angle
+from Reddit/Pinterest into a more durable Quora surface. Google-in-Chrome search
+found a high-intent Quora question:
+`https://www.quora.com/We-have-hardwood-floors-in-our-house-and-my-dog-has-bad-knees-hips-and-has-trouble-standing-up-Are-there-any-solutions-for-this`.
+This was chosen because it combines hardwood floors, bad knees/hips, trouble
+standing, and explicit "solutions" language, which matches the Support Matcher
+mobility/home-setup category better than another generic caregiver reply.
+
+Action completed: Codex published a disclosed RandyCen answer at
+`https://www.quora.com/We-have-hardwood-floors-in-our-house-and-my-dog-has-bad-knees-hips-and-has-trouble-standing-up-Are-there-any-solutions-for-this/answer/RandyCen`.
+The answer is useful without the link: it recommends continuous traction routes,
+checking the first steps after rest, nails/paw-pad/bed factors, cautious testing
+of boots or grips, reducing jumps and sharp turns, and licensed-veterinarian
+review for sudden/worsening signs. It discloses PawCheckin and says it is not a
+diagnosis or veterinary advice. The UTM used is:
+`https://pawcheckin.com/tools/senior-safe-product-matcher?focus=mobility&utm_source=quora&utm_medium=answer&utm_campaign=support_matcher_paid_intent&utm_content=hardwood_slipping_support_20260629`.
+
+Observed result: public verification found RandyCen, `Just now`, the answer
+opening, disclosure, not-a-diagnosis wording, and the full UTM text visible on
+the page. However, Quora stored the PawCheckin URL as plain text, not a clickable
+anchor (`pawLinks=[]` in DOM verification). Codex attempted to open the answer
+menu and linkify the URL through the editor, but the Quora UI did not expose a
+stable edit flow from the remote session. Therefore this placement is counted as
+`published_text_url_not_anchor`: useful long-tail trust content and a readable
+URL, but weaker than a verified clickable answer link. Immediate baseline since
+`2026-06-29T08:09:00Z` found 0 target page_events, 0 funnel_events, and 0
+downstream events. Next modification if this produces no signal: use a manual
+foreground edit to turn the visible URL into an anchor, or publish the next
+Quora answer with the link inserted through Quora's Add Link UI before posting,
+not by plain text insertion.
 
 2026-06-29 15:46-16:05 CST Pinterest link-bearing fallback result: after the
 Reddit linked mobility reply was removed and rapid follow-up comments became
