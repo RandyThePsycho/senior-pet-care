@@ -45,6 +45,9 @@ for (const expected of [
 }
 
 for (const expected of [
+  'useRef',
+  'support_matcher_started',
+  'support_matcher_price_intent_selected',
   'support_matcher_interest_submitted',
   '/api/need-submissions',
   'Early-access support plan',

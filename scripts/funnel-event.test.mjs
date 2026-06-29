@@ -90,6 +90,62 @@ assert.deepEqual(guideCtaClick, {
   },
 });
 
+const supportMatcherHomeCtaClick = normalizeFunnelEventPayload({
+  eventName: 'support_matcher_home_cta_clicked',
+  path: '/',
+  props: {
+    source: 'homepage',
+    placement: 'hero_card',
+    intent: 'before_product_purchase',
+  },
+});
+
+assert.deepEqual(supportMatcherHomeCtaClick, {
+  ok: true,
+  data: {
+    event_name: 'support_matcher_home_cta_clicked',
+    path: '/',
+    referrer: null,
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    utm_content: null,
+    metadata: {
+      source: 'homepage',
+      placement: 'hero_card',
+      intent: 'before_product_purchase',
+    },
+  },
+});
+
+const supportMatcherStarted = normalizeFunnelEventPayload({
+  eventName: 'support_matcher_started',
+  path: '/tools/senior-safe-product-matcher',
+  props: {
+    source: 'support_matcher',
+    trigger: 'concern_toggle',
+    initialFocus: 'none',
+  },
+});
+
+assert.deepEqual(supportMatcherStarted, {
+  ok: true,
+  data: {
+    event_name: 'support_matcher_started',
+    path: '/tools/senior-safe-product-matcher',
+    referrer: null,
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    utm_content: null,
+    metadata: {
+      source: 'support_matcher',
+      trigger: 'concern_toggle',
+      initialFocus: 'none',
+    },
+  },
+});
+
 assert.deepEqual(
   normalizeFunnelEventPayload({
     eventName: 'made_up_event',

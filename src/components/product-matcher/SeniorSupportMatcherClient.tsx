@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import CTAButton from '@/components/common/CTAButton';
 import { track } from '@/lib/analytics';
 import {
@@ -62,6 +62,7 @@ export default function SeniorSupportMatcherClient({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const startedTrackedRef = useRef(false);
 
   const result = useMemo(
     () =>
@@ -78,7 +79,30 @@ export default function SeniorSupportMatcherClient({
     [concerns],
   );
 
+  function trackMatcherStarted(
+    trigger: string,
+    extra: Record<string, unknown> = {},
+  ) {
+    if (startedTrackedRef.current) return;
+    startedTrackedRef.current = true;
+
+    track('support_matcher_started', {
+      source: 'support_matcher',
+      trigger,
+      initialFocus: initialFocus ?? 'none',
+      petType,
+      concerns,
+      conditions,
+      priceIntent,
+      ...extra,
+    });
+  }
+
   function toggleConcern(concern: SeniorSupportConcern) {
+    trackMatcherStarted('concern_toggle', {
+      concern,
+      alreadySelected: concerns.includes(concern),
+    });
     setConcerns((current) =>
       current.includes(concern)
         ? current.filter((item) => item !== concern)
@@ -87,6 +111,10 @@ export default function SeniorSupportMatcherClient({
   }
 
   function toggleCondition(condition: Condition) {
+    trackMatcherStarted('condition_toggle', {
+      condition,
+      alreadySelected: conditions.includes(condition),
+    });
     setConditions((current) =>
       current.includes(condition)
         ? current.filter((item) => item !== condition)
@@ -94,9 +122,33 @@ export default function SeniorSupportMatcherClient({
     );
   }
 
+  function selectPetType(type: PetType) {
+    trackMatcherStarted('pet_type_selected', {
+      selectedPetType: type,
+      changed: type !== petType,
+    });
+    setPetType(type);
+  }
+
+  function selectPriceIntent(nextPriceIntent: PriceIntent) {
+    trackMatcherStarted('price_intent_selected', {
+      selectedPriceIntent: nextPriceIntent,
+    });
+
+    track('support_matcher_price_intent_selected', {
+      source: 'support_matcher_paid_validation',
+      initialFocus: initialFocus ?? 'none',
+      priceIntent: nextPriceIntent,
+      previousPriceIntent: priceIntent,
+    });
+
+    setPriceIntent(nextPriceIntent);
+  }
+
   async function handleSubmit() {
     if (submitting || !email.trim()) return;
 
+    trackMatcherStarted('email_submit');
     setError('');
     setSubmitting(true);
 
@@ -185,7 +237,7 @@ export default function SeniorSupportMatcherClient({
               <button
                 key={type}
                 type="button"
-                onClick={() => setPetType(type)}
+                onClick={() => selectPetType(type)}
                 className={`rounded-xl border px-4 py-2.5 text-base font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300 ${
                   petType === type
                     ? 'border-sage-300 bg-sage-50 text-sage-800'
@@ -385,7 +437,7 @@ export default function SeniorSupportMatcherClient({
                       type="radio"
                       name="price-intent"
                       checked={checked}
-                      onChange={() => setPriceIntent(option.value)}
+                      onChange={() => selectPriceIntent(option.value)}
                       className="mt-1 accent-sage-600"
                     />
                     <span>

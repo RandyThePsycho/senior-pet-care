@@ -42,6 +42,9 @@ export type AnalyticsEvent =
   | 'reassessment_link_created'
   // 需求收集入口
   | 'situation_intake_submitted'
+  | 'support_matcher_home_cta_clicked'
+  | 'support_matcher_started'
+  | 'support_matcher_price_intent_selected'
   | 'support_matcher_interest_submitted'
   // 下一步路由
   | 'product_matcher_cta_clicked'

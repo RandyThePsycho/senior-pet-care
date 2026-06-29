@@ -7,6 +7,7 @@ import ExampleScenario from '@/components/common/ExampleScenario';
 import FAQSection, { FAQ_ITEMS } from '@/components/common/FAQSection';
 import MedicalDisclaimer from '@/components/common/MedicalDisclaimer';
 import TrustNote from '@/components/common/TrustNote';
+import HomeSupportMatcherLink from '@/components/home/HomeSupportMatcherLink';
 import { SEO_GUIDES } from '@/lib/seoGuides';
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 
@@ -130,12 +131,13 @@ export default function HomePage() {
             >
               Free tools
             </Link>
-            <Link
+            <HomeSupportMatcherLink
               href={HOME_SUPPORT_MATCHER_HREF}
+              placement="nav"
               className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
             >
               Support matcher
-            </Link>
+            </HomeSupportMatcherLink>
             <span className="hidden text-navy-500 lg:block">
               Assessment, report, journal, 7-day follow-up
             </span>
@@ -161,12 +163,13 @@ export default function HomePage() {
               </CTAButton>
               <p className="mt-5 text-base leading-7 text-navy-500">
                 Considering supplements or home products?{' '}
-                <Link
+                <HomeSupportMatcherLink
                   href={HOME_SUPPORT_MATCHER_HREF}
+                  placement="hero_inline"
                   className="font-semibold text-sage-700 underline decoration-sage-300 underline-offset-4 transition hover:text-sage-800"
                 >
                   Match the support category first.
-                </Link>
+                </HomeSupportMatcherLink>
               </p>
               <p className="mt-2 text-base leading-7 text-navy-500">
                 Facing a difficult goodbye?{' '}
@@ -181,8 +184,9 @@ export default function HomePage() {
           </div>
 
           <div className="space-y-4 lg:pt-2">
-            <Link
+            <HomeSupportMatcherLink
               href={HOME_SUPPORT_MATCHER_HREF}
+              placement="hero_card"
               className="group block rounded-2xl border border-sage-200 bg-sage-50/92 p-6 shadow-soft shadow-sage-700/10 transition hover:-translate-y-0.5 hover:border-sage-300 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-300"
             >
               <span className="text-sm font-semibold text-sage-700">
@@ -209,7 +213,7 @@ export default function HomePage() {
                   Paid-intent test
                 </span>
               </span>
-            </Link>
+            </HomeSupportMatcherLink>
 
             <figure className="relative overflow-hidden rounded-lg border border-navy-100 bg-navy-800 shadow-soft">
               <img

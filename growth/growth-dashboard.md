@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-26 20:44 CST.
+Last updated: 2026-06-29 15:20 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,61 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-29 14:38-15:20 CST growth read and diagnosis: network preflight passed
+with `stable=true`, but DNS remained slow (`pawcheckin_slow_dns_max_2818ms`,
+`workbuddy_slow_dns_max_3446ms`, `supabase_slow_dns_max_3744ms`). Local
+stability was clean: no listeners on ports `3000-3020`, no
+`net-watchdog`/`growth-utm-read`/Next dev loops, and no unusually large recent
+WorkBuddy/Codex logs. Supabase excluding synthetic/local events showed the last
+24h had 5 `page_events`, all unattributed `/`, and 0 `funnel_events`, 0
+`guide_checkin_clicked`, 0 `product_matcher_cta_clicked`, 0
+`calculator_started`, 0 completions, 0 email events, and 0 need submissions.
+The last 72h had 12 `page_events` (10 `/`, 2
+`/tools/senior-safe-product-matcher`) and only 1 `calculator_started` from
+homepage context, with 0 completions/email/need submissions. Active measured
+UTMs stayed at 0: `joint_chew_vs_cosequin_20260626`,
+`caregiver_fatigue_notes_20260626`, `free_tools_hub_20260625`,
+`free_tools_hub_answer_20260625`, and `x_profile`. The Pinterest caregiver pin
+is still public and shows 1 save, but produced no tracked site visit. Reddit
+script verification was blocked by Reddit network policy, so public score/reply
+state could not be trusted from curl today.
+
+Diagnosis: the primary failure is still exposure/source-quality/trust, not a
+proven calculator failure. The strongest evidence is that all active UTMs are 0
+and nearly all real traffic is unattributed homepage traffic. The secondary
+failure is measurement ambiguity around monetization intent: homepage had a
+visible Support Matcher entry and the matcher received 2 visits, but the site
+only tracked final `support_matcher_interest_submitted`, not homepage
+Support-Matcher clicks or first matcher interaction. That meant we could not
+separate "no one clicked the monetization entry" from "people clicked but the
+matcher first screen did not activate" from "people interacted but would not
+submit paid intent." Decision: do not add another Reddit/Pinterest/X action
+today just to increase activity count. Implement middle-funnel tracking first,
+then judge the next growth action by the new branching rule:
+`/` views with no `support_matcher_home_cta_clicked` means homepage offer/CTA
+failure; matcher page views with no `support_matcher_started` means matcher
+first-screen/offer failure; matcher starts with no
+`support_matcher_interest_submitted` means value-exchange or price-intent
+failure; no page views means distribution/source remains the failure.
+
+Action completed: added a homepage Support Matcher tracking component and
+instrumented the matcher with `support_matcher_home_cta_clicked`,
+`support_matcher_started`, and `support_matcher_price_intent_selected`, then
+allowed those events through the funnel-event normalizer. Skill/playbook:
+`senior-pet-community-growth` plus the local growth decision system. Expected
+signal window: next 24-72h read should show exactly which monetization-intent
+stage is failing before any new external volume is added. Downside risk: more
+analytics events add slight complexity, but this is lower risk than continuing
+unattributed posting. Verification passed:
+`node scripts/homepage-intent-routing.test.mjs`,
+`node scripts/support-matcher.test.mjs`, `node scripts/funnel-event.test.mjs`,
+`git diff --check`, bundled-runtime
+`node node_modules/typescript/bin/tsc --noEmit`, and bundled-runtime
+`node node_modules/next/dist/bin/next build`. Direct `npm run typecheck` could
+not be used because `npm` is not on the current shell PATH; direct Codex.app
+Node also failed to load Next SWC due macOS code-signing restrictions, so the
+bundled runtime Node was used for the successful checks.
 
 2026-06-26 20:17 CST post-deploy read and next distribution action prepared:
 network preflight returned `stable=true` with no warnings. Supabase reads since
