@@ -1,6 +1,6 @@
 # Growth Dashboard - Working Snapshot
 
-Last updated: 2026-06-29 14:58 CST.
+Last updated: 2026-06-29 15:39 CST.
 
 ## Executive Summary
 
@@ -13,6 +13,43 @@ evidence says the system is failing earlier:
 
 Do not resume mechanical posting until the next experiment has a clear
 hypothesis, UTM, and stop rule.
+
+2026-06-29 15:09-15:39 CST mechanical Reddit sprint result: network preflight
+passed with `stable=true` and no warnings, so Codex used the computer's Chrome
+CDP session, not the Codex in-app browser, to run a low-volume Reddit action
+block. Candidate pool from `r/seniordogs/new` and `r/SeniorCats/new` showed the
+highest-intent fresh topics were slipping paws/hardwood floors, night waking
+with caregiver sleep deprivation, ramp/stair/platform selection, pee-pad /
+overnight incontinence, and senior-cat litter eating. The chosen rule was 1
+high-intent link reply only where the thread was explicitly about buying/support
+choices, plus no-link trust replies elsewhere.
+
+Observed result: the linked reply on `Solutions for slipping paws?` was posted
+and initially visible at
+`https://old.reddit.com/r/seniordogs/comments/1uijlci/solutions_for_slipping_paws/ougjpuw/`,
+but the account comments page later showed the comment text as
+`[ Removed by Reddit ]`. The no-link reply on `Senior dog keeping me awake all
+hours of the night` remained visible at
+`https://old.reddit.com/r/seniordogs/comments/1uhw4hb/senior_dog_keeping_me_awake_all_hours_of_the_night/ougl19t/`.
+Two later no-link submissions, one on overnight incontinence and one on
+ramp/stair/platform selection, returned a successful old-Reddit `save` click but
+did not appear on the thread or the account comments page. Diagnosis: Reddit is
+currently not just a low-conversion channel; it is actively filtering/removing
+some account actions, especially direct links and likely rapid consecutive
+comments. This explains why mechanical posting has had poor impact: some of the
+work is not actually becoming durable public exposure.
+
+Next Reddit operating rule: keep the mechanical habit, but change the unit. For
+the next 48h, do not place direct PawCheckin links in `r/seniordogs` comments
+unless another user explicitly asks for the tool/resource. Limit to 1-2 visible
+no-link comments per day, spaced apart, and verify the account comments page
+after each one. Use phrasing like "I can share the checklist if tools are
+allowed here" instead of dropping a URL. Move link-bearing acquisition toward
+channels that tolerate evergreen links better, such as Quora answers, Pinterest
+pins, GitHub/awesome-list style resources, partner pages, or profile/bio paths.
+Expected next signal: visible no-link comments should produce either replies,
+profile visits, or later explicit requests; if not, Reddit becomes customer
+language research rather than acquisition until account trust improves.
 
 2026-06-29 14:38-15:20 CST growth read and diagnosis: network preflight passed
 with `stable=true`, but DNS remained slow (`pawcheckin_slow_dns_max_2818ms`,
